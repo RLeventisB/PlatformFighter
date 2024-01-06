@@ -1,6 +1,8 @@
-*/bin/
-*/obj/
+**/bin/
+**/obj/
 .idea/**
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/PlatformFighter/Artifacts/
+/PlatformFighter/.config/
