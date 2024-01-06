@@ -3,10 +3,10 @@
 
 /outputDir:bin/$(Platform)
 /intermediateDir:obj/$(Platform)
-/platform:Android
+/platform:DesktopGL
 /config:
-/profile:Reach
-/compress:False
+/profile:HiDef
+/compress:True
 
 #-------------------------------- References --------------------------------#
 

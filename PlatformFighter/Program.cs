@@ -1,15 +1,8 @@
-﻿using Cube.Miscelaneous;
-
-using Microsoft.Xna.Framework;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection.Metadata;
-#if DEBUG
-using Cube;
-#endif
 
 #if RELEASE
 using System.Linq;
@@ -17,34 +10,15 @@ using System.Linq;
 
 #if DEBUG
 [assembly: MetadataUpdateHandler(typeof(HotReloadManager))]
-
 internal static class HotReloadManager
 {
     public static void UpdateApplication(Type[] types)
     {
-        Main.instance?.HotReload();
-        Span<IInstanceDictionary> dictionaries = new Span<IInstanceDictionary>(Dictionaries);
-
-        foreach (Type type in new Span<Type>(types))
-        {
-            if (type.IsAbstract || !type.IsClass) continue;
-            foreach (IInstanceDictionary dictionary in dictionaries)
-            {
-                if (!dictionary.Contains(type) && dictionary.TryAdd(type))
-                {
-                    break;
-                }
-            }
-        }
-        foreach (IInstanceDictionary dictionary in dictionaries)
-        {
-            dictionary.FreezeData();
-        }
+        
     }
 }
 #endif
-
-namespace Cube
+namespace PlatformFighter
 {
     // https://stackoverflow.com/questions/2779746/is-there-a-textwriter-interface-to-the-system-diagnostics-debug-class
     public interface IOutputWrapper
@@ -94,17 +68,6 @@ namespace Cube
                 LogStreams.Add(new ConsoleInOutWrapper());
             }
 #endif
-            Input.Gamepads = new ExposedList<GamepadInfo>(4);
-            ref EventRegisterPair pair = ref SdlGamePlatform.OnEventDictionary.GetReference(Sdl.EventType.JoyDeviceAdded);
-            pair.AfterEvent += _ =>
-            {
-                Input.BuildGamepadDictionary();
-            };
-            pair = ref SdlGamePlatform.OnEventDictionary.GetReference(Sdl.EventType.JoyDeviceRemoved);
-            pair.AfterEvent += _ =>
-            {
-                Input.BuildGamepadDictionary();
-            };
 #if RELEASE
             bool dontShowException = args.Contains("-rununsafe");
             if (dontShowException)
