@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-android</TargetFramework>
+        <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
+        <OutputType>Exe</OutputType>
+        <ApplicationId>com.rleventisb.PlatformFighter</ApplicationId>
+        <ApplicationVersion>1</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <MonoGamePlatform>Android</MonoGamePlatform>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+        <ErrorReport>none</ErrorReport>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <RootNamespace>PlatformFighter</RootNamespace>
+        <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <DebugType>portable</DebugType>
+        <GenerateFullPaths>true</GenerateFullPaths>
+        <DebuggerSupport>true</DebuggerSupport>
+        <OutputPath>./Artifacts/Desktop/Debug/</OutputPath>
+
+        <AndroidPackageFormat>apk</AndroidPackageFormat>
+        <AndroidUseAapt2>True</AndroidUseAapt2>
+        <Debugger>Xamarin</Debugger>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <PublishAot>true</PublishAot>
+        <Optimize>True</Optimize>
+        <TrimUnusedDependencies>true</TrimUnusedDependencies>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>link</TrimMode>
+        <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <DebuggerSupport>false</DebuggerSupport>
+        <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+        <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
+        <StripSymbols>true</StripSymbols>
+        <OutputPath>./Artifacts/Android/Release/</OutputPath>
+
+        <AndroidPackageFormat>apk</AndroidPackageFormat>
+        <AndroidLinkTool>r8</AndroidLinkTool>
+        <EnableLLVM>True</EnableLLVM>
+        <AndroidUseAapt2>True</AndroidUseAapt2>
+        <Debugger>Xamarin</Debugger>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Configuration)' == 'Release'">
+        <Reference Include=".\BuildLibs\Android\Release\MonoGame.Framework.dll"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <Reference Include=".\BuildLibs\Android\Debug\MonoGame.Framework.dll"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303"/>
+        <None Remove="Content\ContentDesktop.mgcb" />
+        <None Remove="BuildLibs\DesktopGL\**" />
+        <MonoGameContentReference Include="Content\ContentAndroid.mgcb"/>
+        <Compile Remove="BuildLibs\DesktopGL\**" />
+        <EmbeddedResource Remove="BuildLibs\DesktopGL\**" />
+        <TransformFile Remove="BuildLibs\DesktopGL\**" />
+        <AndroidLibrary Remove="BuildLibs\DesktopGL\**" />
+        <AndroidNativeLibrary Remove="BuildLibs\DesktopGL\**" />
+        <JavaSourceJar Remove="BuildLibs\DesktopGL\**" />
+        <AndroidJavaSource Remove="BuildLibs\DesktopGL\**" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <TargetFrameworks>net8.0</TargetFrameworks>
+        <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
+        <OutputType>Exe</OutputType>
+        <TieredCompilation>false</TieredCompilation>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <DefineConstants>DESKTOPGL</DefineConstants>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <Platforms>AnyCPU;x64;x86</Platforms>
+        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+        <ErrorReport>none</ErrorReport>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <RootNamespace>PlatformFighter</RootNamespace>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <DebugType>portable</DebugType>
+        <GenerateFullPaths>true</GenerateFullPaths>
+        <DebuggerSupport>true</DebuggerSupport>
+        <OutputPath>./Artifacts/Desktop/Debug/</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <PublishAot>true</PublishAot>
+        <Optimize>True</Optimize>
+        <TrimUnusedDependencies>true</TrimUnusedDependencies>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>link</TrimMode>
+        <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <DebuggerSupport>false</DebuggerSupport>
+        <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+        <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
+        <StripSymbols>true</StripSymbols>
+        <OutputPath>./Artifacts/Desktop/Release/</OutputPath>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Configuration)|$(RuntimeIdentifier)' == 'Release|win-x64'">
+        <Content Include=".\BuildLibs\DesktopGL\Release\x64\SDL2.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\SDL2.dll"/>
+        <Content Include=".\BuildLibs\DesktopGL\Release\x64\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\soft_oal.dll"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)|$(RuntimeIdentifier)' == 'Debug|win-x64'">
+        <Content Include=".\BuildLibs\DesktopGL\Debug\x64\SDL2.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\SDL2.dll"/>
+        <Content Include=".\BuildLibs\DesktopGL\Debug\x64\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\soft_oal.dll"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)|$(RuntimeIdentifier)' == 'Release|win-x86'">
+        <Content Include=".\BuildLibs\DesktopGL\Release\x86\SDL2.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\SDL2.dll"/>
+        <Content Include=".\BuildLibs\DesktopGL\Release\x86\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\soft_oal.dll"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)|$(RuntimeIdentifier)' == 'Debug|win-x86'">
+        <Content Include=".\BuildLibs\DesktopGL\Debug\x86\SDL2.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\SDL2.dll"/>
+        <Content Include=".\BuildLibs\DesktopGL\Debug\x86\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(BaseOutputPath)\..\soft_oal.dll"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+        <MonoGameContentReference Include="Content\ContentDesktop.mgcb"/>
+        <None Remove="AndroidManifest.xml" />
+        <None Remove="Resources\**" />
+        <None Remove="Content\ContentAndroid.mgcb" />
+        <Compile Remove="MainActivity.cs" />
+        <Compile Remove="Resources\**" />
+        <EmbeddedResource Remove="Resources\**" />
+        <Compile Remove="BuildLibs\Android\**" />
+        <EmbeddedResource Remove="BuildLibs\Android\**" />
+        <None Remove="BuildLibs\Android\**" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)' == 'Release'">
+        <Reference Include=".\BuildLibs\DesktopGL\Release\MonoGame.Framework.dll"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <Reference Include=".\BuildLibs\DesktopGL\Debug\MonoGame.Framework.dll"/>
+    </ItemGroup>
+</Project>
