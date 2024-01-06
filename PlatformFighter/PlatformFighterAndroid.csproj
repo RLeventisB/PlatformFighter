@@ -7,22 +7,23 @@
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <InvariantGlobalization>true</InvariantGlobalization>
-        <MonoGamePlatform>Android</MonoGamePlatform>
-        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
         <ErrorReport>none</ErrorReport>
         <PlatformTarget>AnyCPU</PlatformTarget>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <RootNamespace>PlatformFighter</RootNamespace>
-        <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <TieredCompilation>false</TieredCompilation>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DebugType>portable</DebugType>
         <GenerateFullPaths>true</GenerateFullPaths>
         <DebuggerSupport>true</DebuggerSupport>
-        <OutputPath>./Artifacts/Desktop/Debug/</OutputPath>
 
         <AndroidPackageFormat>apk</AndroidPackageFormat>
         <AndroidUseAapt2>True</AndroidUseAapt2>
@@ -41,7 +42,6 @@
         <IlcTrimMetadata>true</IlcTrimMetadata>
         <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
         <StripSymbols>true</StripSymbols>
-        <OutputPath>./Artifacts/Android/Release/</OutputPath>
 
         <AndroidPackageFormat>apk</AndroidPackageFormat>
         <AndroidLinkTool>r8</AndroidLinkTool>
@@ -67,5 +67,41 @@
         <AndroidNativeLibrary Remove="BuildLibs\DesktopGL\**" />
         <JavaSourceJar Remove="BuildLibs\DesktopGL\**" />
         <AndroidJavaSource Remove="BuildLibs\DesktopGL\**" />
+        <Compile Remove="ObjDesktopGL\**" />
+        <EmbeddedResource Remove="ObjDesktopGL\**" />
+        <TransformFile Remove="ObjDesktopGL\**" />
+        <AndroidLibrary Remove="ObjDesktopGL\**" />
+        <AndroidNativeLibrary Remove="ObjDesktopGL\**" />
+        <JavaSourceJar Remove="ObjDesktopGL\**" />
+        <AndroidJavaSource Remove="ObjDesktopGL\**" />
+        <None Remove="ObjDesktopGL\**" />
+        <Compile Remove="Content\obj\**" />
+        <EmbeddedResource Remove="Content\obj\**" />
+        <TransformFile Remove="Content\obj\**" />
+        <AndroidLibrary Remove="Content\obj\**" />
+        <AndroidNativeLibrary Remove="Content\obj\**" />
+        <JavaSourceJar Remove="Content\obj\**" />
+        <AndroidJavaSource Remove="Content\obj\**" />
+        <None Remove="Content\obj\**" />
+        <Compile Remove="obj\**" />
+        <EmbeddedResource Remove="obj\**" />
+        <TransformFile Remove="obj\**" />
+        <AndroidLibrary Remove="obj\**" />
+        <AndroidNativeLibrary Remove="obj\**" />
+        <JavaSourceJar Remove="obj\**" />
+        <AndroidJavaSource Remove="obj\**" />
+        <None Remove="obj\**" />
+        <Compile Remove="Artifacts\**" />
+        <EmbeddedResource Remove="Artifacts\**" />
+        <TransformFile Remove="Artifacts\**" />
+        <AndroidLibrary Remove="Artifacts\**" />
+        <AndroidNativeLibrary Remove="Artifacts\**" />
+        <JavaSourceJar Remove="Artifacts\**" />
+        <AndroidJavaSource Remove="Artifacts\**" />
+        <None Remove="Artifacts\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <AndroidAarLibrary Remove="ObjDesktopGL\**" />
+      <AndroidAarLibrary Remove="Content\obj\**" />
     </ItemGroup>
 </Project>

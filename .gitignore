@@ -7,3 +7,5 @@ riderModule.iml
 /PlatformFighter/Artifacts/
 /PlatformFighter/.config/
 PlatformFighter.sln.DotSettings.user
+**/ObjAndroid/
+**/ObjDesktopGL/

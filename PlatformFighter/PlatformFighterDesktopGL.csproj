@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
+        <OutputType>Exe</OutputType>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <DefineConstants>DESKTOPGL</DefineConstants>
+        <Platforms>AnyCPU;x64;x86</Platforms>
+
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+        <ErrorReport>none</ErrorReport>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <TieredCompilation>false</TieredCompilation>
+        <ApplicationIcon>Icon.ico</ApplicationIcon>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <DebugType>portable</DebugType>
+        <GenerateFullPaths>true</GenerateFullPaths>
+        <DebuggerSupport>true</DebuggerSupport>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <PublishAot>true</PublishAot>
+        <Optimize>True</Optimize>
+        <TrimUnusedDependencies>true</TrimUnusedDependencies>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>link</TrimMode>
+        <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <DebuggerSupport>false</DebuggerSupport>
+        <MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+        <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
+        <StripSymbols>true</StripSymbols>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll"/>
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x86'">
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll"/>
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+        <MonoGameContentReference Include="Content\ContentDesktop.mgcb"/>
+        <None Remove="AndroidManifest.xml" />
+        <None Remove="Resources\**" />
+        <None Remove="Content\ContentAndroid.mgcb" />
+        <Compile Remove="MainActivity.cs" />
+        <Compile Remove="Resources\**" />
+        <EmbeddedResource Remove="Resources\**" />
+        <Compile Remove="BuildLibs\Android\**" />
+        <EmbeddedResource Remove="BuildLibs\Android\**" />
+        <None Remove="BuildLibs\Android\**" />
+        <Compile Remove="ObjAndroid\**" />
+        <EmbeddedResource Remove="ObjAndroid\**" />
+        <None Remove="ObjAndroid\**" />
+        <Compile Remove="Content\obj\**" />
+        <EmbeddedResource Remove="Content\obj\**" />
+        <None Remove="Content\obj\**" />
+        <Compile Remove="obj\**" />
+        <EmbeddedResource Remove="obj\**" />
+        <None Remove="obj\**" />
+        <Compile Remove="Artifacts\**" />
+        <EmbeddedResource Remove="Artifacts\**" />
+        <None Remove="Artifacts\**" />
+        <Reference Include=".\BuildLibs\DesktopGL\$(Configuration)\MonoGame.Framework.dll"/>
+    </ItemGroup>
+</Project>
