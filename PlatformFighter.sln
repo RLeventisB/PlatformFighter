@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformFighterAndroid", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformFighterDesktopGL", "PlatformFighter\PlatformFighterDesktopGL.csproj", "{B9D6AAD3-121B-426C-BFA5-6200099EEFF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatfFightLinuxDesktopGL", "PlatformFighter\PlatfFightLinuxDesktopGL.csproj", "{D0A37DEA-025B-45F4-9A1F-4C704E5CD5E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{B9D6AAD3-121B-426C-BFA5-6200099EEFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9D6AAD3-121B-426C-BFA5-6200099EEFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9D6AAD3-121B-426C-BFA5-6200099EEFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0A37DEA-025B-45F4-9A1F-4C704E5CD5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A37DEA-025B-45F4-9A1F-4C704E5CD5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A37DEA-025B-45F4-9A1F-4C704E5CD5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A37DEA-025B-45F4-9A1F-4C704E5CD5E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

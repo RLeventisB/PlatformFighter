@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <MonoGamePlatform>$(MSBuildProjectName.Substring(15))</MonoGamePlatform>
-    <BaseIntermediateOutputPath>obj\$(MonoGamePlatform)</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <BaseOutputPath>.\Artifacts\$(MonoGamePlatform)</BaseOutputPath>
     <AssemblyName>PlatformFighter</AssemblyName>
     <RootNamespace>PlatformFighter</RootNamespace>

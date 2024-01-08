@@ -21,36 +21,8 @@ internal static class HotReloadManager
 namespace PlatformFighter
 {
     // https://stackoverflow.com/questions/2779746/is-there-a-textwriter-interface-to-the-system-diagnostics-debug-class
-    public interface IOutputWrapper
-    {
-        public void Write(string text, byte[] buffer);
-    }
-    public readonly struct ConsoleInOutWrapper : IOutputWrapper
-    {
-        public void Write(string text, byte[] buffer) => Console.Out.Write(text);
-    }
-    public readonly struct LogWrapper : IOutputWrapper
-    {
-        public readonly string Path;
-        public LogWrapper(string path)
-        {
-            Path = path;
-        }
-        public void Write(string text, byte[] buffer)
-        {
-            using (FileStream stream = File.OpenWrite(Path))
-            {
-                stream.Write(buffer, 0, buffer.Length);
-            }
-        }
-    }
-    public readonly struct DebugWrapper : IOutputWrapper
-    {
-        public void Write(string text, byte[] buffer) => Debug.Write(text);
-    }
     public static class Program
     {
-        public static readonly List<IOutputWrapper> LogStreams = new List<IOutputWrapper>();
         public static bool IsRunningSafe, IsRelease;
         [STAThread]
         private static void Main(string[] args)
@@ -58,16 +30,15 @@ namespace PlatformFighter
 #if RELEASE
             IsRelease = true;
 #endif
-#if DESKTOPGL
             if (Debugger.IsAttached)
             {
-                LogStreams.Add(new DebugWrapper());
+                PlatformFighter.Main.LogStreams.Add(new DebugWrapper());
             }
             else
             {
-                LogStreams.Add(new ConsoleInOutWrapper());
+                PlatformFighter.Main.LogStreams.Add(new ConsoleInOutWrapper());
+                PlatformFighter.Main.LogStreams.Add(new LogWrapper("./Log.log"));
             }
-#endif
 #if RELEASE
             bool dontShowException = args.Contains("-rununsafe");
             if (dontShowException)

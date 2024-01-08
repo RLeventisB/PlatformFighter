@@ -25,6 +25,7 @@ public class Activity1 : AndroidGameActivity
     {
         base.OnCreate(bundle);
 
+        Main.LogStreams.Add(new AndroidLogWrapper());
         _game = new Main();
         _view = _game.Services.GetService(typeof(View)) as View;
 

@@ -3,9 +3,8 @@
         <TargetFramework>net8.0</TargetFramework>
         <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
         <OutputType>Exe</OutputType>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
         <DefineConstants>DESKTOPGL</DefineConstants>
-        <Platforms>AnyCPU;x64;x86</Platforms>
 
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
@@ -68,6 +67,5 @@
         <EmbeddedResource Remove="Artifacts\**" />
         <None Remove="Artifacts\**" />
         <Reference Include=".\BuildLibs\DesktopGL\$(Configuration)\MonoGame.Framework.dll"/>
-        <Reference Include=".\BuildLibs\ExtraProcessors.dll"/>
     </ItemGroup>
 </Project>

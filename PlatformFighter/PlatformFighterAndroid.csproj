@@ -8,6 +8,7 @@
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
         <RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+        <DefineConstants>ANDROID</DefineConstants>
 
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -49,13 +50,8 @@
         <AndroidUseAapt2>True</AndroidUseAapt2>
         <Debugger>Xamarin</Debugger>
     </PropertyGroup>
-    <ItemGroup Condition="'$(Configuration)' == 'Release'">
-        <Reference Include=".\BuildLibs\Android\Release\MonoGame.Framework.dll"/>
-    </ItemGroup>
-    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-        <Reference Include=".\BuildLibs\Android\Debug\MonoGame.Framework.dll"/>
-    </ItemGroup>
     <ItemGroup>
+        <Reference Include=".\BuildLibs\Android\$(Configuration)\MonoGame.Framework.dll"/>
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303"/>
         <None Remove="Content\ContentDesktop.mgcb" />
         <None Remove="BuildLibs\DesktopGL\**" />
@@ -99,9 +95,12 @@
         <JavaSourceJar Remove="Artifacts\**" />
         <AndroidJavaSource Remove="Artifacts\**" />
         <None Remove="Artifacts\**" />
-    </ItemGroup>
-    <ItemGroup>
+        <Compile Remove="Program.cs" />
       <AndroidAarLibrary Remove="ObjDesktopGL\**" />
       <AndroidAarLibrary Remove="Content\obj\**" />
+      <AndroidAarLibrary Remove="obj\**" />
+      <Reference Include="ExtraProcessors">
+        <HintPath>BuildLibs\ExtraProcessors.dll</HintPath>
+      </Reference>
     </ItemGroup>
 </Project>
