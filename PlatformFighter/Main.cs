@@ -60,6 +60,10 @@ namespace PlatformFighter
                 AlphaDestinationBlend = Blend.InverseSourceAlpha
             };
             GraphicsDevice.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+
+            TargetElapsedTime = TimeSpan.FromSeconds(1d / 120);
+            IsFixedTimeStep = true;
+            graphics.SynchronizeWithVerticalRetrace = false;
             InitializeRenderTargets();
 
 #if DEBUG

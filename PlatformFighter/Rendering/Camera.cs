@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 
 using System;
+using System.Collections.Generic;
 
 namespace PlatformFighter.Rendering
 {
@@ -61,71 +62,60 @@ namespace PlatformFighter.Rendering
             }
         }
         public static Vector2 CameraShakeOffset = Vector2.Zero;
-        public static float CameraShake;
-        public static float? CameraShakeMinus;
-        public static bool IsShakeTimed = false;
-        public static TimedAction CameraShakeTimedAction = new TimedAction(TimedCameraShake, 1f);
-        public static void AddCameraShake(float add, float? minus = null)
-        {
-            CameraShake += add;
-            CameraShakeMinus = minus;
-        }
+        public static List<CameraShake> CameraShakes = new List<CameraShake>();
         public static Matrix matrix;
         public static void Update()
         {
+            CameraShakeOffset = Vector2.Zero;
+            for (int i = 0; i < CameraShakes.Count; i++)
             {
-                if (CameraShake > 0)
-                {
-                    if (IsShakeTimed)
-                    {
-                        CameraShakeTimedAction.Update(in Renderer.FinalTimeDelta);
-                    }
-                    else
-                    {
-                        Position -= CameraShakeOffset;
-                        CameraShakeOffset.X = Main.cosmeticRandom.NextFloat(-CameraShake, CameraShake);
-                        CameraShakeOffset.Y = Main.cosmeticRandom.NextFloat(-CameraShake, CameraShake);
-                        Position += CameraShakeOffset;
+                remakeMatrix = true;
 
-                        CameraShake -= MathF.Min(CameraShake, CameraShakeMinus ?? 1f * Renderer.InternalTimeDelta);
-                        if (CameraShake <= 0)
-                        {
-                            Position -= CameraShakeOffset;
-                            CameraShakeOffset.X = 0;
-                            CameraShakeOffset.Y = 0;
-                            CameraShake = 0;
-                        }
-                        remakeMatrix = true;
-
-                    }
-                }
+                CameraShake shake = CameraShakes[i];
+                CameraShakeOffset += shake.GetOutset();
+                if (shake.Time != 0)
+                    continue;
+                CameraShakes.RemoveAt(i);
+                i--;
             }
             if (remakeMatrix)
             {
                 matrix = Matrix.Identity *
-                Matrix.CreateTranslation(-_position.X, _position.Y, 0) *
-                Matrix.CreateRotationZ(MathHelper.ToRadians(Angle)) *
-                Matrix.CreateTranslation(VirtualMidResolution.X / Scale.X, VirtualMidResolution.Y / Scale.Y, 0) *
-                Matrix.CreateScale(_scale.X, _scale.Y, 0);
+                         Matrix.CreateTranslation(-_position.X + CameraShakeOffset.X, _position.Y + CameraShakeOffset.Y, 0) *
+                         Matrix.CreateRotationZ(MathHelper.ToRadians(Angle)) *
+                         Matrix.CreateTranslation(VirtualMidResolution.X / _scale.X, VirtualMidResolution.Y / _scale.Y, 0) *
+                         Matrix.CreateScale(_scale.X, _scale.Y, 0);
                 remakeMatrix = false;
             }
         }
-        public static void TimedCameraShake(in float offset)
+    }
+    public struct CameraShake
+    {
+        public CameraShake(float magnitude, ushort time, byte interval, float? magnitudeLoss = null)
         {
-            Position -= CameraShakeOffset;
-            CameraShakeOffset.X = Main.cosmeticRandom.NextFloat(-CameraShake, CameraShake);
-            CameraShakeOffset.Y = Main.cosmeticRandom.NextFloat(-CameraShake, CameraShake);
-            Position += CameraShakeOffset;
-
-            CameraShake -= MathF.Min(CameraShake, CameraShakeMinus ?? CameraShakeTimedAction.Interval);
-            if (CameraShake <= 0)
+            Magnitude = magnitude;
+            Time = time;
+            Interval = interval;
+            MagnitudeLoss = magnitudeLoss ?? magnitude / time;
+        }
+        public float Magnitude { get; internal set; }
+        public float MagnitudeLoss { get; init; }
+        public ushort Time { get; internal set; }
+        public byte Interval { get; init; }
+        internal byte IntervalCounter { get; set; }
+        private Vector2 Outset;
+        public Vector2 GetOutset()
+        {
+            if (++IntervalCounter >= Interval)
             {
-                Position -= CameraShakeOffset;
-                CameraShakeOffset.X = 0;
-                CameraShakeOffset.Y = 0;
-                CameraShake = 0;
+                IntervalCounter = 0;
+                Outset.X = Main.cosmeticRandom.NextFloat(-Magnitude, Magnitude);
+                Outset.Y = Main.cosmeticRandom.NextFloat(-Magnitude, Magnitude);
             }
-            remakeMatrix = true;
+            Magnitude -= MagnitudeLoss;
+            if (Time > 0)
+                Time--;
+            return Outset;
         }
     }
 }

@@ -33,14 +33,13 @@ namespace PlatformFighter
     {
         public static object themeLock = new object();
         public static int ProcessorCountForLoading;
-        public static ushort ThemeLoadCount, TotalThemeCount;
+        public static ushort ThemeLoadCount, TotalThemeCount, ClearScratchPoolTimer;
         public static bool LoadedThemes, SkippedThemeLoad;
-        public static float ClearScratchPoolTimer;
         public static DirectoryInfo ContentInfo, TextureInfo, ShadersInfo, SFXInfo, ThemesInfo;
         public static AssetDictionary<SoundEffect> SoundEffects = new AssetDictionary<SoundEffect>();
         public static AssetDictionary<GameTexture> Textures = new AssetDictionary<GameTexture>();
         public static AssetDictionary<Effect> Effects = new AssetDictionary<Effect>();
-        public static ConcurrentDictionary<string, Theme> Themes = new ConcurrentDictionary<string,Theme>();
+        public static ConcurrentDictionary<string, Theme> Themes = new ConcurrentDictionary<string, Theme>();
         public static ContentManager Content => Main.instance.Content;
         public static void LoadAssets()
         {
@@ -50,7 +49,7 @@ namespace PlatformFighter
             ShadersInfo = new DirectoryInfo(baseContent + "/Effects");
             SFXInfo = new DirectoryInfo(baseContent + "/SFX");
             ThemesInfo = new DirectoryInfo(baseContent + "/Themes");
-            if(TextureInfo.Exists)
+            if (TextureInfo.Exists)
                 foreach (FileInfo file in TextureInfo.GetFiles("*.*", SearchOption.AllDirectories))
                 {
                     string path = file.FullName.Replace(file.Extension, string.Empty), name = Path.GetFileNameWithoutExtension(file.Name);
@@ -93,7 +92,7 @@ namespace PlatformFighter
 
             Textures.Freeze();
 
-            if(ShadersInfo.Exists)
+            if (ShadersInfo.Exists)
                 foreach (FileInfo file in ShadersInfo.GetFiles("*.*", SearchOption.AllDirectories))
                 {
                     string path = file.FullName.Replace(file.Extension, string.Empty), name = Path.GetFileNameWithoutExtension(file.Name);
@@ -111,19 +110,19 @@ namespace PlatformFighter
             CustomizedSpriteBatch.glowEffectPass = CustomizedSpriteBatch.glowEffect.CurrentTechnique.Passes[0];
             CustomizedSpriteBatch.glowParameter = CustomizedSpriteBatch.glowEffect.Parameters["isGlow"];
 
-            if(SFXInfo.Exists)
-            foreach (FileInfo file in SFXInfo.GetFiles("*.*", SearchOption.AllDirectories))
-            {
-                string path = file.FullName.Replace(file.Extension, string.Empty), name = Path.GetFileNameWithoutExtension(file.Name);
-                Asset<SoundEffect> asset = new Asset<SoundEffect>(path)
+            if (SFXInfo.Exists)
+                foreach (FileInfo file in SFXInfo.GetFiles("*.*", SearchOption.AllDirectories))
                 {
-                    OnUnload = SoundEffects.SubstractToCounter
-                };
-                asset.OnLoad += AddToScratchBufferTimer;
-                asset.OnLoad += SoundEffects.AddToCounter;
+                    string path = file.FullName.Replace(file.Extension, string.Empty), name = Path.GetFileNameWithoutExtension(file.Name);
+                    Asset<SoundEffect> asset = new Asset<SoundEffect>(path)
+                    {
+                        OnUnload = SoundEffects.SubstractToCounter
+                    };
+                    asset.OnLoad += AddToScratchBufferTimer;
+                    asset.OnLoad += SoundEffects.AddToCounter;
 
-                SoundEffects.Add(name, asset);
-            }
+                    SoundEffects.Add(name, asset);
+                }
             SoundEffects.OnFreeze += delegate
             {
                 Dictionary<string, ushort> audioIdMap = new Dictionary<string, ushort>();
@@ -138,60 +137,54 @@ namespace PlatformFighter
             if (ThemesInfo.Exists)
             {
                 FileInfo[] themeFiles = ThemesInfo.GetFiles("*.ogg", SearchOption.AllDirectories);
-                            TotalThemeCount = (ushort)themeFiles.Length;
-                            Themes = new ConcurrentDictionary<string, Theme>(ProcessorCountForLoading, TotalThemeCount);
-                            if (Settings.cacheThemes && Directory.Exists("./CachedThemes/"))
-                            {
-                                foreach (string item in Directory.GetFiles("./CachedThemes/", "*.dat"))
-                                {
-                                    if (themeFiles.All(v => Path.GetFileNameWithoutExtension(v.Name) != Path.GetFileNameWithoutExtension(item).Replace("_Cached", string.Empty)))
-                                    {
-                                        File.Delete(item);
-                                    }
-                                }
-                            }
-                            Task.Run(async delegate
-                            {
-                                await Parallel.ForEachAsync(themeFiles, new ParallelOptions
-                                {
-                                    MaxDegreeOfParallelism = ProcessorCountForLoading
-                                }, ProcessTheme).ConfigureAwait(false);
-                                LoadedThemes = true;
-                                GC.Collect(2);
-                #if DEBUG
-                                "Loaded Themes!".Log();
-                #endif
-                            });
+                TotalThemeCount = (ushort)themeFiles.Length;
+                Themes = new ConcurrentDictionary<string, Theme>(ProcessorCountForLoading, TotalThemeCount);
+                if (Settings.cacheThemes && Directory.Exists("./CachedThemes/"))
+                {
+                    foreach (string item in Directory.GetFiles("./CachedThemes/", "*.dat"))
+                    {
+                        if (themeFiles.All(v => Path.GetFileNameWithoutExtension(v.Name) != Path.GetFileNameWithoutExtension(item).Replace("_Cached", string.Empty)))
+                        {
+                            File.Delete(item);
+                        }
+                    }
+                }
+                Task.Run(async delegate
+                {
+                    await Parallel.ForEachAsync(themeFiles, new ParallelOptions
+                    {
+                        MaxDegreeOfParallelism = ProcessorCountForLoading
+                    }, ProcessTheme).ConfigureAwait(false);
+                    LoadedThemes = true;
+                    GC.Collect(2);
+#if DEBUG
+                    "Loaded Themes!".Log();
+#endif
+                });
             }
-            
+
             //TextRenderer.TextureInfo = Textures["PixelFont"];
 
             ContentManager.FreeMemory();
         }
         public static void Update()
         {
-            if (!(ClearScratchPoolTimer > 0))
+            if (ClearScratchPoolTimer == 0)
                 return;
-            float newValue = ClearScratchPoolTimer - Renderer.TimeDelta;
-            if (newValue <= 0)
+            if (--ClearScratchPoolTimer == 0)
             {
                 ContentManager.FreeMemory();
-                ClearScratchPoolTimer = 0;
-            }
-            else
-            {
-                ClearScratchPoolTimer = newValue;
             }
         }
         public static void AddToScratchBufferTimer<T>(IAsset<T> asset) where T : class, IDisposable
         {
             if (ClearScratchPoolTimer == 0)
             {
-                ClearScratchPoolTimer = 60;
+                ClearScratchPoolTimer = 120;
             }
             else
             {
-                ClearScratchPoolTimer += 60 / MathF.Sqrt(ClearScratchPoolTimer / 2f);
+                ClearScratchPoolTimer += (ushort)(120 / MathF.Sqrt(ClearScratchPoolTimer));
             }
         }
         public static ValueTask ProcessTheme(FileInfo file, CancellationToken arg2)

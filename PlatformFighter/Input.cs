@@ -71,7 +71,7 @@ namespace PlatformFighter
             MouseRawPosition.Y = mouseState.Y;
             MouseOldPosition = mousePosition;
             mousePosition = Vector2.Transform(MouseRawPosition, Renderer.InvWindowMatrix);
-            SmoothMouseScroll = MathHelper.Lerp(SmoothMouseScroll, MouseScroll, 0.1f * Renderer.TimeDelta);
+            SmoothMouseScroll = MathHelper.Lerp(SmoothMouseScroll, MouseScroll, 0.1f);
 
             bool mousePressed = mouseState.LeftButton == ButtonState.Pressed;
             FirstMouseLeft = mousePressed && !MouseLeft;
@@ -128,7 +128,7 @@ namespace PlatformFighter
         public PlayerIndex Index { get; internal set; }
         public GamePadState State { get; internal set; }
         public GamePadCapabilities Capabilities { get; internal set; }
-        public 
+        public
 #if DESKTOPGL
             Sdl.GameController.GameControllerType
 #elif ANDROID

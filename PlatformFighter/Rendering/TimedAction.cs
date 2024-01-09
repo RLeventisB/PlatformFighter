@@ -11,7 +11,7 @@ namespace PlatformFighter.Rendering
         public void Update();
         public void Update(in float timeDelta);
     }
-    public class TimedAction : ITimedAction<TimedAction.TimedActionDelegate>
+    public struct TimedAction : ITimedAction<TimedAction.TimedActionDelegate>
     {
         public TimedAction(TimedActionDelegate action, float interval, float initialCounter = 0)
         {
@@ -28,7 +28,7 @@ namespace PlatformFighter.Rendering
         public void Update()
         {
             UpdateLoop();
-            Counter += Renderer.TimeDelta;
+            Counter++;
         }
         public void Update(in float timeDelta)
         {
@@ -40,9 +40,7 @@ namespace PlatformFighter.Rendering
         {
             while (Counter >= Interval)
             {
-                Counter -= Interval;
-                float cnt = Counter;
-                Action(in cnt);
+                Action(Counter -= Interval);
             }
         }
         public TimedActionDelegate Action { get; set; }
@@ -55,12 +53,12 @@ namespace PlatformFighter.Rendering
         public static bool operator !=(TimedAction left, TimedAction right) => !(left == right);
         public override string ToString() => $"Method Name:{Action.Method.Name}, Interval: {Interval}, Counter: {Counter}";
     }
-    public class OneUseTimedAction : ITimedAction<TimedAction.TimedActionDelegate>
+    public struct OneUseTimedAction : ITimedAction<TimedAction.TimedActionDelegate>
     {
-        public OneUseTimedAction(TimedAction.TimedActionDelegate action, float target, float initialTime = 0f)
+        public OneUseTimedAction(TimedAction.TimedActionDelegate action, float interval, float initialTime = 0f)
         {
             Action = action;
-            Interval = target;
+            Interval = interval;
             Counter = initialTime;
         }
         public OneUseTimedAction()
@@ -71,27 +69,24 @@ namespace PlatformFighter.Rendering
         }
         public void Update()
         {
-            if (!HasProcessed)
-            {
-                UpdateLoop();
-                Counter += Renderer.TimeDelta;
-            }
+            if (HasProcessed)
+                return;
+            UpdateLoop();
+            Counter++;
         }
         public void Update(in float timeDelta)
         {
-            if (!HasProcessed)
-            {
-                UpdateLoop();
-                Counter += timeDelta;
-            }
+            if (HasProcessed)
+                return;
+            UpdateLoop();
+            Counter += timeDelta;
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void UpdateLoop()
         {
             if (Counter > Interval)
             {
-                float cnt = Counter - Interval;
-                Action(in cnt);
+                Action(Counter -= Interval);
                 HasProcessed = true;
             }
         }
@@ -104,53 +99,6 @@ namespace PlatformFighter.Rendering
         public static bool operator ==(OneUseTimedAction left, OneUseTimedAction right) => left.Equals(right);
         public static bool operator !=(OneUseTimedAction left, OneUseTimedAction right) => !(left == right);
         public override string ToString() => $"Method Name:{Action.Method.Name}, Timer: {Counter}, Target: {Interval}, HasProcessed: {HasProcessed}";
-    }
-    public struct TimedActionWithFrame : ITimedAction<TimedActionWithFrame.TimedActionDelegate>
-    {
-        public TimedActionWithFrame(TimedActionDelegate action, float interval, float initialCounter = 0)
-        {
-            Action = action;
-            Interval = interval;
-            Counter = initialCounter;
-        }
-        public TimedActionWithFrame()
-        {
-            Action = delegate { };
-            Interval = 0;
-            Counter = 0;
-        }
-        public void Update()
-        {
-            UpdateLoop();
-            Counter += Renderer.TimeDelta;
-        }
-        public void Update(in float timeDelta)
-        {
-            UpdateLoop();
-            Counter += timeDelta;
-        }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void UpdateLoop()
-        {
-            while (Counter >= Interval)
-            {
-                Counter -= Interval;
-                Iteration++;
-                float cnt = Counter;
-                float it = Interval * Iteration;
-                Action(in cnt, in it);
-            }
-        }
-        public TimedActionDelegate Action { get; set; }
-        public float Interval { get; set; }
-        public float Counter { get; set; }
-        public uint Iteration { get; set; } = 0;
-        public delegate void TimedActionDelegate(in float offset, in float frame);
-        public override bool Equals(object obj) => obj is TimedActionWithFrame action && action.Action == Action && action.Interval == Interval && action.Counter == Counter && action.Iteration == Iteration;
-        public override int GetHashCode() => Interval.GetHashCode() ^ Counter.GetHashCode() ^ Action.GetHashCode() ^ Iteration.GetHashCode();
-        public static bool operator ==(TimedActionWithFrame left, TimedActionWithFrame right) => left.Equals(right);
-        public static bool operator !=(TimedActionWithFrame left, TimedActionWithFrame right) => !(left == right);
-        public override string ToString() => $"Method Name:{Action.Method.Name}, Interval: {Interval}, Counter: {Counter}, Frame: {Interval * Iteration}";
     }
     public struct TimedActionWithIteration : ITimedAction<TimedAction.TimedActionDelegate>
     {
@@ -169,7 +117,7 @@ namespace PlatformFighter.Rendering
         public void Update()
         {
             UpdateLoop();
-            Counter += Renderer.TimeDelta;
+            Counter++;
         }
         public void Update(in float timeDelta)
         {
@@ -181,10 +129,8 @@ namespace PlatformFighter.Rendering
         {
             while (Counter >= Interval)
             {
-                Counter -= Interval;
+                Action(Counter -= Interval);
                 Iteration++;
-                float cnt = Counter;
-                Action(in cnt);
             }
         }
         public TimedAction.TimedActionDelegate Action { get; set; }

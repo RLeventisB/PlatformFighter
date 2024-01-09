@@ -1,3 +1,6 @@
 [submodule "PlatformFighter/BuildLibs/Android/NVorbis"]
 	path = PlatformFighter/BuildLibs/Android/NVorbis
 	url = https://github.com/RLeventisB/NVorbis.git
+[submodule "GGPOSharp"]
+	path = PlatformFighter/BuildLibs/GGPOSharp
+	url = https://github.com/RLeventisB/GGPOSharp.git

@@ -50,7 +50,7 @@ namespace PlatformFighter.Rendering
             }
             public void Update()
             {
-                progress += Renderer.TimeDelta / 60 * active.GetDirection();
+                progress += 1f / 120f * active.GetDirection();
                 progress = MathHelper.Clamp01(progress);
             }
             public void Apply()

@@ -93,7 +93,7 @@ namespace PlatformFighter.Audio
                     ref DelayedAudioData delayedAudioData = ref delayedAudios[i];
                     if (!delayedAudioData.Active)
                         continue;
-                    delayedAudioData.time -= Renderer.TimeDelta;
+                    delayedAudioData.time--;
                     if (delayedAudioData.time <= 0 &&
                         TryPlaySound(delayedAudioData.id, out _, delayedAudioData.volume, delayedAudioData.listener, delayedAudioData.source, delayedAudioData.SearchForSame, delayedAudioData.pitch, delayedAudioData.playLayer))
                     {
@@ -106,7 +106,7 @@ namespace PlatformFighter.Audio
                 if (IsCurrentThemeValid && CurrentTheme.instance.State != SoundState.Stopped)
                     CurrentTheme.Stop();
             }
-            else if(!Main.GamePaused)
+            else if (!Main.GamePaused)
             {
                 switch (TransitionCount)
                 {
@@ -114,9 +114,9 @@ namespace PlatformFighter.Audio
                         CurrentTheme.SetVolume(MusicVolume);
                         break;
                     case 180:
-                        if(IsCurrentThemeValid)
+                        if (IsCurrentThemeValid)
                             CurrentTheme.Stop();
-                        
+
                         if (IsCurrentThemeValid = Assets.Themes.ContainsKey(NextThemeName))
                         {
                             CurrentThemeName = NextThemeName;
@@ -127,11 +127,11 @@ namespace PlatformFighter.Audio
                         {
                             CurrentThemeName = NextThemeName;
                         }
-                        
+
                         TransitionCount = byte.MaxValue;
                         break;
                     case < 180:
-                        if(IsCurrentThemeValid)
+                        if (IsCurrentThemeValid)
                             CurrentTheme.SetVolume(MathHelper.Lerp(MusicVolume, 0, TransitionCount / 180f));
 
                         TransitionCount++;
