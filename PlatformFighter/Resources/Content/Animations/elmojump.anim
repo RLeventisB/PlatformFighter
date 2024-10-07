@@ -1,0 +1,7875 @@
+{
+  "$id": "1",
+  "looping": true,
+  "playing_forward": false,
+  "playing_backwards": false,
+  "selected_fps": 120,
+  "current_keyframe": 26,
+  "textures": [
+    {
+      "$id": "2",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "torso",
+      "pivot": {
+        "x": 20,
+        "y": 18
+      },
+      "frame_size": {
+        "x": 40,
+        "y": 36
+      },
+      "frame_position": {
+        "x": 0,
+        "y": 28
+      }
+    },
+    {
+      "$id": "3",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "head",
+      "pivot": {
+        "x": 14,
+        "y": 14
+      },
+      "frame_size": {
+        "x": 28,
+        "y": 28
+      },
+      "frame_position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "$id": "4",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "forearm",
+      "pivot": {
+        "x": 6,
+        "y": 8
+      },
+      "frame_size": {
+        "x": 12,
+        "y": 16
+      },
+      "frame_position": {
+        "x": 44,
+        "y": 0
+      }
+    },
+    {
+      "$id": "5",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "elbow stretch",
+      "pivot": {
+        "x": 5,
+        "y": 8
+      },
+      "frame_size": {
+        "x": 10,
+        "y": 16
+      },
+      "frame_position": {
+        "x": 54,
+        "y": 20
+      }
+    },
+    {
+      "$id": "6",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "elbow contracted",
+      "pivot": {
+        "x": 5,
+        "y": 8
+      },
+      "frame_size": {
+        "x": 10,
+        "y": 16
+      },
+      "frame_position": {
+        "x": 64,
+        "y": 20
+      }
+    },
+    {
+      "$id": "7",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "hand",
+      "pivot": {
+        "x": 5,
+        "y": 5
+      },
+      "frame_size": {
+        "x": 10,
+        "y": 10
+      },
+      "frame_position": {
+        "x": 44,
+        "y": 38
+      }
+    },
+    {
+      "$id": "8",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
+      "name": "face",
+      "pivot": {
+        "x": 8,
+        "y": 7
+      },
+      "frame_size": {
+        "x": 16,
+        "y": 14
+      },
+      "frame_position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "$id": "9",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
+      "name": "eye",
+      "pivot": {
+        "x": -1,
+        "y": 1
+      },
+      "frame_size": {
+        "x": 2,
+        "y": 2
+      },
+      "frame_position": {
+        "x": 66,
+        "y": 12
+      }
+    },
+    {
+      "$id": "10",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "sword",
+      "pivot": {
+        "x": 8,
+        "y": 76
+      },
+      "frame_size": {
+        "x": 14,
+        "y": 80
+      },
+      "frame_position": {
+        "x": 98,
+        "y": 0
+      }
+    },
+    {
+      "$id": "11",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "leg",
+      "pivot": {
+        "x": 5,
+        "y": 9
+      },
+      "frame_size": {
+        "x": 10,
+        "y": 18
+      },
+      "frame_position": {
+        "x": 40,
+        "y": 60
+      }
+    },
+    {
+      "$id": "12",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "knee",
+      "pivot": {
+        "x": 5,
+        "y": 10
+      },
+      "frame_size": {
+        "x": 10,
+        "y": 20
+      },
+      "frame_position": {
+        "x": 52,
+        "y": 60
+      }
+    },
+    {
+      "$id": "13",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "name": "foot",
+      "pivot": {
+        "x": 6,
+        "y": 4
+      },
+      "frame_size": {
+        "x": 18,
+        "y": 8
+      },
+      "frame_position": {
+        "x": 62,
+        "y": 72
+      }
+    }
+  ],
+  "graphic_objects": [
+    {
+      "$id": "14",
+      "texture_name": "torso",
+      "scale": {
+        "$id": "15",
+        "owner": {
+          "$ref": "14"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "16",
+          "$values": [
+            {
+              "$id": "17",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "15"
+              }
+            },
+            {
+              "$id": "18",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.2
+              },
+              "containing_value": {
+                "$ref": "15"
+              }
+            },
+            {
+              "$id": "19",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "15"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "20",
+          "$values": [
+            {
+              "$id": "21",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "22",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "15"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "23",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "24",
+        "owner": {
+          "$ref": "14"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "25",
+          "$values": [
+            {
+              "$id": "26",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "24"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "27",
+          "$values": []
+        },
+        "tags": {
+          "$id": "28",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "29",
+        "owner": {
+          "$ref": "14"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "30",
+          "$values": [
+            {
+              "$id": "31",
+              "frame": 0,
+              "value": 0.13171649,
+              "containing_value": {
+                "$ref": "29"
+              }
+            },
+            {
+              "$id": "32",
+              "frame": 7,
+              "value": 0.06972467,
+              "containing_value": {
+                "$ref": "29"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "33",
+          "$values": [
+            {
+              "$id": "34",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "35",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "29"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "36",
+          "$values": []
+        }
+      },
+      "name": "Elmo torso",
+      "position": {
+        "$id": "37",
+        "owner": {
+          "$ref": "14"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "38",
+          "$values": [
+            {
+              "$id": "39",
+              "frame": 0,
+              "value": {
+                "x": -1.8690491,
+                "y": -1.2023773
+              },
+              "containing_value": {
+                "$ref": "37"
+              }
+            },
+            {
+              "$id": "40",
+              "frame": 7,
+              "value": {
+                        "x": -3.1547623,
+                        "y": 10.511906
+                      },
+              "containing_value": {
+                "$ref": "37"
+              }
+            },
+            {
+              "$id": "41",
+              "frame": 8,
+              "value": {
+                "x": 2.3452377,
+                "y": -10.238094
+              },
+              "containing_value": {
+                "$ref": "37"
+              }
+            },
+            {
+              "$id": "42",
+              "frame": 11,
+              "value": {
+                        "x": 2.3452377,
+                        "y": -16.408825
+                      },
+              "containing_value": {
+                "$ref": "37"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "43",
+          "$values": [
+            {
+              "$id": "44",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "45",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "37"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "46",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "47",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "37"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "48",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "49",
+        "owner": {
+          "$ref": "14"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "50",
+          "$values": [
+            {
+              "$id": "51",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "49"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "52",
+          "$values": []
+        },
+        "tags": {
+          "$id": "53",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "54",
+        "owner": {
+          "$ref": "14"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "55",
+          "$values": [
+            {
+              "$id": "56",
+              "frame": 0,
+              "value": 0.02,
+              "containing_value": {
+                "$ref": "54"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "57",
+          "$values": []
+        },
+        "tags": {
+          "$id": "58",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "59",
+      "texture_name": "head",
+      "scale": {
+        "$id": "60",
+        "owner": {
+          "$ref": "59"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "61",
+          "$values": [
+            {
+              "$id": "62",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "60"
+              }
+            },
+            {
+              "$id": "63",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "60"
+              }
+            },
+            {
+              "$id": "64",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "60"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "65",
+          "$values": [
+            {
+              "$id": "66",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "67",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "60"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "68",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "69",
+        "owner": {
+          "$ref": "59"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "70",
+          "$values": [
+            {
+              "$id": "71",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "69"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "72",
+          "$values": []
+        },
+        "tags": {
+          "$id": "73",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "74",
+        "owner": {
+          "$ref": "59"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "75",
+          "$values": [
+            {
+              "$id": "76",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "74"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "77",
+          "$values": []
+        },
+        "tags": {
+          "$id": "78",
+          "$values": []
+        }
+      },
+      "name": "Elmo head",
+      "position": {
+        "$id": "79",
+        "owner": {
+          "$ref": "59"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "80",
+          "$values": [
+            {
+              "$id": "81",
+              "frame": 0,
+              "value": {
+                "x": -1,
+                "y": -28.5
+              },
+              "containing_value": {
+                "$ref": "79"
+              }
+            },
+            {
+              "$id": "82",
+              "frame": 7,
+              "value": {
+                        "x": -3.800003,
+                        "y": -6.700001
+                      },
+              "containing_value": {
+                "$ref": "79"
+              }
+            },
+            {
+              "$id": "83",
+              "frame": 8,
+              "value": {
+                "x": 3.699997,
+                "y": -42.2
+              },
+              "containing_value": {
+                "$ref": "79"
+              }
+            },
+            {
+              "$id": "84",
+              "frame": 10,
+              "value": {
+                "x": 3.699997,
+                "y": -42.2
+              },
+              "containing_value": {
+                "$ref": "79"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "85",
+          "$values": [
+            {
+              "$id": "86",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "87",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "79"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "88",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "89",
+        "owner": {
+          "$ref": "59"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "90",
+          "$values": [
+            {
+              "$id": "91",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "89"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "92",
+          "$values": []
+        },
+        "tags": {
+          "$id": "93",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "94",
+        "owner": {
+          "$ref": "59"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "95",
+          "$values": [
+            {
+              "$id": "96",
+              "frame": 0,
+              "value": 0.03,
+              "containing_value": {
+                "$ref": "94"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "97",
+          "$values": []
+        },
+        "tags": {
+          "$id": "98",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "99",
+      "texture_name": "forearm",
+      "scale": {
+        "$id": "100",
+        "owner": {
+          "$ref": "99"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "101",
+          "$values": [
+            {
+              "$id": "102",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "100"
+              }
+            },
+            {
+              "$id": "103",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "100"
+              }
+            },
+            {
+              "$id": "104",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "100"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "105",
+          "$values": [
+            {
+              "$id": "106",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "107",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "100"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "108",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "109",
+        "owner": {
+          "$ref": "99"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "110",
+          "$values": [
+            {
+              "$id": "111",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "109"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "112",
+          "$values": []
+        },
+        "tags": {
+          "$id": "113",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "114",
+        "owner": {
+          "$ref": "99"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "115",
+          "$values": [
+            {
+              "$id": "116",
+              "frame": 0,
+              "value": -0.40853554,
+              "containing_value": {
+                "$ref": "114"
+              }
+            },
+            {
+              "$id": "117",
+              "frame": 7,
+              "value": 0.29895937,
+              "containing_value": {
+                "$ref": "114"
+              }
+            },
+            {
+              "$id": "118",
+              "frame": 20,
+              "value": 0.29895937,
+              "containing_value": {
+                "$ref": "114"
+              }
+            },
+            {
+              "$id": "119",
+              "frame": 49,
+              "value": 1.1047751,
+              "containing_value": {
+                "$ref": "114"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "120",
+          "$values": [
+            {
+              "$id": "121",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "122",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "114"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "123",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "124",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "114"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "125",
+          "$values": []
+        }
+      },
+      "name": "forearmleft",
+      "position": {
+        "$id": "126",
+        "owner": {
+          "$ref": "99"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "127",
+          "$values": [
+            {
+              "$id": "128",
+              "frame": 0,
+              "value": {
+                "x": -15.6428795,
+                "y": -9.916664
+              },
+              "containing_value": {
+                "$ref": "126"
+              }
+            },
+            {
+              "$id": "129",
+              "frame": 7,
+              "value": {
+                        "x": -20.357166,
+                        "y": 2.083335
+                      },
+              "containing_value": {
+                "$ref": "126"
+              }
+            },
+            {
+              "$id": "130",
+              "frame": 8,
+              "value": {
+                "x": -13.357166,
+                "y": -18.166664
+              },
+              "containing_value": {
+                "$ref": "126"
+              }
+            },
+            {
+              "$id": "131",
+              "frame": 11,
+              "value": {
+                        "x": -13.479122,
+                        "y": -23.410568
+                      },
+              "containing_value": {
+                "$ref": "126"
+              }
+            },
+            {
+              "$id": "132",
+              "frame": 20,
+              "value": {
+                "x": -13.479122,
+                "y": -23.410568
+              },
+              "containing_value": {
+                "$ref": "126"
+              }
+            },
+            {
+              "$id": "133",
+              "frame": 49,
+              "value": {
+                        "x": -15.454433,
+                        "y": -25.89205
+                      },
+              "containing_value": {
+                "$ref": "126"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "134",
+          "$values": [
+            {
+              "$id": "135",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "136",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "126"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "137",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "138",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "126"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "139",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "140",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "126"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "141",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "142",
+        "owner": {
+          "$ref": "99"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "143",
+          "$values": [
+            {
+              "$id": "144",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "142"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "145",
+          "$values": []
+        },
+        "tags": {
+          "$id": "146",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "147",
+        "owner": {
+          "$ref": "99"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "148",
+          "$values": [
+            {
+              "$id": "149",
+              "frame": 0,
+              "value": 0.04,
+              "containing_value": {
+                "$ref": "147"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "150",
+          "$values": []
+        },
+        "tags": {
+          "$id": "151",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "152",
+      "texture_name": "elbow stretch",
+      "scale": {
+        "$id": "153",
+        "owner": {
+          "$ref": "152"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "154",
+          "$values": [
+            {
+              "$id": "155",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "153"
+              }
+            },
+            {
+              "$id": "156",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "153"
+              }
+            },
+            {
+              "$id": "157",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "153"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "158",
+          "$values": [
+            {
+              "$id": "159",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "160",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "153"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "161",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "162",
+        "owner": {
+          "$ref": "152"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "163",
+          "$values": [
+            {
+              "$id": "164",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "162"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "165",
+          "$values": []
+        },
+        "tags": {
+          "$id": "166",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "167",
+        "owner": {
+          "$ref": "152"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "168",
+          "$values": [
+            {
+              "$id": "169",
+              "frame": 0,
+              "value": -0.9606295,
+              "containing_value": {
+                "$ref": "167"
+              }
+            },
+            {
+              "$id": "170",
+              "frame": 7,
+              "value": 0.30182987,
+              "containing_value": {
+                "$ref": "167"
+              }
+            },
+            {
+              "$id": "171",
+              "frame": 20,
+              "value": 0.30182987,
+              "containing_value": {
+                "$ref": "167"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "172",
+          "$values": [
+            {
+              "$id": "173",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "174",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "167"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "175",
+          "$values": []
+        }
+      },
+      "name": "arm left",
+      "position": {
+        "$id": "176",
+        "owner": {
+          "$ref": "152"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "177",
+          "$values": [
+            {
+              "$id": "178",
+              "frame": 0,
+              "value": {
+                "x": -8.539703,
+                "y": 0.19046783
+              },
+              "containing_value": {
+                "$ref": "176"
+              }
+            },
+            {
+              "$id": "179",
+              "frame": 7,
+              "value": {
+                        "x": -25.682556,
+                        "y": 15.904753
+                      },
+              "containing_value": {
+                "$ref": "176"
+              }
+            },
+            {
+              "$id": "180",
+              "frame": 8,
+              "value": {
+                "x": -20.00399,
+                "y": 0.047611237
+              },
+              "containing_value": {
+                "$ref": "176"
+              }
+            },
+            {
+              "$id": "181",
+              "frame": 10,
+              "value": {
+                "x": -18.873909,
+                "y": -7.1164427
+              },
+              "containing_value": {
+                "$ref": "176"
+              }
+            },
+            {
+              "$id": "182",
+              "frame": 11,
+              "value": {
+                        "x": -18.308868,
+                        "y": -10.912754
+                      },
+              "containing_value": {
+                "$ref": "176"
+              }
+            },
+            {
+              "$id": "183",
+              "frame": 20,
+              "value": {
+                "x": -18.308868,
+                "y": -10.912754
+              },
+              "containing_value": {
+                "$ref": "176"
+              }
+            },
+            {
+              "$id": "184",
+              "frame": 49,
+              "value": {
+                        "x": -23.617508,
+                        "y": -17.962137
+                      },
+              "containing_value": {
+                "$ref": "176"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "185",
+          "$values": [
+            {
+              "$id": "186",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "187",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "176"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "188",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "189",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "176"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "190",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "191",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "176"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "192",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "193",
+        "owner": {
+          "$ref": "152"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "194",
+          "$values": [
+            {
+              "$id": "195",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "193"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "196",
+          "$values": []
+        },
+        "tags": {
+          "$id": "197",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "198",
+        "owner": {
+          "$ref": "152"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "199",
+          "$values": [
+            {
+              "$id": "200",
+              "frame": 0,
+              "value": 0.04,
+              "containing_value": {
+                "$ref": "198"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "201",
+          "$values": []
+        },
+        "tags": {
+          "$id": "202",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "203",
+      "texture_name": "forearm",
+      "scale": {
+        "$id": "204",
+        "owner": {
+          "$ref": "203"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "205",
+          "$values": [
+            {
+              "$id": "206",
+              "frame": 0,
+              "value": {
+                "x": -1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "204"
+              }
+            },
+            {
+              "$id": "207",
+              "frame": 8,
+              "value": {
+                "x": -1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "204"
+              }
+            },
+            {
+              "$id": "208",
+              "frame": 11,
+              "value": {
+                        "x": -1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "204"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "209",
+          "$values": [
+            {
+              "$id": "210",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "211",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "204"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "212",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "213",
+        "owner": {
+          "$ref": "203"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "214",
+          "$values": [
+            {
+              "$id": "215",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "213"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "216",
+          "$values": []
+        },
+        "tags": {
+          "$id": "217",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "218",
+        "owner": {
+          "$ref": "203"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "219",
+          "$values": [
+            {
+              "$id": "220",
+              "frame": 0,
+              "value": 0.29082087,
+              "containing_value": {
+                "$ref": "218"
+              }
+            },
+            {
+              "$id": "221",
+              "frame": 7,
+              "value": -0.4448206,
+              "containing_value": {
+                "$ref": "218"
+              }
+            },
+            {
+              "$id": "222",
+              "frame": 8,
+              "value": -0.13440332,
+              "containing_value": {
+                "$ref": "218"
+              }
+            },
+            {
+              "$id": "223",
+              "frame": 20,
+              "value": -0.13440332,
+              "containing_value": {
+                "$ref": "218"
+              }
+            },
+            {
+              "$id": "224",
+              "frame": 49,
+              "value": -0.91429144,
+              "containing_value": {
+                "$ref": "218"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "225",
+          "$values": [
+            {
+              "$id": "226",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "227",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "218"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "228",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "229",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "218"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "230",
+          "$values": []
+        }
+      },
+      "name": "forearm right",
+      "position": {
+        "$id": "231",
+        "owner": {
+          "$ref": "203"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "232",
+          "$values": [
+            {
+              "$id": "233",
+              "frame": 0,
+              "value": {
+                "x": 18.10712,
+                "y": -7.666664
+              },
+              "containing_value": {
+                "$ref": "231"
+              }
+            },
+            {
+              "$id": "234",
+              "frame": 7,
+              "value": {
+                        "x": 16.96426,
+                        "y": 3.9047632
+                      },
+              "containing_value": {
+                "$ref": "231"
+              }
+            },
+            {
+              "$id": "235",
+              "frame": 8,
+              "value": {
+                "x": 21.08926,
+                "y": -14.845237
+              },
+              "containing_value": {
+                "$ref": "231"
+              }
+            },
+            {
+              "$id": "236",
+              "frame": 11,
+              "value": {
+                        "x": 20.113659,
+                        "y": -21.79646
+                      },
+              "containing_value": {
+                "$ref": "231"
+              }
+            },
+            {
+              "$id": "237",
+              "frame": 20,
+              "value": {
+                "x": 20.113659,
+                "y": -21.79646
+              },
+              "containing_value": {
+                "$ref": "231"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "238",
+          "$values": [
+            {
+              "$id": "239",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "240",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "231"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "241",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "242",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "231"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "243",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "244",
+        "owner": {
+          "$ref": "203"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "245",
+          "$values": [
+            {
+              "$id": "246",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "244"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "247",
+          "$values": []
+        },
+        "tags": {
+          "$id": "248",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "249",
+        "owner": {
+          "$ref": "203"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "250",
+          "$values": [
+            {
+              "$id": "251",
+              "frame": 0,
+              "value": 0.04,
+              "containing_value": {
+                "$ref": "249"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "252",
+          "$values": []
+        },
+        "tags": {
+          "$id": "253",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "254",
+      "texture_name": "hand",
+      "scale": {
+        "$id": "255",
+        "owner": {
+          "$ref": "254"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "256",
+          "$values": [
+            {
+              "$id": "257",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "255"
+              }
+            },
+            {
+              "$id": "258",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "255"
+              }
+            },
+            {
+              "$id": "259",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "255"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "260",
+          "$values": [
+            {
+              "$id": "261",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "262",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "255"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "263",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "264",
+        "owner": {
+          "$ref": "254"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "265",
+          "$values": [
+            {
+              "$id": "266",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "264"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "267",
+          "$values": []
+        },
+        "tags": {
+          "$id": "268",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "269",
+        "owner": {
+          "$ref": "254"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "270",
+          "$values": [
+            {
+              "$id": "271",
+              "frame": 0,
+              "value": -1.0112935,
+              "containing_value": {
+                "$ref": "269"
+              }
+            },
+            {
+              "$id": "272",
+              "frame": 7,
+              "value": 0.16139255,
+              "containing_value": {
+                "$ref": "269"
+              }
+            },
+            {
+              "$id": "273",
+              "frame": 20,
+              "value": 0.16139255,
+              "containing_value": {
+                "$ref": "269"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "274",
+          "$values": [
+            {
+              "$id": "275",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "276",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "269"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "277",
+          "$values": []
+        }
+      },
+      "name": "hand left",
+      "position": {
+        "$id": "278",
+        "owner": {
+          "$ref": "254"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "279",
+          "$values": [
+            {
+              "$id": "280",
+              "frame": 0,
+              "value": {
+                "x": 1.4047394,
+                "y": 7.190468
+              },
+              "containing_value": {
+                "$ref": "278"
+              }
+            },
+            {
+              "$id": "281",
+              "frame": 7,
+              "value": {
+                        "x": -28.309547,
+                        "y": 26.333317
+                      },
+              "containing_value": {
+                "$ref": "278"
+              }
+            },
+            {
+              "$id": "282",
+              "frame": 8,
+              "value": {
+                "x": -23.880981,
+                "y": 13.76189
+              },
+              "containing_value": {
+                "$ref": "278"
+              }
+            },
+            {
+              "$id": "283",
+              "frame": 11,
+              "value": {
+                        "x": -20.954155,
+                        "y": -0.75030136
+                      },
+              "containing_value": {
+                "$ref": "278"
+              }
+            },
+            {
+              "$id": "284",
+              "frame": 20,
+              "value": {
+                "x": -20.954155,
+                "y": -0.75030136
+              },
+              "containing_value": {
+                "$ref": "278"
+              }
+            },
+            {
+              "$id": "285",
+              "frame": 49,
+              "value": {
+                        "x": -26.522057,
+                        "y": -7.1700554
+                      },
+              "containing_value": {
+                "$ref": "278"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "286",
+          "$values": [
+            {
+              "$id": "287",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "288",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "278"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "289",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "290",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "278"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "291",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "292",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "278"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "293",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "294",
+        "owner": {
+          "$ref": "254"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "295",
+          "$values": [
+            {
+              "$id": "296",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "294"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "297",
+          "$values": []
+        },
+        "tags": {
+          "$id": "298",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "299",
+        "owner": {
+          "$ref": "254"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "300",
+          "$values": [
+            {
+              "$id": "301",
+              "frame": 0,
+              "value": 0.03,
+              "containing_value": {
+                "$ref": "299"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "302",
+          "$values": []
+        },
+        "tags": {
+          "$id": "303",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "304",
+      "texture_name": "elbow stretch",
+      "scale": {
+        "$id": "305",
+        "owner": {
+          "$ref": "304"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "306",
+          "$values": [
+            {
+              "$id": "307",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "305"
+              }
+            },
+            {
+              "$id": "308",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "305"
+              }
+            },
+            {
+              "$id": "309",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "305"
+              }
+            },
+            {
+              "$id": "310",
+              "frame": 20,
+              "value": {
+                "x": -1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "305"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "311",
+          "$values": [
+            {
+              "$id": "312",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "313",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "305"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "314",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "315",
+        "owner": {
+          "$ref": "304"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "316",
+          "$values": [
+            {
+              "$id": "317",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "315"
+              }
+            },
+            {
+              "$id": "318",
+              "frame": 7,
+              "value": 0,
+              "containing_value": {
+                "$ref": "315"
+              }
+            },
+            {
+              "$id": "319",
+              "frame": 34,
+              "value": 1,
+              "containing_value": {
+                "$ref": "315"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "320",
+          "$values": []
+        },
+        "tags": {
+          "$id": "321",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "322",
+        "owner": {
+          "$ref": "304"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "323",
+          "$values": [
+            {
+              "$id": "324",
+              "frame": 0,
+              "value": 3.4208453,
+              "containing_value": {
+                "$ref": "322"
+              }
+            },
+            {
+              "$id": "325",
+              "frame": 7,
+              "value": 2.707256,
+              "containing_value": {
+                "$ref": "322"
+              }
+            },
+            {
+              "$id": "326",
+              "frame": 8,
+              "value": -0.11434922,
+              "containing_value": {
+                "$ref": "322"
+              }
+            },
+            {
+              "$id": "327",
+              "frame": 20,
+              "value": -0.11434922,
+              "containing_value": {
+                "$ref": "322"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "328",
+          "$values": [
+            {
+              "$id": "329",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "330",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "322"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "331",
+          "$values": []
+        }
+      },
+      "name": "arm right",
+      "position": {
+        "$id": "332",
+        "owner": {
+          "$ref": "304"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "333",
+          "$values": [
+            {
+              "$id": "334",
+              "frame": 0,
+              "value": {
+                "x": 15.154739,
+                "y": 5.4404697
+              },
+              "containing_value": {
+                "$ref": "332"
+              }
+            },
+            {
+              "$id": "335",
+              "frame": 7,
+              "value": {
+                        "x": 23.154732,
+                        "y": 14.869041
+                      },
+              "containing_value": {
+                "$ref": "332"
+              }
+            },
+            {
+              "$id": "336",
+              "frame": 8,
+              "value": {
+                "x": 24.279732,
+                "y": 2.4940414
+              },
+              "containing_value": {
+                "$ref": "332"
+              }
+            },
+            {
+              "$id": "337",
+              "frame": 11,
+              "value": {
+                        "x": 22.78873,
+                        "y": -10.154938
+                      },
+              "containing_value": {
+                "$ref": "332"
+              }
+            },
+            {
+              "$id": "338",
+              "frame": 20,
+              "value": {
+                "x": 22.78873,
+                "y": -10.154938
+              },
+              "containing_value": {
+                "$ref": "332"
+              }
+            },
+            {
+              "$id": "339",
+              "frame": 49,
+              "value": {
+                        "x": 27.986263,
+                        "y": -13.883335
+                      },
+              "containing_value": {
+                "$ref": "332"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "340",
+          "$values": [
+            {
+              "$id": "341",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "342",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "332"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "343",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "344",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "332"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "345",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "346",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "332"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "347",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "348",
+        "owner": {
+          "$ref": "304"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "349",
+          "$values": [
+            {
+              "$id": "350",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "348"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "351",
+          "$values": []
+        },
+        "tags": {
+          "$id": "352",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "353",
+        "owner": {
+          "$ref": "304"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "354",
+          "$values": [
+            {
+              "$id": "355",
+              "frame": 0,
+              "value": 0.02,
+              "containing_value": {
+                "$ref": "353"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "356",
+          "$values": []
+        },
+        "tags": {
+          "$id": "357",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "358",
+      "texture_name": "hand",
+      "scale": {
+        "$id": "359",
+        "owner": {
+          "$ref": "358"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "360",
+          "$values": [
+            {
+              "$id": "361",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "359"
+              }
+            },
+            {
+              "$id": "362",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "359"
+              }
+            },
+            {
+              "$id": "363",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "359"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "364",
+          "$values": [
+            {
+              "$id": "365",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "366",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "359"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "367",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "368",
+        "owner": {
+          "$ref": "358"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "369",
+          "$values": [
+            {
+              "$id": "370",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "368"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "371",
+          "$values": []
+        },
+        "tags": {
+          "$id": "372",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "373",
+        "owner": {
+          "$ref": "358"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "374",
+          "$values": [
+            {
+              "$id": "375",
+              "frame": 0,
+              "value": 1.2723674,
+              "containing_value": {
+                "$ref": "373"
+              }
+            },
+            {
+              "$id": "376",
+              "frame": 7,
+              "value": -0.23383263,
+              "containing_value": {
+                "$ref": "373"
+              }
+            },
+            {
+              "$id": "377",
+              "frame": 8,
+              "value": -0.06791215,
+              "containing_value": {
+                "$ref": "373"
+              }
+            },
+            {
+              "$id": "378",
+              "frame": 20,
+              "value": -0.06791215,
+              "containing_value": {
+                "$ref": "373"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "379",
+          "$values": [
+            {
+              "$id": "380",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "381",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "373"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "382",
+          "$values": []
+        }
+      },
+      "name": "hand right",
+      "position": {
+        "$id": "383",
+        "owner": {
+          "$ref": "358"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "384",
+          "$values": [
+            {
+              "$id": "385",
+              "frame": 0,
+              "value": {
+                "x": 8.449188,
+                "y": 11.0960245
+              },
+              "containing_value": {
+                "$ref": "383"
+              }
+            },
+            {
+              "$id": "386",
+              "frame": 7,
+              "value": {
+                        "x": 24.734901,
+                        "y": 20.5246
+                      },
+              "containing_value": {
+                "$ref": "383"
+              }
+            },
+            {
+              "$id": "387",
+              "frame": 8,
+              "value": {
+                "x": 25.859901,
+                "y": 16.5246
+              },
+              "containing_value": {
+                "$ref": "383"
+              }
+            },
+            {
+              "$id": "388",
+              "frame": 11,
+              "value": {
+                        "x": 23.713554,
+                        "y": 0.54899025
+                      },
+              "containing_value": {
+                "$ref": "383"
+              }
+            },
+            {
+              "$id": "389",
+              "frame": 20,
+              "value": {
+                "x": 23.713554,
+                "y": 0.54899025
+              },
+              "containing_value": {
+                "$ref": "383"
+              }
+            },
+            {
+              "$id": "390",
+              "frame": 49,
+              "value": {
+                        "x": 29.157997,
+                        "y": -2.043604
+                      },
+              "containing_value": {
+                "$ref": "383"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "391",
+          "$values": [
+            {
+              "$id": "392",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "393",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "383"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "394",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "395",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "383"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "396",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "397",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "383"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "398",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "399",
+        "owner": {
+          "$ref": "358"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "400",
+          "$values": [
+            {
+              "$id": "401",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "399"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "402",
+          "$values": []
+        },
+        "tags": {
+          "$id": "403",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "404",
+        "owner": {
+          "$ref": "358"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "405",
+          "$values": [
+            {
+              "$id": "406",
+              "frame": 0,
+              "value": 0.03,
+              "containing_value": {
+                "$ref": "404"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "407",
+          "$values": []
+        },
+        "tags": {
+          "$id": "408",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "409",
+      "texture_name": "face",
+      "scale": {
+        "$id": "410",
+        "owner": {
+          "$ref": "409"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "411",
+          "$values": [
+            {
+              "$id": "412",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "410"
+              }
+            },
+            {
+              "$id": "413",
+              "frame": 8,
+              "value": {
+                "x": 1,
+                "y": 1.3
+              },
+              "containing_value": {
+                "$ref": "410"
+              }
+            },
+            {
+              "$id": "414",
+              "frame": 11,
+              "value": {
+                        "x": 1,
+                        "y": 1
+                      },
+              "containing_value": {
+                "$ref": "410"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "415",
+          "$values": [
+            {
+              "$id": "416",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "417",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "410"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "418",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "419",
+        "owner": {
+          "$ref": "409"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "420",
+          "$values": [
+            {
+              "$id": "421",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "419"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "422",
+          "$values": []
+        },
+        "tags": {
+          "$id": "423",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "424",
+        "owner": {
+          "$ref": "409"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "425",
+          "$values": [
+            {
+              "$id": "426",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "424"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "427",
+          "$values": []
+        },
+        "tags": {
+          "$id": "428",
+          "$values": []
+        }
+      },
+      "name": "face",
+      "position": {
+        "$id": "429",
+        "owner": {
+          "$ref": "409"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "430",
+          "$values": [
+            {
+              "$id": "431",
+              "frame": 0,
+              "value": {
+                "x": 5,
+                "y": -25.5
+              },
+              "containing_value": {
+                "$ref": "429"
+              }
+            },
+            {
+              "$id": "432",
+              "frame": 7,
+              "value": {
+                        "x": 2.199997,
+                        "y": -3.7000008
+                      },
+              "containing_value": {
+                "$ref": "429"
+              }
+            },
+            {
+              "$id": "433",
+              "frame": 8,
+              "value": {
+                "x": 9.699997,
+                "y": -39.2
+              },
+              "containing_value": {
+                "$ref": "429"
+              }
+            },
+            {
+              "$id": "434",
+              "frame": 10,
+              "value": {
+                "x": 9.699997,
+                "y": -39.2
+              },
+              "containing_value": {
+                "$ref": "429"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "435",
+          "$values": [
+            {
+              "$id": "436",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "437",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "429"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "438",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "439",
+        "owner": {
+          "$ref": "409"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "440",
+          "$values": [
+            {
+              "$id": "441",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "439"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "442",
+          "$values": []
+        },
+        "tags": {
+          "$id": "443",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "444",
+        "owner": {
+          "$ref": "409"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "445",
+          "$values": [
+            {
+              "$id": "446",
+              "frame": 0,
+              "value": 0.55,
+              "containing_value": {
+                "$ref": "444"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "447",
+          "$values": []
+        },
+        "tags": {
+          "$id": "448",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "449",
+      "texture_name": "eye",
+      "scale": {
+        "$id": "450",
+        "owner": {
+          "$ref": "449"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "451",
+          "$values": [
+            {
+              "$id": "452",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "450"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "453",
+          "$values": []
+        },
+        "tags": {
+          "$id": "454",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "455",
+        "owner": {
+          "$ref": "449"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "456",
+          "$values": [
+            {
+              "$id": "457",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "455"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "458",
+          "$values": []
+        },
+        "tags": {
+          "$id": "459",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "460",
+        "owner": {
+          "$ref": "449"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "461",
+          "$values": [
+            {
+              "$id": "462",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "460"
+              }
+            },
+            {
+              "$id": "463",
+              "frame": 8,
+              "value": 1.5707964,
+              "containing_value": {
+                "$ref": "460"
+              }
+            },
+            {
+              "$id": "464",
+              "frame": 18,
+              "value": 1.5707964,
+              "containing_value": {
+                "$ref": "460"
+              }
+            },
+            {
+              "$id": "465",
+              "frame": 60,
+              "value": 0,
+              "containing_value": {
+                "$ref": "460"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "466",
+          "$values": [
+            {
+              "$id": "467",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "468",
+                "$values": [
+                  18,
+                  60
+                ]
+              },
+              "containing_value": {
+                "$ref": "460"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "469",
+          "$values": []
+        }
+      },
+      "name": "eye right",
+      "position": {
+        "$id": "470",
+        "owner": {
+          "$ref": "449"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "471",
+          "$values": [
+            {
+              "$id": "472",
+              "frame": 0,
+              "value": {
+                "x": 10,
+                "y": -29.5
+              },
+              "containing_value": {
+                "$ref": "470"
+              }
+            },
+            {
+              "$id": "473",
+              "frame": 7,
+              "value": {
+                        "x": 7.199997,
+                        "y": -7.700001
+                      },
+              "containing_value": {
+                "$ref": "470"
+              }
+            },
+            {
+              "$id": "474",
+              "frame": 8,
+              "value": {
+                "x": 14.699997,
+                "y": -43.2
+              },
+              "containing_value": {
+                "$ref": "470"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "475",
+          "$values": [
+            {
+              "$id": "476",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "477",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "470"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "478",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "479",
+        "owner": {
+          "$ref": "449"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "480",
+          "$values": [
+            {
+              "$id": "481",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "479"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "482",
+          "$values": []
+        },
+        "tags": {
+          "$id": "483",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "484",
+        "owner": {
+          "$ref": "449"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "485",
+          "$values": [
+            {
+              "$id": "486",
+              "frame": 0,
+              "value": 0.71,
+              "containing_value": {
+                "$ref": "484"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "487",
+          "$values": []
+        },
+        "tags": {
+          "$id": "488",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "489",
+      "texture_name": "eye",
+      "scale": {
+        "$id": "490",
+        "owner": {
+          "$ref": "489"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "491",
+          "$values": [
+            {
+              "$id": "492",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "490"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "493",
+          "$values": []
+        },
+        "tags": {
+          "$id": "494",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "495",
+        "owner": {
+          "$ref": "489"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "496",
+          "$values": [
+            {
+              "$id": "497",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "495"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "498",
+          "$values": []
+        },
+        "tags": {
+          "$id": "499",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "500",
+        "owner": {
+          "$ref": "489"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "501",
+          "$values": [
+            {
+              "$id": "502",
+              "frame": 0,
+              "value": 1.5707964,
+              "containing_value": {
+                "$ref": "500"
+              }
+            },
+            {
+              "$id": "503",
+              "frame": 18,
+              "value": 1.5707964,
+              "containing_value": {
+                "$ref": "500"
+              }
+            },
+            {
+              "$id": "504",
+              "frame": 45,
+              "value": 3.159046,
+              "containing_value": {
+                "$ref": "500"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "505",
+          "$values": [
+            {
+              "$id": "506",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "507",
+                "$values": [
+                  18,
+                  45
+                ]
+              },
+              "containing_value": {
+                "$ref": "500"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "508",
+          "$values": []
+        }
+      },
+      "name": "eye left",
+      "position": {
+        "$id": "509",
+        "owner": {
+          "$ref": "489"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "510",
+          "$values": [
+            {
+              "$id": "511",
+              "frame": 0,
+              "value": {
+                "x": 0,
+                "y": -29.5
+              },
+              "containing_value": {
+                "$ref": "509"
+              }
+            },
+            {
+              "$id": "512",
+              "frame": 7,
+              "value": {
+                        "x": -2.800003,
+                        "y": -7.700001
+                      },
+              "containing_value": {
+                "$ref": "509"
+              }
+            },
+            {
+              "$id": "513",
+              "frame": 8,
+              "value": {
+                "x": 4.699997,
+                "y": -43.2
+              },
+              "containing_value": {
+                "$ref": "509"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "514",
+          "$values": [
+            {
+              "$id": "515",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "516",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "509"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "517",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "518",
+        "owner": {
+          "$ref": "489"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "519",
+          "$values": [
+            {
+              "$id": "520",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "518"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "521",
+          "$values": []
+        },
+        "tags": {
+          "$id": "522",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "523",
+        "owner": {
+          "$ref": "489"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "524",
+          "$values": [
+            {
+              "$id": "525",
+              "frame": 0,
+              "value": 0.71,
+              "containing_value": {
+                "$ref": "523"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "526",
+          "$values": []
+        },
+        "tags": {
+          "$id": "527",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "528",
+      "texture_name": "leg",
+      "scale": {
+        "$id": "529",
+        "owner": {
+          "$ref": "528"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "530",
+          "$values": [
+            {
+              "$id": "531",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "529"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "532",
+          "$values": []
+        },
+        "tags": {
+          "$id": "533",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "534",
+        "owner": {
+          "$ref": "528"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "535",
+          "$values": [
+            {
+              "$id": "536",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "534"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "537",
+          "$values": []
+        },
+        "tags": {
+          "$id": "538",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "539",
+        "owner": {
+          "$ref": "528"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "540",
+          "$values": [
+            {
+              "$id": "541",
+              "frame": 0,
+              "value": -0.5023946,
+              "containing_value": {
+                "$ref": "539"
+              }
+            },
+            {
+              "$id": "542",
+              "frame": 7,
+              "value": -1.0418968,
+              "containing_value": {
+                "$ref": "539"
+              }
+            },
+            {
+              "$id": "543",
+              "frame": 8,
+              "value": -0.041553736,
+              "containing_value": {
+                "$ref": "539"
+              }
+            },
+            {
+              "$id": "544",
+              "frame": 26,
+              "value": -0.041553736,
+              "containing_value": {
+                "$ref": "539"
+              }
+            },
+            {
+              "$id": "545",
+              "frame": 70,
+              "value": -0.7864489,
+              "containing_value": {
+                "$ref": "539"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "546",
+          "$values": [
+            {
+              "$id": "547",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "548",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "539"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "549",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "550",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "539"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "551",
+          "$values": []
+        }
+      },
+      "name": "left leg",
+      "position": {
+        "$id": "552",
+        "owner": {
+          "$ref": "528"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "553",
+          "$values": [
+            {
+              "$id": "554",
+              "frame": 0,
+              "value": {
+                "x": -9.63372,
+                "y": 20.885538
+              },
+              "containing_value": {
+                "$ref": "552"
+              }
+            },
+            {
+              "$id": "555",
+              "frame": 7,
+              "value": {
+                        "x": -8.205154,
+                        "y": 28.31411
+                      },
+              "containing_value": {
+                "$ref": "552"
+              }
+            },
+            {
+              "$id": "556",
+              "frame": 8,
+              "value": {
+                "x": -6.7051544,
+                "y": 17.31411
+              },
+              "containing_value": {
+                "$ref": "552"
+              }
+            },
+            {
+              "$id": "557",
+              "frame": 11,
+              "value": {
+                        "x": -6.949051,
+                        "y": 7.9726486
+                      },
+              "containing_value": {
+                "$ref": "552"
+              }
+            },
+            {
+              "$id": "558",
+              "frame": 26,
+              "value": {
+                "x": -6.949051,
+                "y": 7.9726486
+              },
+              "containing_value": {
+                "$ref": "552"
+              }
+            },
+            {
+              "$id": "559",
+              "frame": 70,
+              "value": {
+                        "x": -3.6375732,
+                        "y": 3.8742867
+                      },
+              "containing_value": {
+                "$ref": "552"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "560",
+          "$values": [
+            {
+              "$id": "561",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "562",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "552"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "563",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "564",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "552"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "565",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "566",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "552"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "567",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "568",
+        "owner": {
+          "$ref": "528"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "569",
+          "$values": [
+            {
+              "$id": "570",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "568"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "571",
+          "$values": []
+        },
+        "tags": {
+          "$id": "572",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "573",
+        "owner": {
+          "$ref": "528"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "574",
+          "$values": [
+            {
+              "$id": "575",
+              "frame": 0,
+              "value": 0.01,
+              "containing_value": {
+                "$ref": "573"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "576",
+          "$values": []
+        },
+        "tags": {
+          "$id": "577",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "578",
+      "texture_name": "leg",
+      "scale": {
+        "$id": "579",
+        "owner": {
+          "$ref": "578"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "580",
+          "$values": [
+            {
+              "$id": "581",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "579"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "582",
+          "$values": []
+        },
+        "tags": {
+          "$id": "583",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "584",
+        "owner": {
+          "$ref": "578"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "585",
+          "$values": [
+            {
+              "$id": "586",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "584"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "587",
+          "$values": []
+        },
+        "tags": {
+          "$id": "588",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "589",
+        "owner": {
+          "$ref": "578"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "590",
+          "$values": [
+            {
+              "$id": "591",
+              "frame": 0,
+              "value": -0.6962947,
+              "containing_value": {
+                "$ref": "589"
+              }
+            },
+            {
+              "$id": "592",
+              "frame": 7,
+              "value": -1.1118785,
+              "containing_value": {
+                "$ref": "589"
+              }
+            },
+            {
+              "$id": "593",
+              "frame": 8,
+              "value": -0.77648646,
+              "containing_value": {
+                "$ref": "589"
+              }
+            },
+            {
+              "$id": "594",
+              "frame": 26,
+              "value": -0.77648646,
+              "containing_value": {
+                "$ref": "589"
+              }
+            },
+            {
+              "$id": "595",
+              "frame": 70,
+              "value": -0.8370858,
+              "containing_value": {
+                "$ref": "589"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "596",
+          "$values": [
+            {
+              "$id": "597",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "598",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "589"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "599",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "600",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "589"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "601",
+          "$values": []
+        }
+      },
+      "name": "right leg",
+      "position": {
+        "$id": "602",
+        "owner": {
+          "$ref": "578"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "603",
+          "$values": [
+            {
+              "$id": "604",
+              "frame": 0,
+              "value": {
+                "x": 9.60437,
+                "y": 21.076014
+              },
+              "containing_value": {
+                "$ref": "602"
+              }
+            },
+            {
+              "$id": "605",
+              "frame": 7,
+              "value": {
+                        "x": 11.461517,
+                        "y": 28.504585
+                      },
+              "containing_value": {
+                "$ref": "602"
+              }
+            },
+            {
+              "$id": "606",
+              "frame": 8,
+              "value": {
+                "x": 13.509132,
+                "y": 17.218872
+              },
+              "containing_value": {
+                "$ref": "602"
+              }
+            },
+            {
+              "$id": "607",
+              "frame": 11,
+              "value": {
+                        "x": 11.931908,
+                        "y": 4.6741533
+                      },
+              "containing_value": {
+                "$ref": "602"
+              }
+            },
+            {
+              "$id": "608",
+              "frame": 26,
+              "value": {
+                "x": 11.931908,
+                "y": 4.6741533
+              },
+              "containing_value": {
+                "$ref": "602"
+              }
+            },
+            {
+              "$id": "609",
+              "frame": 70,
+              "value": {
+                        "x": 14.22699,
+                        "y": 4.7342625
+                      },
+              "containing_value": {
+                "$ref": "602"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "610",
+          "$values": [
+            {
+              "$id": "611",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "612",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "602"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "613",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "614",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "602"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "615",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "616",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "602"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "617",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "618",
+        "owner": {
+          "$ref": "578"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "619",
+          "$values": [
+            {
+              "$id": "620",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "618"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "621",
+          "$values": []
+        },
+        "tags": {
+          "$id": "622",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "623",
+        "owner": {
+          "$ref": "578"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "624",
+          "$values": []
+        },
+        "links": {
+          "$id": "625",
+          "$values": []
+        },
+        "tags": {
+          "$id": "626",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "627",
+      "texture_name": "leg",
+      "scale": {
+        "$id": "628",
+        "owner": {
+          "$ref": "627"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "629",
+          "$values": [
+            {
+              "$id": "630",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "628"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "631",
+          "$values": []
+        },
+        "tags": {
+          "$id": "632",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "633",
+        "owner": {
+          "$ref": "627"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "634",
+          "$values": [
+            {
+              "$id": "635",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "633"
+              }
+            },
+            {
+              "$id": "636",
+              "frame": 8,
+              "value": 0,
+              "containing_value": {
+                "$ref": "633"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "637",
+          "$values": []
+        },
+        "tags": {
+          "$id": "638",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "639",
+        "owner": {
+          "$ref": "627"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "640",
+          "$values": [
+            {
+              "$id": "641",
+              "frame": 0,
+              "value": 0.7557359,
+              "containing_value": {
+                "$ref": "639"
+              }
+            },
+            {
+              "$id": "642",
+              "frame": 7,
+              "value": 1.2660483,
+              "containing_value": {
+                "$ref": "639"
+              }
+            },
+            {
+              "$id": "643",
+              "frame": 8,
+              "value": -2.633342,
+              "containing_value": {
+                "$ref": "639"
+              }
+            },
+            {
+              "$id": "644",
+              "frame": 26,
+              "value": -2.633342,
+              "containing_value": {
+                "$ref": "639"
+              }
+            },
+            {
+              "$id": "645",
+              "frame": 70,
+              "value": -2.2142706,
+              "containing_value": {
+                "$ref": "639"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "646",
+          "$values": [
+            {
+              "$id": "647",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "648",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "639"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "649",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "650",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "639"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "651",
+          "$values": []
+        }
+      },
+      "name": "left knee",
+      "position": {
+        "$id": "652",
+        "owner": {
+          "$ref": "627"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "653",
+          "$values": [
+            {
+              "$id": "654",
+              "frame": 0,
+              "value": {
+                "x": -8.80039,
+                "y": 31.385536
+              },
+              "containing_value": {
+                "$ref": "652"
+              }
+            },
+            {
+              "$id": "655",
+              "frame": 7,
+              "value": {
+                        "x": -8.943251,
+                        "y": 32.956966
+                      },
+              "containing_value": {
+                "$ref": "652"
+              }
+            },
+            {
+              "$id": "656",
+              "frame": 8,
+              "value": {
+                "x": -9.859922,
+                "y": 30.873632
+              },
+              "containing_value": {
+                "$ref": "652"
+              }
+            },
+            {
+              "$id": "657",
+              "frame": 11,
+              "value": {
+                        "x": -9.128218,
+                        "y": 19.044363
+                      },
+              "containing_value": {
+                "$ref": "652"
+              }
+            },
+            {
+              "$id": "658",
+              "frame": 26,
+              "value": {
+                "x": -9.128218,
+                "y": 19.044363
+              },
+              "containing_value": {
+                "$ref": "652"
+              }
+            },
+            {
+              "$id": "659",
+              "frame": 70,
+              "value": {
+                        "x": -3.5380535,
+                        "y": 11.50338
+                      },
+              "containing_value": {
+                "$ref": "652"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "660",
+          "$values": [
+            {
+              "$id": "661",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "662",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "652"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "663",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "664",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "652"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "665",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "666",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "652"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "667",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "668",
+        "owner": {
+          "$ref": "627"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "669",
+          "$values": [
+            {
+              "$id": "670",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "668"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "671",
+          "$values": []
+        },
+        "tags": {
+          "$id": "672",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "673",
+        "owner": {
+          "$ref": "627"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "674",
+          "$values": [
+            {
+              "$id": "675",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "673"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "676",
+          "$values": []
+        },
+        "tags": {
+          "$id": "677",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "678",
+      "texture_name": "leg",
+      "scale": {
+        "$id": "679",
+        "owner": {
+          "$ref": "678"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "680",
+          "$values": [
+            {
+              "$id": "681",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "679"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "682",
+          "$values": []
+        },
+        "tags": {
+          "$id": "683",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "684",
+        "owner": {
+          "$ref": "678"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "685",
+          "$values": [
+            {
+              "$id": "686",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "684"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "687",
+          "$values": []
+        },
+        "tags": {
+          "$id": "688",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "689",
+        "owner": {
+          "$ref": "678"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "690",
+          "$values": [
+            {
+              "$id": "691",
+              "frame": 0,
+              "value": 0.75049156,
+              "containing_value": {
+                "$ref": "689"
+              }
+            },
+            {
+              "$id": "692",
+              "frame": 7,
+              "value": 1.2157164,
+              "containing_value": {
+                "$ref": "689"
+              }
+            },
+            {
+              "$id": "693",
+              "frame": 8,
+              "value": -2.5777428,
+              "containing_value": {
+                "$ref": "689"
+              }
+            },
+            {
+              "$id": "694",
+              "frame": 26,
+              "value": -2.5777428,
+              "containing_value": {
+                "$ref": "689"
+              }
+            },
+            {
+              "$id": "695",
+              "frame": 70,
+              "value": -2.329949,
+              "containing_value": {
+                "$ref": "689"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "696",
+          "$values": [
+            {
+              "$id": "697",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "698",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "689"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "699",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "700",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "689"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "701",
+          "$values": []
+        }
+      },
+      "name": "right knee",
+      "position": {
+        "$id": "702",
+        "owner": {
+          "$ref": "678"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "703",
+          "$values": [
+            {
+              "$id": "704",
+              "frame": 0,
+              "value": {
+                "x": 10.306755,
+                "y": 30.522446
+              },
+              "containing_value": {
+                "$ref": "702"
+              }
+            },
+            {
+              "$id": "705",
+              "frame": 7,
+              "value": {
+                        "x": 12.021042,
+                        "y": 32.37959
+                      },
+              "containing_value": {
+                "$ref": "702"
+              }
+            },
+            {
+              "$id": "706",
+              "frame": 8,
+              "value": {
+                "x": 15.354385,
+                "y": 26.60181
+              },
+              "containing_value": {
+                "$ref": "702"
+              }
+            },
+            {
+              "$id": "707",
+              "frame": 11,
+              "value": {
+                        "x": 13.712112,
+                        "y": 15.516449
+                      },
+              "containing_value": {
+                "$ref": "702"
+              }
+            },
+            {
+              "$id": "708",
+              "frame": 26,
+              "value": {
+                "x": 13.712112,
+                "y": 15.516449
+              },
+              "containing_value": {
+                "$ref": "702"
+              }
+            },
+            {
+              "$id": "709",
+              "frame": 70,
+              "value": {
+                        "x": 15.482605,
+                        "y": 13.907158
+                      },
+              "containing_value": {
+                "$ref": "702"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "710",
+          "$values": [
+            {
+              "$id": "711",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "712",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "702"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "713",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "714",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "702"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "715",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "716",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "702"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "717",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "718",
+        "owner": {
+          "$ref": "678"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "719",
+          "$values": [
+            {
+              "$id": "720",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "718"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "721",
+          "$values": []
+        },
+        "tags": {
+          "$id": "722",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "723",
+        "owner": {
+          "$ref": "678"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "724",
+          "$values": [
+            {
+              "$id": "725",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "723"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "726",
+          "$values": []
+        },
+        "tags": {
+          "$id": "727",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "728",
+      "texture_name": "foot",
+      "scale": {
+        "$id": "729",
+        "owner": {
+          "$ref": "728"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "730",
+          "$values": [
+            {
+              "$id": "731",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "729"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "732",
+          "$values": []
+        },
+        "tags": {
+          "$id": "733",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "734",
+        "owner": {
+          "$ref": "728"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "735",
+          "$values": [
+            {
+              "$id": "736",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "734"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "737",
+          "$values": []
+        },
+        "tags": {
+          "$id": "738",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "739",
+        "owner": {
+          "$ref": "728"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "740",
+          "$values": [
+            {
+              "$id": "741",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "739"
+              }
+            },
+            {
+              "$id": "742",
+              "frame": 8,
+              "value": 1.3107251,
+              "containing_value": {
+                "$ref": "739"
+              }
+            },
+            {
+              "$id": "743",
+              "frame": 26,
+              "value": 1.3107251,
+              "containing_value": {
+                "$ref": "739"
+              }
+            },
+            {
+              "$id": "744",
+              "frame": 70,
+              "value": 0.58752126,
+              "containing_value": {
+                "$ref": "739"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "745",
+          "$values": [
+            {
+              "$id": "746",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "747",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "739"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "748",
+          "$values": []
+        }
+      },
+      "name": "left foot",
+      "position": {
+        "$id": "749",
+        "owner": {
+          "$ref": "728"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "750",
+          "$values": [
+            {
+              "$id": "751",
+              "frame": 0,
+              "value": {
+                "x": 6.4,
+                "y": 35.34388
+              },
+              "containing_value": {
+                "$ref": "749"
+              }
+            },
+            {
+              "$id": "752",
+              "frame": 8,
+              "value": {
+                "x": 11.455557,
+                "y": 34.84388
+              },
+              "containing_value": {
+                "$ref": "749"
+              }
+            },
+            {
+              "$id": "753",
+              "frame": 11,
+              "value": {
+                        "x": 8.544996,
+                        "y": 24.274776
+                      },
+              "containing_value": {
+                "$ref": "749"
+              }
+            },
+            {
+              "$id": "754",
+              "frame": 26,
+              "value": {
+                "x": 8.544996,
+                "y": 24.274776
+              },
+              "containing_value": {
+                "$ref": "749"
+              }
+            },
+            {
+              "$id": "755",
+              "frame": 70,
+              "value": {
+                        "x": 10.995817,
+                        "y": 20.0644
+                      },
+              "containing_value": {
+                "$ref": "749"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "756",
+          "$values": [
+            {
+              "$id": "757",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "758",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "749"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "759",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "760",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "749"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "761",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "762",
+        "owner": {
+          "$ref": "728"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "763",
+          "$values": [
+            {
+              "$id": "764",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "762"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "765",
+          "$values": []
+        },
+        "tags": {
+          "$id": "766",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "767",
+        "owner": {
+          "$ref": "728"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "768",
+          "$values": [
+            {
+              "$id": "769",
+              "frame": 0,
+              "value": 0.03,
+              "containing_value": {
+                "$ref": "767"
+              }
+            },
+            {
+              "$id": "770",
+              "frame": 7,
+              "value": 0.02,
+              "containing_value": {
+                "$ref": "767"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "771",
+          "$values": [
+            {
+              "$id": "772",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "773",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "767"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "774",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "775",
+      "texture_name": "foot",
+      "scale": {
+        "$id": "776",
+        "owner": {
+          "$ref": "775"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "777",
+          "$values": [
+            {
+              "$id": "778",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "776"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "779",
+          "$values": []
+        },
+        "tags": {
+          "$id": "780",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "781",
+        "owner": {
+          "$ref": "775"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "782",
+          "$values": [
+            {
+              "$id": "783",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "781"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "784",
+          "$values": []
+        },
+        "tags": {
+          "$id": "785",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "786",
+        "owner": {
+          "$ref": "775"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "787",
+          "$values": [
+            {
+              "$id": "788",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "786"
+              }
+            },
+            {
+              "$id": "789",
+              "frame": 8,
+              "value": 1.2656285,
+              "containing_value": {
+                "$ref": "786"
+              }
+            },
+            {
+              "$id": "790",
+              "frame": 26,
+              "value": 1.2656285,
+              "containing_value": {
+                "$ref": "786"
+              }
+            },
+            {
+              "$id": "791",
+              "frame": 70,
+              "value": 0.76139486,
+              "containing_value": {
+                "$ref": "786"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "792",
+          "$values": [
+            {
+              "$id": "793",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "794",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "786"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "795",
+          "$values": []
+        }
+      },
+      "name": "right foot",
+      "position": {
+        "$id": "796",
+        "owner": {
+          "$ref": "775"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "797",
+          "$values": [
+            {
+              "$id": "798",
+              "frame": 0,
+              "value": {
+                "x": -13.800392,
+                "y": 35.34388
+              },
+              "containing_value": {
+                "$ref": "796"
+              }
+            },
+            {
+              "$id": "799",
+              "frame": 8,
+              "value": {
+                "x": -15.467056,
+                "y": 39.177216
+              },
+              "containing_value": {
+                "$ref": "796"
+              }
+            },
+            {
+              "$id": "800",
+              "frame": 11,
+              "value": {
+                        "x": -13.515846,
+                        "y": 26.811363
+                      },
+              "containing_value": {
+                "$ref": "796"
+              }
+            },
+            {
+              "$id": "801",
+              "frame": 26,
+              "value": {
+                "x": -13.515846,
+                "y": 26.811363
+              },
+              "containing_value": {
+                "$ref": "796"
+              }
+            },
+            {
+              "$id": "802",
+              "frame": 70,
+              "value": {
+                        "x": -9.056824,
+                        "y": 17.286777
+                      },
+              "containing_value": {
+                "$ref": "796"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "803",
+          "$values": [
+            {
+              "$id": "804",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "805",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "796"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "806",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "807",
+                "$values": [
+                  26,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "796"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "808",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "809",
+        "owner": {
+          "$ref": "775"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "810",
+          "$values": [
+            {
+              "$id": "811",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "809"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "812",
+          "$values": []
+        },
+        "tags": {
+          "$id": "813",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "814",
+        "owner": {
+          "$ref": "775"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "815",
+          "$values": [
+            {
+              "$id": "816",
+              "frame": 0,
+              "value": 0.02,
+              "containing_value": {
+                "$ref": "814"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "817",
+          "$values": []
+        },
+        "tags": {
+          "$id": "818",
+          "$values": []
+        }
+      }
+    },
+    {
+      "$id": "819",
+      "texture_name": "sword",
+      "scale": {
+        "$id": "820",
+        "owner": {
+          "$ref": "819"
+        },
+        "name": "Scale",
+        "keyframes": {
+          "$id": "821",
+          "$values": [
+            {
+              "$id": "822",
+              "frame": 0,
+              "value": {
+                "x": 1,
+                "y": 1
+              },
+              "containing_value": {
+                "$ref": "820"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "823",
+          "$values": []
+        },
+        "tags": {
+          "$id": "824",
+          "$values": []
+        }
+      },
+      "frame_index": {
+        "$id": "825",
+        "owner": {
+          "$ref": "819"
+        },
+        "name": "Frame Index",
+        "keyframes": {
+          "$id": "826",
+          "$values": [
+            {
+              "$id": "827",
+              "frame": 0,
+              "value": 0,
+              "containing_value": {
+                "$ref": "825"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "828",
+          "$values": []
+        },
+        "tags": {
+          "$id": "829",
+          "$values": []
+        }
+      },
+      "rotation": {
+        "$id": "830",
+        "owner": {
+          "$ref": "819"
+        },
+        "name": "Rotation",
+        "keyframes": {
+          "$id": "831",
+          "$values": [
+            {
+              "$id": "832",
+              "frame": 0,
+              "value": -1.720878,
+              "containing_value": {
+                "$ref": "830"
+              }
+            },
+            {
+              "$id": "833",
+              "frame": 7,
+              "value": -1.3328741,
+              "containing_value": {
+                "$ref": "830"
+              }
+            },
+            {
+              "$id": "834",
+              "frame": 8,
+              "value": -2.3419275,
+              "containing_value": {
+                "$ref": "830"
+              }
+            },
+            {
+              "$id": "835",
+              "frame": 52,
+              "value": -1.4292623,
+              "containing_value": {
+                "$ref": "830"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "836",
+          "$values": [
+            {
+              "$id": "837",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "838",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "830"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "839",
+              "interpolation_type": "smooth_step",
+              "keyframes": {
+                "$id": "840",
+                "$values": [
+                  8,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "830"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "841",
+          "$values": []
+        }
+      },
+      "name": "sword",
+      "position": {
+        "$id": "842",
+        "owner": {
+          "$ref": "819"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "843",
+          "$values": [
+            {
+              "$id": "844",
+              "frame": 0,
+              "value": {
+                "x": 6,
+                "y": 9.666664
+              },
+              "containing_value": {
+                "$ref": "842"
+              }
+            },
+            {
+              "$id": "845",
+              "frame": 7,
+              "value": {
+                        "x": 24.85714,
+                        "y": 22.38095
+                      },
+              "containing_value": {
+                "$ref": "842"
+              }
+            },
+            {
+              "$id": "846",
+              "frame": 8,
+              "value": {
+                "x": 25.634918,
+                "y": 18.880941
+              },
+              "containing_value": {
+                "$ref": "842"
+              }
+            },
+            {
+              "$id": "847",
+              "frame": 11,
+              "value": {
+                        "x": 23.659317,
+                        "y": 0.66142845
+                      },
+              "containing_value": {
+                "$ref": "842"
+              }
+            },
+            {
+              "$id": "848",
+              "frame": 20,
+              "value": {
+                "x": 23.659317,
+                "y": 0.66142845
+              },
+              "containing_value": {
+                "$ref": "842"
+              }
+            },
+            {
+              "$id": "849",
+              "frame": 49,
+              "value": {
+                        "x": 28.980309,
+                        "y": -1.8077068
+                      },
+              "containing_value": {
+                "$ref": "842"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "850",
+          "$values": [
+            {
+              "$id": "851",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "852",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "842"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "853",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "854",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "842"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "855",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "856",
+                "$values": [
+                  20,
+                  49
+                ]
+              },
+              "containing_value": {
+                "$ref": "842"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "857",
+          "$values": []
+        }
+      },
+      "transparency": {
+        "$id": "858",
+        "owner": {
+          "$ref": "819"
+        },
+        "name": "Transparency",
+        "keyframes": {
+          "$id": "859",
+          "$values": [
+            {
+              "$id": "860",
+              "frame": 0,
+              "value": 1,
+              "containing_value": {
+                "$ref": "858"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "861",
+          "$values": []
+        },
+        "tags": {
+          "$id": "862",
+          "$values": []
+        }
+      },
+      "z_index": {
+        "$id": "863",
+        "owner": {
+          "$ref": "819"
+        },
+        "name": "ZIndex",
+        "keyframes": {
+          "$id": "864",
+          "$values": [
+            {
+              "$id": "865",
+              "frame": 0,
+              "value": 0.05,
+              "containing_value": {
+                "$ref": "863"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "866",
+          "$values": []
+        },
+        "tags": {
+          "$id": "867",
+          "$values": []
+        }
+      }
+    }
+  ],
+  "hitbox_objects": [
+    {
+      "$id": "868",
+      "size": {
+        "$id": "869",
+        "owner": {
+          "$ref": "868"
+        },
+        "name": "Size",
+        "keyframes": {
+          "$id": "870",
+          "$values": [
+            {
+              "$id": "871",
+              "frame": 0,
+              "value": {
+                "x": 44.599712,
+                "y": 16.994276
+              },
+              "containing_value": {
+                "$ref": "869"
+              }
+            },
+            {
+              "$id": "872",
+              "frame": 7,
+              "value": {
+                        "x": 52.918423,
+                        "y": 16.994276
+                      },
+              "containing_value": {
+                "$ref": "869"
+              }
+            },
+            {
+              "$id": "873",
+              "frame": 8,
+              "value": {
+                "x": 52.918423,
+                "y": 26.53553
+              },
+              "containing_value": {
+                "$ref": "869"
+              }
+            },
+            {
+              "$id": "874",
+              "frame": 11,
+              "value": {
+                        "x": 49.66464,
+                        "y": 19.799995
+                      },
+              "containing_value": {
+                "$ref": "869"
+              }
+            },
+            {
+              "$id": "875",
+              "frame": 20,
+              "value": {
+                "x": 49.66464,
+                "y": 19.799995
+              },
+              "containing_value": {
+                "$ref": "869"
+              }
+            },
+            {
+              "$id": "876",
+              "frame": 52,
+              "value": {
+                        "x": 63,
+                        "y": 19.799995
+                      },
+              "containing_value": {
+                "$ref": "869"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "877",
+          "$values": [
+            {
+              "$id": "878",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "879",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "869"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "880",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "881",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "869"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "882",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "883",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "869"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "884",
+          "$values": []
+        }
+      },
+      "position": {
+        "$id": "885",
+        "owner": {
+          "$ref": "868"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "886",
+          "$values": [
+            {
+              "$id": "887",
+              "frame": 0,
+              "value": {
+                "x": 0.8251438,
+                "y": -9.247138
+              },
+              "containing_value": {
+                "$ref": "885"
+              }
+            },
+            {
+              "$id": "888",
+              "frame": 7,
+              "value": {
+                        "x": -0.0718441,
+                        "y": 5.1190577
+                      },
+              "containing_value": {
+                "$ref": "885"
+              }
+            },
+            {
+              "$id": "889",
+              "frame": 8,
+              "value": {
+                "x": 3.9281483,
+                "y": -15.110317
+              },
+              "containing_value": {
+                "$ref": "885"
+              }
+            },
+            {
+              "$id": "890",
+              "frame": 11,
+              "value": {
+                        "x": 2.5512562,
+                        "y": -20.74255
+                      },
+              "containing_value": {
+                "$ref": "885"
+              }
+            },
+            {
+              "$id": "891",
+              "frame": 20,
+              "value": {
+                "x": 2.5512562,
+                "y": -20.74255
+              },
+              "containing_value": {
+                "$ref": "885"
+              }
+            },
+            {
+              "$id": "892",
+              "frame": 52,
+              "value": {
+                        "x": 2.1335754,
+                        "y": -20.74255
+                      },
+              "containing_value": {
+                "$ref": "885"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "893",
+          "$values": [
+            {
+              "$id": "894",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "895",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "885"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "896",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "897",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "885"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "898",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "899",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "885"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "900",
+          "$values": []
+        }
+      },
+      "name": "upper body",
+      "hitstun": 3,
+      "max_hitstun": 10,
+      "shield_stun": 3,
+      "duel_game_lag": 2,
+      "attack_id": 0,
+      "immunity_after_hit": 10,
+      "priority": 0,
+      "frame_duration": 240,
+      "spawn_frame": 0,
+      "damage": 5,
+      "hitstun_growth": 3,
+      "launch_angle": -30,
+      "launch_potency": 10,
+      "launch_potency_growth": 1,
+      "launch_potency_max": 100,
+      "shield_launch_angle": -50,
+      "shield_potency": 2,
+      "rate": 0.98,
+      "type": "hurtbox",
+      "launch_type": "torso_hit",
+      "conditions": "none",
+      "tags": {
+        "$id": "901",
+        "$values": []
+      }
+    },
+    {
+      "$id": "902",
+      "size": {
+        "$id": "903",
+        "owner": {
+          "$ref": "902"
+        },
+        "name": "Size",
+        "keyframes": {
+          "$id": "904",
+          "$values": [
+            {
+              "$id": "905",
+              "frame": 0,
+              "value": {
+                "x": 27.5,
+                "y": 26.25
+              },
+              "containing_value": {
+                "$ref": "903"
+              }
+            },
+            {
+              "$id": "906",
+              "frame": 8,
+              "value": {
+                        "x": 28.525002,
+                        "y": 35.2807
+                      },
+              "containing_value": {
+                "$ref": "903"
+              }
+            },
+            {
+              "$id": "907",
+              "frame": 11,
+              "value": {
+                        "x": 28.525002,
+                        "y": 26.25
+                      },
+              "containing_value": {
+                "$ref": "903"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "908",
+          "$values": [
+            {
+              "$id": "909",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "910",
+                "$values": [
+                  0,
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "903"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "911",
+          "$values": []
+        }
+      },
+      "position": {
+        "$id": "912",
+        "owner": {
+          "$ref": "902"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "913",
+          "$values": [
+            {
+              "$id": "914",
+              "frame": 0,
+              "value": {
+                "x": -0.625,
+                "y": -28.375
+              },
+              "containing_value": {
+                "$ref": "912"
+              }
+            },
+            {
+              "$id": "915",
+              "frame": 7,
+              "value": {
+                        "x": -2.1742935,
+                        "y": -6.2482414
+                      },
+              "containing_value": {
+                "$ref": "912"
+              }
+            },
+            {
+              "$id": "916",
+              "frame": 8,
+              "value": {
+                "x": 5.046055,
+                "y": -43.082893
+              },
+              "containing_value": {
+                "$ref": "912"
+              }
+            },
+            {
+              "$id": "917",
+              "frame": 11,
+              "value": {
+                        "x": 5.046055,
+                        "y": -42.767548
+                      },
+              "containing_value": {
+                "$ref": "912"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "918",
+          "$values": [
+            {
+              "$id": "919",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "920",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "912"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "921",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "922",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "912"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "923",
+          "$values": []
+        }
+      },
+      "name": "head",
+      "hitstun": 3,
+      "max_hitstun": 10,
+      "shield_stun": 3,
+      "duel_game_lag": 2,
+      "attack_id": 0,
+      "immunity_after_hit": 10,
+      "priority": 0,
+      "frame_duration": 240,
+      "spawn_frame": 0,
+      "damage": 5,
+      "hitstun_growth": 3,
+      "launch_angle": -30,
+      "launch_potency": 10,
+      "launch_potency_growth": 1,
+      "launch_potency_max": 100,
+      "shield_launch_angle": -50,
+      "shield_potency": 2,
+      "rate": 0.98,
+      "type": "hurtbox",
+      "launch_type": "torso_hit",
+      "conditions": "none",
+      "tags": {
+        "$id": "924",
+        "$values": []
+      }
+    },
+    {
+      "$id": "925",
+      "size": {
+        "$id": "926",
+        "owner": {
+          "$ref": "925"
+        },
+        "name": "Size",
+        "keyframes": {
+          "$id": "927",
+          "$values": [
+            {
+              "$id": "928",
+              "frame": 0,
+              "value": {
+                "x": 38.050003,
+                "y": 15.747139
+              },
+              "containing_value": {
+                "$ref": "926"
+              }
+            },
+            {
+              "$id": "929",
+              "frame": 7,
+              "value": {
+                        "x": 61.47493,
+                        "y": 15.747139
+                      },
+              "containing_value": {
+                "$ref": "926"
+              }
+            },
+            {
+              "$id": "930",
+              "frame": 8,
+              "value": {
+                "x": 61.47493,
+                "y": 12.799995
+              },
+              "containing_value": {
+                "$ref": "926"
+              }
+            },
+            {
+              "$id": "931",
+              "frame": 11,
+              "value": {
+                        "x": 53.500015,
+                        "y": 12.799995
+                      },
+              "containing_value": {
+                "$ref": "926"
+              }
+            },
+            {
+              "$id": "932",
+              "frame": 20,
+              "value": {
+                "x": 53.500015,
+                "y": 12.799995
+              },
+              "containing_value": {
+                "$ref": "926"
+              }
+            },
+            {
+              "$id": "933",
+              "frame": 52,
+              "value": {
+                        "x": 63.5,
+                        "y": 10.900002
+                      },
+              "containing_value": {
+                "$ref": "926"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "934",
+          "$values": [
+            {
+              "$id": "935",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "936",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "926"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "937",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "938",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "926"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "939",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "940",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "926"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "941",
+          "$values": []
+        }
+      },
+      "position": {
+        "$id": "942",
+        "owner": {
+          "$ref": "925"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "943",
+          "$values": [
+            {
+              "$id": "944",
+              "frame": 0,
+              "value": {
+                "x": 1.3499985,
+                "y": 7.3764305
+              },
+              "containing_value": {
+                "$ref": "942"
+              }
+            },
+            {
+              "$id": "945",
+              "frame": 7,
+              "value": {
+                        "x": -0.82897186,
+                        "y": 22.024317
+                      },
+              "containing_value": {
+                "$ref": "942"
+              }
+            },
+            {
+              "$id": "946",
+              "frame": 8,
+              "value": {
+                "x": 3.371025,
+                "y": 4.3574486
+              },
+              "containing_value": {
+                "$ref": "942"
+              }
+            },
+            {
+              "$id": "947",
+              "frame": 11,
+              "value": {
+                        "x": 0.8835678,
+                        "y": -4.3925514
+                      },
+              "containing_value": {
+                "$ref": "942"
+              }
+            },
+            {
+              "$id": "948",
+              "frame": 20,
+              "value": {
+                "x": 0.8835678,
+                "y": -4.3925514
+              },
+              "containing_value": {
+                "$ref": "942"
+              }
+            },
+            {
+              "$id": "949",
+              "frame": 52,
+              "value": {
+                        "x": 1.6335754,
+                        "y": -5.3425484
+                      },
+              "containing_value": {
+                "$ref": "942"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "950",
+          "$values": [
+            {
+              "$id": "951",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "952",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "942"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "953",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "954",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "942"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "955",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "956",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "942"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "957",
+          "$values": []
+        }
+      },
+      "name": "lower body",
+      "hitstun": 3,
+      "max_hitstun": 10,
+      "shield_stun": 3,
+      "duel_game_lag": 2,
+      "attack_id": 0,
+      "immunity_after_hit": 10,
+      "priority": 0,
+      "frame_duration": 240,
+      "spawn_frame": 0,
+      "damage": 5,
+      "hitstun_growth": 3,
+      "launch_angle": -30,
+      "launch_potency": 10,
+      "launch_potency_growth": 1,
+      "launch_potency_max": 100,
+      "shield_launch_angle": -50,
+      "shield_potency": 2,
+      "rate": 0.98,
+      "type": "hurtbox",
+      "launch_type": "torso_hit",
+      "conditions": "none",
+      "tags": {
+        "$id": "958",
+        "$values": []
+      }
+    },
+    {
+      "$id": "959",
+      "size": {
+        "$id": "960",
+        "owner": {
+          "$ref": "959"
+        },
+        "name": "Size",
+        "keyframes": {
+          "$id": "961",
+          "$values": [
+            {
+              "$id": "962",
+              "frame": 0,
+              "value": {
+                "x": 15.800003,
+                "y": 16.888206
+              },
+              "containing_value": {
+                "$ref": "960"
+              }
+            },
+            {
+              "$id": "963",
+              "frame": 7,
+              "value": {
+                        "x": 18.067665,
+                        "y": 5.6972656
+                      },
+              "containing_value": {
+                "$ref": "960"
+              }
+            },
+            {
+              "$id": "964",
+              "frame": 8,
+              "value": {
+                "x": 17.293686,
+                "y": 19.540283
+              },
+              "containing_value": {
+                "$ref": "960"
+              }
+            },
+            {
+              "$id": "965",
+              "frame": 20,
+              "value": {
+                "x": 17.293686,
+                "y": 19.540283
+              },
+              "containing_value": {
+                "$ref": "960"
+              }
+            },
+            {
+              "$id": "966",
+              "frame": 52,
+              "value": {
+                        "x": 16.383606,
+                        "y": 20.854725
+                      },
+              "containing_value": {
+                "$ref": "960"
+              }
+            },
+            {
+              "$id": "967",
+              "frame": 70,
+              "value": {
+                "x": 20.57145,
+                "y": 17.532984
+              },
+              "containing_value": {
+                "$ref": "960"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "968",
+          "$values": [
+            {
+              "$id": "969",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "970",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "960"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "971",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "972",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "960"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "973",
+          "$values": []
+        }
+      },
+      "position": {
+        "$id": "974",
+        "owner": {
+          "$ref": "959"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "975",
+          "$values": [
+            {
+              "$id": "976",
+              "frame": 0,
+              "value": {
+                "x": 9.599983,
+                "y": 23.755886
+              },
+              "containing_value": {
+                "$ref": "974"
+              }
+            },
+            {
+              "$id": "977",
+              "frame": 7,
+              "value": {
+                        "x": 10.733814,
+                        "y": 29.351357
+                      },
+              "containing_value": {
+                "$ref": "974"
+              }
+            },
+            {
+              "$id": "978",
+              "frame": 8,
+              "value": {
+                "x": 13.146812,
+                "y": 21.272867
+              },
+              "containing_value": {
+                "$ref": "974"
+              }
+            },
+            {
+              "$id": "979",
+              "frame": 11,
+              "value": {
+                        "x": 12.0542755,
+                        "y": 10.780088
+                      },
+              "containing_value": {
+                "$ref": "974"
+              }
+            },
+            {
+              "$id": "980",
+              "frame": 20,
+              "value": {
+                "x": 12.0542755,
+                "y": 10.780088
+              },
+              "containing_value": {
+                "$ref": "974"
+              }
+            },
+            {
+              "$id": "981",
+              "frame": 52,
+              "value": {
+                        "x": 11.941772,
+                        "y": 11.18009
+                      },
+              "containing_value": {
+                "$ref": "974"
+              }
+            },
+            {
+              "$id": "982",
+              "frame": 70,
+              "value": {
+                "x": 14.035694,
+                "y": 9.519219
+              },
+              "containing_value": {
+                "$ref": "974"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "983",
+          "$values": [
+            {
+              "$id": "984",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "985",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "974"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "986",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "987",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "974"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "988",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "989",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "974"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "990",
+          "$values": []
+        }
+      },
+      "name": "right leg",
+      "hitstun": 3,
+      "max_hitstun": 10,
+      "shield_stun": 3,
+      "duel_game_lag": 2,
+      "attack_id": 0,
+      "immunity_after_hit": 10,
+      "priority": 0,
+      "frame_duration": 240,
+      "spawn_frame": 0,
+      "damage": 5,
+      "hitstun_growth": 3,
+      "launch_angle": -30,
+      "launch_potency": 10,
+      "launch_potency_growth": 1,
+      "launch_potency_max": 100,
+      "shield_launch_angle": -50,
+      "shield_potency": 2,
+      "rate": 0.98,
+      "type": "hurtbox",
+      "launch_type": "torso_hit",
+      "conditions": "none",
+      "tags": {
+        "$id": "991",
+        "$values": []
+      }
+    },
+    {
+      "$id": "992",
+      "size": {
+        "$id": "993",
+        "owner": {
+          "$ref": "992"
+        },
+        "name": "Size",
+        "keyframes": {
+          "$id": "994",
+          "$values": [
+            {
+              "$id": "995",
+              "frame": 0,
+              "value": {
+                "x": 15.800003,
+                "y": 16.888206
+              },
+              "containing_value": {
+                "$ref": "993"
+              }
+            },
+            {
+              "$id": "996",
+              "frame": 7,
+              "value": {
+                        "x": 15.800003,
+                        "y": 6.974106
+                      },
+              "containing_value": {
+                "$ref": "993"
+              }
+            },
+            {
+              "$id": "997",
+              "frame": 8,
+              "value": {
+                "x": 15.800003,
+                "y": 23.931568
+              },
+              "containing_value": {
+                "$ref": "993"
+              }
+            },
+            {
+              "$id": "998",
+              "frame": 11,
+              "value": {
+                        "x": 14.333588,
+                        "y": 23.931568
+                      },
+              "containing_value": {
+                "$ref": "993"
+              }
+            },
+            {
+              "$id": "999",
+              "frame": 20,
+              "value": {
+                "x": 14.333588,
+                "y": 23.931568
+              },
+              "containing_value": {
+                "$ref": "993"
+              }
+            },
+            {
+              "$id": "1000",
+              "frame": 52,
+              "value": {
+                        "x": 16.75,
+                        "y": 17.981571
+                      },
+              "containing_value": {
+                "$ref": "993"
+              }
+            },
+            {
+              "$id": "1001",
+              "frame": 70,
+              "value": {
+                "x": 16.75,
+                "y": 15.695547
+              },
+              "containing_value": {
+                "$ref": "993"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "1002",
+          "$values": [
+            {
+              "$id": "1003",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1004",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "993"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "1005",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1006",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "993"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "1007",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1008",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "993"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "1009",
+          "$values": []
+        }
+      },
+      "position": {
+        "$id": "1010",
+        "owner": {
+          "$ref": "992"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "1011",
+          "$values": [
+            {
+              "$id": "1012",
+              "frame": 0,
+              "value": {
+                "x": -9.200005,
+                "y": 23.755886
+              },
+              "containing_value": {
+                "$ref": "1010"
+              }
+            },
+            {
+              "$id": "1013",
+              "frame": 7,
+              "value": {
+                        "x": -9.200005,
+                        "y": 28.712936
+                      },
+              "containing_value": {
+                "$ref": "1010"
+              }
+            },
+            {
+              "$id": "1014",
+              "frame": 8,
+              "value": {
+                "x": -8.800011,
+                "y": 22.591665
+              },
+              "containing_value": {
+                "$ref": "1010"
+              }
+            },
+            {
+              "$id": "1015",
+              "frame": 11,
+              "value": {
+                        "x": -9.283218,
+                        "y": 12.841665
+                      },
+              "containing_value": {
+                "$ref": "1010"
+              }
+            },
+            {
+              "$id": "1016",
+              "frame": 20,
+              "value": {
+                "x": -9.283218,
+                "y": 12.841665
+              },
+              "containing_value": {
+                "$ref": "1010"
+              }
+            },
+            {
+              "$id": "1017",
+              "frame": 52,
+              "value": {
+                        "x": -6.4914246,
+                        "y": 9.866667
+                      },
+              "containing_value": {
+                "$ref": "1010"
+              }
+            },
+            {
+              "$id": "1018",
+              "frame": 70,
+              "value": {
+                "x": -4.491432,
+                "y": 7.8665113
+              },
+              "containing_value": {
+                "$ref": "1010"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "1019",
+          "$values": [
+            {
+              "$id": "1020",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1021",
+                "$values": [
+                  0,
+                  7
+                ]
+              },
+              "containing_value": {
+                "$ref": "1010"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "1022",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1023",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "1010"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "1024",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1025",
+                "$values": [
+                  20,
+                  52
+                ]
+              },
+              "containing_value": {
+                "$ref": "1010"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "1026",
+          "$values": []
+        }
+      },
+      "name": "left leg",
+      "hitstun": 3,
+      "max_hitstun": 10,
+      "shield_stun": 3,
+      "duel_game_lag": 2,
+      "attack_id": 0,
+      "immunity_after_hit": 10,
+      "priority": 0,
+      "frame_duration": 240,
+      "spawn_frame": 0,
+      "damage": 5,
+      "hitstun_growth": 3,
+      "launch_angle": -30,
+      "launch_potency": 10,
+      "launch_potency_growth": 1,
+      "launch_potency_max": 100,
+      "shield_launch_angle": -50,
+      "shield_potency": 2,
+      "rate": 0.98,
+      "type": "hurtbox",
+      "launch_type": "torso_hit",
+      "conditions": "none",
+      "tags": {
+        "$id": "1027",
+        "$values": []
+      }
+    },
+    {
+      "$id": "1028",
+      "size": {
+        "$id": "1029",
+        "owner": {
+          "$ref": "1028"
+        },
+        "name": "Size",
+        "keyframes": {
+          "$id": "1030",
+          "$values": [
+            {
+              "$id": "1031",
+              "frame": 0,
+              "value": {
+                "x": 15.800003,
+                "y": 6.1920853
+              },
+              "containing_value": {
+                "$ref": "1029"
+              }
+            },
+            {
+              "$id": "1032",
+              "frame": 8,
+              "value": {
+                "x": 11.47522,
+                "y": 15.445656
+              },
+              "containing_value": {
+                "$ref": "1029"
+              }
+            },
+            {
+              "$id": "1033",
+              "frame": 20,
+              "value": {
+                "x": 11.47522,
+                "y": 15.445656
+              },
+              "containing_value": {
+                "$ref": "1029"
+              }
+            },
+            {
+              "$id": "1034",
+              "frame": 70,
+              "value": {
+                        "x": 15.309517,
+                        "y": 12.552494
+                      },
+              "containing_value": {
+                "$ref": "1029"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "1035",
+          "$values": [
+            {
+              "$id": "1036",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1037",
+                "$values": [
+                  20,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "1029"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "1038",
+          "$values": []
+        }
+      },
+      "position": {
+        "$id": "1039",
+        "owner": {
+          "$ref": "1028"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "1040",
+          "$values": [
+            {
+              "$id": "1041",
+              "frame": 0,
+              "value": {
+                "x": -10.866676,
+                "y": 35.407825
+              },
+              "containing_value": {
+                "$ref": "1039"
+              }
+            },
+            {
+              "$id": "1042",
+              "frame": 8,
+              "value": {
+                "x": -14.429062,
+                "y": 41.634617
+              },
+              "containing_value": {
+                "$ref": "1039"
+              }
+            },
+            {
+              "$id": "1043",
+              "frame": 11,
+              "value": {
+                        "x": -11.429062,
+                        "y": 30.634617
+                      },
+              "containing_value": {
+                "$ref": "1039"
+              }
+            },
+            {
+              "$id": "1044",
+              "frame": 20,
+              "value": {
+                "x": -11.429062,
+                "y": 30.634617
+              },
+              "containing_value": {
+                "$ref": "1039"
+              }
+            },
+            {
+              "$id": "1045",
+              "frame": 70,
+              "value": {
+                        "x": -7.3333397,
+                        "y": 20.295177
+                      },
+              "containing_value": {
+                "$ref": "1039"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "1046",
+          "$values": [
+            {
+              "$id": "1047",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1048",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "1039"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "1049",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1050",
+                "$values": [
+                  20,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "1039"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "1051",
+          "$values": []
+        }
+      },
+      "name": "left foot",
+      "hitstun": 3,
+      "max_hitstun": 10,
+      "shield_stun": 3,
+      "duel_game_lag": 2,
+      "attack_id": 0,
+      "immunity_after_hit": 10,
+      "priority": 0,
+      "frame_duration": 240,
+      "spawn_frame": 0,
+      "damage": 5,
+      "hitstun_growth": 3,
+      "launch_angle": -30,
+      "launch_potency": 10,
+      "launch_potency_growth": 1,
+      "launch_potency_max": 100,
+      "shield_launch_angle": -50,
+      "shield_potency": 2,
+      "rate": 0.98,
+      "type": "hurtbox",
+      "launch_type": "torso_hit",
+      "conditions": "none",
+      "tags": {
+        "$id": "1052",
+        "$values": []
+      }
+    },
+    {
+      "$id": "1053",
+      "size": {
+        "$id": "1054",
+        "owner": {
+          "$ref": "1053"
+        },
+        "name": "Size",
+        "keyframes": {
+          "$id": "1055",
+          "$values": [
+            {
+              "$id": "1056",
+              "frame": 0,
+              "value": {
+                "x": 15.800003,
+                "y": 6.1920853
+              },
+              "containing_value": {
+                "$ref": "1054"
+              }
+            },
+            {
+              "$id": "1057",
+              "frame": 8,
+              "value": {
+                "x": 12.141922,
+                "y": 14.645668
+              },
+              "containing_value": {
+                "$ref": "1054"
+              }
+            },
+            {
+              "$id": "1058",
+              "frame": 20,
+              "value": {
+                "x": 12.141922,
+                "y": 14.645668
+              },
+              "containing_value": {
+                "$ref": "1054"
+              }
+            },
+            {
+              "$id": "1059",
+              "frame": 70,
+              "value": {
+                        "x": 17.826195,
+                        "y": 11.19536
+                      },
+              "containing_value": {
+                "$ref": "1054"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "1060",
+          "$values": [
+            {
+              "$id": "1061",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1062",
+                "$values": [
+                  20,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "1054"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "1063",
+          "$values": []
+        }
+      },
+      "position": {
+        "$id": "1064",
+        "owner": {
+          "$ref": "1053"
+        },
+        "name": "Position",
+        "keyframes": {
+          "$id": "1065",
+          "$values": [
+            {
+              "$id": "1066",
+              "frame": 0,
+              "value": {
+                "x": 9.466652,
+                "y": 35.407825
+              },
+              "containing_value": {
+                "$ref": "1064"
+              }
+            },
+            {
+              "$id": "1067",
+              "frame": 8,
+              "value": {
+                "x": 12.837608,
+                "y": 37.234615
+              },
+              "containing_value": {
+                "$ref": "1064"
+              }
+            },
+            {
+              "$id": "1068",
+              "frame": 11,
+              "value": {
+                        "x": 10.4876175,
+                        "y": 27.43461
+                      },
+              "containing_value": {
+                "$ref": "1064"
+              }
+            },
+            {
+              "$id": "1069",
+              "frame": 20,
+              "value": {
+                "x": 10.4876175,
+                "y": 27.43461
+              },
+              "containing_value": {
+                "$ref": "1064"
+              }
+            },
+            {
+              "$id": "1070",
+              "frame": 70,
+              "value": {
+                        "x": 12.122608,
+                        "y": 22.25946
+                      },
+              "containing_value": {
+                "$ref": "1064"
+              }
+            }
+          ]
+        },
+        "links": {
+          "$id": "1071",
+          "$values": [
+            {
+              "$id": "1072",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1073",
+                "$values": [
+                  8,
+                  11
+                ]
+              },
+              "containing_value": {
+                "$ref": "1064"
+              },
+              "use_relative_progress_calculation": true
+            },
+            {
+              "$id": "1074",
+              "interpolation_type": "lineal",
+              "keyframes": {
+                "$id": "1075",
+                "$values": [
+                  20,
+                  70
+                ]
+              },
+              "containing_value": {
+                "$ref": "1064"
+              },
+              "use_relative_progress_calculation": true
+            }
+          ]
+        },
+        "tags": {
+          "$id": "1076",
+          "$values": []
+        }
+      },
+      "name": "right foot",
+      "hitstun": 3,
+      "max_hitstun": 10,
+      "shield_stun": 3,
+      "duel_game_lag": 2,
+      "attack_id": 0,
+      "immunity_after_hit": 10,
+      "priority": 0,
+      "frame_duration": 240,
+      "spawn_frame": 0,
+      "damage": 5,
+      "hitstun_growth": 3,
+      "launch_angle": -30,
+      "launch_potency": 10,
+      "launch_potency_growth": 1,
+      "launch_potency_max": 100,
+      "shield_launch_angle": -50,
+      "shield_potency": 2,
+      "rate": 0.98,
+      "type": "hurtbox",
+      "launch_type": "torso_hit",
+      "conditions": "none",
+      "tags": {
+        "$id": "1077",
+        "$values": []
+      }
+    }
+  ]
+}

@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 
 using PlatformFighter.Miscelaneous;
-using PlatformFighter.Rendering;
 
 using System;
 using System.Collections.Frozen;

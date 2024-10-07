@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using PlatformFighter;
 using PlatformFighter.Miscelaneous;
 
 using System;
@@ -86,6 +85,7 @@ namespace PlatformFighter.Rendering
             }
         }
 #endif
+        public const float GameTimeDelta = 1 / 120f;
         public static bool MaintainAspectRatio { get; set; }
         public static Rectangle WindowAspectRatioRectangle => _windowAspectRatioRect;
         private static Rectangle _windowAspectRatioRect;

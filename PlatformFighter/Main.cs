@@ -1,8 +1,6 @@
 ﻿global using static PlatformFighter.Miscelaneous.Constants;
 global using static PlatformFighter.InstanceManager;
 
-using ExtraProcessors.GameTexture;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,7 +10,6 @@ using PlatformFighter.Rendering;
 
 using System;
 using System.Collections.Frozen;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace PlatformFighter
@@ -20,9 +17,7 @@ namespace PlatformFighter
     public class Main : Game
     {
         public static Color ClearColor = new Color(0, 0, 0, 0);
-
-        public static readonly List<IOutputWrapper> LogStreams = new List<IOutputWrapper>();
-
+        
         public static GameRandom mainRandom = new GameRandom(), cosmeticRandom = new GameRandom();
         public static Main instance;
         public static GraphicsDevice Graphics => instance.GraphicsDevice;
@@ -48,7 +43,7 @@ namespace PlatformFighter
 
         protected override void Initialize()
         {
-            Window.Title = cosmeticRandom.NextBoolean(0.01) ? "Touhalla 12.3 - La yuca viene a por ti" : "Platform Fighter";
+            Window.Title = cosmeticRandom.NextBoolean(0.01) ? "smash Touhalla 12.3 ultimate - La yuca viene a por ti" : "Platform Fighter debug version";
             Renderer._maxRes.X = GraphicsDevice.DisplayMode.Width;
             Renderer._maxRes.Y = GraphicsDevice.DisplayMode.Height;
             Renderer.PixelSamplerState = SamplerState.PointClamp;
@@ -82,7 +77,7 @@ namespace PlatformFighter
             if (BackgroundTarget is null || BackgroundTarget.IsDisposed)
                 BackgroundTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight, false, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents)
                 {
-                    Name = "BackTarget"
+                    Name = "BackgroundTarget"
                 };
             if (WorldTarget is null || WorldTarget.IsDisposed)
                 WorldTarget = new RenderTarget2D(GraphicsDevice, VirtualWidth, VirtualHeight, false, SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.PreserveContents)
@@ -129,19 +124,18 @@ namespace PlatformFighter
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            GraphicsDevice.Clear(Color.Black);
-            GraphicsDevice.SetRenderTarget(WorldTarget);
-            // GraphicsDevice.SetRenderTarget(GUITarget);
-            GraphicsDevice.Clear(ClearColor);
-            spriteBatch.Begin(false, Renderer.PixelBlendState, Renderer.PixelSamplerState);
-
-            GameTexture what = Assets.Textures["CarlaHead"];
-            spriteBatch.Draw(what, VirtualMidResolution + new Vector2(0, 100).RotateRad(gameTime.TotalGameTime.TotalSeconds), null, Color.White, 0, what.origin, 1);
-
-            spriteBatch.End();
-
+            if (TheGameState.PlayingMatch)
+            {
+                RenderWorld();
+            }
+            else
+            {
+                RenderGui();
+            }
+            
             GraphicsDevice.SetRenderTarget(MergedTarget);
             GraphicsDevice.Clear(ClearColor);
+            
             DrawRenderTarget(ref BackgroundTarget, ShaderType.Background);
             DrawRenderTarget(ref WorldTarget, ShaderType.Screen);
             DrawRenderTarget(ref GUITarget, ShaderType.Menu);
@@ -153,9 +147,9 @@ namespace PlatformFighter
 
             foreach (ShadersInfo.ShaderData shader in ShadersInfo.shadersOrdered[ShaderType.Merged])
             {
-                if (shader.progress > 0)
+                if (shader.Progress > 0)
                     continue;
-                shader.shader.Parameters["screenTexture"]?.SetValue(MergedTarget);
+                shader.Effect.Parameters["screenTexture"]?.SetValue(MergedTarget);
                 shader.Apply();
                 spriteBatch.Draw(MergedTarget, Renderer.ScreenRectangle, Color.White);
             }
@@ -172,15 +166,32 @@ namespace PlatformFighter
 
             base.Draw(gameTime);
         }
+
+        private void RenderGui()
+        {
+            
+        }
+
+        public void RenderWorld()
+        {
+            GraphicsDevice.SetRenderTarget(WorldTarget);
+            
+            GraphicsDevice.Clear(ClearColor);
+            spriteBatch.Begin(false, Renderer.PixelBlendState, Renderer.PixelSamplerState);
+
+
+            spriteBatch.End();
+        }
+
         public static void DrawRenderTarget(ref RenderTarget2D renderTarget, ShaderType shaderType)
         {
             spriteBatch.Begin(true, Renderer.PixelBlendState, Renderer.PixelSamplerState);
             Graphics.Textures[0] = renderTarget;
             foreach (ShadersInfo.ShaderData shader in ShadersInfo.shadersOrdered[shaderType])
             {
-                if (shader.progress == 0)
+                if (shader.Progress == 0)
                     continue;
-                shader.shader.Parameters["screenTexture"]?.SetValue(renderTarget);
+                shader.Effect.Parameters["screenTexture"]?.SetValue(renderTarget);
                 shader.Apply();
             }
             spriteBatch.Draw(renderTarget, Vector2.Zero, null, Color.White);

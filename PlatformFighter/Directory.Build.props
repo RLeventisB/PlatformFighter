@@ -2,11 +2,19 @@
 
   <PropertyGroup>
     <MonoGamePlatform>$(MSBuildProjectName.Substring(15))</MonoGamePlatform>
-    <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <BaseOutputPath>.\Artifacts\$(MonoGamePlatform)</BaseOutputPath>
+    <BaseIntermediateOutputPath>build\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <BaseOutputPath>build\bin\$(MonoGamePlatform)</BaseOutputPath>
     <AssemblyName>PlatformFighter</AssemblyName>
     <RootNamespace>PlatformFighter</RootNamespace>
+
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+    <NoWarn>CA2211; IDE0090; IDE0066; IDE1006; CA2208; IDE0063; CA1507; IDE0057; IDE0251; CS9084</NoWarn>
+    <ErrorReport>none</ErrorReport>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
 </Project>
-

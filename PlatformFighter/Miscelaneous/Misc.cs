@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using PlatformFighter.Miscelaneous;
 using PlatformFighter.Rendering;
 
 using System;
@@ -1580,7 +1579,7 @@ namespace PlatformFighter.Miscelaneous
                 string text = obj + Environment.NewLine;
 
                 byte[] bytes = Encoding.UTF8.GetBytes(text);
-                foreach (IOutputWrapper stream in Main.LogStreams)
+                foreach (IOutputWrapper stream in Logger.LogStreams)
                 {
                     stream.Write(text);
                 }

@@ -7,14 +7,9 @@
         <DefineConstants>DESKTOPGL</DefineConstants>
         <Platforms>AnyCPU;x64;x86</Platforms>
 
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
-        <ErrorReport>none</ErrorReport>
         <PlatformTarget>AnyCPU</PlatformTarget>
-        <InvariantGlobalization>true</InvariantGlobalization>
         <TieredCompilation>false</TieredCompilation>
         <ApplicationIcon>Icon.ico</ApplicationIcon>
-        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DebugType>portable</DebugType>
@@ -36,38 +31,27 @@
         <StripSymbols>true</StripSymbols>
     </PropertyGroup>
     <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll"/>
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll"/>
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll" />
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll" />
     </ItemGroup>
     <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x86'">
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll"/>
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll"/>
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll" />
+        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
-        <MonoGameContentReference Include="Content\ContentDesktop.mgcb"/>
+        <MonoGameContentReference Include="Resources\Content\ContentDesktop.mgcb" />
         <None Remove="AndroidManifest.xml" />
         <None Remove="Resources\**" />
-        <None Remove="Content\ContentAndroid.mgcb" />
+        <None Remove="Resources\Content\ContentAndroid.mgcb" />
         <Compile Remove="MainActivity.cs" />
         <Compile Remove="Resources\**" />
         <EmbeddedResource Remove="Resources\**" />
         <Compile Remove="BuildLibs\Android\**" />
         <EmbeddedResource Remove="BuildLibs\Android\**" />
         <None Remove="BuildLibs\Android\**" />
-        <Compile Remove="ObjAndroid\**" />
-        <EmbeddedResource Remove="ObjAndroid\**" />
-        <None Remove="ObjAndroid\**" />
-        <Compile Remove="Content\obj\**" />
-        <EmbeddedResource Remove="Content\obj\**" />
-        <None Remove="Content\obj\**" />
-        <Compile Remove="obj\**" />
-        <EmbeddedResource Remove="obj\**" />
-        <None Remove="obj\**" />
-        <Compile Remove="Artifacts\**" />
-        <EmbeddedResource Remove="Artifacts\**" />
-        <None Remove="Artifacts\**" />
-        <Reference Include=".\BuildLibs\DesktopGL\$(Configuration)\MonoGame.Framework.dll"/>
-        <Reference Include=".\BuildLibs\ExtraProcessors.dll"/>
+        
+        <None Include="Resources\Content\ContentDesktop.mgcb" />
+        <Reference Include=".\BuildLibs\DesktopGL\$(Configuration)\MonoGame.Framework.dll" />
+        <Reference Include=".\BuildLibs\ExtraProcessors.dll" />
     </ItemGroup>
 </Project>

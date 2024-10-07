@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Reflection.Metadata;
 
 #if RELEASE
@@ -14,7 +12,7 @@ internal static class HotReloadManager
 {
     public static void UpdateApplication(Type[] types)
     {
-        
+
     }
 }
 #endif
@@ -32,12 +30,12 @@ namespace PlatformFighter
 #endif
             if (Debugger.IsAttached)
             {
-                PlatformFighter.Main.LogStreams.Add(new DebugWrapper());
+                Logger.LogStreams.Add(new DebugWrapper());
             }
             else
             {
-                PlatformFighter.Main.LogStreams.Add(new ConsoleInOutWrapper());
-                PlatformFighter.Main.LogStreams.Add(new LogWrapper("./Log.log"));
+                Logger.LogStreams.Add(new ConsoleInOutWrapper());
+                Logger.LogStreams.Add(new LogWrapper("./Log.log"));
             }
 #if RELEASE
             bool dontShowException = args.Contains("-rununsafe");

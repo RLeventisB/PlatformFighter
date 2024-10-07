@@ -7,58 +7,79 @@ using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace PlatformFighter.Rendering
 {
     public static class ShadersInfo
     {
         public delegate void ShaderUpdateDelegate(ref ShaderData data);
-        public static FrozenDictionary<string, ShaderData> shaders;
+        public static ShaderData[] shaders;
         public static FrozenDictionary<ShaderType, ShaderData[]> shadersOrdered;
         public static void Initialize()
         {
-            Dictionary<string, ShaderData> shadersLocal = new Dictionary<string, ShaderData>();
-            Dictionary<ShaderType, ShaderData[]> shadersOrderedLocal = new Dictionary<ShaderType, ShaderData[]>();
+            List<ShaderData> addedShaders = new List<ShaderData>();
+            
+            AddShaders(addedShaders);
 
+            shaders = addedShaders.ToArray();
 
-            shadersOrderedLocal.Add(ShaderType.Background, shadersLocal.Values.Where(v => v.type.HasFlag(ShaderType.Background)).ToArray());
-            shadersOrderedLocal.Add(ShaderType.Screen, shadersLocal.Values.Where(v => v.type.HasFlag(ShaderType.Screen)).ToArray());
-            shadersOrderedLocal.Add(ShaderType.Menu, shadersLocal.Values.Where(v => v.type.HasFlag(ShaderType.Menu)).ToArray());
-            shadersOrderedLocal.Add(ShaderType.Merged, shadersLocal.Values.Where(v => v.type.HasFlag(ShaderType.Merged)).ToArray());
+            Dictionary<ShaderType, ShaderData[]> shadersOrderedLocal = new Dictionary<ShaderType, ShaderData[]>
+            {
+                {
+                    ShaderType.Background, addedShaders.Where(v => v.Type.HasFlag(ShaderType.Background)).ToArray()
+                },
+                {
+                    ShaderType.Screen, addedShaders.Where(v => v.Type.HasFlag(ShaderType.Screen)).ToArray()
+                },
+                {
+                    ShaderType.Menu, addedShaders.Where(v => v.Type.HasFlag(ShaderType.Menu)).ToArray()
+                },
+                {
+                    ShaderType.Merged, addedShaders.Where(v => v.Type.HasFlag(ShaderType.Merged)).ToArray()
+                }
+            };
 
-            shaders = shadersLocal.ToFrozenDictionary();
             shadersOrdered = shadersOrderedLocal.ToFrozenDictionary();
         }
+
+        public static void AddShaders(List<ShaderData> addedShaders)
+        {
+            
+        }
+
         public static void Execute(ShaderUpdateDelegate everyShader)
         {
-            foreach (ShaderData item in shaders.Values)
-                everyShader(ref Unsafe.AsRef(in item));
+            for (int index = 0; index < shaders.Length; index++)
+            {
+                ref ShaderData item = ref shaders[index];
+                everyShader(ref item);
+            }
         }
         public class ShaderData
         {
-            public bool active;
-            public string passName;
-            public float progress;
-            public Effect shader;
-            public ShaderType type;
-            public ShaderData(Effect effect, string passName, ShaderType type)
+            public readonly string Name, PassName;
+            public readonly Effect Effect;
+            public readonly ShaderType Type;
+            public bool Active;
+            public float Progress;
+            public ShaderData(string shaderName, Effect effect, string passName, ShaderType type)
             {
-                shader = effect;
-                this.passName = passName;
-                this.type = type;
+                Name = shaderName;
+                Effect = effect;
+                PassName = passName;
+                Type = type;
             }
             public void Update()
             {
-                progress += 1f / 120f * active.GetDirection();
-                progress = MathHelper.Clamp01(progress);
+                Progress += Renderer.GameTimeDelta * Active.GetDirection();
+                Progress = MathHelper.Clamp01(Progress);
             }
             public void Apply()
             {
-                shader.TrySetValue("progress", progress);
-                shader.TrySetValue("time", (float)Renderer.gameTime.TotalGameTime.TotalSeconds);
-                shader.TrySetValue("winResolution", Renderer.Resolution);
-                shader.CurrentTechnique.Passes[passName].Apply();
+                Effect.TrySetValue("progress", Progress);
+                Effect.TrySetValue("time", (float)Renderer.gameTime.TotalGameTime.TotalSeconds);
+                Effect.TrySetValue("winResolution", Renderer.Resolution);
+                Effect.CurrentTechnique.Passes[PassName].Apply();
             }
         }
     }
