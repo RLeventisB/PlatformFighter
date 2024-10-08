@@ -31,27 +31,37 @@
         <StripSymbols>true</StripSymbols>
     </PropertyGroup>
     <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll" />
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x64\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll" />
+        <None Include="..\build\libs\DesktopGL\Debug\x64\SDL2.dll">
+            <Link>SDL2.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="..\build\libs\DesktopGL\$(Configuration)\x64\soft_oal.dll">
+            <Link>soft_oal.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x86'">
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\SDL2.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\SDL2.dll" />
-        <None Include=".\BuildLibs\DesktopGL\$(Configuration)\x86\soft_oal.dll" CopyToOutputDirectory="Always" Link="$(OutputPath)\..\..\..\..\soft_oal.dll" />
+        <None Include="..\build\libs\DesktopGL\$(Configuration)\x86\SDL2.dll">
+            <Link>SDL2.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="..\build\libs\DesktopGL\$(Configuration)\x86\soft_oal.dll">
+            <Link>soft_oal.dll</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup>
-        <MonoGameContentReference Include="Resources\Content\ContentDesktop.mgcb" />
+        <MonoGameContentReference Include="..\Resources\Content\ContentDesktop.mgcb" />
         <None Remove="AndroidManifest.xml" />
-        <None Remove="Resources\**" />
-        <None Remove="Resources\Content\ContentAndroid.mgcb" />
+        <None Remove="..\Resources\**" />
+        <None Remove="..\Resources\Content\ContentAndroid.mgcb" />
         <Compile Remove="MainActivity.cs" />
-        <Compile Remove="Resources\**" />
-        <EmbeddedResource Remove="Resources\**" />
-        <Compile Remove="BuildLibs\Android\**" />
-        <EmbeddedResource Remove="BuildLibs\Android\**" />
-        <None Remove="BuildLibs\Android\**" />
+        <Compile Remove="..\Resources\**" />
+        <Compile Remove="..\build\libs\Android\**" />
+        <None Remove="..\build\libs\Android\**" />
         
-        <None Include="Resources\Content\ContentDesktop.mgcb" />
-        <Reference Include=".\BuildLibs\DesktopGL\$(Configuration)\MonoGame.Framework.dll" />
-        <Reference Include=".\BuildLibs\ExtraProcessors.dll" />
+        <None Include="..\Resources\Content\ContentDesktop.mgcb" />
+        <Reference Include="..\build\libs\DesktopGL\$(Configuration)\MonoGame.Framework.dll" />
+        <Reference Include="..\build\libs\ExtraProcessors.dll" />
     </ItemGroup>
 </Project>

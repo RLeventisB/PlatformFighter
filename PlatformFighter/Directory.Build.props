@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <MonoGamePlatform>$(MSBuildProjectName.Substring(15))</MonoGamePlatform>
-    <BaseIntermediateOutputPath>build\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <BaseOutputPath>build\bin\$(MonoGamePlatform)</BaseOutputPath>
+    <BaseIntermediateOutputPath>..\build\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <BaseOutputPath>..\build\bin\$(MonoGamePlatform)</BaseOutputPath>
     <AssemblyName>PlatformFighter</AssemblyName>
     <RootNamespace>PlatformFighter</RootNamespace>
 
