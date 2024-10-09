@@ -112,6 +112,8 @@ namespace PlatformFighter
         protected override void Update(GameTime gameTime)
         {
             Renderer.Update(gameTime);
+            Input.Update();
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.IsKeyPressed(Keys.Escape))
                 Exit();
 
