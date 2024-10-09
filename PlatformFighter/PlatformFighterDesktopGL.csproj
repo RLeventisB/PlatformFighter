@@ -62,6 +62,5 @@
         
         <None Include="..\Resources\Content\ContentDesktop.mgcb" />
         <Reference Include="..\build\libs\DesktopGL\$(Configuration)\MonoGame.Framework.dll" />
-        <Reference Include="..\build\libs\ExtraProcessors.dll" />
     </ItemGroup>
 </Project>

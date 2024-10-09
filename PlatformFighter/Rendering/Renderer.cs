@@ -1,11 +1,15 @@
+using Editor.Objects;
+using ExtraProcessors.GameTexture;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using PlatformFighter.Miscelaneous;
 
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace PlatformFighter.Rendering
@@ -265,5 +269,90 @@ namespace PlatformFighter.Rendering
     public enum WindowType : byte
     {
         Null, Windowed, Maximized, Fullscreen, BorderlessFullscreen
+    }
+    public class AnimationRenderer
+    {
+        public static Dictionary<TextureFrame, IAsset<GameTexture>> jsonDataTextureDictionary = new Dictionary<TextureFrame, IAsset<GameTexture>>();
+        public static FrozenDictionary<string, JsonData> loadedAnimations;
+        public static JsonData GetAnimation(string name)
+        {
+            return loadedAnimations[name];
+        }
+        public static bool GetAnimation(string name, out JsonData data)
+        {
+            return loadedAnimations.TryGetValue(name, out data);
+        }
+        public static void DrawJsonData(SpriteBatch spriteBatch, JsonData data, int frame, Vector2 center, Vector2? scale = null)
+        {
+            Vector2 finalScale = scale ?? Vector2.One;
+
+            foreach(var graphicObject in data.graphicObjects)
+            {
+				Color color = new Color(1f, 1f, 1f, graphicObject.Transparency.Interpolate(frame));
+
+				if (color.A == 0)
+					continue;
+
+				Vector2 position = center + graphicObject.Position.Interpolate(frame) * finalScale;
+				int frameIndex = graphicObject.FrameIndex.Interpolate(frame);
+				float rotation = graphicObject.Rotation.Interpolate(frame);
+				Vector2 localScale = graphicObject.Scale.Interpolate(frame) * finalScale;
+				SpriteEffects effects = SpriteEffects.None;
+
+				if (localScale.X < 0)
+				{
+					localScale.X = -localScale.X;
+					effects |= SpriteEffects.FlipHorizontally;
+				}
+
+				if (localScale.Y < 0)
+				{
+					localScale.Y = -localScale.Y;
+					effects |= SpriteEffects.FlipVertically;
+				}
+
+				TextureFrame texture = ResolveTexture(data, graphicObject.TextureName);
+				int framesX = texture.Width / texture.FrameSize.X;
+				if (framesX == 0)
+					framesX = 1;
+
+				int x = frameIndex % framesX;
+				int y = frameIndex / framesX;
+
+				Rectangle sourceRect = new Rectangle(texture.FramePosition.X + x * texture.FrameSize.X, texture.FramePosition.Y + y * texture.FrameSize.Y,
+					texture.FrameSize.X, texture.FrameSize.Y);
+
+				spriteBatch.Draw(texture, position, sourceRect, color,
+					rotation, texture.Pivot,
+					localScale, effects, graphicObject.ZIndex.CachedValue);
+            }
+        }
+        public static TextureFrame ResolveTexture(JsonData data, string name)
+        {
+            return data.textures.First(v => v.Name == name);
+        }
+        public static void LoadAnimations(string contentPath)
+        {
+            Dictionary<string, JsonData> loadedAnimations = new Dictionary<string, JsonData>();
+            foreach(var file in Directory.GetFiles(Path.Combine(contentPath, "Animations"), "*.anim"))
+            {
+                try
+                {
+                    JsonData data = JsonData.LoadFromPath(file);
+                    data.Fixup();
+
+                    loadedAnimations.Add(Path.GetFileNameWithoutExtension(file), data);
+
+                    foreach(var texture in data.textures)
+                    {
+                        jsonDataTextureDictionary.Add(texture, Assets.Textures.dictionary.Values.First(v => v.FilePath == texture.Path));
+                    }
+                }
+                catch(Exception e)
+                {
+                    Logger.LogMessage(e);
+                }
+            }
+        }
     }
 }
