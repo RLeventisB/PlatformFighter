@@ -19,7 +19,7 @@ namespace PlatformFighter
     {
         public static readonly char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".ToCharArray(), upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray(), lowerLetters = "abcdefghijklmnopqrstuvwxyz".ToCharArray(), numbers = "0123456789".ToCharArray();
         public static MouseState mouseState;
-        public static ExposedList<GamepadInfo> Gamepads;
+        public static ExposedList<GamepadInfo> Gamepads = new ExposedList<GamepadInfo>();
         private static Vector2 mousePosition;
         public static bool ShiftPressed, ControlPressed, AltPressed, WindowsPressed,
             MouseLeft, MouseRight, MouseMiddle, FirstMouseLeft, FirstMouseRight, FirstMouseMiddle;
@@ -27,6 +27,8 @@ namespace PlatformFighter
         public static Vector2 MouseRawPosition = Vector2.Zero;
         public static Vector2 MouseOldPosition;
         private static bool lastPressedKeyFrameHolder;
+        private static int lastGamepadCount;
+
         static Input()
         {
             Keyboard.OnKeyDown += delegate(Keys key)
@@ -52,11 +54,7 @@ namespace PlatformFighter
                 MouseScroll = (mouseState.ScrollWheelValue - newState.ScrollWheelValue) / 120f;
 
                 mouseState = newState;
-                for (byte i = 0; i < Gamepads.Count; i++)
-                {
-                    ref GamepadInfo info = ref Gamepads.items[i];
-                    info.State = GamePad.GetState(info.Index);
-                }
+                UpdateGamepadLogic();
             }
             else
             {
@@ -93,14 +91,33 @@ namespace PlatformFighter
                 HasLastPressedKeyBeenThisFrame = false;
             lastPressedKeyFrameHolder = false;
         }
+
+        public static void UpdateGamepadLogic()
+        {
+            for (byte i = 0; i < Gamepads.Count; i++)
+            {
+                ref GamepadInfo info = ref Gamepads.items[i];
+                info.State = GamePad.GetState(info.Index);
+            }
+            if (Gamepads.Any(info => !info.State.IsConnected) || lastGamepadCount != GamePad.GamepadCount)
+            {
+                BuildGamepadDictionary();
+            }
+        }
+
         public static void BuildGamepadDictionary()
         {
             Gamepads.Clear();
+            Logger.LogMessage("Rebuilding gamepads");
 #if DESKTOPGL
             for (int i = 0; i < GamePad.GamepadCount; i++)
             {
                 PlayerIndex index = (PlayerIndex)i;
-                if (Gamepads.Any(v => v.Index == index)) continue;
+                if (Gamepads.Any(v => v.Index == index))
+                {
+                    Logger.LogMessage("What");
+                    continue;
+                }
 
                 GamepadInfo info = new GamepadInfo(index);
 
@@ -112,6 +129,7 @@ namespace PlatformFighter
                 Gamepads.Add(info);
             }
 #endif
+            lastGamepadCount = GamePad.GamepadCount;
         }
     }
     public class GamepadInfo

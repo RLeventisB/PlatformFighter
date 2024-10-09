@@ -1576,15 +1576,10 @@ namespace PlatformFighter.Miscelaneous
         {
             lock (obj)
             {
-                string text = obj + Environment.NewLine;
-
-                byte[] bytes = Encoding.UTF8.GetBytes(text);
-                foreach (IOutputWrapper stream in Logger.LogStreams)
-                {
-                    stream.Write(text);
-                }
-                return obj;
+                Logger.LogMessage(obj + Environment.NewLine);
             }
+
+            return obj;
         }
     }
     public static class Constants
