@@ -92,6 +92,8 @@ namespace PlatformFighter
 
             Textures.Freeze();
 
+            AnimationRenderer.LoadAnimations(baseContent);
+
             if (ShadersInfo.Exists)
                 foreach (FileInfo file in ShadersInfo.GetFiles("*.*", SearchOption.AllDirectories))
                 {
@@ -351,7 +353,7 @@ namespace PlatformFighter
         }
         public T GetWithoutLoad(string key) => GetAsset(key).ExposeValue();
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool ContainsKey(string key) => Frozen ? creationDictionary.ContainsKey(key) : dictionary.ContainsKey(key);
+        public bool ContainsKey(string key) => Frozen ? dictionary.ContainsKey(key) : creationDictionary.ContainsKey(key);
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Add(string key, IAsset<T> data)
         {

@@ -8,7 +8,7 @@
   "textures": [
     {
       "$id": "2",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "torso",
       "pivot": {
         "x": 20,
@@ -25,7 +25,7 @@
     },
     {
       "$id": "3",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "head",
       "pivot": {
         "x": 14,
@@ -42,7 +42,7 @@
     },
     {
       "$id": "4",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "forearm",
       "pivot": {
         "x": 6,
@@ -59,7 +59,7 @@
     },
     {
       "$id": "5",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "elbow stretch",
       "pivot": {
         "x": 5,
@@ -76,7 +76,7 @@
     },
     {
       "$id": "6",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "elbow contracted",
       "pivot": {
         "x": 6,
@@ -93,7 +93,7 @@
     },
     {
       "$id": "7",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "hand",
       "pivot": {
         "x": 5,
@@ -110,7 +110,7 @@
     },
     {
       "$id": "8",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
+      "path": "..\\Textures\\ElmoEyes.png",
       "name": "face",
       "pivot": {
         "x": 8,
@@ -127,7 +127,7 @@
     },
     {
       "$id": "9",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
+      "path": "..\\Textures\\ElmoEyes.png",
       "name": "eye",
       "pivot": {
         "x": -3,
@@ -144,7 +144,7 @@
     },
     {
       "$id": "10",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "sword",
       "pivot": {
         "x": 8,
@@ -161,7 +161,7 @@
     },
     {
       "$id": "11",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "leg",
       "pivot": {
         "x": 5,
@@ -178,7 +178,7 @@
     },
     {
       "$id": "12",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "knee",
       "pivot": {
         "x": 5,
@@ -195,7 +195,7 @@
     },
     {
       "$id": "13",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": "..\\Textures\\ElmoBody.png",
       "name": "foot",
       "pivot": {
         "x": 9,

@@ -141,17 +141,17 @@ namespace PlatformFighter.Rendering
         }
         #region Normal Text Rendering
         #region String Overloads
-        public static void DrawText(Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawText(position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheck(Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheck(position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckNoRot(Vector2 position, string text, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRot(position, text.AsSpan(), new Vector2(scale), color, origin, singleSpacing, shadowWidth);
-        public static void DrawText(Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawText(position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheck(Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheck(position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckNoRot(Vector2 position, string text, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRot(position, text.AsSpan(), scale, color, origin, singleSpacing, shadowWidth);
+        public static void DrawText(CustomizedSpriteBatch spriteBatch,Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawText(spriteBatch, position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheck(CustomizedSpriteBatch spriteBatch,Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheck(spriteBatch, position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckNoRot(CustomizedSpriteBatch spriteBatch,Vector2 position, string text, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRot(spriteBatch, position, text.AsSpan(), new Vector2(scale), color, origin, singleSpacing, shadowWidth);
+        public static void DrawText(CustomizedSpriteBatch spriteBatch,Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawText(spriteBatch, position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheck(CustomizedSpriteBatch spriteBatch,Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheck(spriteBatch, position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckNoRot(CustomizedSpriteBatch spriteBatch,Vector2 position, string text, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRot(spriteBatch, position, text.AsSpan(), scale, color, origin, singleSpacing, shadowWidth);
         #endregion
-        public static void DrawText(Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawText(position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheck(Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheck(position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckNoRot(Vector2 position, ReadOnlySpan<char> span, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRot(position, span, new Vector2(scale), color, origin, singleSpacing, shadowWidth);
-        public static void DrawText(Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
+        public static void DrawText(CustomizedSpriteBatch spriteBatch,Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawText(spriteBatch, position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheck(CustomizedSpriteBatch spriteBatch,Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheck(spriteBatch, position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckNoRot(CustomizedSpriteBatch spriteBatch,Vector2 position, ReadOnlySpan<char> span, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRot(spriteBatch, position, span, new Vector2(scale), color, origin, singleSpacing, shadowWidth);
+        public static void DrawText(CustomizedSpriteBatch spriteBatch, Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
         {
             rotation *= MathHelper.Pi / 180;
             Vector2 pos = -origin;
@@ -182,14 +182,14 @@ namespace PlatformFighter.Rendering
                             Vector2 copy = pos;
                             Utils.RotateRadPreCalc(ref copy, sin, cos);
                             Vector2 posFinal = position + (data.offset + copy) * scale;
-                            Main.spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
+                            spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
                             AdvanceCharacter(ref pos.X, ref height, in data);
                         }
                         break;
                 }
             }
         }
-        public static void DrawTextNoCheck(Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
+        public static void DrawTextNoCheck(CustomizedSpriteBatch spriteBatch, Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
         {
             rotation *= MathHelper.Pi / 180;
             Vector2 pos = -origin;
@@ -218,14 +218,14 @@ namespace PlatformFighter.Rendering
                             Vector2 copy = pos;
                             Utils.RotateRadPreCalc(ref copy, sin, cos);
                             Vector2 posFinal = position + (data.offset + copy) * scale;
-                            Main.spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
+                            spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
                             AdvanceCharacter(ref pos.X, ref height, in data);
                         }
                         break;
                 }
             }
         }
-        public static void DrawTextNoCheckNoRot(Vector2 position, ReadOnlySpan<char> span, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
+        public static void DrawTextNoCheckNoRot(CustomizedSpriteBatch spriteBatch,Vector2 position, ReadOnlySpan<char> span, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
         {
             Vector2 pos = -origin;
             float height = 0;
@@ -250,7 +250,7 @@ namespace PlatformFighter.Rendering
                         if (TryGetData(character, out CharData data))
                         {
                             Vector2 posFinal = position + (data.offset + pos) * scale;
-                            Main.spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, 0, 1, shadowWidth);
+                            spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, 0, 1, shadowWidth);
                             AdvanceCharacter(ref pos.X, ref height, in data);
                         }
                         break;
@@ -260,17 +260,17 @@ namespace PlatformFighter.Rendering
         #endregion
         #region Formated Text Rendering
         #region String Overloads
-        public static void DrawTextFormated(Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextFormated(position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckFormated(Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckFormated(position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckNoRotFormated(Vector2 position, string text, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRotFormated(position, text.AsSpan(), new Vector2(scale), color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextFormated(Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextFormated(position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckFormated(Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckFormated(position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckNoRotFormated(Vector2 position, string text, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRotFormated(position, text.AsSpan(), scale, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextFormated(spriteBatch, position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, string text, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckFormated(spriteBatch, position, text.AsSpan(), new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckNoRotFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, string text, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRotFormated(spriteBatch, position, text.AsSpan(), new Vector2(scale), color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextFormated(spriteBatch, position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, string text, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckFormated(spriteBatch, position, text.AsSpan(), scale, rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckNoRotFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, string text, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRotFormated(spriteBatch, position, text.AsSpan(), scale, color, origin, singleSpacing, shadowWidth);
         #endregion
-        public static void DrawTextFormated(Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextFormated(position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckFormated(Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckFormated(position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextNoCheckNoRotFormated(Vector2 position, ReadOnlySpan<char> span, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRotFormated(position, span, new Vector2(scale), color, origin, singleSpacing, shadowWidth);
-        public static void DrawTextFormated(Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
+        public static void DrawTextFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextFormated(spriteBatch, position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, ReadOnlySpan<char> span, float scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckFormated(spriteBatch, position, span, new Vector2(scale), rotation, color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextNoCheckNoRotFormated(CustomizedSpriteBatch spriteBatch, Vector2 position, ReadOnlySpan<char> span, float scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0) => DrawTextNoCheckNoRotFormated(spriteBatch, position, span, new Vector2(scale), color, origin, singleSpacing, shadowWidth);
+        public static void DrawTextFormated(CustomizedSpriteBatch spriteBatch,Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
         {
             rotation *= MathHelper.Pi / 180;
             Vector2 pos = -origin;
@@ -302,14 +302,14 @@ namespace PlatformFighter.Rendering
                             Vector2 copy = pos;
                             Utils.RotateRadPreCalc(ref copy, sin, cos);
                             Vector2 posFinal = position + (data.offset + copy) * scale;
-                            Main.spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
+                            spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
                             AdvanceCharacter(ref pos.X, ref height, in data);
                         }
                         break;
                 }
             }
         }
-        public static void DrawTextNoCheckFormated(Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
+        public static void DrawTextNoCheckFormated(CustomizedSpriteBatch spriteBatch,Vector2 position, ReadOnlySpan<char> span, Vector2 scale, float rotation, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
         {
             rotation *= MathHelper.Pi / 180;
             Vector2 pos = -origin;
@@ -339,14 +339,14 @@ namespace PlatformFighter.Rendering
                             Vector2 copy = pos;
                             Utils.RotateRadPreCalc(ref copy, sin, cos);
                             Vector2 posFinal = position + (data.offset + copy) * scale;
-                            Main.spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
+                            spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, sin, cos, shadowWidth);
                             AdvanceCharacter(ref pos.X, ref height, in data);
                         }
                         break;
                 }
             }
         }
-        public static void DrawTextNoCheckNoRotFormated(Vector2 position, ReadOnlySpan<char> span, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
+        public static void DrawTextNoCheckNoRotFormated(CustomizedSpriteBatch spriteBatch,Vector2 position, ReadOnlySpan<char> span, Vector2 scale, Color color, Vector2 origin, float singleSpacing = 0, ushort shadowWidth = 0)
         {
             Vector2 pos = -origin;
             float height = 0;
@@ -372,7 +372,7 @@ namespace PlatformFighter.Rendering
                         if (TryGetData(character, out CharData data))
                         {
                             Vector2 posFinal = position + (data.offset + pos) * scale;
-                            Main.spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, 0, 1, shadowWidth);
+                            spriteBatch.PushCharacter(data.size, posFinal, data.percents, scale, color, 0, 1, shadowWidth);
                             AdvanceCharacter(ref pos.X, ref height, in data);
                         }
                         break;
