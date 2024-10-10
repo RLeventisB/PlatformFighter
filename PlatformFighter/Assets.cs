@@ -353,6 +353,8 @@ namespace PlatformFighter
         }
         public T GetWithoutLoad(string key) => GetAsset(key).ExposeValue();
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool ContainsValue(IAsset<T> value) => Frozen ? dictionary.Values.Contains(value) : creationDictionary.ContainsValue(value);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool ContainsKey(string key) => Frozen ? dictionary.ContainsKey(key) : creationDictionary.ContainsKey(key);
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Add(string key, IAsset<T> data)

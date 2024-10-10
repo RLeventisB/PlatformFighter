@@ -15,10 +15,10 @@
         <None Remove="..\Resources/Icon.ico"/>
         <None Remove="..\Resources/Icon.bmp"/>
 
-        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105"/>
+        <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
         <PackageReference Include="MonoGame.Framework.Content.Pipeline" Version="3.8.2.1105"/>
-        <Reference Include="..\build\libs\PlatformFighterAnimationObjects.dll"/>
-        <Reference Include="..\build\libs\ExtraProcessors.dll"/>
+        <Reference Include="..\build\libs\PlatformFighterAnimationObjects.dll" />
+        <Reference Include="..\build\libs\ExtraProcessors.dll" />
 
     </ItemGroup>
 </Project>
