@@ -63,16 +63,35 @@ namespace PlatformFighter.Miscelaneous
 
             return x / divisor;
         }
+        public static bool TryDequeueWhere<T>(ref Queue<T> queue, Func<T, bool> selector, out T value)
+        {
+            List<T> listedQueue = new List<T>(queue);
+            for (int i = 0; i < queue.Count; i++)
+            {
+                value = listedQueue[i];
+
+                if (selector(value))
+                {
+                    listedQueue.RemoveAt(i);
+                    queue = new Queue<T>(listedQueue);
+                    return true;
+                }
+            }
+
+            value = default(T);
+            return false;
+        }
+
         public static unsafe void* Allocate(int size) => Allocate((uint)size);
         public static unsafe void* AllocateZeroed(int size) => AllocateZeroed((uint)size);
         public static unsafe void* Allocate(uint size) => NativeMemory.Alloc(new nuint(size));
         public static unsafe void* AllocateZeroed(uint size) => NativeMemory.AllocZeroed(new nuint(size));
         public static ref T GetReference<T>(ref T? nullable) where T : struct // me enoje >:(
             => ref Unsafe.AsRef(Nullable.GetValueRefOrDefaultRef(ref nullable));
-        public static bool ShiftLeft<T>(ref T i) where T : IShiftOperators<T, int, T>, IEqualityOperators<T, T, bool>
+        public static bool ShiftLeft<T>(ref T i, T zero) where T : IShiftOperators<T, int, T>, IEqualityOperators<T, T, bool>
         {
             i <<= 1;
-            return !i.Equals(0);
+            return i != zero;
         }
         public static void RunDelayed(Action action, float delay)
         {
@@ -91,7 +110,7 @@ namespace PlatformFighter.Miscelaneous
         }
         public static T[] GetPow2Flags<T>(T value) where T : Enum
         {
-            StackList<T> list = new StackList<T>();
+            List<T> list = new List<T>();
 
             switch (value.GetTypeCode())
             {
@@ -105,7 +124,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<sbyte, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (sbyte)0));
                 }
                     break;
                 case TypeCode.Byte:
@@ -118,7 +137,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<byte, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (byte)0));
                 }
                     break;
                 case TypeCode.Int16:
@@ -131,7 +150,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<short, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (short)0));
                 }
                     break;
                 case TypeCode.UInt16:
@@ -144,7 +163,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<ushort, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (ushort)0));
                 }
                     break;
                 case TypeCode.Int32:
@@ -157,7 +176,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<int, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (int)0));
                 }
                     break;
                 case TypeCode.UInt32:
@@ -170,7 +189,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<uint, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (uint)0));
                 }
                     break;
                 case TypeCode.Int64:
@@ -183,7 +202,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<long, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (long)0));
                 }
                     break;
                 case TypeCode.UInt64:
@@ -196,7 +215,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<ulong, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i));
+                    } while (ShiftLeft(ref i, (ulong)0));
                 }
                     break;
             }
@@ -477,7 +496,7 @@ namespace PlatformFighter.Miscelaneous
             {
                 return Direction.Up;
             }
-            return Direction.Custom;
+            return Direction.None;
         }
         public static Direction InvertDirection(Direction direction)
         {
@@ -512,7 +531,7 @@ namespace PlatformFighter.Miscelaneous
             {
                 return Direction.Up;
             }
-            return Direction.Custom;
+            return Direction.None;
         }
         public static bool Intersects(Rectangle rectangle1, Rectangle rectangle2, out Rectangle intersectionRectangle)
         {
@@ -727,16 +746,6 @@ namespace PlatformFighter.Miscelaneous
                 vector *= addedLength;
             }
             return vector;
-        }
-        /// <summary>
-        ///     Returns a Vector2 with the absolute values of X and Y
-        /// </summary>
-        public static Vector2 Abs(this Vector2 vec) => new Vector2(MathF.Abs(vec.X), MathF.Abs(vec.Y));
-        public static Point Abs(this Point point)
-        {
-            point.X = (int)MathF.Abs(point.X);
-            point.Y = (int)MathF.Abs(point.Y);
-            return point;
         }
         /// <summary>
         ///     Converts the given Vector3 to a Color
@@ -1198,26 +1207,26 @@ namespace PlatformFighter.Miscelaneous
             return color;
         }
         public static ref TValue GetReference<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key) => ref CollectionsMarshal.GetValueRefOrNullRef(dictionary, key);
-        public static void DrawPoint(this DepthlessSpriteBatch spriteBatch, Vector2 position, Vector2 size = default, Color? color = null, float rotation = 0)
+        public static void DrawPoint(this SpriteBatch spriteBatch, Vector2 position, Vector2 size = default, Color? color = null, float rotation = 0)
         {
             size = size == default ? Vector2.One : size;
             color ??= Color.Red;
             spriteBatch.Draw(Assets.Textures["SinglePixel"], position, null, color.Value, rotation, Vector2.One / 2, size);
         }
-        public static void DrawHollowLine(this DepthlessSpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null)
+        public static void DrawHollowLine(this SpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null)
         {
             Color color2 = color ?? Color.Red;
             Vector2 vector2 = new Vector2(0f, width / 2f).RotateRad((end - start).ToRadians());
             ref GameTexture singlePixel = ref Assets.Textures["SinglePixel"];
             PushLine(ref spriteBatch, singlePixel, start, end, color2, vector2);
         }
-        public static void DrawLine(this DepthlessSpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null)
+        public static void DrawLine(this SpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null)
         {
             Color color2 = color ?? Color.Red;
             Vector2 vector2 = new Vector2(0f, width / 2f).RotateRad((end - start).ToRadians());
             PushLine(ref spriteBatch, Assets.Textures["SinglePixel"], start, end, color2, vector2);
         }
-        public static void DrawLine(this DepthlessSpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, float width, Color? color = null)
+        public static void DrawLine(this SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, float width, Color? color = null)
         {
             Color color2 = color ?? Color.Red;
             Vector2 vector2 = new Vector2(0f, width / 2f).RotateRad((end - start).ToRadians());
@@ -1225,33 +1234,33 @@ namespace PlatformFighter.Miscelaneous
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void PushLine(ref DepthlessSpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, Color color, Vector2 vector2)
+        public static void PushLine(ref SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, Color color, Vector2 vector2)
         {
-            DepthlessSpriteBatchItem depthlessSpriteBatchItem = spriteBatch.batcher.CreateBatchItem();
-            depthlessSpriteBatchItem.Texture = texture;
-            depthlessSpriteBatchItem.vertexTL.Position.X = start.X + vector2.X;
-            depthlessSpriteBatchItem.vertexTL.Position.Y = start.Y + vector2.Y;
-            depthlessSpriteBatchItem.vertexTR.Position.X = start.X - vector2.X;
-            depthlessSpriteBatchItem.vertexTR.Position.Y = start.Y - vector2.Y;
-            depthlessSpriteBatchItem.vertexBL.Position.X = end.X + vector2.X;
-            depthlessSpriteBatchItem.vertexBL.Position.Y = end.Y + vector2.Y;
-            depthlessSpriteBatchItem.vertexBR.Position.X = end.X - vector2.X;
-            depthlessSpriteBatchItem.vertexBR.Position.Y = end.Y - vector2.Y;
-            depthlessSpriteBatchItem.vertexTL.TextureCoordinate.X = 0f;
-            depthlessSpriteBatchItem.vertexTL.TextureCoordinate.Y = 0f;
-            depthlessSpriteBatchItem.vertexTR.TextureCoordinate.X = 1f;
-            depthlessSpriteBatchItem.vertexTR.TextureCoordinate.Y = 0f;
-            depthlessSpriteBatchItem.vertexBL.TextureCoordinate.X = 0f;
-            depthlessSpriteBatchItem.vertexBL.TextureCoordinate.Y = 1f;
-            depthlessSpriteBatchItem.vertexBR.TextureCoordinate.X = 1f;
-            depthlessSpriteBatchItem.vertexBR.TextureCoordinate.Y = 1f;
-            depthlessSpriteBatchItem.vertexTL.Color = color;
-            depthlessSpriteBatchItem.vertexTR.Color = color;
-            depthlessSpriteBatchItem.vertexBL.Color = color;
-            depthlessSpriteBatchItem.vertexBR.Color = color;
+            SpriteBatchItem spriteBatchItem = spriteBatch.batcher.CreateBatchItem();
+            spriteBatchItem.Texture = texture;
+            spriteBatchItem.vertexTL.Position.X = start.X + vector2.X;
+            spriteBatchItem.vertexTL.Position.Y = start.Y + vector2.Y;
+            spriteBatchItem.vertexTR.Position.X = start.X - vector2.X;
+            spriteBatchItem.vertexTR.Position.Y = start.Y - vector2.Y;
+            spriteBatchItem.vertexBL.Position.X = end.X + vector2.X;
+            spriteBatchItem.vertexBL.Position.Y = end.Y + vector2.Y;
+            spriteBatchItem.vertexBR.Position.X = end.X - vector2.X;
+            spriteBatchItem.vertexBR.Position.Y = end.Y - vector2.Y;
+            spriteBatchItem.vertexTL.TextureCoordinate.X = 0f;
+            spriteBatchItem.vertexTL.TextureCoordinate.Y = 0f;
+            spriteBatchItem.vertexTR.TextureCoordinate.X = 1f;
+            spriteBatchItem.vertexTR.TextureCoordinate.Y = 0f;
+            spriteBatchItem.vertexBL.TextureCoordinate.X = 0f;
+            spriteBatchItem.vertexBL.TextureCoordinate.Y = 1f;
+            spriteBatchItem.vertexBR.TextureCoordinate.X = 1f;
+            spriteBatchItem.vertexBR.TextureCoordinate.Y = 1f;
+            spriteBatchItem.vertexTL.Color = color;
+            spriteBatchItem.vertexTR.Color = color;
+            spriteBatchItem.vertexBL.Color = color;
+            spriteBatchItem.vertexBR.Color = color;
             spriteBatch.FlushIfNeeded();
         }
-        public static void DrawRectangle(this DepthlessSpriteBatch spriteBatch, Rectangle rectangle, float width = 1f, Color? color = null)
+        public static void DrawRectangle(this SpriteBatch spriteBatch, Rectangle rectangle, float width = 1f, Color? color = null)
         {
             float halfWidth = 0.5f * width;
             Texture2D texture = Assets.Textures["SinglePixel"];
@@ -1261,7 +1270,7 @@ namespace PlatformFighter.Miscelaneous
             GenerateRectangleCornerItem(rectangle.Left, rectangle.Bottom, rectangle.Left, rectangle.Bottom, rectangle.Right, rectangle.Bottom, rectangle.Right, rectangle.Bottom, spriteBatch, halfWidth, texture, finalColor);
             GenerateRectangleCornerItem(rectangle.Left, rectangle.Top, rectangle.Left, rectangle.Bottom, rectangle.Left, rectangle.Top, rectangle.Left, rectangle.Bottom, spriteBatch, halfWidth, texture, finalColor);
         }
-        public static void DrawRectangle(this DepthlessSpriteBatch spriteBatch, float left, float right, float top, float bottom, float width = 1f, Color? color = null)
+        public static void DrawRectangle(this SpriteBatch spriteBatch, float left, float right, float top, float bottom, float width = 1f, Color? color = null)
         {
             float halfWidth = 0.5f * width;
             Texture2D texture = Assets.Textures["SinglePixel"];
@@ -1272,30 +1281,30 @@ namespace PlatformFighter.Miscelaneous
             GenerateRectangleCornerItem(left, top, left, bottom, left, top, left, bottom, spriteBatch, halfWidth, texture, finalColor);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static void GenerateRectangleCornerItem(float pos0X, float pos0Y, float pos2X, float pos2Y, float pos1X, float pos1Y, float pos3X, float pos3Y, DepthlessSpriteBatch spriteBatch, float halfWidth, Texture2D texture, Color finalColor)
+        private static void GenerateRectangleCornerItem(float pos0X, float pos0Y, float pos2X, float pos2Y, float pos1X, float pos1Y, float pos3X, float pos3Y, SpriteBatch spriteBatch, float halfWidth, Texture2D texture, Color finalColor)
         {
-            DepthlessSpriteBatchItem depthlessSpriteBatchItem = spriteBatch.batcher.CreateBatchItem();
-            depthlessSpriteBatchItem.Texture = texture;
-            depthlessSpriteBatchItem.vertexTL.Position.X = pos0X - halfWidth;
-            depthlessSpriteBatchItem.vertexTL.Position.Y = pos0Y - halfWidth;
-            depthlessSpriteBatchItem.vertexTR.Position.X = pos1X + halfWidth;
-            depthlessSpriteBatchItem.vertexTR.Position.Y = pos1Y - halfWidth;
-            depthlessSpriteBatchItem.vertexBL.Position.X = pos2X - halfWidth;
-            depthlessSpriteBatchItem.vertexBL.Position.Y = pos2Y + halfWidth;
-            depthlessSpriteBatchItem.vertexBR.Position.X = pos3X + halfWidth;
-            depthlessSpriteBatchItem.vertexBR.Position.Y = pos3Y + halfWidth;
-            depthlessSpriteBatchItem.vertexTL.TextureCoordinate.X = 0f;
-            depthlessSpriteBatchItem.vertexTL.TextureCoordinate.Y = 0f;
-            depthlessSpriteBatchItem.vertexTR.TextureCoordinate.X = 1f;
-            depthlessSpriteBatchItem.vertexTR.TextureCoordinate.Y = 0f;
-            depthlessSpriteBatchItem.vertexBL.TextureCoordinate.X = 0f;
-            depthlessSpriteBatchItem.vertexBL.TextureCoordinate.Y = 1f;
-            depthlessSpriteBatchItem.vertexBR.TextureCoordinate.X = 1f;
-            depthlessSpriteBatchItem.vertexBR.TextureCoordinate.Y = 1f;
-            depthlessSpriteBatchItem.vertexTL.Color = finalColor;
-            depthlessSpriteBatchItem.vertexTR.Color = finalColor;
-            depthlessSpriteBatchItem.vertexBL.Color = finalColor;
-            depthlessSpriteBatchItem.vertexBR.Color = finalColor;
+            SpriteBatchItem spriteBatchItem = spriteBatch.batcher.CreateBatchItem();
+            spriteBatchItem.Texture = texture;
+            spriteBatchItem.vertexTL.Position.X = pos0X - halfWidth;
+            spriteBatchItem.vertexTL.Position.Y = pos0Y - halfWidth;
+            spriteBatchItem.vertexTR.Position.X = pos1X + halfWidth;
+            spriteBatchItem.vertexTR.Position.Y = pos1Y - halfWidth;
+            spriteBatchItem.vertexBL.Position.X = pos2X - halfWidth;
+            spriteBatchItem.vertexBL.Position.Y = pos2Y + halfWidth;
+            spriteBatchItem.vertexBR.Position.X = pos3X + halfWidth;
+            spriteBatchItem.vertexBR.Position.Y = pos3Y + halfWidth;
+            spriteBatchItem.vertexTL.TextureCoordinate.X = 0f;
+            spriteBatchItem.vertexTL.TextureCoordinate.Y = 0f;
+            spriteBatchItem.vertexTR.TextureCoordinate.X = 1f;
+            spriteBatchItem.vertexTR.TextureCoordinate.Y = 0f;
+            spriteBatchItem.vertexBL.TextureCoordinate.X = 0f;
+            spriteBatchItem.vertexBL.TextureCoordinate.Y = 1f;
+            spriteBatchItem.vertexBR.TextureCoordinate.X = 1f;
+            spriteBatchItem.vertexBR.TextureCoordinate.Y = 1f;
+            spriteBatchItem.vertexTL.Color = finalColor;
+            spriteBatchItem.vertexTR.Color = finalColor;
+            spriteBatchItem.vertexBL.Color = finalColor;
+            spriteBatchItem.vertexBR.Color = finalColor;
             spriteBatch.FlushIfNeeded();
         }
         public static void DrawLifeBarCentered(this DepthlessSpriteBatch spriteBatch, Vector2 position, Vector2 size, float progress, Color aliveColor, Color deadColor)
@@ -1330,7 +1339,7 @@ namespace PlatformFighter.Miscelaneous
             spriteBatch.Draw(Assets.Textures["SinglePixel"], aliveRect, null, aliveColor);
             spriteBatch.Draw(Assets.Textures["SinglePixel"], deadRect, null, deadColor);
         }
-        public static void DrawLines(this DepthlessSpriteBatch spriteBatch, PolygonLineData[] datas)
+        public static void DrawLines(this SpriteBatch spriteBatch, PolygonLineData[] datas)
         {
             foreach (PolygonLineData line in datas)
             {
@@ -1340,7 +1349,7 @@ namespace PlatformFighter.Miscelaneous
                 }
             }
         }
-        public static void DrawLines(this DepthlessSpriteBatch spriteBatch, ReadOnlySpan<Vector2> positions, float width = 1, Color? color = null)
+        public static void DrawLines(this SpriteBatch spriteBatch, ReadOnlySpan<Vector2> positions, float width = 1, Color? color = null)
         {
             int length = positions.Length;
             for (int i = 0; i < length; i++)
@@ -1357,7 +1366,7 @@ namespace PlatformFighter.Miscelaneous
                 spriteBatch.DrawLine(positions[i], next, width, color);
             }
         }
-        public static void DrawLines(this DepthlessSpriteBatch spriteBatch, Vector2[] positions, float width = 1, Color? color = null)
+        public static void DrawLines(this SpriteBatch spriteBatch, Vector2[] positions, float width = 1, Color? color = null)
         {
             int length = positions.Length;
             for (int i = 0; i < length; i++)
@@ -1374,7 +1383,7 @@ namespace PlatformFighter.Miscelaneous
                 spriteBatch.DrawLine(positions[i], next, width, color);
             }
         }
-        public static void DrawLines(this DepthlessSpriteBatch spriteBatch, Vector2[] positions, Func<float, float> widthFunction, Func<float, Color> colorFunction)
+        public static void DrawLines(this SpriteBatch spriteBatch, Vector2[] positions, Func<float, float> widthFunction, Func<float, Color> colorFunction)
         {
             for (int i = 0; i < positions.Length; i++)
             {
@@ -1629,14 +1638,14 @@ namespace PlatformFighter.Miscelaneous
         public void SaveSnippet(BinaryWriter writer);
         public void ReadSnippet(BinaryReader reader);
     }
-    public enum Direction
+    [Flags]
+    public enum Direction : byte
     {
-        Up,
-        Down,
-        Left,
-        Right,
         None,
-        Custom
+        Up = 1,
+        Down = 2,
+        Left = 4,
+        Right = 8,
     }
     public ref struct StackList<T>
     {

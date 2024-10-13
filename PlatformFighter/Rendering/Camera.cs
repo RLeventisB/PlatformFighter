@@ -7,62 +7,35 @@ namespace PlatformFighter.Rendering
     public static class Camera
     {
         private static bool remakeMatrix = true;
-        private static Vector2 _position = Vector2.Zero, _scale = Vector2.One;
-        private static float _angle;
+        private static Vector2 _position = Vector2.Zero;
+        private static float _zoom = 1;
         public static Vector2 Position
         {
             get => _position;
             set
             {
-                if (_position != value)
-                {
-                    remakeMatrix = true;
-                    _position.X = value.X;
-                    _position.Y = value.Y;
-                    // _position = value; no se si esto hara que haya menos garbage collection porque estas cambiando los valores en vez de asignar un valor o el valor llamado value sera basura de memoria AAAAAAAAAA
-                }
+                if (_position == value)
+                    return;
+
+                remakeMatrix = true;
+                _position = value;
             }
         }
-        public static Vector2 Scale
+        public static float Zoom
         {
-            get => _scale;
+            get => _zoom;
             set
             {
-                if (_scale != value)
-                {
-                    remakeMatrix = true;
-                    _scale = value;
-                }
-            }
-        }
-        public static float ScaleSingle
-        {
-            get => (_scale.X + _scale.Y) / 2;
-            set
-            {
-                Vector2 VectorScale = new Vector2(value);
-                if (_scale != VectorScale)
-                {
-                    remakeMatrix = true;
-                    _scale = VectorScale;
-                }
-            }
-        }
-        public static float Angle
-        {
-            get => _angle;
-            set
-            {
-                if (_angle != value)
-                {
-                    remakeMatrix = true;
-                    _angle = value;
-                }
+                if (_zoom == value)
+                    return;
+
+                remakeMatrix = true;
+                _zoom = value;
             }
         }
         public static Vector2 CameraShakeOffset = Vector2.Zero;
         public static List<CameraShake> CameraShakes = new List<CameraShake>();
-        public static Matrix matrix;
+        public static Matrix ViewMatrix;
         public static void Update()
         {
             CameraShakeOffset = Vector2.Zero;
@@ -79,11 +52,10 @@ namespace PlatformFighter.Rendering
             }
             if (remakeMatrix)
             {
-                matrix = Matrix.Identity *
+                ViewMatrix = Matrix.Identity *
                          Matrix.CreateTranslation(-_position.X + CameraShakeOffset.X, _position.Y + CameraShakeOffset.Y, 0) *
-                         Matrix.CreateRotationZ(MathHelper.ToRadians(Angle)) *
-                         Matrix.CreateTranslation(VirtualMidResolution.X / _scale.X, VirtualMidResolution.Y / _scale.Y, 0) *
-                         Matrix.CreateScale(_scale.X, _scale.Y, 0);
+                         Matrix.CreateTranslation(VirtualMidResolution.X / _zoom, VirtualMidResolution.Y / _zoom, 0) *
+                         Matrix.CreateScale(_zoom, _zoom, 0);
                 remakeMatrix = false;
             }
         }

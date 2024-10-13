@@ -98,6 +98,18 @@
 /processorParam:TextureFormat=Color
 /build:Textures/CarlaHead.png
 
+#begin Textures/DefaultPlatform.png
+/importer:GameTextureImporter
+/processor:GameTextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/DefaultPlatform.png
+
 #begin Textures/Elmo/ElmoBody.png
 /importer:GameTextureImporter
 /processor:GameTextureProcessor
@@ -145,4 +157,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/GlowNoShader.png
+
+#begin Textures/SinglePixel.png
+/importer:GameTextureImporter
+/processor:GameTextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/SinglePixel.png
 

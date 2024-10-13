@@ -62,6 +62,8 @@ namespace PlatformFighter.Rendering
         private static bool? _focusToggle;
         private static WindowType _windowType = WindowType.Fullscreen;
         public static Vector2 MaximumResolution => _maxRes;
+        public static Matrix ScalerMatrix => _scaleMatrix;
+        private static Matrix _scaleMatrix;
         public static Vector2 Resolution
         {
             get => _resolution;

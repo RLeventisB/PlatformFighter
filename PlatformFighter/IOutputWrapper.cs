@@ -34,6 +34,10 @@ namespace PlatformFighter
 #endif
     public readonly struct DebugWrapper : IOutputWrapper
     {
-        public void Write(string text) => Debug.Write(text);
+        public void Write(string text)
+        {
+            // Debugger.Log(0, "LogCommand", text + Environment.NewLine);
+            Debug.WriteLine(text);
+        }
     }
 }

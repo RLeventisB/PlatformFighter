@@ -1,0 +1,630 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NVorbis</name>
+    </assembly>
+    <members>
+        <member name="T:NVorbis.Extensions">
+            <summary>
+            Provides extension methods for NVorbis types.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Extensions.Read(NVorbis.Ogg.Packet,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads into the specified buffer.
+            </summary>
+            <param name="packet">The packet instance to use.</param>
+            <param name="buffer">The buffer to read into.</param>
+            <param name="index">The index into the buffer to use.</param>
+            <param name="count">The number of bytes to read into the buffer.</param>
+            <returns>The number of bytes actually read into the buffer.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadBytes(NVorbis.Ogg.Packet,System.Int32)">
+            <summary>
+            Reads the specified number of bytes from the packet and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <param name="count">The number of bytes to read.</param>
+            <returns>A byte array holding the data read.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadBit(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads one bit from the packet and advances the read position.
+            </summary>
+            <returns><see langword="true"/> if the bit was a one, otehrwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.PeekByte(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next byte from the packet. Does not advance the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The byte read from the packet.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadByte(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next byte from the packet and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The byte read from the packet.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadInt16(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next 16 bits from the packet as a <see cref="T:System.Int16"/> and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The value of the next 16 bits.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadInt32(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next 32 bits from the packet as a <see cref="T:System.Int32"/> and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The value of the next 32 bits.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadInt64(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next 64 bits from the packet as a <see cref="T:System.Int64"/> and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The value of the next 64 bits.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadUInt16(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next 16 bits from the packet as a <see cref="T:System.UInt16"/> and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The value of the next 16 bits.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadUInt32(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next 32 bits from the packet as a <see cref="T:System.UInt32"/> and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The value of the next 32 bits.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.ReadUInt64(NVorbis.Ogg.Packet)">
+            <summary>
+            Reads the next 64 bits from the packet as a <see cref="T:System.UInt64"/> and advances the position counter.
+            </summary>
+            <param name="packet"></param>
+            <returns>The value of the next 64 bits.</returns>
+        </member>
+        <member name="M:NVorbis.Extensions.SkipBytes(NVorbis.Ogg.Packet,System.Int32)">
+            <summary>
+            Advances the position counter by the specified number of bytes.
+            </summary>
+            <param name="packet"></param>
+            <param name="count">The number of bytes to advance.</param>
+        </member>
+        <member name="T:NVorbis.NewStreamEventArgs">
+            <summary>
+            Event data for when a new logical stream is found in a container.
+            </summary>
+        </member>
+        <member name="M:NVorbis.NewStreamEventArgs.#ctor(NVorbis.StreamDecoder)">
+            <summary>
+            Creates a new instance of <see cref="T:NVorbis.NewStreamEventArgs"/> with the specified <see cref="P:NVorbis.NewStreamEventArgs.StreamDecoder"/>.
+            </summary>
+            <param name="streamDecoder">An <see cref="!:IStreamDecoder"/> instance.</param>
+        </member>
+        <member name="P:NVorbis.NewStreamEventArgs.StreamDecoder">
+            <summary>
+            Gets new the <see cref="P:NVorbis.NewStreamEventArgs.StreamDecoder"/> instance.
+            </summary>
+        </member>
+        <member name="P:NVorbis.NewStreamEventArgs.IgnoreStream">
+            <summary>
+            Gets or sets whether to ignore the logical stream associated with the packet provider.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.ContainerReader.NewStreamCallback">
+            <summary>
+            Gets or sets the callback to invoke when a new stream is encountered in the container.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Ogg.ContainerReader.GetStreams">
+            <summary>
+            Returns a list of streams available from this container.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.ContainerReader.CanSeek">
+            <summary>
+            Gets whether the underlying stream can seek.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.ContainerReader.WasteBits">
+            <summary>
+            Gets the number of bits in the container that are not associated with a logical stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.ContainerReader.ContainerBits">
+            <summary>
+            Gets the number of bits in the container that are strictly for framing of logical streams.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Ogg.ContainerReader.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+            Creates a new instance of <see cref="T:NVorbis.Ogg.ContainerReader"/>.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> to read.</param>
+            <param name="closeOnDispose"><c>True</c> to close the stream when disposed, otherwise <c>false</c>.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="stream"/>'s <see cref="P:System.IO.Stream.CanSeek"/> is <c>False</c>.</exception>
+        </member>
+        <member name="M:NVorbis.Ogg.ContainerReader.TryInit">
+            <summary>
+            Attempts to initialize the container.
+            </summary>
+            <returns><see langword="true"/> if successful, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NVorbis.Ogg.ContainerReader.FindNextStream">
+            <summary>
+            Finds the next new stream in the container.
+            </summary>
+            <returns><c>True</c> if a new stream was found, otherwise <c>False</c>.</returns>
+        </member>
+        <member name="M:NVorbis.Ogg.ContainerReader.Dispose">
+            <summary>
+            Cleans up
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.ContainerOverheadBits">
+            <summary>
+            Gets the number of container overhead bits associated with this packet.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.GranulePosition">
+            <summary>
+            Gets the granule position of the packet, if known.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.IsResync">
+            <summary>
+            Gets whether this packet occurs immediately following a loss of sync in the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.IsShort">
+            <summary>
+            Gets whether this packet did not read its full data.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.IsEndOfStream">
+            <summary>
+            Gets whether the packet is the last packet of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.BitsRead">
+            <summary>
+            Gets the number of bits read from the packet.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.BitsRemaining">
+            <summary>
+            Gets the number of bits left in the packet.
+            </summary>
+        </member>
+        <member name="P:NVorbis.Ogg.Packet.TotalBits">
+            <summary>
+            Gets the total number of bits in the packet.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Ogg.Packet.Reset">
+            <summary>
+            Resets the read buffers to the beginning of the packet.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Ogg.Packet.Done">
+            <summary>
+            Frees the buffers and caching for the packet instance.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Ogg.Packet.SkipBits(System.Int32)">
+            <summary>
+            Advances the read position by the the specified number of bits.
+            </summary>
+            <param name="count">The number of bits to skip reading.</param>
+        </member>
+        <member name="M:NVorbis.Ogg.Packet.TryPeekBits(System.Int32,System.Int32@)">
+            <summary>
+            Attempts to read the specified number of bits from the packet.  Does not advance the read position.
+            </summary>
+            <param name="count">The number of bits to read.</param>
+            <param name="bitsRead">Outputs the actual number of bits read.</param>
+            <returns>The value of the bits read.</returns>
+        </member>
+        <member name="T:NVorbis.Ogg.PacketFlags">
+            <summary>
+            Defines flags to apply to the current packet
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.IsResync">
+            <summary>
+            Packet is first since reader had to resync with stream.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.IsEndOfStream">
+            <summary>
+            Packet is the last in the logical stream.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.IsShort">
+            <summary>
+            Packet does not have all its data available.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.User0">
+            <summary>
+            Flag for use by inheritors.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.User1">
+            <summary>
+            Flag for use by inheritors.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.User2">
+            <summary>
+            Flag for use by inheritors.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.User3">
+            <summary>
+            Flag for use by inheritors.
+            </summary>
+        </member>
+        <member name="F:NVorbis.Ogg.PacketFlags.User4">
+            <summary>
+            Flag for use by inheritors.
+            </summary>
+        </member>
+        <member name="T:NVorbis.Ogg.GetPacketGranuleCount">
+            <summary>
+            Encapsulates a method that calculates the number of granules decodable from the specified packet.
+            </summary>
+            <param name="packet">The <see cref="T:NVorbis.Ogg.Packet"/> to calculate.</param>
+            <param name="isFirst"><see langword="true"/> if the packet is the very first packet in the stream, otherwise <see langword="false"/>.</param>
+            <param name="isLastInPage"><see langword="true"/> if the packet is the last in the page, otherise <see langword="false"/>.</param>
+            <returns>The calculated number of granules.</returns>
+        </member>
+        <member name="P:NVorbis.Ogg.PacketProvider.StreamSerial">
+            <summary>
+            Gets the serial number of this provider's data stream.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Ogg.PacketProvider.GetGranuleCount">
+            <summary>
+            Gets the total number of granule available in the stream.
+            </summary>
+        </member>
+        <member name="M:NVorbis.Ogg.PacketProvider.GetNextPacket">
+            <summary>
+            Gets the next packet in the stream and advances to the next packet position.
+            </summary>
+            <returns>The <see cref="T:NVorbis.Ogg.Packet"/> instance for the next packet if available, otherwise <see langword="null"/>.</returns>
+        </member>
+        <member name="M:NVorbis.Ogg.PacketProvider.PeekNextPacket">
+            <summary>
+            Gets the next packet in the stream without advancing to the next packet position.
+            </summary>
+            <returns>The <see cref="T:NVorbis.Ogg.Packet"/> instance for the next packet if available, otherwise <see langword="null"/>.</returns>
+        </member>
+        <member name="M:NVorbis.Ogg.PacketProvider.SeekTo(System.Int64,System.Int32,NVorbis.Ogg.GetPacketGranuleCount)">
+            <summary>
+            Seeks the stream to the packet that is prior to the requested granule position by the specified preroll number of packets.
+            </summary>
+            <param name="granulePos">The granule position to seek to.</param>
+            <param name="preRoll">The number of packets to seek backward prior to the granule position.</param>
+            <param name="getPacketGranuleCount">A <see cref="T:NVorbis.Ogg.GetPacketGranuleCount"/> delegate that returns the number of granules in the specified packet.</param>
+            <returns>The granule position at the start of the packet containing the requested position.</returns>
+        </member>
+        <member name="M:NVorbis.Ogg.PageReaderBase.VerifyHeader(System.Byte[],System.Int32,System.Int32@)">
+            <summary>
+            Verifies the sync sequence and loads the rest of the header.
+            </summary>
+            <returns><see langword="true"/> if successful, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NVorbis.Ogg.PageReaderBase.SeekStream(System.Int64)">
+            <summary>
+            Seeks the underlying stream to the requested position.
+            </summary>
+            <param name="offset">A byte offset relative to the origin parameter.</param>
+            <returns>The new position of the stream.</returns>
+            <exception cref="T:System.InvalidOperationException">The stream is not seekable.</exception>
+        </member>
+        <member name="T:NVorbis.StreamDecoder">
+            <summary>
+            Implements a stream decoder for Vorbis data.
+            </summary>
+        </member>
+        <member name="M:NVorbis.StreamDecoder.#ctor(NVorbis.Ogg.PacketProvider)">
+            <summary>
+            Creates a new instance of <see cref="T:NVorbis.StreamDecoder"/>.
+            </summary>
+            <param name="packetProvider">A <see cref="T:NVorbis.Ogg.PacketProvider"/> instance for the decoder to read from.</param>
+        </member>
+        <member name="M:NVorbis.StreamDecoder.Read(System.Span{System.Single},System.Int32,System.Int32)">
+            <summary>
+            Reads samples into the specified buffer.
+            </summary>
+            <param name="buffer">The buffer to read the samples into.</param>
+            <param name="offset">The index to start reading samples into the buffer.</param>
+            <param name="count">The number of samples that should be read into the buffer.  Must be a multiple of <see cref="P:NVorbis.StreamDecoder.Channels"/>.</param>
+            <returns>The number of samples read into the buffer.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the buffer is too small or <paramref name="offset"/> is less than zero.</exception>
+            <remarks>The data populated into <paramref name="buffer"/> is interleaved by channel in normal PCM fashion: Left, Right, Left, Right, Left, Right</remarks>
+        </member>
+        <member name="M:NVorbis.StreamDecoder.SeekTo(System.TimeSpan,System.IO.SeekOrigin)">
+            <summary>
+            Seeks the stream by the specified duration.
+            </summary>
+            <param name="timePosition">The relative time to seek to.</param>
+            <param name="seekOrigin">The reference point used to obtain the new position.</param>
+        </member>
+        <member name="M:NVorbis.StreamDecoder.SeekTo(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+            Seeks the stream by the specified sample count.
+            </summary>
+            <param name="samplePosition">The relative sample position to seek to.</param>
+            <param name="seekOrigin">The reference point used to obtain the new position.</param>
+        </member>
+        <member name="M:NVorbis.StreamDecoder.Dispose">
+            <summary>
+            Cleans up this instance.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.Channels">
+            <summary>
+            Gets the number of channels in the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.SampleRate">
+            <summary>
+            Gets the sample rate of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.UpperBitrate">
+            <summary>
+            Gets the upper bitrate limit for the stream, if specified.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.NominalBitrate">
+            <summary>
+            Gets the nominal bitrate of the stream, if specified.  May be calculated from <see cref="P:NVorbis.StreamDecoder.LowerBitrate"/> and <see cref="P:NVorbis.StreamDecoder.UpperBitrate"/>.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.LowerBitrate">
+            <summary>
+            Gets the lower bitrate limit for the stream, if specified.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.Tags">
+            <summary>
+            Gets the tag data from the stream's header.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.TotalTime">
+            <summary>
+            Gets the total duration of the decoded stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.TotalSamples">
+            <summary>
+            Gets the total number of samples in the decoded stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.TimePosition">
+            <summary>
+            Gets or sets the current time position of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.SamplePosition">
+            <summary>
+            Gets or sets the current sample position of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.IsEndOfStream">
+            <summary>
+            Gets whether the decoder has reached the end of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamDecoder.Stats">
+            <summary>
+            Gets the <see cref="T:NVorbis.StreamStats"/> instance for this stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamStats.EffectiveBitRate">
+            <summary>
+            Gets the calculated bit rate of audio stream data for the everything decoded so far.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamStats.InstantBitRate">
+            <summary>
+            Gets the calculated bit rate per second of audio for the last two packets.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamStats.ContainerBits">
+            <summary>
+            Gets the number of framing bits used by the container.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamStats.OverheadBits">
+            <summary>
+            Gets the number of bits read that do not contribute to the output audio.  Does not include framing bits from the container.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamStats.AudioBits">
+            <summary>
+            Gets the number of bits read that contribute to the output audio.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamStats.WasteBits">
+            <summary>
+            Gets the number of bits skipped.
+            </summary>
+        </member>
+        <member name="P:NVorbis.StreamStats.PacketCount">
+            <summary>
+            Gets the number of packets read.
+            </summary>
+        </member>
+        <member name="M:NVorbis.StreamStats.ResetStats">
+            <summary>
+            Resets the counters for bit rate and bits.
+            </summary>
+        </member>
+        <member name="T:NVorbis.VorbisReader">
+            <summary>
+            Implements an easy to use wrapper around <see cref="T:NVorbis.Ogg.ContainerReader"/> and <see cref="T:NVorbis.StreamDecoder"/>.
+            </summary>
+        </member>
+        <member name="E:NVorbis.VorbisReader.NewStream">
+            <summary>
+            Raised when a new stream has been encountered in the file or container.
+            </summary>
+        </member>
+        <member name="M:NVorbis.VorbisReader.#ctor(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:NVorbis.VorbisReader"/> reading from the specified file.
+            </summary>
+            <param name="fileName">The file to read from.</param>
+        </member>
+        <member name="M:NVorbis.VorbisReader.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>
+            Creates a new instance of <see cref="T:NVorbis.VorbisReader"/> reading from the specified stream, optionally taking ownership of it.
+            </summary>
+            <param name="stream">The <see cref="T:System.IO.Stream"/> to read from.</param>
+            <param name="closeOnDispose"><see langword="true"/> to take ownership and clean up the instance when disposed, otherwise <see langword="false"/>.</param>
+        </member>
+        <member name="M:NVorbis.VorbisReader.Dispose">
+            <summary>
+            Cleans up this instance.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.Streams">
+            <summary>
+            Gets the list of <see cref="T:NVorbis.StreamDecoder"/> instances associated with the loaded file / container.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.Channels">
+            <summary>
+            Gets the number of channels in the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.SampleRate">
+            <summary>
+            Gets the sample rate of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.UpperBitrate">
+            <summary>
+            Gets the upper bitrate limit for the stream, if specified.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.NominalBitrate">
+            <summary>
+            Gets the nominal bitrate of the stream, if specified.  May be calculated from <see cref="P:NVorbis.VorbisReader.LowerBitrate"/> and <see cref="P:NVorbis.VorbisReader.UpperBitrate"/>.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.LowerBitrate">
+            <summary>
+            Gets the lower bitrate limit for the stream, if specified.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.Tags">
+            <summary>
+            Gets the tag data from the stream's header.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.ContainerOverheadBits">
+            <summary>
+            Gets the number of bits read that are related to framing and transport alone.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.ContainerWasteBits">
+            <summary>
+            Gets the number of bits skipped in the container due to framing, ignored streams, or sync loss.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.StreamIndex">
+            <summary>
+            Gets the currently-selected stream's index.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.TotalTime">
+            <summary>
+            Gets the total duration of the decoded stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.TotalSamples">
+            <summary>
+            Gets the total number of samples in the decoded stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.TimePosition">
+            <summary>
+            Gets or sets the current time position of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.SamplePosition">
+            <summary>
+            Gets or sets the current sample position of the stream.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.IsEndOfStream">
+            <summary>
+            Gets whether the current stream has ended.
+            </summary>
+        </member>
+        <member name="P:NVorbis.VorbisReader.StreamStats">
+            <summary>
+            Gets the <see cref="P:NVorbis.VorbisReader.StreamStats"/> instance for this stream.
+            </summary>
+        </member>
+        <member name="M:NVorbis.VorbisReader.FindNextStream">
+            <summary>
+            Searches for the next stream in a concatenated file.  Will raise <see cref="E:NVorbis.VorbisReader.NewStream"/> for the found stream, and will add it to <see cref="P:NVorbis.VorbisReader.Streams"/> if not marked as ignored.
+            </summary>
+            <returns><see langword="true"/> if a new stream was found, otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NVorbis.VorbisReader.SwitchStreams(System.Int32)">
+            <summary>
+            Switches to an alternate logical stream.
+            </summary>
+            <param name="index">The logical stream index to switch to</param>
+            <returns><see langword="true"/> if the properties of the logical stream differ from those of the one previously being decoded. Otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:NVorbis.VorbisReader.SeekTo(System.TimeSpan,System.IO.SeekOrigin)">
+            <summary>
+            Seeks the stream by the specified duration.
+            </summary>
+            <param name="timePosition">The relative time to seek to.</param>
+            <param name="seekOrigin">The reference point used to obtain the new position.</param>
+        </member>
+        <member name="M:NVorbis.VorbisReader.SeekTo(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+            Seeks the stream by the specified sample count.
+            </summary>
+            <param name="samplePosition">The relative sample position to seek to.</param>
+            <param name="seekOrigin">The reference point used to obtain the new position.</param>
+        </member>
+        <member name="M:NVorbis.VorbisReader.ReadSamples(System.Single[],System.Int32,System.Int32)">
+            <summary>
+            Reads samples into the specified buffer.
+            </summary>
+            <param name="buffer">The buffer to read the samples into.</param>
+            <param name="offset">The index to start reading samples into the buffer.</param>
+            <param name="count">The number of samples that should be read into the buffer.</param>
+            <returns>The number of floats read into the buffer.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the buffer is too small or <paramref name="offset"/> is less than zero.</exception>
+            <remarks>The data populated into <paramref name="buffer"/> is interleaved by channel in normal PCM fashion: Left, Right, Left, Right, Left, Right</remarks>
+        </member>
+        <member name="M:NVorbis.VorbisReader.ReadSamples(System.Span{System.Single})">
+            <summary>
+            Reads samples into the specified buffer.
+            </summary>
+            <param name="buffer">The buffer to read the samples into.</param>
+            <returns>The number of floats read into the buffer.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the buffer is too small.</exception>
+            <remarks>The data populated into <paramref name="buffer"/> is interleaved by channel in normal PCM fashion: Left, Right, Left, Right, Left, Right</remarks>
+        </member>
+    </members>
+</doc>
