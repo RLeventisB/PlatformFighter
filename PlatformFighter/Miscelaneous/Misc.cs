@@ -25,33 +25,12 @@ using Vector4 = Microsoft.Xna.Framework.Vector4;
 
 namespace PlatformFighter.Miscelaneous
 {
-    [Flags]
-    public enum DeathReason : ushort
-    {
-        NotSpecified = 0,
-        TileCollide = 1,
-        PlayerInteract = 2,
-        EnemyInteract = 4,
-        BossClear = 8,
-        Hit = 16,
-        Timeleft = 32,
-        DustDespawn = 64,
-        OnCommand = 128,
-        ZeroHitsLeft = 256,
-        WorldClear = 512,
-        OutOfBound = 1024,
-        ZeroHealth = 2048
-    }
     public static class Utils
     {
         public const sbyte Zero = 0;
         public static readonly Point[] directionPointMap = { Up, Down, Left, Right, Point.Zero, Point.Zero };
         public static readonly Vector2[] directionVectorMap = { Up, Down, Left, Right, Vector2.Zero, Vector2.Zero };
         public static readonly string[] MemoryPrefixes = { "B", "KB", "MB", "GB", "TB" };
-        // public static Vector3 ApplyTranslationMatrix(Vector3 vector, Matrix matrix) => vector - new Vector3(matrix.M41, matrix.M42, matrix.M43);
-        // public static Vector2 ApplyTranslationMatrix(Vector2 vector, Matrix matrix) => vector - new Vector2(matrix.M41, matrix.M42);
-        // public static Vector3 ApplyScaleMatrix(Vector3 vector, Matrix matrix) => vector * new Vector3(matrix.M11, matrix.M22, matrix.M33);
-        // public static Vector2 ApplyScaleMatrix(Vector2 vector, Matrix matrix) => vector * new Vector2(matrix.M11, matrix.M22);
         public static readonly Action emptyDelegate = delegate { };
         public static readonly Color TransparentWhite = new Color(255, 255, 255, 0);
         public static float DivideOrHalf(int x, float divisor)
