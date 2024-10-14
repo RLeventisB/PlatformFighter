@@ -63,7 +63,7 @@ namespace PlatformFighter
 
 		public static void RenderWorld(GameTime gameTime)
 		{
-			Main.spriteBatch.Begin(SpriteSortMode.Deferred, Renderer.PixelBlendState, Renderer.PixelSamplerState, transformMatrix: Camera.ViewMatrix);
+			Main.spriteBatch.Begin(SpriteSortMode.FrontToBack, Renderer.PixelBlendState, Renderer.PixelSamplerState, transformMatrix: Camera.ViewMatrix);
 
 			foreach (Player player in Players)
 			{

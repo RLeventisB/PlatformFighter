@@ -4,11 +4,11 @@
   "playing_forward": false,
   "playing_backwards": false,
   "selected_fps": 120,
-  "current_keyframe": 7,
+  "current_keyframe": 30,
   "textures": [
     {
       "$id": "2",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "torso",
       "pivot": {
         "x": 20,
@@ -25,7 +25,7 @@
     },
     {
       "$id": "3",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "head",
       "pivot": {
         "x": 14,
@@ -42,7 +42,7 @@
     },
     {
       "$id": "4",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "forearm",
       "pivot": {
         "x": 6,
@@ -59,7 +59,7 @@
     },
     {
       "$id": "5",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "elbow stretch",
       "pivot": {
         "x": 6,
@@ -76,7 +76,7 @@
     },
     {
       "$id": "6",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "elbow contracted",
       "pivot": {
         "x": 6,
@@ -93,7 +93,7 @@
     },
     {
       "$id": "7",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "hand",
       "pivot": {
         "x": 5,
@@ -110,7 +110,7 @@
     },
     {
       "$id": "8",
-      "path": "..\\Textures\\ElmoEyes.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
       "name": "face",
       "pivot": {
         "x": 8,
@@ -127,7 +127,7 @@
     },
     {
       "$id": "9",
-      "path": "..\\Textures\\ElmoEyes.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
       "name": "eye",
       "pivot": {
         "x": -1,
@@ -144,7 +144,7 @@
     },
     {
       "$id": "10",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "sword",
       "pivot": {
         "x": 8,
@@ -161,7 +161,7 @@
     },
     {
       "$id": "11",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "leg",
       "pivot": {
         "x": 5,
@@ -178,7 +178,7 @@
     },
     {
       "$id": "12",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "knee",
       "pivot": {
         "x": 5,
@@ -195,7 +195,7 @@
     },
     {
       "$id": "13",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "foot",
       "pivot": {
         "x": 6,
@@ -239,9 +239,9 @@
               "$id": "18",
               "frame": 30,
               "value": {
-                        "x": 1,
-                        "y": 0.8
-                      },
+                "x": 1,
+                "y": 0.8
+              },
               "containing_value": {
                 "$ref": "15"
               }
@@ -378,9 +378,9 @@
               "$id": "39",
               "frame": 30,
               "value": {
-                        "x": -1.5833359,
-                        "y": 13.226192
-                      },
+                "x": -1.5833359,
+                "y": 13.226192
+              },
               "containing_value": {
                 "$ref": "36"
               }
@@ -424,7 +424,7 @@
             {
               "$id": "46",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "44"
               }
@@ -543,7 +543,7 @@
             {
               "$id": "67",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "65"
               }
@@ -584,9 +584,9 @@
               "$id": "73",
               "frame": 30,
               "value": {
-                        "x": 8,
-                        "y": 1
-                      },
+                "x": 8,
+                "y": 1
+              },
               "containing_value": {
                 "$ref": "70"
               }
@@ -630,7 +630,7 @@
             {
               "$id": "80",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "78"
               }
@@ -814,9 +814,9 @@
               "$id": "110",
               "frame": 30,
               "value": {
-                        "x": -15.1428795,
-                        "y": 3.8452435
-                      },
+                "x": -15.1428795,
+                "y": 3.8452435
+              },
               "containing_value": {
                 "$ref": "107"
               }
@@ -860,7 +860,7 @@
             {
               "$id": "117",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "115"
               }
@@ -896,7 +896,7 @@
             {
               "$id": "123",
               "frame": 13,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "120"
               }
@@ -1068,9 +1068,9 @@
               "$id": "150",
               "frame": 30,
               "value": {
-                        "x": -19.435574,
-                        "y": 12.603197
-                      },
+                "x": -19.435574,
+                "y": 12.603197
+              },
               "containing_value": {
                 "$ref": "147"
               }
@@ -1114,7 +1114,7 @@
             {
               "$id": "157",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "155"
               }
@@ -1298,9 +1298,9 @@
               "$id": "187",
               "frame": 30,
               "value": {
-                        "x": 16.60712,
-                        "y": 15.333338
-                      },
+                "x": 16.60712,
+                "y": 15.333338
+              },
               "containing_value": {
                 "$ref": "184"
               }
@@ -1344,7 +1344,7 @@
             {
               "$id": "194",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "192"
               }
@@ -1528,9 +1528,9 @@
               "$id": "224",
               "frame": 30,
               "value": {
-                        "x": -22.975664,
-                        "y": 22.595
-                      },
+                "x": -22.975664,
+                "y": 22.595
+              },
               "containing_value": {
                 "$ref": "221"
               }
@@ -1574,7 +1574,7 @@
             {
               "$id": "231",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "229"
               }
@@ -1734,9 +1734,9 @@
               "$id": "258",
               "frame": 30,
               "value": {
-                        "x": 17.488075,
-                        "y": 24.607132
-                      },
+                "x": 17.488075,
+                "y": 24.607132
+              },
               "containing_value": {
                 "$ref": "255"
               }
@@ -1780,7 +1780,7 @@
             {
               "$id": "265",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "263"
               }
@@ -1964,9 +1964,9 @@
               "$id": "295",
               "frame": 30,
               "value": {
-                        "x": 14.244381,
-                        "y": 29.987373
-                      },
+                "x": 14.244381,
+                "y": 29.987373
+              },
               "containing_value": {
                 "$ref": "292"
               }
@@ -2010,7 +2010,7 @@
             {
               "$id": "302",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "300"
               }
@@ -2129,7 +2129,7 @@
             {
               "$id": "323",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "321"
               }
@@ -2170,9 +2170,9 @@
               "$id": "329",
               "frame": 30,
               "value": {
-                        "x": 14,
-                        "y": 4
-                      },
+                "x": 14,
+                "y": 4
+              },
               "containing_value": {
                 "$ref": "326"
               }
@@ -2216,7 +2216,7 @@
             {
               "$id": "336",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "334"
               }
@@ -2335,7 +2335,7 @@
             {
               "$id": "357",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "355"
               }
@@ -2376,9 +2376,9 @@
               "$id": "363",
               "frame": 30,
               "value": {
-                        "x": 19,
-                        "y": 0
-                      },
+                "x": 19,
+                "y": 0
+              },
               "containing_value": {
                 "$ref": "360"
               }
@@ -2422,7 +2422,7 @@
             {
               "$id": "370",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "368"
               }
@@ -2541,7 +2541,7 @@
             {
               "$id": "391",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "389"
               }
@@ -2582,9 +2582,9 @@
               "$id": "397",
               "frame": 30,
               "value": {
-                        "x": 9,
-                        "y": -0.16666603
-                      },
+                "x": 9,
+                "y": -0.16666603
+              },
               "containing_value": {
                 "$ref": "394"
               }
@@ -2628,7 +2628,7 @@
             {
               "$id": "404",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "402"
               }
@@ -2812,9 +2812,9 @@
               "$id": "434",
               "frame": 30,
               "value": {
-                        "x": -10.63372,
-                        "y": 27.314112
-                      },
+                "x": -10.63372,
+                "y": 27.314112
+              },
               "containing_value": {
                 "$ref": "431"
               }
@@ -2858,7 +2858,7 @@
             {
               "$id": "441",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "439"
               }
@@ -2886,7 +2886,7 @@
             {
               "$id": "446",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "444"
               }
@@ -3042,9 +3042,9 @@
               "$id": "471",
               "frame": 30,
               "value": {
-                        "x": 9.032936,
-                        "y": 27.076014
-                      },
+                "x": 9.032936,
+                "y": 27.076014
+              },
               "containing_value": {
                 "$ref": "468"
               }
@@ -3088,7 +3088,7 @@
             {
               "$id": "478",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "476"
               }
@@ -3116,7 +3116,7 @@
             {
               "$id": "483",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "481"
               }
@@ -3272,9 +3272,9 @@
               "$id": "508",
               "frame": 30,
               "value": {
-                        "x": -13.086111,
-                        "y": 32.81411
-                      },
+                "x": -13.086111,
+                "y": 32.81411
+              },
               "containing_value": {
                 "$ref": "505"
               }
@@ -3318,7 +3318,7 @@
             {
               "$id": "515",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "513"
               }
@@ -3502,9 +3502,9 @@
               "$id": "545",
               "frame": 30,
               "value": {
-                        "x": 11.535912,
-                        "y": 32.742683
-                      },
+                "x": 11.535912,
+                "y": 32.742683
+              },
               "containing_value": {
                 "$ref": "542"
               }
@@ -3548,7 +3548,7 @@
             {
               "$id": "552",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "550"
               }
@@ -3667,7 +3667,7 @@
             {
               "$id": "573",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "571"
               }
@@ -3708,9 +3708,9 @@
               "$id": "579",
               "frame": 30,
               "value": {
-                        "x": 7.685713,
-                        "y": 35.344
-                      },
+                "x": 7.685713,
+                "y": 35.344
+              },
               "containing_value": {
                 "$ref": "576"
               }
@@ -3754,7 +3754,7 @@
             {
               "$id": "586",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "584"
               }
@@ -3873,7 +3873,7 @@
             {
               "$id": "607",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "605"
               }
@@ -3914,9 +3914,9 @@
               "$id": "613",
               "frame": 30,
               "value": {
-                        "x": -18.943245,
-                        "y": 35.91531
-                      },
+                "x": -18.943245,
+                "y": 35.91531
+              },
               "containing_value": {
                 "$ref": "610"
               }
@@ -3960,7 +3960,7 @@
             {
               "$id": "620",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "618"
               }
@@ -4032,9 +4032,9 @@
               "$id": "632",
               "frame": 30,
               "value": {
-                        "x": 1,
-                        "y": 0.6
-                      },
+                "x": 1,
+                "y": 0.6
+              },
               "containing_value": {
                 "$ref": "629"
               }
@@ -4106,7 +4106,7 @@
             {
               "$id": "644",
               "frame": 0,
-              "value": -1.720878,
+              "value": -1.1556523,
               "containing_value": {
                 "$ref": "642"
               }
@@ -4114,7 +4114,7 @@
             {
               "$id": "645",
               "frame": 30,
-              "value": -1.1581621,
+              "value": -0.59593445,
               "containing_value": {
                 "$ref": "642"
               }
@@ -4171,9 +4171,9 @@
               "$id": "653",
               "frame": 30,
               "value": {
-                        "x": -23.153593,
-                        "y": 25.155554
-                      },
+                "x": -23.153593,
+                "y": 25.155554
+              },
               "containing_value": {
                 "$ref": "650"
               }
@@ -4217,7 +4217,7 @@
             {
               "$id": "660",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "658"
               }
@@ -4290,9 +4290,9 @@
               "$id": "672",
               "frame": 30,
               "value": {
-                        "x": 45.281372,
-                        "y": 16.994276
-                      },
+                "x": 45.281372,
+                "y": 16.994276
+              },
               "containing_value": {
                 "$ref": "669"
               }
@@ -4348,9 +4348,9 @@
               "$id": "680",
               "frame": 30,
               "value": {
-                        "x": 0.15098572,
-                        "y": 6.4195337
-                      },
+                "x": 0.15098572,
+                "y": 6.4195337
+              },
               "containing_value": {
                 "$ref": "677"
               }
@@ -4466,9 +4466,9 @@
               "$id": "695",
               "frame": 30,
               "value": {
-                        "x": 8.375,
-                        "y": 1.2916679
-                      },
+                "x": 8.375,
+                "y": 1.2916679
+              },
               "containing_value": {
                 "$ref": "692"
               }
@@ -4553,9 +4553,9 @@
               "$id": "705",
               "frame": 30,
               "value": {
-                        "x": 48.232925,
-                        "y": 15.747139
-                      },
+                "x": 48.232925,
+                "y": 15.747139
+              },
               "containing_value": {
                 "$ref": "702"
               }
@@ -4611,9 +4611,9 @@
               "$id": "713",
               "frame": 30,
               "value": {
-                        "x": -0.2252121,
-                        "y": 18.37643
-                      },
+                "x": -0.2252121,
+                "y": 18.37643
+              },
               "containing_value": {
                 "$ref": "710"
               }
@@ -4698,9 +4698,9 @@
               "$id": "723",
               "frame": 30,
               "value": {
-                        "x": 18.53949,
-                        "y": 15.363125
-                      },
+                "x": 18.53949,
+                "y": 15.363125
+              },
               "containing_value": {
                 "$ref": "720"
               }
@@ -4756,9 +4756,9 @@
               "$id": "731",
               "frame": 30,
               "value": {
-                        "x": 8.344727,
-                        "y": 30.993345
-                      },
+                "x": 8.344727,
+                "y": 30.993345
+              },
               "containing_value": {
                 "$ref": "728"
               }
@@ -4843,9 +4843,9 @@
               "$id": "741",
               "frame": 30,
               "value": {
-                        "x": 21.705544,
-                        "y": 10.245487
-                      },
+                "x": 21.705544,
+                "y": 10.245487
+              },
               "containing_value": {
                 "$ref": "738"
               }
@@ -4901,9 +4901,9 @@
               "$id": "749",
               "frame": 30,
               "value": {
-                        "x": -14.247234,
-                        "y": 31.337877
-                      },
+                "x": -14.247234,
+                "y": 31.337877
+              },
               "containing_value": {
                 "$ref": "746"
               }
@@ -4988,9 +4988,9 @@
               "$id": "759",
               "frame": 30,
               "value": {
-                        "x": 18.610317,
-                        "y": 6.1920853
-                      },
+                "x": 18.610317,
+                "y": 6.1920853
+              },
               "containing_value": {
                 "$ref": "756"
               }
@@ -5046,9 +5046,9 @@
               "$id": "767",
               "frame": 30,
               "value": {
-                        "x": -15.839296,
-                        "y": 35.674496
-                      },
+                "x": -15.839296,
+                "y": 35.674496
+              },
               "containing_value": {
                 "$ref": "764"
               }

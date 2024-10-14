@@ -10,12 +10,16 @@ namespace PlatformFighter.Entities
 	{
 		public abstract string FighterName { get; }
 		public abstract float WalkAcceleration { get; }
+		public abstract float AirAcceleration { get; }
 		public abstract float WalkMaxSpeed { get; }
+		public abstract float AirMaxSpeed { get; }
 		public abstract float FloorFriction { get; }
 		public abstract float JumpVelocity { get; }
 		public abstract float FallingGravity { get; }
 		public abstract float FallingGravityMax { get; }
 		public abstract int MaxAirJumpCount { get; }
+		public abstract float FastFallAcceleration { get; }
+		public abstract float FastFallMaxSpeed { get; }
 		public abstract float Tankiness { get; }
 		public abstract int JumpStartupFrames { get; }
 		public abstract int DashStartupFrames { get; }

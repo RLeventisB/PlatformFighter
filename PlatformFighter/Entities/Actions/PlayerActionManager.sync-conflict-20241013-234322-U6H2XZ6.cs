@@ -6,7 +6,6 @@ using PlatformFighter.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PlatformFighter.Entities.Actions
 {
@@ -14,13 +13,13 @@ namespace PlatformFighter.Entities.Actions
 	{
 		public ExposedList<QueuedAction> ActionQueue = new ExposedList<QueuedAction>();
 		public ActionBase<Player> CurrentAction;
-		public bool FacingRight = true;
+		public bool Shielding, FacingRight = true;
 		public Vector2 Impulse;
 		public sbyte DirectionAnimation;
-		public AnalogValue<sbyte> FastFalling = new AnalogValue<sbyte>(0, 50, 1), Crouching = new AnalogValue<sbyte>(0, 30, 1), Shielding = new AnalogValue<sbyte>(0, 10, 1);
+		public AnalogValue<sbyte> FastFalling = new AnalogValue<sbyte>(0, 50, 1), Crouching = new AnalogValue<sbyte>(0, 50, 1);
 		public JumpData JumpData;
 		public int AnimationFrame;
-		public int ShieldBreakStun;
+
 		public void Update(Player player)
 		{
 			IPlayerControlDataReceiver controller = player.GetController();
@@ -36,16 +35,10 @@ namespace PlatformFighter.Entities.Actions
 			if (controller.Right)
 				Impulse.X += 1;
 			
-			Shielding.State = controller.Shield;
+			Shielding = false;
 			Crouching.State = player.Grounded && controller.Down;
 			FastFalling.State = !player.Grounded && controller.Down;
-
-			if (Shielding && Crouching)
-			{
-				Crouching.Value = Crouching.Max;
-			}
 			
-			Shielding.Update();
 			Crouching.Update();
 			FastFalling.Update();
 
@@ -142,6 +135,9 @@ namespace PlatformFighter.Entities.Actions
 				case ActionType.JumpValue: // this works because jump is processed after moving
 					JumpData.InitializeJump(player, Impulse.X, player.Grounded, false);
 					break;
+				case ActionType.BlockValue:
+					Shielding = true;
+					break;
 			}
 		}
 
@@ -198,28 +194,16 @@ namespace PlatformFighter.Entities.Actions
 
 				if (player.Grounded)
 				{
-					if (Shielding.Value > 0)
-					{
-						StringBuilder usedAnimation = new StringBuilder("elmoblock");
-
-						usedAnimation.Append(Crouching ? "crouch" : "ground");
-						data = AnimationRenderer.GetAnimation(usedAnimation.ToString());
-						AnimationFrame = Shielding.Value;
-					}
-					else if (Crouching.Value > 0)
+					if (Crouching.Value > 0)
 					{
 						data = AnimationRenderer.GetAnimation("elmocrouch");
 						AnimationFrame = Crouching.Value;
 					}
-					else if (Impulse.X == 0)
+					if (Impulse.X == 0 && !Crouching && !Shielding)
 					{
 						data = AnimationRenderer.GetAnimation("elmoidle");
 						AnimationFrame++;
 						AnimationFrame %= data.LastFrame;
-					}
-					else
-					{
-						data = AnimationRenderer.GetAnimation("elmoidle");
 					}
 				}
 				else

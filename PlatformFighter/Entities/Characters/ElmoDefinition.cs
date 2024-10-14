@@ -10,12 +10,16 @@ namespace PlatformFighter.Entities.Characters
 	{
 		public override string FighterName => "Elmo";
 		public override float WalkAcceleration => 0.12f;
+		public override float AirAcceleration => 0.01f;
 		public override float WalkMaxSpeed => 3f;
+		public override float AirMaxSpeed => 1f;
 		public override float FloorFriction => 0.9f;
 		public override float JumpVelocity => 2f;
 		public override float FallingGravity => 0.1f;
-		public override float FallingGravityMax => 10f;
+		public override float FallingGravityMax => 4f;
 		public override int MaxAirJumpCount => 2;
+		public override float FastFallAcceleration => 0.2f;
+		public override float FastFallMaxSpeed => 6f;
 		public override float Tankiness => 1f;
 		public override int JumpStartupFrames => 7;
 		public override int DashStartupFrames => 7;

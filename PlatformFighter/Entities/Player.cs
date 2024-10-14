@@ -16,6 +16,7 @@ namespace PlatformFighter.Entities
 		public int HitStun = 0;
 		public Team PlayerTeam;
 		public int Stocks;
+		public float MoveDelta;
 		public HealthHandler Health = new HealthHandler();
 
 		public override void ResetValues()
@@ -35,6 +36,7 @@ namespace PlatformFighter.Entities
 
 		public override void Update()
 		{
+			MoveDelta = 1;
 			PlayerActionManager.Update(this);
 		}
 
@@ -47,7 +49,7 @@ namespace PlatformFighter.Entities
 
 			CollidedDirections = Collision.ResolveCollisions(ref MovableObject, in precalculation, LastFrameCollidedData);
 			
-			MovableObject.Position += MovableObject.Velocity;
+			MovableObject.Position += MovableObject.Velocity * MoveDelta;
 			Grounded = CollidedDirections.HasFlag(Direction.Up);
 		}
 

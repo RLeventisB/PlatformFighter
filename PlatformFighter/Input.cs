@@ -24,7 +24,6 @@ namespace PlatformFighter
 		public static Vector2 MouseRawPosition = Vector2.Zero;
 		public static Vector2 MouseOldPosition;
 		private static bool lastPressedKeyFrameHolder;
-		private static int lastGamepadCount;
 
 		static Input()
 		{

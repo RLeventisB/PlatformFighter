@@ -2182,4 +2182,55 @@ namespace PlatformFighter.Miscelaneous
         public string Bits => Convert.ToString(data, 2).PadLeft(8, '0');
         public override string ToString() => $"{{X: {X}, Y: {Y}}}";
     }
+    public struct AnalogValue<T> where T : struct, INumber<T> 
+    {
+        public readonly T Min, Max, Step;
+        public T Value;
+        private bool state;
+        public event Action<AnalogValue<T>> OnChangeState; 
+        public AnalogValue(T min, T max, T step, T? value = null, bool state = false)
+        {
+            Min = min;
+            Max = max;
+            Step = step;
+            Value = value ?? (state ? Max : Min);
+            State = state;
+        }
+        public bool State
+        {
+            get => state;
+            set
+            {
+                state = value;
+                OnChangeState?.Invoke(this);
+            }
+        }
+        public void Update(int stepMult = 1)
+        {
+            if (state)
+            {
+                if (Value >= Max)
+                    return;
+
+                for (int i = 0; i < stepMult; i++)
+                    Value += Step;
+                
+                if (Value > Max)
+                    Value = Max;
+            }
+            else
+            {
+                if (Value <= Min)
+                    return;
+                
+                for (int i = 0; i < stepMult; i++)
+                    Value -= Step;
+                
+                if (Value < Min)
+                    Value = Min;
+            }
+        }
+        public static implicit operator bool(AnalogValue<T> value) => value.state;
+        public static implicit operator T(AnalogValue<T> value) => value.Value;
+    }
 }

@@ -62,8 +62,6 @@ namespace PlatformFighter.Rendering
         private static bool? _focusToggle;
         private static WindowType _windowType = WindowType.Fullscreen;
         public static Vector2 MaximumResolution => _maxRes;
-        public static Matrix ScalerMatrix => _scaleMatrix;
-        private static Matrix _scaleMatrix;
         public static Vector2 Resolution
         {
             get => _resolution;
@@ -274,9 +272,8 @@ namespace PlatformFighter.Rendering
     {
         Null, Windowed, Maximized, Fullscreen, BorderlessFullscreen
     }
-        public class AnimationRenderer
+    public class AnimationRenderer
     {
-        public static Dictionary<TextureFrame, IAsset<GameTexture>> jsonDataTextureDictionary = new Dictionary<TextureFrame, IAsset<GameTexture>>();
         public static FrozenDictionary<string, AnimationData> loadedAnimations;
         public static AnimationData GetAnimation(string name)
         {
@@ -289,6 +286,7 @@ namespace PlatformFighter.Rendering
         public static void DrawJsonData(SpriteBatch spriteBatch, JsonData data, int frame, Vector2 center, Vector2? scale = null)
         {
             Vector2 finalScale = scale ?? Vector2.One;
+            bool flipped = scale.HasValue && scale.Value.X < 0;
             foreach(var graphicObject in data.graphicObjects)
             {
 				Color color = new Color(1f, 1f, 1f, graphicObject.Transparency.Interpolate(frame));
@@ -297,6 +295,11 @@ namespace PlatformFighter.Rendering
 				Vector2 position = center + graphicObject.Position.Interpolate(frame) * finalScale;
 				int frameIndex = graphicObject.FrameIndex.Interpolate(frame);
 				float rotation = graphicObject.Rotation.Interpolate(frame);
+
+                if (flipped)
+                {
+                    rotation = - rotation;
+                }
 				Vector2 localScale = graphicObject.Scale.Interpolate(frame) * finalScale;
 				SpriteEffects effects = SpriteEffects.None;
 				if (localScale.X < 0)
@@ -318,8 +321,15 @@ namespace PlatformFighter.Rendering
 				int y = frameIndex / framesX;
 				Rectangle sourceRect = new Rectangle(textureFrame.FramePosition.X + x * textureFrame.FrameSize.X, textureFrame.FramePosition.Y + y * textureFrame.FrameSize.Y,
 					textureFrame.FrameSize.X, textureFrame.FrameSize.Y);
-				spriteBatch.Draw(texture, position, sourceRect, color,
-					rotation, textureFrame.Pivot,
+
+                Vector2 pivot = textureFrame.Pivot;
+
+                if (flipped)
+                {
+                    pivot.X = textureFrame.FrameSize.X - pivot.X;
+                }
+                spriteBatch.Draw(texture, position, sourceRect, color,
+					rotation, pivot,
 					localScale, effects, graphicObject.ZIndex.CachedValue);
             }
         }
