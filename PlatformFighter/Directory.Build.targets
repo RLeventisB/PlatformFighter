@@ -1,21 +1,22 @@
 ﻿<Project>
     <ItemGroup>
         <RdXmlFile Include="rd.xml"/>
-        
-        <Compile Remove="..\build\**" />
-        <Compile Remove="..\Resources\Content\obj\**" />
-        <Compile Remove="..\Resources\Content\bin\**" />
-        <EmbeddedResource Remove="..\build\**" />
-        <EmbeddedResource Remove="..\Resources\Content\obj\**" />
-        <EmbeddedResource Remove="..\Resources\Content\bin\**" />
-        <None Remove="build\**" />
-        <None Remove="..\Resources\Content\obj\**" />
-        <None Remove="..\Resources\Content\bin\**" />
+
+        <Compile Remove="..\build\**"/>
+        <Compile Remove="..\Resources\Content\obj\**"/>
+        <Compile Remove="..\Resources\Content\bin\**"/>
+        <EmbeddedResource Remove="..\build\**"/>
+        <EmbeddedResource Remove="..\Resources\Content\obj\**"/>
+        <EmbeddedResource Remove="..\Resources\Content\bin\**"/>
+        <None Remove="build\**"/>
+        <None Remove="..\Resources\Content\obj\**"/>
+        <None Remove="..\Resources\Content\bin\**"/>
 
         <None Remove="..\Resources/Icon.ico"/>
         <None Remove="..\Resources/Icon.bmp"/>
 
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
+        <PackageReference Include="MonoGame.Framework.Content.Pipeline" Version="3.8.2.1105"/>
         <Reference Include="..\build\libs\PlatformFighterAnimationObjects.dll" />
         <Reference Include="..\build\libs\ExtraProcessors.dll" />
 

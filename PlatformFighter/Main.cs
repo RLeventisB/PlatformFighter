@@ -1,6 +1,8 @@
 ﻿global using static PlatformFighter.Miscelaneous.Constants;
 global using static PlatformFighter.InstanceManager;
 
+using Editor.Objects;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -10,6 +12,7 @@ using PlatformFighter.Rendering;
 
 using System;
 using System.Collections.Frozen;
+using System.Collections.Immutable;
 using System.Diagnostics;
 
 namespace PlatformFighter
@@ -22,7 +25,7 @@ namespace PlatformFighter
         public static Main instance;
         public static GraphicsDevice Graphics => instance.GraphicsDevice;
         public static GraphicsDeviceManager graphics;
-        public static CustomizedSpriteBatch spriteBatch;
+        public static SpriteBatch spriteBatch;
 
         internal static FrozenDictionary<string, ReadonlyVector> staticVector2s;
         internal static FrozenDictionary<string, Rectangle> staticRectangles;
@@ -32,6 +35,8 @@ namespace PlatformFighter
         public static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         public static bool GamePaused;
+        private int selectedAnimation = 1;
+
         public Main()
         {
             instance = this;
@@ -56,6 +61,7 @@ namespace PlatformFighter
             };
             GraphicsDevice.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
 
+            KeyframeableValue.CacheValueOnInterpolate = false;
             TargetElapsedTime = TimeSpan.FromSeconds(1d / 120);
             IsFixedTimeStep = true;
             graphics.SynchronizeWithVerticalRetrace = false;
@@ -104,7 +110,7 @@ namespace PlatformFighter
         {
             Assets.LoadAssets();
             ShadersInfo.Initialize();
-            spriteBatch = new CustomizedSpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -117,6 +123,24 @@ namespace PlatformFighter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.IsKeyPressed(Keys.Escape))
                 Exit();
 
+            if (Keyboard.IsKeyPressedWithDelay(Keys.Left))
+            {
+                selectedAnimation--;
+
+                if (selectedAnimation < 0)
+                {
+                    selectedAnimation = AnimationRenderer.loadedAnimations.Count - 1;
+                }
+            }
+            if (Keyboard.IsKeyPressedWithDelay(Keys.Right))
+            {
+                selectedAnimation++;
+
+                if (selectedAnimation >= AnimationRenderer.loadedAnimations.Count)
+                {
+                    selectedAnimation = 0;
+                }
+            }
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -124,27 +148,26 @@ namespace PlatformFighter
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            if (TheGameState.PlayingMatch)
+            // if (TheGameState.PlayingMatch)
             {
                 RenderWorld();
             }
-            else
+            // else
             {
-                RenderGui();
+                // RenderGui();
             }
             
             GraphicsDevice.SetRenderTarget(MergedTarget);
             GraphicsDevice.Clear(ClearColor);
             
-            DrawRenderTarget(ref BackgroundTarget, ShaderType.Background);
+            // DrawRenderTarget(ref BackgroundTarget, ShaderType.Background);
             DrawRenderTarget(ref WorldTarget, ShaderType.Screen);
-            DrawRenderTarget(ref GUITarget, ShaderType.Menu);
+            // DrawRenderTarget(ref GUITarget, ShaderType.Menu);
 
             GraphicsDevice.SetRenderTarget(null);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             GraphicsDevice.BlendState = BlendState.Additive;
-            spriteBatch.Begin(true, Renderer.PixelBlendState, Renderer.PixelSamplerState);
+            spriteBatch.Begin(SpriteSortMode.Immediate, Renderer.PixelBlendState, Renderer.PixelSamplerState);
             Graphics.Textures[0] = MergedTarget;
 
             foreach (ShadersInfo.ShaderData shader in ShadersInfo.shadersOrdered[ShaderType.Merged])
@@ -179,15 +202,19 @@ namespace PlatformFighter
             GraphicsDevice.SetRenderTarget(WorldTarget);
             
             GraphicsDevice.Clear(ClearColor);
-            spriteBatch.Begin(false, Renderer.PixelBlendState, Renderer.PixelSamplerState);
+            Matrix matrix = Matrix.CreateScale(Renderer.Resolution.X / VirtualWidth,  Renderer.Resolution.Y / VirtualHeight, 1) * Matrix.CreateTranslation(VirtualWidth / 2, VirtualHeight / 2, 0);
+            spriteBatch.Begin(SpriteSortMode.Deferred, Renderer.PixelBlendState, Renderer.PixelSamplerState, transformMatrix:matrix);
 
+            ImmutableArray<AnimationData> loadedAnimations = AnimationRenderer.loadedAnimations.Values;
+            AnimationData data = loadedAnimations[selectedAnimation];
+            AnimationRenderer.DrawJsonData(spriteBatch, data.JsonData, (int)(Renderer.gameTime.TotalGameTime.TotalSeconds / Renderer.GameTimeDelta) % data.LastFrame, Vector2.Zero);
 
             spriteBatch.End();
         }
 
         public static void DrawRenderTarget(ref RenderTarget2D renderTarget, ShaderType shaderType)
         {
-            spriteBatch.Begin(true, Renderer.PixelBlendState, Renderer.PixelSamplerState);
+            spriteBatch.Begin(SpriteSortMode.Immediate, Renderer.PixelBlendState, Renderer.PixelSamplerState);
             Graphics.Textures[0] = renderTarget;
             foreach (ShadersInfo.ShaderData shader in ShadersInfo.shadersOrdered[shaderType])
             {

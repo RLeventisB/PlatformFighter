@@ -10,13 +10,139 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:..\BuildLibs\ExtraProcessors.dll
+/reference:..\..\build\libs\ExtraProcessors.dll
 
 #---------------------------------- Content ---------------------------------#
+
+#begin Animations/elmoblockbreak.anim
+/copy:Animations/elmoblockbreak.anim
+
+#begin Animations/elmoblockcrouch.anim
+/copy:Animations/elmoblockcrouch.anim
+
+#begin Animations/elmoblockcrouchsuccess.anim
+/copy:Animations/elmoblockcrouchsuccess.anim
+
+#begin Animations/elmoblockcrouchwrong.anim
+/copy:Animations/elmoblockcrouchwrong.anim
+
+#begin Animations/elmoblockground.anim
+/copy:Animations/elmoblockground.anim
+
+#begin Animations/elmoblockgroundsuccess.anim
+/copy:Animations/elmoblockgroundsuccess.anim
+
+#begin Animations/elmoblockgroundwrong.anim
+/copy:Animations/elmoblockgroundwrong.anim
+
+#begin Animations/elmocrouch.anim
+/copy:Animations/elmocrouch.anim
+
+#begin Animations/elmofastfall.anim
+/copy:Animations/elmofastfall.anim
+
+#begin Animations/elmogroundneutralmelee.anim
+/copy:Animations/elmogroundneutralmelee.anim
+
+#begin Animations/elmogroundsidemelee.anim
+/copy:Animations/elmogroundsidemelee.anim
+
+#begin Animations/elmogroundsidemeleefinisher.anim
+/copy:Animations/elmogroundsidemeleefinisher.anim
+
+#begin Animations/elmohitair.anim
+/copy:Animations/elmohitair.anim
+
+#begin Animations/elmohithead.anim
+/copy:Animations/elmohithead.anim
+
+#begin Animations/elmohittorso.anim
+/copy:Animations/elmohittorso.anim
+
+#begin Animations/elmoidle.anim
+/copy:Animations/elmoidle.anim
+
+#begin Animations/elmojump.anim
+/copy:Animations/elmojump.anim
+
+#begin Animations/elmojumpairside.anim
+/copy:Animations/elmojumpairside.anim
+
+#begin Animations/elmoland.anim
+/copy:Animations/elmoland.anim
+
+#begin Animations/elmoselection.anim
+/copy:Animations/elmoselection.anim
+
+#begin Animations/elmowalk.anim
+/copy:Animations/elmowalk.anim
+
+#begin Animations/elmowalkstart.anim
+/copy:Animations/elmowalkstart.anim
 
 #begin Effects/GlowShader.fx
 /importer:EffectImporter
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:Effects/GlowShader.fx
+
+#begin Textures/CarlaHead.png
+/importer:GameTextureImporter
+/processor:GameTextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/CarlaHead.png
+
+#begin Textures/Elmo/ElmoBody.png
+/importer:GameTextureImporter
+/processor:GameTextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Elmo/ElmoBody.png
+
+#begin Textures/Elmo/ElmoEyes.png
+/importer:GameTextureImporter
+/processor:GameTextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Elmo/ElmoEyes.png
+
+#begin Textures/Glow.png
+/importer:GameTextureImporter
+/processor:GameTextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Glow.png
+
+#begin Textures/GlowNoShader.png
+/importer:GameTextureImporter
+/processor:GameTextureProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=False
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/GlowNoShader.png
 

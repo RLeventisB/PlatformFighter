@@ -983,6 +983,12 @@ namespace PlatformFighter.Miscelaneous
                 errorAction(e);
             }
         }
+
+        public static void Draw(this SpriteBatch spriteBatch, Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects spriteEffects = SpriteEffects.None, float layerDepth = 0)
+        {
+            spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, scale, spriteEffects, layerDepth);
+        }
+
         public static Color[] GetColors(this Texture2D texture)
         {
             Color[] colors = new Color[texture.Width * texture.Height];
@@ -1563,7 +1569,7 @@ namespace PlatformFighter.Miscelaneous
     }
     public static class Constants
     {
-        public const int VirtualWidth = 1920, VirtualHeight = 1080;
+        public const int VirtualWidth = 1280, VirtualHeight = 720;
         public const string saveFile = "./Settings.dat", ThemeCacheFolder = "./CachedThemes";
         public static readonly Rectangle WorldRectangle = new Rectangle(VirtualWidth / -2, VirtualHeight / -2, VirtualWidth, VirtualHeight);
         public static readonly Rectangle VirtualRectangle = new Rectangle(0, 0, VirtualWidth, VirtualHeight);

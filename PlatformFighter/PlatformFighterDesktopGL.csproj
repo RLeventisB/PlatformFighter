@@ -51,16 +51,14 @@
         </None>
     </ItemGroup>
     <ItemGroup>
-        <MonoGameContentReference Include="..\Resources\Content\ContentDesktop.mgcb" />
-        <None Remove="AndroidManifest.xml" />
-        <None Remove="..\Resources\**" />
-        <None Remove="..\Resources\Content\ContentAndroid.mgcb" />
-        <Compile Remove="MainActivity.cs" />
-        <Compile Remove="..\Resources\**" />
-        <Compile Remove="..\build\libs\Android\**" />
-        <None Remove="..\build\libs\Android\**" />
-        
-        <None Include="..\Resources\Content\ContentDesktop.mgcb" />
-        <Reference Include="..\build\libs\DesktopGL\$(Configuration)\MonoGame.Framework.dll" />
+        <MonoGameContentReference Include="..\Resources\Content\ContentDesktop.mgcb"/>
+        <None Remove="AndroidManifest.xml"/>
+        <None Remove="..\Resources\**"/>
+        <Compile Remove="MainActivity.cs"/>
+        <Compile Remove="..\Resources\**"/>
+        <Compile Remove="..\build\libs\Android\**"/>
+        <None Remove="..\build\libs\Android\**"/>
+
+        <Reference Include="..\build\libs\DesktopGL\$(Configuration)\MonoGame.Framework.dll"/>
     </ItemGroup>
 </Project>
