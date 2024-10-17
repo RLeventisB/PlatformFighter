@@ -23,7 +23,7 @@ namespace PlatformFighter.Entities
 
 		public void Hit(HitData data)
 		{
-			if (Player.PlayerActionManager.Shielding)
+			if (Player.ActionManager.Shielding)
 			{
 				Player.MovableObject.Velocity = new Vector2(0, data.Hitbox.ShieldPotency).Rotate(data.Hitbox.ShieldLaunchAngle);
 				Player.HitStun = data.Hitbox.ShieldStun;

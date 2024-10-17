@@ -4106,7 +4106,7 @@
             {
               "$id": "644",
               "frame": 0,
-              "value": -1.1556523,
+              "value": -1.720878,
               "containing_value": {
                 "$ref": "642"
               }
@@ -4114,7 +4114,7 @@
             {
               "$id": "645",
               "frame": 30,
-              "value": -0.59593445,
+              "value": -1.1581621,
               "containing_value": {
                 "$ref": "642"
               }

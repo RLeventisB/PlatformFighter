@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 
 using PlatformFighter.Entities;
+using PlatformFighter.Menus;
 using PlatformFighter.Rendering;
 using PlatformFighter.Stages;
 
@@ -9,18 +10,20 @@ namespace PlatformFighter
 {
 	public static class GameWorld
 	{
+		public static int IntroTimer = 0;
 		public static Pool<Player> Players = new Pool<Player>(64);
 		public static Stage CurrentStage;
 
 		public static void StartGame(ushort stageId)
 		{
 			ResetWorld();
+			// IntroTimer = 600;
 			CurrentStage = InstanceManager.Stages.CreateInstance(stageId);
 			CurrentStage.Load();
 			TheGameState.PlayingMatch = true;
 		}
 
-		public static bool CreatePlayer(Vector2 position, ushort characterDefinitionId, int? gamepadIndex, out Player player)
+		public static bool CreatePlayer(Vector2 position, ushort characterDefinitionId, ushort controllerId, out Player player)
 		{
 			if (!Players.Get(out player))
 				return false;
@@ -29,14 +32,7 @@ namespace PlatformFighter
 			player.CharacterData.SetDefinition(characterDefinitionId);
 			player.CharacterData.ApplyDefaults(player);
 
-			if (gamepadIndex is null)
-			{
-				player.ControllerId = PlayerController.RegisterPlayerController(new KeyboardDataReceiver());
-			}
-			else
-			{
-				player.ControllerId = PlayerController.RegisterPlayerController(new GamepadDataReceiver(gamepadIndex.Value));
-			}
+			player.ControllerId = controllerId;
 			return true;
 		}
 
@@ -57,13 +53,15 @@ namespace PlatformFighter
 			{
 				player.PostUpdate();
 			}
-			
+
+			if(IntroTimer > 0)
+				IntroTimer--;
 			Camera.Update();
 		}
 
 		public static void RenderWorld(GameTime gameTime)
 		{
-			Main.spriteBatch.Begin(SpriteSortMode.FrontToBack, Renderer.PixelBlendState, Renderer.PixelSamplerState, transformMatrix: Camera.ViewMatrix);
+			Main.spriteBatch.Begin(SpriteSortMode.FrontToBack, Renderer.PixelBlendState, Renderer.PixelSamplerState, DepthStencilState.Default, RasterizerState.CullNone, transformMatrix: Camera.ViewMatrix * Renderer.windowMatrix);
 
 			foreach (Player player in Players)
 			{

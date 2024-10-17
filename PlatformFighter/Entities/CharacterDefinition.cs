@@ -10,10 +10,13 @@ namespace PlatformFighter.Entities
 	{
 		public abstract string FighterName { get; }
 		public abstract float WalkAcceleration { get; }
+		public abstract float GroundDashAcceleration { get; }
 		public abstract float AirAcceleration { get; }
 		public abstract float WalkMaxSpeed { get; }
+		public abstract float GroundDashMaxSpeed { get; }
 		public abstract float AirMaxSpeed { get; }
 		public abstract float FloorFriction { get; }
+		public abstract float HigherSpeedSlowingValue { get; }
 		public abstract float JumpVelocity { get; }
 		public abstract float FallingGravity { get; }
 		public abstract float FallingGravityMax { get; }
@@ -32,6 +35,7 @@ namespace PlatformFighter.Entities
 		public abstract int JumpHoldMaxFrames { get; }
 
 		public abstract Vector2 CollisionSize { get; }
+
 		public abstract ActionBase<Player> ResolveAttackAction(Player player, AttackDirection attackDirection, bool isShot, bool isSpecial);
 
 	}

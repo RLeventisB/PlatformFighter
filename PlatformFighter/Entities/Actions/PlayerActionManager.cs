@@ -1,356 +1,479 @@
 ﻿using Microsoft.Xna.Framework;
 
+using PlatformFighter.Entities.Characters;
 using PlatformFighter.Miscelaneous;
 using PlatformFighter.Rendering;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace PlatformFighter.Entities.Actions
 {
-	public class PlayerActionManager
-	{
-		public ExposedList<QueuedAction> ActionQueue = new ExposedList<QueuedAction>();
-		public ActionBase<Player> CurrentAction;
-		public bool FacingRight = true;
-		public Vector2 Impulse;
-		public sbyte DirectionAnimation;
-		public AnalogValue<sbyte> FastFalling = new AnalogValue<sbyte>(0, 50, 1), Crouching = new AnalogValue<sbyte>(0, 30, 1), Shielding = new AnalogValue<sbyte>(0, 10, 1);
-		public JumpData JumpData;
-		public int AnimationFrame;
-		public int ShieldBreakStun;
-		public void Update(Player player)
-		{
-			IPlayerControlDataReceiver controller = player.GetController();
-			AddActions(controller);
+    public class PlayerActionManager
+    {
+        public QueuedActionList QueuedAction = new QueuedActionList();
+        public int AnimationFrame;
+        public ActionBase<Player> CurrentAction;
+        public FacingDirection FacingDirection = FacingDirection.Right;
+        public AnalogValue<sbyte>
+            FastFalling = new AnalogValue<sbyte>(0, 50, 1),
+            Crouching = new AnalogValue<sbyte>(0, 30, 3),
+            Shielding = new AnalogValue<sbyte>(0, 10, 1);
+        public bool Dashing;
+        public Vector2 Impulse;
+        public int RecoveryFrames;
+        public int ShieldBreakStun;
+        public ushort WalkTime, TurningTime, AirTime, DashTime;
 
-			Impulse = Vector2.Zero;
-			if (controller.Up)
-				Impulse.Y -= 1;
-			if (controller.Down)
-				Impulse.Y += 1;
-			if (controller.Left)
-				Impulse.X -= 1;
-			if (controller.Right)
-				Impulse.X += 1;
-			
-			Shielding.State = controller.Shield;
-			Crouching.State = player.Grounded && controller.Down;
-			FastFalling.State = !player.Grounded && controller.Down;
+        public PlayerActionManager(Player player)
+        {
+            Player = player;
+        }
 
-			if (Shielding && Crouching)
-			{
-				Crouching.Value = Crouching.Max;
-			}
-			
-			Shielding.Update();
-			Crouching.Update();
-			FastFalling.Update();
+        public Player Player { get; init; }
+        
+        public void SetDefaults()
+        {
+            Impulse = Vector2.Zero;
+            Shielding.State = false;
+            Crouching.State = false;
+            FastFalling.State = false;
+        }
+        public void Update()
+        {
+            IPlayerDataReceiver controller = Player.GetController();
+            Impulse = Vector2.Zero;
+            if (controller.Up)
+                Impulse.Y -= 1;
+            if (controller.Down)
+                Impulse.Y += 1;
+            if (controller.Left)
+                Impulse.X -= 1;
+            if (controller.Right)
+                Impulse.X += 1;
 
-			TickActions(player, controller);
-			
-			if (DirectionAnimation < 10) // tick change direction animation
-			{
-				DirectionAnimation++;
-			}
+            QueuedAction.AddActions(controller);
 
-			if (player.Grounded)
-			{
-				if (Crouching || Shielding)
-				{
-					player.MovableObject.VelocityX *= 0.9f;
-					player.MoveDelta = 0.9f;
-				}
-				else if (Impulse.X == 0) // apply friction if not moving
-				{
-					player.MovableObject.VelocityX *= player.CharacterData.Definition.FloorFriction;
-				}
-				else if (Math.Abs(player.MovableObject.VelocityX) < player.CharacterData.Definition.WalkMaxSpeed || Math.Sign(player.MovableObject.VelocityX) != Math.Sign(Impulse.X))
-				{
-					player.MovableObject.VelocityX += player.CharacterData.Definition.WalkAcceleration * Impulse.X;
-				}
-			}
-			else
-			{
-				if (Math.Abs(player.MovableObject.VelocityX) < player.CharacterData.Definition.AirMaxSpeed || Math.Sign(player.MovableObject.VelocityX) != Math.Sign(Impulse.X))
-				{
-					player.MovableObject.VelocityX += player.CharacterData.Definition.AirAcceleration * Impulse.X;
-				}
-				if (FastFalling)
-				{
-					player.MovableObject.VelocityY += player.CharacterData.Definition.FastFallAcceleration;
-				}
-				else
-				{
-					
-				}
-			}
-			
-			if (Impulse.X == 1) // if only pressing right, reset animation, etc
-			{
-				if (!FacingRight)
-					DirectionAnimation = 0;
-				FacingRight = true;
-			}
+            QueuedAction.TickActions();
+            if (CurrentAction is not null)
+            {
+                CurrentAction.Update();
+                if (CurrentAction is not null)
+                {
+                    CurrentAction.ProcessQueue(QueuedAction);
 
-			if (Impulse.X == -1)
-			{
-				if (FacingRight)
-					DirectionAnimation = 0;
-				FacingRight = false;
-			}
+                    if (CurrentAction.OverrideActions)
+                    {
+                        return;
+                    }
+                }
+            }
 
-			JumpData.Tick(player, controller);
+            Shielding.State = controller.Shield;
+            Crouching.State = Player.Grounded && controller.Down;
 
-			CurrentAction?.Update();
-		}
-		public void TickActions(Player player, IPlayerControlDataReceiver controller)
-		{
-			if (CurrentAction is null)
-			{
-				while (ActionQueue.Count != 0)
-				{
-					QueuedAction action = ActionQueue[0];
-					ProcessAction(player, action.ActionType);
-					ActionQueue.RemoveAt(0);
-				}
+            if (Dashing && Impulse.X != 0)
+            {
+                if(DashTime < 1000)
+                    DashTime++;
+                
+                
+            }
+            else
+            {
+                if (DashTime > 0) // dash end animation if any
+                {
+                    DashTime--;
+                    DashTime = (ushort)MathHelper.Clamp(DashTime, 0, 30);
+                }
+                
+                if (TurningTime > 0) // reduce turning time if any (only applied when changing direction)
+                    TurningTime--;
 
-				// tick all actions that weren't processed
-				for (int i = 0; i < ActionQueue.Count; i++)
-				{
-					QueuedAction action = ActionQueue[i];
+                if (Impulse.X == 0 && WalkTime > 0) // if put and walk time is high, lower walk time so it interpolates better
+                {
+                    WalkTime--;
+                    WalkTime = (ushort)MathHelper.Clamp(WalkTime, 0, 20);
+                }
 
-					if (!action.TickBufferAndReturnIfExpired())
-						continue;
+                if (Impulse.X != 0 && WalkTime < 1000) // if not put and walk time doesnt overflow, tick walk time
+                {
+                    WalkTime++;
+                    if (TurningTime > 0) // limit walk time so turning animation smoothly interpolates into walk animation
+                        WalkTime = (ushort)MathHelper.Clamp(WalkTime, 0, 30);
+                }
+            }
+            
+            if (Shielding && Crouching)
+            {
+                Crouching.Value = Crouching.Max;
+            }
 
-					ActionQueue.RemoveAt(i);
-					i--;
-				}
-			}
-			else
-			{
-				CurrentAction.ProcessQueue(ActionQueue);
-			}
-		}
+            if (Player.Grounded)
+            {
+                AirTime = 0;
+            }
+            else if (AirTime < 1000)
+            {
+                AirTime++;
+            }
 
-		public void ProcessAction(Player player, ActionType actionType)
-		{
-			switch (actionType)
-			{
-				case ActionType.JumpValue: // this works because jump is processed after moving
-					JumpData.InitializeJump(player, Impulse.X, player.Grounded, false);
-					break;
-			}
-		}
+            Shielding.Update();
+            Crouching.Update();
+            FastFalling.Update();
 
-		public void AddActions(IPlayerControlDataReceiver controller)
-		{
-			if (controller.ActivateMeter)
-			{
-				AddAction(ActionType.Meter);
-			}
-			if (controller.Shield)
-			{
-				AddAction(ActionType.Block);
-			}
-			if (controller.Jump == ControlState.JustPressed)
-			{
-				 AddAction(ActionType.Jump);
-			}
-			if (controller.SpecialToggle)
-			{
-				AddAction(ActionType.Special);
-			}
-			if (controller.MeleeAttack == ControlState.JustPressed)
-			{
-				AddAction(ActionType.AttackMelee);
-			}
-			if (controller.ShotAttack == ControlState.JustPressed)
-			{
-				AddAction(ActionType.AttackShot);
-			}
+            TickActionsDefault(this, controller);
 
-			return;
+            CurrentAction?.Update();
+        }
+        public static void TickActionsDefault(PlayerActionManager actionManager, IPlayerDataReceiver controller)
+        {
+            while (actionManager.QueuedAction.HasActions)
+            {
+                QueuedAction action = actionManager.QueuedAction.DequeueAction();
+                switch (action.ActionType)
+                {
+                    case ActionType.Jump:
+                        Direction collidedDirections = actionManager.Player.CollidedDirections;
+                        actionManager.CurrentAction = new ElmoJumpAction(actionManager.Player, collidedDirections.HasFlag(Direction.Left) || collidedDirections.HasFlag(Direction.Right));
+                        break;
+                    case ActionType.LeftStart when actionManager.Player.Grounded:
+                        actionManager.DoWalkAction(FacingDirection.Left);
+                        break;
+                    case ActionType.RightStart when actionManager.Player.Grounded:
+                        actionManager.DoWalkAction(FacingDirection.Right);
+                        break;
+                }
+            }
+        }
+        public void DoWalkAction(FacingDirection facingDirection)
+        {
+            CurrentAction = new ElmoWalkAction(Player, facingDirection);
+        }
+        public bool UpdateFacingToInputs()
+        {
+            bool inputChange = Utils.GetFacingDirectionMult(FacingDirection) != Impulse.X && Impulse.X != 0;
+            if (inputChange)
+                FacingDirection = Utils.GetFacingDirectionFrom(Impulse.X);
 
-			void AddAction(ActionType actionType)
-			{
-				int index = ActionQueue.FindIndex(v => v.ActionType == actionType);
-				if (index == -1)
-				{
-					ActionQueue.Add(new QueuedAction(actionType));
-				}
-				else
-				{
-					ActionQueue.items[index].BufferTime = QueuedAction.DefaultBufferTime;
-				}
-				ActionQueue.Sort();
-			}
-		}
+            return inputChange;
+        }
+        public void Draw(Player player)
+        {
+            if (CurrentAction is null)
+            {
+                AnimationData data = null;
+                float facingScale = Utils.GetFacingDirectionMult(FacingDirection);
 
-		public void Draw(Player player)
-		{
-			if (CurrentAction is null)
-			{
-				AnimationData data = null;
-				int usedFrame = AnimationFrame;
+                if (player.Grounded)
+                {
+                    if (Shielding.Value > 0)
+                    {
+                        StringBuilder usedAnimation = new StringBuilder("elmoblock");
 
-				if (player.Grounded)
-				{
-					if (Shielding.Value > 0)
-					{
-						StringBuilder usedAnimation = new StringBuilder("elmoblock");
+                        usedAnimation.Append(Crouching ? "crouch" : "ground");
+                        data = AnimationRenderer.GetAnimation(usedAnimation.ToString());
+                        AnimationFrame = Shielding.Value;
+                    }
+                    else if (Crouching.Value > 0)
+                    {
+                        data = AnimationRenderer.GetAnimation("elmocrouch");
+                        AnimationFrame = Crouching.Value;
+                    }
+                    else if (DashTime > 0)
+                    {
+                        if (DashTime < player.CharacterData.Definition.DashStartupFrames)
+                        {
+                            data = AnimationRenderer.GetAnimation("elmodashgroundstart");
+                            AnimationFrame = DashTime;
+                        }
+                        else
+                        {
+                            if (DashTime == player.CharacterData.Definition.DashStartupFrames)
+                                AnimationFrame = -1;
+                            data = AnimationRenderer.GetAnimation("elmodashground");
+                            AnimationFrame++;
+                        }
+                    }
+                    else if (WalkTime > 0)
+                    {
+                        if (TurningTime > 0)
+                        {
+                            data = AnimationRenderer.GetAnimation("elmoturn");
+                            AnimationFrame = 20 - TurningTime;
+                        }
+                        else if (WalkTime <= 20)
+                        {
+                            data = AnimationRenderer.GetAnimation("elmowalkstart");
+                            AnimationFrame = WalkTime - 1;
+                        }
+                        else
+                        {
+                            AnimationFrame++;
+                            AnimationFrame %= 100;
+                            if (WalkTime == 21)
+                                AnimationFrame = 0;
+                            data = AnimationRenderer.GetAnimation("elmowalk");
+                        }
+                    }
+                    else if (Impulse.X == 0)
+                    {
+                        data = AnimationRenderer.GetAnimation("elmoidle");
+                        AnimationFrame++;
+                        AnimationFrame %= data.LastFrame;
+                    }
+                }
+                else
+                { 
+                    if (FastFalling.Value > 0)
+                    {
+                        data = AnimationRenderer.GetAnimation("elmofastfall");
+                        AnimationFrame = FastFalling.Value;
+                    }
+                    else
+                    {
+                        data = AnimationRenderer.GetAnimation("elmofalling");
+                        AnimationFrame++;
+                    }
+                }
 
-						usedAnimation.Append(Crouching ? "crouch" : "ground");
-						data = AnimationRenderer.GetAnimation(usedAnimation.ToString());
-						AnimationFrame = Shielding.Value;
-					}
-					else if (Crouching.Value > 0)
-					{
-						data = AnimationRenderer.GetAnimation("elmocrouch");
-						AnimationFrame = Crouching.Value;
-					}
-					else if (Impulse.X == 0)
-					{
-						data = AnimationRenderer.GetAnimation("elmoidle");
-						AnimationFrame++;
-						AnimationFrame %= data.LastFrame;
-					}
-					else
-					{
-						data = AnimationRenderer.GetAnimation("elmoidle");
-					}
-				}
-				else
-				{
-					if (JumpData.JumpFrame is not null)
-					{
-						data = AnimationRenderer.GetAnimation("elmojump");
-						AnimationFrame = JumpData.JumpFrame.Value;
-					}
-					if (FastFalling.Value > 0)
-					{
-						data = AnimationRenderer.GetAnimation("elmofastfall");
-						AnimationFrame = FastFalling.Value;
-					}
-				}
+                int usedFrame = AnimationFrame;
 
+                Vector2 scale = player.Scale;
+                scale.X *= facingScale;
+                if (data is not null)
+                    AnimationRenderer.DrawJsonData(Main.spriteBatch, data.JsonData, usedFrame, player.MovableObject.Center, scale);
 
-				Vector2 scale = player.Scale;
-				scale.X *= FacingRight.GetDirection();
-				if(data is not null)
-					AnimationRenderer.DrawJsonData(Main.spriteBatch, data.JsonData, usedFrame, player.MovableObject.Center, scale);
+            }
+            else
+            {
+                CurrentAction.Draw();
+            }
+        }
 
-			}
-			else
-			{
-				CurrentAction.Draw();
-			}
-		}
+        public void Reset()
+        {
+            CurrentAction = null;
+        }
+    }
+    public struct QueuedAction : IComparable<QueuedAction>
+    {
+        public readonly ActionType ActionType;
+        public ushort BufferTime;
+        public const ushort DefaultBufferTime = 14;
+        public QueuedAction(ActionType actionType)
+        {
+            ActionType = actionType;
+            BufferTime = DefaultBufferTime;
+        }
 
-		public void Reset()
-		{
-			CurrentAction = null;
-		}
-	}
-	public struct QueuedAction : IComparable<QueuedAction>
-	{
-		public readonly ActionType ActionType;
-		public ushort BufferTime;
-		public const ushort DefaultBufferTime = 14;
-		public QueuedAction(ActionType actionType)
-		{
-			ActionType = actionType;
-			BufferTime = DefaultBufferTime;
-		}
+        public bool TickBufferAndIsExpired() => BufferTime-- == 0;
 
-		public bool TickBufferAndReturnIfExpired()
-		{
-			return BufferTime-- == 0;
-		}
+        public int CompareTo(QueuedAction other) => ActionType.CompareTo(other.ActionType);
+    }
+    public struct QueuedActionList
+    {
+        public ExposedList<QueuedAction> ActionQueue = new ExposedList<QueuedAction>();
+        public QueuedActionList()
+        {
+        }
+        public bool HasActions => ActionQueue.Count != 0;
+        public bool DequeueAction(ActionType type, out QueuedAction action)
+        {
+            int index = ActionQueue.FindIndex(v => v.ActionType == type);
+            if (index != -1)
+            {
+                action = DequeueAction(index);
+                return true;
+            }
+            action = default;
+            return false;
+        }
+        public bool ConsumeAction(ActionType type)
+        {
+            int index = ActionQueue.FindIndex(v => v.ActionType == type);
 
-		public int CompareTo(QueuedAction other) => ActionType.CompareTo(other.ActionType);
-	}
-	public struct JumpData
-	{
-		public int? JumpFrame;
-		public float JumpDirection;
-		public bool WasGrounded;
-		public bool WallJump;
-		public Vector2 UsedVelocity;
-		
-		public void Tick(Player player, IPlayerControlDataReceiver controller)
-		{
-			if (!JumpFrame.HasValue)
-				return;
+            if (index == -1)
+                return false;
 
-			if (JumpFrame.Value >= player.CharacterData.Definition.JumpStartupFrames)
-			{
-				if (JumpFrame.Value == player.CharacterData.Definition.JumpStartupFrames || controller.Jump && JumpFrame.Value < player.CharacterData.Definition.JumpStartupFrames + player.CharacterData.Definition.JumpHoldMaxFrames)
-				{
-					player.MovableObject.Velocity = UsedVelocity;
-				}
-				else
-				{
-					JumpFrame = null;
-				}
-			}
-			
-			JumpFrame++;
-		}
+            ActionQueue.RemoveAt(index);
+            return true;
+        }
+        public QueuedAction DequeueAction(int index = 0)
+        {
+            QueuedAction action = ActionQueue[index];
+            ActionQueue.RemoveAt(index);
+            return action;
+        }
+        public void TickActions()
+        {
+            // tick all actions that weren't processed
+            for (int i = 0; i < ActionQueue.Count; i++)
+            {
+                QueuedAction action = ActionQueue[i];
 
-		public void InitializeJump(Player player, float direction, bool wasGrounded, bool wallJump)
-		{
-			if (JumpFrame.HasValue)
-				return;
-			
-			JumpFrame = 0;
-			JumpDirection = direction;
-			WasGrounded = wasGrounded;
-			WallJump = wallJump;
-			bool neutralJump = direction == 0;
-			CharacterDefinition definition = player.CharacterData.Definition;
-			UsedVelocity = wallJump ? definition.WallJumpVelocity : wasGrounded ? neutralJump ? definition.GroundJumpVelocity : definition.GroundSideJumpVelocity : neutralJump ? definition.AirborneJumpVelocity : definition.AirborneSideJumpVelocity;
-			UsedVelocity.X *= player.PlayerActionManager.FacingRight.GetDirection();
-		}
-	}
-	public readonly struct ActionType : IComparable<ActionType>
-	{
-		public static readonly ActionType // order is special toggle > block > move actions > jump > meter > attack melee > attack shot
-			// ActionLeft = (ActionLeftValue, 100),
-			// ActionRight = (ActionRightValue, 100),
-			// ActionUp = (ActionUpValue, 100),
-			// ActionDown = (ActionDownValue, 100),
-			Jump = (JumpValue, 90), 
-			Block = (BlockValue, 110),
-			AttackMelee = (AttackMeleeValue, 80),
-			AttackShot = (AttackShotValue, 79),
-			Special = (SpecialValue, 120),
-			Meter = (MeterValue, 89);
-		public const byte 
-			// ActionLeftValue = 0,
-			// ActionRightValue =1, 
-			// ActionUpValue =2, 
-			// ActionDownValue =3, 
-			JumpValue =4, 
-			BlockValue =5, 
-			AttackMeleeValue =6, 
-			AttackShotValue =7, 
-			SpecialValue =8, 
-			MeterValue =9; 
-		public readonly byte Value;
-		public readonly byte Priority;
+                if (!action.TickBufferAndIsExpired())
+                    continue;
 
-		public ActionType(byte value, byte priority)
-		{
-			Value = value;
-			Priority = priority;
-		}
-
-		public static implicit operator ActionType((byte value, byte priority) what) => new ActionType(what.value, what.priority);
-		public static implicit operator byte(ActionType action) => action.Value;
-
-		public int CompareTo(ActionType other) => other.Priority.CompareTo(Priority); // reversed so higher priority is located first
-	}
+                ActionQueue.RemoveAt(i);
+                i--;
+            }
+        }
+        public void AddActions(IPlayerDataReceiver controller)
+        {
+            if (controller.Left == ControlState.JustPressed)
+            {
+                AddAction(ActionType.LeftStart);
+            }
+            if (controller.Left == ControlState.Releasing)
+            {
+                AddAction(ActionType.LeftEnd);
+            }
+            if (controller.Right == ControlState.JustPressed)
+            {
+                AddAction(ActionType.RightStart);
+            }
+            if (controller.Right == ControlState.Releasing)
+            {
+                AddAction(ActionType.RightEnd);
+            }
+            if (controller.Up == ControlState.JustPressed)
+            {
+                AddAction(ActionType.UpStart);
+            }
+            if (controller.Up == ControlState.Releasing)
+            {
+                AddAction(ActionType.UpEnd);
+            }
+            if (controller.Down == ControlState.JustPressed)
+            {
+                AddAction(ActionType.DownStart);
+            }
+            if (controller.Down == ControlState.Releasing)
+            {
+                AddAction(ActionType.DownEnd);
+            }
+            if (controller.ActivateMeter == ControlState.JustPressed)
+            {
+                AddAction(ActionType.Meter);
+            }
+            if (controller.Shield == ControlState.JustPressed)
+            {
+                AddAction(ActionType.BlockStart);
+            }
+            if (controller.Shield == ControlState.Releasing)
+            {
+                AddAction(ActionType.BlockEnd);
+            }
+            if (controller.Dash == ControlState.JustPressed)
+            {
+                AddAction(ActionType.DashStart);
+            }
+            if (controller.Dash == ControlState.Releasing)
+            {
+                AddAction(ActionType.DashEnd);
+            }
+            if (controller.Jump == ControlState.JustPressed)
+            {
+                AddAction(ActionType.Jump);
+            }
+            if (controller.SpecialToggle == ControlState.JustPressed)
+            {
+                AddAction(ActionType.SpecialOn);
+            }
+            if (controller.SpecialToggle == ControlState.Releasing)
+            {
+                AddAction(ActionType.SpecialOff);
+            }
+            if (controller.MeleeAttack == ControlState.JustPressed)
+            {
+                AddAction(ActionType.AttackMelee);
+            }
+            if (controller.ShotAttack == ControlState.JustPressed)
+            {
+                AddAction(ActionType.AttackShot);
+            }
+            if (controller.Dash == ControlState.JustPressed)
+            {
+                AddAction(ActionType.DashStart);
+            }
+            if (controller.Dash == ControlState.Releasing)
+            {
+                AddAction(ActionType.DashEnd);
+            }
+        }
+        public void AddAction(ActionType actionType)
+        {
+            int index = ActionQueue.FindIndex(v => v.ActionType == actionType);
+            if (index == -1)
+            {
+                ActionQueue.Add(new QueuedAction(actionType));
+            }
+            else
+            {
+                ActionQueue.items[index].BufferTime = QueuedAction.DefaultBufferTime;
+            }
+            ActionQueue.Sort();
+        }
+    }
+    public enum FacingDirection : byte
+    {
+        Left, Right
+    }
+    public enum ActionType
+    {
+        DashStart,
+        DashEnd,
+        LeftStart,
+        RightStart,
+        UpStart,
+        DownStart,
+        LeftEnd,
+        RightEnd,
+        UpEnd,
+        DownEnd,
+        Jump,
+        BlockStart,
+        BlockEnd,
+        AttackMelee,
+        AttackShot,
+        SpecialOn,
+        SpecialOff,
+        Meter
+    }
+    public static class ActionTypeUtils
+    {
+        public static int GetPriority(ActionType action)
+        {
+            switch (action)
+            {
+                case ActionType.DashStart:
+                case ActionType.DashEnd:
+                    return 95;
+                case ActionType.LeftStart:
+                case ActionType.RightStart:
+                case ActionType.UpStart:
+                case ActionType.DownStart:
+                case ActionType.LeftEnd:
+                case ActionType.RightEnd:
+                case ActionType.UpEnd:
+                case ActionType.DownEnd:
+                    return 100;
+                case ActionType.Jump: 
+                    return 90;
+                case ActionType.BlockEnd:
+                case ActionType.BlockStart:
+                    return 110;
+                case ActionType.AttackMelee:
+                case ActionType.AttackShot:
+                    return 89;
+                case ActionType.SpecialOn:
+                case ActionType.SpecialOff:
+                    return 120;
+                case ActionType.Meter: 
+                    return 70;
+            }
+            return 0;
+        }
+    }
 }

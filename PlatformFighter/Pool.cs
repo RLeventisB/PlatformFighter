@@ -119,7 +119,8 @@ namespace PlatformFighter
     {
         public bool active;
         public ushort whoAmI;
-        public abstract void Kill(DeathReason killReason = DeathReason.NotSpecified);
+
+        public abstract void Kill();
         public abstract void ResetValues();
         public override int GetHashCode() => whoAmI;
     }

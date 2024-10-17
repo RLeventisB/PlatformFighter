@@ -1175,7 +1175,7 @@ namespace PlatformFighter.Miscelaneous
         public IEqualityComparer<TKey> comparer;
         public KeyCollection keys;
         public ValueCollection values;
-        public Object _syncRoot;
+        public object _syncRoot;
 
         // constants for serialization
         public const string VersionName = "Version";
@@ -1457,7 +1457,7 @@ namespace PlatformFighter.Miscelaneous
             version++;
         }
 
-        public virtual void OnDeserialization(Object sender)
+        public virtual void OnDeserialization(object sender)
         {
             HashHelpers.SerializationInfoTable.TryGetValue(this, out SerializationInfo siInfo);
 
@@ -1692,7 +1692,7 @@ namespace PlatformFighter.Miscelaneous
             {
                 if (_syncRoot is null)
                 {
-                    Interlocked.CompareExchange<Object>(ref _syncRoot, new Object(), null);
+                    Interlocked.CompareExchange<object>(ref _syncRoot, new object(), null);
                 }
                 return _syncRoot;
             }
@@ -2051,7 +2051,7 @@ namespace PlatformFighter.Miscelaneous
                 get { return false; }
             }
 
-            Object ICollection.SyncRoot
+            object ICollection.SyncRoot
             {
                 get { return ((ICollection)dictionary).SyncRoot; }
             }
@@ -2100,7 +2100,7 @@ namespace PlatformFighter.Miscelaneous
                 }
 
                 public TKey Current => currentKey;
-                Object IEnumerator.Current
+                object IEnumerator.Current
                 {
                     get
                     {
@@ -2238,7 +2238,7 @@ namespace PlatformFighter.Miscelaneous
                 get { return false; }
             }
 
-            Object ICollection.SyncRoot
+            object ICollection.SyncRoot
             {
                 get { return ((ICollection)dictionary).SyncRoot; }
             }
@@ -2384,7 +2384,7 @@ namespace PlatformFighter.Miscelaneous
 
             //outside of our predefined table. 
             //compute the hard way. 
-            for (int i = min | 1; i < Int32.MaxValue; i += 2)
+            for (int i = min | 1; i < int.MaxValue; i += 2)
             {
                 if (IsPrime(i) && (i - 1) % 101 != 0)
                     return i;

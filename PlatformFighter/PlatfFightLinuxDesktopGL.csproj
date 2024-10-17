@@ -67,4 +67,7 @@
         <Reference Include="..\build\libs\DesktopGL\$(Configuration)\MonoGame.Framework.dll" />
         <Reference Include="..\build\libs\ExtraProcessors.dll" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Rendering\FontRendering\" />
+    </ItemGroup>
 </Project>

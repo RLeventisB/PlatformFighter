@@ -6,6 +6,7 @@ using Editor.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using PlatformFighter.Menus;
 using PlatformFighter.Miscelaneous;
 using PlatformFighter.Rendering;
 using PlatformFighter.Stages;
@@ -58,8 +59,11 @@ namespace PlatformFighter
 				ColorDestinationBlend = Blend.InverseSourceAlpha,
 				AlphaDestinationBlend = Blend.InverseSourceAlpha
 			};
-
+			
 			GraphicsDevice.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+
+			// GraphicsDevice.Viewport.MinDepth = -1000f;
+			// GraphicsDevice.Viewport.MaxDepth = 1000f;
 
 			KeyframeableValue.CacheValueOnInterpolate = false;
 			TargetElapsedTime = TimeSpan.FromSeconds(1d / 120);
@@ -75,8 +79,7 @@ namespace PlatformFighter
 #endif
 			InstanceManager.Initialize();
 
-			GameWorld.StartGame(InstanceManager.Stages.GetID<DefaultStage>());
-			GameWorld.CreatePlayer(new Vector2(0, -100), 0, null, out _);
+			MenuManager.Load(GameMenus.CreateInstance<SelectMenu>());
 
 			base.Initialize();
 		}
@@ -112,17 +115,6 @@ namespace PlatformFighter
 				{
 					Name = "PauseTarget"
 				};
-
-			GraphicsDevice.SetRenderTarget(BackgroundTarget);
-			GraphicsDevice.Clear(ClearColor);
-			GraphicsDevice.SetRenderTarget(WorldTarget);
-			GraphicsDevice.Clear(ClearColor);
-			GraphicsDevice.SetRenderTarget(GUITarget);
-			GraphicsDevice.Clear(ClearColor);
-			GraphicsDevice.SetRenderTarget(MergedTarget);
-			GraphicsDevice.Clear(ClearColor);
-			GraphicsDevice.SetRenderTarget(PauseTarget);
-			GraphicsDevice.Clear(ClearColor);
 		}
 
 		protected override void LoadContent()
@@ -130,6 +122,9 @@ namespace PlatformFighter
 			Assets.LoadAssets();
 			ShadersInfo.Initialize();
 			spriteBatch = new SpriteBatch(GraphicsDevice);
+			TextRenderer.TextureInfo = Assets.Textures["PixelFont"];
+			TextRenderer.Initialize();
+			GameText.Initialize();
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -151,25 +146,27 @@ namespace PlatformFighter
 
 		protected override void Draw(GameTime gameTime)
 		{
+			ClearAllTargets();
+			GraphicsDevice.Clear(Color.CornflowerBlue);
 			if (TheGameState.PlayingMatch)
 			{
-				GraphicsDevice.SetRenderTarget(WorldTarget);
-				GraphicsDevice.Clear(ClearColor);
+				// GraphicsDevice.SetRenderTarget(WorldTarget);
 
 				GameWorld.RenderWorld(gameTime);
 			}
 			else
 			{
+				// GraphicsDevice.SetRenderTarget(GUITarget);
+				
 				MenuManager.Render(gameTime);
 			}
-
+			/*
 			GraphicsDevice.SetRenderTarget(MergedTarget);
 			GraphicsDevice.Clear(ClearColor);
 
 			// DrawRenderTarget(ref BackgroundTarget, ShaderType.Background);
 			DrawRenderTarget(ref WorldTarget, ShaderType.Screen);
-
-			// DrawRenderTarget(ref GUITarget, ShaderType.Menu);
+			DrawRenderTarget(ref GUITarget, ShaderType.Menu);
 
 			GraphicsDevice.SetRenderTarget(null);
 			GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -198,8 +195,22 @@ namespace PlatformFighter
 			}
 
 			spriteBatch.End();
-
+			*/
 			base.Draw(gameTime);
+		}
+		public void ClearAllTargets()
+		{
+			GraphicsDevice.SetRenderTarget(BackgroundTarget);
+			GraphicsDevice.Clear(ClearColor);
+			GraphicsDevice.SetRenderTarget(WorldTarget);
+			GraphicsDevice.Clear(ClearColor);
+			GraphicsDevice.SetRenderTarget(GUITarget);
+			GraphicsDevice.Clear(ClearColor);
+			GraphicsDevice.SetRenderTarget(MergedTarget);
+			GraphicsDevice.Clear(ClearColor);
+			GraphicsDevice.SetRenderTarget(PauseTarget);
+			GraphicsDevice.Clear(ClearColor);
+			GraphicsDevice.SetRenderTarget(null);
 		}
 
 		public static void DrawRenderTarget(ref RenderTarget2D renderTarget, ShaderType shaderType)

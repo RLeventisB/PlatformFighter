@@ -8,7 +8,7 @@
   "textures": [
     {
       "$id": "2",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "torso",
       "pivot": {
         "x": 20,
@@ -25,7 +25,7 @@
     },
     {
       "$id": "3",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "head",
       "pivot": {
         "x": 14,
@@ -42,7 +42,7 @@
     },
     {
       "$id": "4",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "forearm",
       "pivot": {
         "x": 6,
@@ -59,7 +59,7 @@
     },
     {
       "$id": "5",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "elbow stretch",
       "pivot": {
         "x": 6,
@@ -76,7 +76,7 @@
     },
     {
       "$id": "6",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "elbow contracted",
       "pivot": {
         "x": 6,
@@ -93,7 +93,7 @@
     },
     {
       "$id": "7",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "hand",
       "pivot": {
         "x": 5,
@@ -110,7 +110,7 @@
     },
     {
       "$id": "8",
-      "path": "..\\Textures\\ElmoEyes.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
       "name": "face",
       "pivot": {
         "x": 8,
@@ -127,7 +127,7 @@
     },
     {
       "$id": "9",
-      "path": "..\\Textures\\ElmoEyes.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
       "name": "eye",
       "pivot": {
         "x": -1,
@@ -144,7 +144,7 @@
     },
     {
       "$id": "10",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "sword",
       "pivot": {
         "x": 8,
@@ -161,7 +161,7 @@
     },
     {
       "$id": "11",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "leg",
       "pivot": {
         "x": 5,
@@ -178,7 +178,7 @@
     },
     {
       "$id": "12",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "knee",
       "pivot": {
         "x": 5,
@@ -195,7 +195,7 @@
     },
     {
       "$id": "13",
-      "path": "..\\Textures\\ElmoBody.png",
+      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
       "name": "foot",
       "pivot": {
         "x": 6,
@@ -221,10 +221,6 @@
           "$ref": "14"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "16",
           "$values": [
@@ -256,7 +252,6 @@
           "$ref": "14"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "21",
           "$values": [
@@ -285,7 +280,6 @@
           "$ref": "14"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "26",
           "$values": [
@@ -315,10 +309,6 @@
           "$ref": "14"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "31",
           "$values": [
@@ -337,9 +327,9 @@
               "$id": "33",
               "frame": 15,
               "value": {
-                        "x": -1.5833359,
-                        "y": 13.226192
-                      },
+                "x": -1.5833359,
+                "y": 13.226192
+              },
               "containing_value": {
                 "$ref": "30"
               }
@@ -377,14 +367,13 @@
           "$ref": "14"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "39",
           "$values": [
             {
               "$id": "40",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "38"
               }
@@ -406,7 +395,6 @@
           "$ref": "14"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "44",
           "$values": [
@@ -439,10 +427,6 @@
           "$ref": "48"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "50",
           "$values": [
@@ -474,7 +458,6 @@
           "$ref": "48"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "55",
           "$values": [
@@ -503,14 +486,13 @@
           "$ref": "48"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "60",
           "$values": [
             {
               "$id": "61",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "59"
               }
@@ -533,10 +515,6 @@
           "$ref": "48"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "65",
           "$values": [
@@ -555,9 +533,9 @@
               "$id": "67",
               "frame": 15,
               "value": {
-                        "x": -1.25,
-                        "y": 1.5
-                      },
+                "x": -1.25,
+                "y": 1.5
+              },
               "containing_value": {
                 "$ref": "64"
               }
@@ -595,14 +573,13 @@
           "$ref": "48"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "73",
           "$values": [
             {
               "$id": "74",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "72"
               }
@@ -624,7 +601,6 @@
           "$ref": "48"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "78",
           "$values": [
@@ -657,10 +633,6 @@
           "$ref": "82"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "84",
           "$values": [
@@ -692,7 +664,6 @@
           "$ref": "82"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "89",
           "$values": [
@@ -721,7 +692,6 @@
           "$ref": "82"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "94",
           "$values": [
@@ -802,10 +772,6 @@
           "$ref": "82"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "105",
           "$values": [
@@ -824,9 +790,9 @@
               "$id": "107",
               "frame": 15,
               "value": {
-                        "x": -12.3928795,
-                        "y": 2.0952435
-                      },
+                "x": -12.3928795,
+                "y": 2.0952435
+              },
               "containing_value": {
                 "$ref": "104"
               }
@@ -864,14 +830,13 @@
           "$ref": "82"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "113",
           "$values": [
             {
               "$id": "114",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "112"
               }
@@ -893,7 +858,6 @@
           "$ref": "82"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "118",
           "$values": [
@@ -926,10 +890,6 @@
           "$ref": "122"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "124",
           "$values": [
@@ -961,7 +921,6 @@
           "$ref": "122"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "129",
           "$values": [
@@ -990,7 +949,6 @@
           "$ref": "122"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "134",
           "$values": [
@@ -1071,10 +1029,6 @@
           "$ref": "122"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "145",
           "$values": [
@@ -1115,9 +1069,9 @@
               "$id": "149",
               "frame": 7,
               "value": {
-                        "x": -10.379787,
-                        "y": 7.1227455
-                      },
+                "x": -10.379787,
+                "y": 7.1227455
+              },
               "containing_value": {
                 "$ref": "144"
               }
@@ -1126,9 +1080,9 @@
               "$id": "150",
               "frame": 9,
               "value": {
-                        "x": -3.3382826,
-                        "y": 4.992501
-                      },
+                "x": -3.3382826,
+                "y": 4.992501
+              },
               "containing_value": {
                 "$ref": "144"
               }
@@ -1137,9 +1091,9 @@
               "$id": "151",
               "frame": 10,
               "value": {
-                        "x": 0.65920234,
-                        "y": 2.82724
-                      },
+                "x": 0.65920234,
+                "y": 2.82724
+              },
               "containing_value": {
                 "$ref": "144"
               }
@@ -1148,9 +1102,9 @@
               "$id": "152",
               "frame": 14,
               "value": {
-                                "x": 2.6612036,
-                                "y": -1.0444133
-                              },
+                "x": 2.6612036,
+                "y": -1.0444133
+              },
               "containing_value": {
                 "$ref": "144"
               }
@@ -1216,14 +1170,13 @@
           "$ref": "122"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "161",
           "$values": [
             {
               "$id": "162",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "160"
               }
@@ -1245,7 +1198,6 @@
           "$ref": "122"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "166",
           "$values": [
@@ -1278,10 +1230,6 @@
           "$ref": "170"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "172",
           "$values": [
@@ -1313,7 +1261,6 @@
           "$ref": "170"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "177",
           "$values": [
@@ -1366,7 +1313,6 @@
           "$ref": "170"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "185",
           "$values": [
@@ -1420,10 +1366,6 @@
           "$ref": "170"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "193",
           "$values": [
@@ -1442,9 +1384,9 @@
               "$id": "195",
               "frame": 15,
               "value": {
-                        "x": 16.440449,
-                        "y": 14.000003
-                      },
+                "x": 16.440449,
+                "y": 14.000003
+              },
               "containing_value": {
                 "$ref": "192"
               }
@@ -1482,14 +1424,13 @@
           "$ref": "170"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "201",
           "$values": [
             {
               "$id": "202",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "200"
               }
@@ -1511,7 +1452,6 @@
           "$ref": "170"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "206",
           "$values": [
@@ -1544,10 +1484,6 @@
           "$ref": "210"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "212",
           "$values": [
@@ -1579,7 +1515,6 @@
           "$ref": "210"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "217",
           "$values": [
@@ -1608,7 +1543,6 @@
           "$ref": "210"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "222",
           "$values": [
@@ -1662,10 +1596,6 @@
           "$ref": "210"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "230",
           "$values": [
@@ -1684,9 +1614,9 @@
               "$id": "232",
               "frame": 3,
               "value": {
-                        "x": -18.271158,
-                        "y": 21.643488
-                      },
+                "x": -18.271158,
+                "y": 21.643488
+              },
               "containing_value": {
                 "$ref": "229"
               }
@@ -1695,9 +1625,9 @@
               "$id": "233",
               "frame": 13,
               "value": {
-                        "x": 12.168833,
-                        "y": -1.0451014
-                      },
+                "x": 12.168833,
+                "y": -1.0451014
+              },
               "containing_value": {
                 "$ref": "229"
               }
@@ -1706,9 +1636,9 @@
               "$id": "234",
               "frame": 15,
               "value": {
-                        "x": 14.599895,
-                        "y": -2.3127756
-                      },
+                "x": 14.599895,
+                "y": -2.3127756
+              },
               "containing_value": {
                 "$ref": "229"
               }
@@ -1727,7 +1657,6 @@
                   0,
                   3,
                   13,
-                  15,
                   15
                 ]
               },
@@ -1749,14 +1678,13 @@
           "$ref": "210"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "240",
           "$values": [
             {
               "$id": "241",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "239"
               }
@@ -1778,7 +1706,6 @@
           "$ref": "210"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "245",
           "$values": [
@@ -1811,10 +1738,6 @@
           "$ref": "249"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "251",
           "$values": [
@@ -1846,7 +1769,6 @@
           "$ref": "249"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "256",
           "$values": [
@@ -1883,7 +1805,6 @@
           "$ref": "249"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "262",
           "$values": [
@@ -1937,10 +1858,6 @@
           "$ref": "249"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "270",
           "$values": [
@@ -1959,9 +1876,9 @@
               "$id": "272",
               "frame": 15,
               "value": {
-                        "x": 21.869022,
-                        "y": 18.07142
-                      },
+                "x": 21.869022,
+                "y": 18.07142
+              },
               "containing_value": {
                 "$ref": "269"
               }
@@ -1999,14 +1916,13 @@
           "$ref": "249"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "278",
           "$values": [
             {
               "$id": "279",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "277"
               }
@@ -2028,7 +1944,6 @@
           "$ref": "249"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "283",
           "$values": [
@@ -2061,10 +1976,6 @@
           "$ref": "287"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "289",
           "$values": [
@@ -2096,7 +2007,6 @@
           "$ref": "287"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "294",
           "$values": [
@@ -2125,7 +2035,6 @@
           "$ref": "287"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "299",
           "$values": [
@@ -2179,10 +2088,6 @@
           "$ref": "287"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "307",
           "$values": [
@@ -2201,9 +2106,9 @@
               "$id": "309",
               "frame": 15,
               "value": {
-                        "x": 28.815807,
-                        "y": 22.165945
-                      },
+                "x": 28.815807,
+                "y": 22.165945
+              },
               "containing_value": {
                 "$ref": "306"
               }
@@ -2241,14 +2146,13 @@
           "$ref": "287"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "315",
           "$values": [
             {
               "$id": "316",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "314"
               }
@@ -2270,7 +2174,6 @@
           "$ref": "287"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "320",
           "$values": [
@@ -2303,10 +2206,6 @@
           "$ref": "324"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "326",
           "$values": [
@@ -2338,7 +2237,6 @@
           "$ref": "324"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "331",
           "$values": [
@@ -2367,14 +2265,13 @@
           "$ref": "324"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "336",
           "$values": [
             {
               "$id": "337",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "335"
               }
@@ -2397,10 +2294,6 @@
           "$ref": "324"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "341",
           "$values": [
@@ -2419,9 +2312,9 @@
               "$id": "343",
               "frame": 15,
               "value": {
-                        "x": 4.75,
-                        "y": 4.5
-                      },
+                "x": 4.75,
+                "y": 4.5
+              },
               "containing_value": {
                 "$ref": "340"
               }
@@ -2459,14 +2352,13 @@
           "$ref": "324"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "349",
           "$values": [
             {
               "$id": "350",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "348"
               }
@@ -2488,7 +2380,6 @@
           "$ref": "324"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "354",
           "$values": [
@@ -2521,10 +2412,6 @@
           "$ref": "358"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "360",
           "$values": [
@@ -2556,7 +2443,6 @@
           "$ref": "358"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "365",
           "$values": [
@@ -2585,14 +2471,13 @@
           "$ref": "358"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "370",
           "$values": [
             {
               "$id": "371",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "369"
               }
@@ -2615,10 +2500,6 @@
           "$ref": "358"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "375",
           "$values": [
@@ -2637,9 +2518,9 @@
               "$id": "377",
               "frame": 15,
               "value": {
-                        "x": 9.75,
-                        "y": 0.5
-                      },
+                "x": 9.75,
+                "y": 0.5
+              },
               "containing_value": {
                 "$ref": "374"
               }
@@ -2677,14 +2558,13 @@
           "$ref": "358"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "383",
           "$values": [
             {
               "$id": "384",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "382"
               }
@@ -2706,7 +2586,6 @@
           "$ref": "358"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "388",
           "$values": [
@@ -2739,10 +2618,6 @@
           "$ref": "392"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "394",
           "$values": [
@@ -2774,7 +2649,6 @@
           "$ref": "392"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "399",
           "$values": [
@@ -2803,14 +2677,13 @@
           "$ref": "392"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "404",
           "$values": [
             {
               "$id": "405",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "403"
               }
@@ -2833,10 +2706,6 @@
           "$ref": "392"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "409",
           "$values": [
@@ -2855,9 +2724,9 @@
               "$id": "411",
               "frame": 15,
               "value": {
-                        "x": -0.25,
-                        "y": 0.33333397
-                      },
+                "x": -0.25,
+                "y": 0.33333397
+              },
               "containing_value": {
                 "$ref": "408"
               }
@@ -2895,14 +2764,13 @@
           "$ref": "392"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "417",
           "$values": [
             {
               "$id": "418",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "416"
               }
@@ -2924,7 +2792,6 @@
           "$ref": "392"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "422",
           "$values": [
@@ -2957,10 +2824,6 @@
           "$ref": "426"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "428",
           "$values": [
@@ -2992,7 +2855,6 @@
           "$ref": "426"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "433",
           "$values": [
@@ -3021,7 +2883,6 @@
           "$ref": "426"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "438",
           "$values": [
@@ -3075,10 +2936,6 @@
           "$ref": "426"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "446",
           "$values": [
@@ -3097,9 +2954,9 @@
               "$id": "448",
               "frame": 15,
               "value": {
-                        "x": -11.713089,
-                        "y": 24.26649
-                      },
+                "x": -11.713089,
+                "y": 24.26649
+              },
               "containing_value": {
                 "$ref": "445"
               }
@@ -3137,14 +2994,13 @@
           "$ref": "426"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "454",
           "$values": [
             {
               "$id": "455",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "453"
               }
@@ -3166,14 +3022,13 @@
           "$ref": "426"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "459",
           "$values": [
             {
               "$id": "460",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "458"
               }
@@ -3199,10 +3054,6 @@
           "$ref": "463"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "465",
           "$values": [
@@ -3234,7 +3085,6 @@
           "$ref": "463"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "470",
           "$values": [
@@ -3263,7 +3113,6 @@
           "$ref": "463"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "475",
           "$values": [
@@ -3293,10 +3142,6 @@
           "$ref": "463"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "480",
           "$values": [
@@ -3328,14 +3173,13 @@
           "$ref": "463"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "485",
           "$values": [
             {
               "$id": "486",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "484"
               }
@@ -3357,14 +3201,13 @@
           "$ref": "463"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "490",
           "$values": [
             {
               "$id": "491",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "489"
               }
@@ -3390,10 +3233,6 @@
           "$ref": "494"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "496",
           "$values": [
@@ -3425,7 +3264,6 @@
           "$ref": "494"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "501",
           "$values": [
@@ -3454,7 +3292,6 @@
           "$ref": "494"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "506",
           "$values": [
@@ -3484,10 +3321,6 @@
           "$ref": "494"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "511",
           "$values": [
@@ -3506,9 +3339,9 @@
               "$id": "513",
               "frame": 15,
               "value": {
-                        "x": -17.371824,
-                        "y": 32.81411
-                      },
+                "x": -17.371824,
+                "y": 32.81411
+              },
               "containing_value": {
                 "$ref": "510"
               }
@@ -3546,14 +3379,13 @@
           "$ref": "494"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "519",
           "$values": [
             {
               "$id": "520",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "518"
               }
@@ -3575,7 +3407,6 @@
           "$ref": "494"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "524",
           "$values": [
@@ -3608,10 +3439,6 @@
           "$ref": "528"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "530",
           "$values": [
@@ -3643,7 +3470,6 @@
           "$ref": "528"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "535",
           "$values": [
@@ -3672,7 +3498,6 @@
           "$ref": "528"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "540",
           "$values": [
@@ -3702,10 +3527,6 @@
           "$ref": "528"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "545",
           "$values": [
@@ -3724,9 +3545,9 @@
               "$id": "547",
               "frame": 15,
               "value": {
-                        "x": 12.535912,
-                        "y": 32.599827
-                      },
+                "x": 12.535912,
+                "y": 32.599827
+              },
               "containing_value": {
                 "$ref": "544"
               }
@@ -3764,14 +3585,13 @@
           "$ref": "528"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "553",
           "$values": [
             {
               "$id": "554",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "552"
               }
@@ -3793,7 +3613,6 @@
           "$ref": "528"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "558",
           "$values": [
@@ -3826,10 +3645,6 @@
           "$ref": "562"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "564",
           "$values": [
@@ -3861,7 +3676,6 @@
           "$ref": "562"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "569",
           "$values": [
@@ -3890,14 +3704,13 @@
           "$ref": "562"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "574",
           "$values": [
             {
               "$id": "575",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "573"
               }
@@ -3920,10 +3733,6 @@
           "$ref": "562"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "579",
           "$values": [
@@ -3955,14 +3764,13 @@
           "$ref": "562"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "584",
           "$values": [
             {
               "$id": "585",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "583"
               }
@@ -3984,7 +3792,6 @@
           "$ref": "562"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "589",
           "$values": [
@@ -4017,10 +3824,6 @@
           "$ref": "593"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "595",
           "$values": [
@@ -4052,7 +3855,6 @@
           "$ref": "593"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "600",
           "$values": [
@@ -4081,14 +3883,13 @@
           "$ref": "593"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "605",
           "$values": [
             {
               "$id": "606",
               "frame": 0,
-              "value": 0,
+              "value": 0.0,
               "containing_value": {
                 "$ref": "604"
               }
@@ -4111,10 +3912,6 @@
           "$ref": "593"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "610",
           "$values": [
@@ -4133,9 +3930,9 @@
               "$id": "612",
               "frame": 15,
               "value": {
-                        "x": -23.800388,
-                        "y": 35.772457
-                      },
+                "x": -23.800388,
+                "y": 35.772457
+              },
               "containing_value": {
                 "$ref": "609"
               }
@@ -4173,14 +3970,13 @@
           "$ref": "593"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "618",
           "$values": [
             {
               "$id": "619",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "617"
               }
@@ -4202,7 +3998,6 @@
           "$ref": "593"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "623",
           "$values": [
@@ -4235,10 +4030,6 @@
           "$ref": "627"
         },
         "name": "Scale",
-        "default_value": {
-          "x": 1,
-          "y": 1
-        },
         "keyframes": {
           "$id": "629",
           "$values": [
@@ -4257,9 +4048,9 @@
               "$id": "631",
               "frame": 15,
               "value": {
-                        "x": 1,
-                        "y": 1
-                      },
+                "x": 1,
+                "y": 1
+              },
               "containing_value": {
                 "$ref": "628"
               }
@@ -4297,7 +4088,6 @@
           "$ref": "627"
         },
         "name": "Frame Index",
-        "default_value": 0,
         "keyframes": {
           "$id": "637",
           "$values": [
@@ -4326,14 +4116,13 @@
           "$ref": "627"
         },
         "name": "Rotation",
-        "default_value": 0,
         "keyframes": {
           "$id": "642",
           "$values": [
             {
               "$id": "643",
               "frame": 0,
-              "value": -1.1581621,
+              "value": -0.63704836,
               "containing_value": {
                 "$ref": "641"
               }
@@ -4380,10 +4169,6 @@
           "$ref": "627"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "650",
           "$values": [
@@ -4402,9 +4187,9 @@
               "$id": "652",
               "frame": 15,
               "value": {
-                        "x": 37.096405,
-                        "y": 35.988884
-                      },
+                "x": 37.096405,
+                "y": 35.988884
+              },
               "containing_value": {
                 "$ref": "649"
               }
@@ -4442,14 +4227,13 @@
           "$ref": "627"
         },
         "name": "Transparency",
-        "default_value": 1,
         "keyframes": {
           "$id": "658",
           "$values": [
             {
               "$id": "659",
               "frame": 0,
-              "value": 1,
+              "value": 1.0,
               "containing_value": {
                 "$ref": "657"
               }
@@ -4471,7 +4255,6 @@
           "$ref": "627"
         },
         "name": "ZIndex",
-        "default_value": 0,
         "keyframes": {
           "$id": "663",
           "$values": [
@@ -4505,10 +4288,6 @@
           "$ref": "667"
         },
         "name": "Size",
-        "default_value": {
-          "x": 16,
-          "y": 16
-        },
         "keyframes": {
           "$id": "669",
           "$values": [
@@ -4540,10 +4319,6 @@
           "$ref": "667"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "674",
           "$values": [
@@ -4588,6 +4363,7 @@
       "shield_launch_angle": -50,
       "shield_potency": 2,
       "rate": 0.98,
+      "movement_influence": 0.2,
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
@@ -4604,10 +4380,6 @@
           "$ref": "679"
         },
         "name": "Size",
-        "default_value": {
-          "x": 16,
-          "y": 16
-        },
         "keyframes": {
           "$id": "681",
           "$values": [
@@ -4639,10 +4411,6 @@
           "$ref": "679"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "686",
           "$values": [
@@ -4687,6 +4455,7 @@
       "shield_launch_angle": -50,
       "shield_potency": 2,
       "rate": 0.98,
+      "movement_influence": 0.2,
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
@@ -4703,10 +4472,6 @@
           "$ref": "691"
         },
         "name": "Size",
-        "default_value": {
-          "x": 16,
-          "y": 16
-        },
         "keyframes": {
           "$id": "693",
           "$values": [
@@ -4738,10 +4503,6 @@
           "$ref": "691"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "698",
           "$values": [
@@ -4786,6 +4547,7 @@
       "shield_launch_angle": -50,
       "shield_potency": 2,
       "rate": 0.98,
+      "movement_influence": 0.2,
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
@@ -4802,10 +4564,6 @@
           "$ref": "703"
         },
         "name": "Size",
-        "default_value": {
-          "x": 16,
-          "y": 16
-        },
         "keyframes": {
           "$id": "705",
           "$values": [
@@ -4837,10 +4595,6 @@
           "$ref": "703"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "710",
           "$values": [
@@ -4885,6 +4639,7 @@
       "shield_launch_angle": -50,
       "shield_potency": 2,
       "rate": 0.98,
+      "movement_influence": 0.2,
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
@@ -4901,10 +4656,6 @@
           "$ref": "715"
         },
         "name": "Size",
-        "default_value": {
-          "x": 16,
-          "y": 16
-        },
         "keyframes": {
           "$id": "717",
           "$values": [
@@ -4936,10 +4687,6 @@
           "$ref": "715"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "722",
           "$values": [
@@ -4984,6 +4731,7 @@
       "shield_launch_angle": -50,
       "shield_potency": 2,
       "rate": 0.98,
+      "movement_influence": 0.2,
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
@@ -5000,10 +4748,6 @@
           "$ref": "727"
         },
         "name": "Size",
-        "default_value": {
-          "x": 16,
-          "y": 16
-        },
         "keyframes": {
           "$id": "729",
           "$values": [
@@ -5035,10 +4779,6 @@
           "$ref": "727"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "734",
           "$values": [
@@ -5083,6 +4823,7 @@
       "shield_launch_angle": -50,
       "shield_potency": 2,
       "rate": 0.98,
+      "movement_influence": 0.2,
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
@@ -5099,10 +4840,6 @@
           "$ref": "739"
         },
         "name": "Size",
-        "default_value": {
-          "x": 16,
-          "y": 16
-        },
         "keyframes": {
           "$id": "741",
           "$values": [
@@ -5134,10 +4871,6 @@
           "$ref": "739"
         },
         "name": "Position",
-        "default_value": {
-          "x": 0,
-          "y": 0
-        },
         "keyframes": {
           "$id": "746",
           "$values": [
@@ -5182,6 +4915,7 @@
       "shield_launch_angle": -50,
       "shield_potency": 2,
       "rate": 0.98,
+      "movement_influence": 0.2,
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",

@@ -221,19 +221,51 @@ namespace PlatformFighter.Physics
 
 			collidingObjects = result.ToArray();
 		}
+		public static Direction GetCollidingDirection(IMovableObject<float> movableObject, Vector2 velocity)
+		{
+			CollisionPrecalculation calc = new CollisionPrecalculation(movableObject, velocity);
+			Direction direction = Direction.None; 
 
+			foreach (WorldObject stageObject in GameWorld.CurrentStage.objects)
+			{
+				MovableObjectRectangle positionRectangle = movableObject.Rectangle;
+				MovableObjectRectangle newPositionRectangle = calc.Rectangle;
+				MovableObjectRectangle stageObjectRectangle = stageObject.MovableObject.Rectangle;
+				MovableObjectRectangle overlappingRectangle = MovableObjectRectangle.Intersect(stageObjectRectangle, newPositionRectangle);
+
+				if (overlappingRectangle.IsEmpty)
+					continue;
+				
+				if (positionRectangle.Bottom < stageObjectRectangle.Top && newPositionRectangle.Bottom >= stageObjectRectangle.Top)
+				{
+					direction |= Direction.Up;
+				}
+				if (positionRectangle.Right < stageObjectRectangle.Left && newPositionRectangle.Right >= stageObjectRectangle.Left)
+				{
+					direction |= Direction.Right;
+				}
+				if (positionRectangle.Left > stageObjectRectangle.Right && newPositionRectangle.Left <= stageObjectRectangle.Right)
+				{
+					direction |= Direction.Left;
+				}
+				if (positionRectangle.Top > stageObjectRectangle.Bottom && newPositionRectangle.Top <= stageObjectRectangle.Bottom)
+				{
+					direction |= Direction.Down;
+				}
+			}
+			return direction;
+		}
 		public static Direction ResolveCollisions(ref IMovableObject<float> movableObject, in CollisionPrecalculation calc, in CollisionData[] collidingObjects)
 		{
 			Direction direction = Direction.None;
 			foreach (CollisionData collisionData in collidingObjects)
 			{
-				Direction localDirection = Direction.None;
 				WorldObject worldObject = collisionData.WorldObject;
 				const float epsilonBcThisIsDumb = 0.001f;
 
 				foreach (Direction flag in Utils.GetPow2Flags(collisionData.CollidedDirections))
 				{
-					localDirection |= flag;
+					direction |= flag;
 					switch (flag)
 					{
 						case Direction.Up:
@@ -254,8 +286,6 @@ namespace PlatformFighter.Physics
 							break;
 					}
 				}
-
-				direction |= localDirection;
 			}
 
 			return direction;
@@ -265,10 +295,10 @@ namespace PlatformFighter.Physics
 		{
 			public readonly MovableObjectRectangle Rectangle;
 
-			public CollisionPrecalculation(IMovableObject<float> movableObject)
+			public CollisionPrecalculation(IMovableObject<float> movableObject, Vector2? overrideVelocity = null)
 			{
 				Rectangle = movableObject.Rectangle;
-				Rectangle.Location += movableObject.Velocity;
+				Rectangle.Location += overrideVelocity ?? movableObject.Velocity;
 			}
 		}
 		public readonly struct CollisionData

@@ -54,7 +54,7 @@ namespace PlatformFighter.Rendering
             {
                 ViewMatrix = Matrix.Identity *
                          Matrix.CreateTranslation(-_position.X + CameraShakeOffset.X, _position.Y + CameraShakeOffset.Y, 0) *
-                         Matrix.CreateTranslation(VirtualMidResolution.X / _zoom, VirtualMidResolution.Y / _zoom, 0) *
+                         Matrix.CreateTranslation(VirtualMidResolution.X, VirtualMidResolution.Y, 0) *
                          Matrix.CreateScale(_zoom, _zoom, 0);
                 remakeMatrix = false;
             }

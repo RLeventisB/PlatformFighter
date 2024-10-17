@@ -7,12 +7,12 @@ namespace PlatformFighter.Entities
 {
 	public static class PlayerController
 	{
-		public static Dictionary<ushort, IPlayerControlDataReceiver> registeredControllers = new Dictionary<ushort, IPlayerControlDataReceiver>();
+		public static Dictionary<ushort, IPlayerDataReceiver> registeredControllers = new Dictionary<ushort, IPlayerDataReceiver>();
 		public static ushort nextId;
 
-		public static bool UnregisterPlayerController(ushort id) => registeredControllers.Remove(id);
+		public static bool UnregisterController(ushort id) => registeredControllers.Remove(id);
 
-		public static ushort RegisterPlayerController(IPlayerControlDataReceiver dataReceiver)
+		public static ushort RegisterController(IPlayerDataReceiver dataReceiver)
 		{
 			ushort id = nextId;
 
@@ -23,7 +23,7 @@ namespace PlatformFighter.Entities
 			return id;
 		}
 	}
-	public struct GamepadDataReceiver : IPlayerControlDataReceiver
+	public struct GamepadDataReceiver : IPlayerDataReceiver
 	{
 		public readonly int gamepadIndex;
 
@@ -34,40 +34,40 @@ namespace PlatformFighter.Entities
 
 		public GamepadInfo GetGamepadInfo => Input.Gamepads[gamepadIndex];
 		public bool IsConnected => GetGamepadInfo.IsConnected;
-		public ControlState Left => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadLeft | Buttons.LeftThumbstickLeft));
-		public ControlState Right => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadRight | Buttons.LeftThumbstickRight));
-		public ControlState Up => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadUp | Buttons.LeftThumbstickUp));
-		public ControlState Down => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadDown | Buttons.LeftThumbstickDown));
-		public ControlState Jump => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.A));
-		public ControlState MeleeAttack => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.X));
-		public ControlState ShotAttack => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.Y));
-		public ControlState SpecialToggle => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.LeftTrigger));
-		public ControlState Dash => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightTrigger));
-		public ControlState Shield => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.LeftShoulder));
-		public ControlState CycleMeterUp => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightThumbstickRight));
-		public ControlState CycleMeterDown => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightThumbstickLeft));
-		public ControlState ActivateMeter => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightStick));
-		public ControlState Pause => IPlayerControlDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.Back));
+		public ControlState Left => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadLeft | Buttons.LeftThumbstickLeft));
+		public ControlState Right => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadRight | Buttons.LeftThumbstickRight));
+		public ControlState Up => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadUp | Buttons.LeftThumbstickUp));
+		public ControlState Down => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.DPadDown | Buttons.LeftThumbstickDown));
+		public ControlState Jump => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.A));
+		public ControlState MeleeAttack => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.X));
+		public ControlState ShotAttack => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.Y));
+		public ControlState SpecialToggle => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.LeftTrigger));
+		public ControlState Dash => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightTrigger));
+		public ControlState Shield => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.LeftShoulder));
+		public ControlState CycleMeterUp => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightThumbstickRight));
+		public ControlState CycleMeterDown => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightThumbstickLeft));
+		public ControlState ActivateMeter => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.RightStick));
+		public ControlState Pause => IPlayerDataReceiver.GetState(GetGamepadInfo.PreviousState, GetGamepadInfo.State, v => v.IsButtonDown(Buttons.Back));
 	}
-	public struct KeyboardDataReceiver : IPlayerControlDataReceiver
+	public struct KeyboardDataReceiver : IPlayerDataReceiver
 	{
 		public bool IsConnected => true;
-		public ControlState Left => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Left));
-		public ControlState Right => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Right));
-		public ControlState Up => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Up));
-		public ControlState Down => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Down));
-		public ControlState Jump => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Space));
-		public ControlState MeleeAttack => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Z));
-		public ControlState ShotAttack => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.X));
-		public ControlState SpecialToggle => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.C));
-		public ControlState Dash => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.LeftControl) || v.IsKeyDown(Keys.RightControl));
-		public ControlState Shield => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.LeftShift));
-		public ControlState CycleMeterUp => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.S));
-		public ControlState CycleMeterDown => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.A));
-		public ControlState ActivateMeter => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.D));
-		public ControlState Pause => IPlayerControlDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Escape));
+		public ControlState Left => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Left));
+		public ControlState Right => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Right));
+		public ControlState Up => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Up));
+		public ControlState Down => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Down));
+		public ControlState Jump => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Space));
+		public ControlState MeleeAttack => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Z));
+		public ControlState ShotAttack => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.X));
+		public ControlState SpecialToggle => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.C));
+		public ControlState Dash => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.LeftControl) || v.IsKeyDown(Keys.RightControl));
+		public ControlState Shield => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.LeftShift));
+		public ControlState CycleMeterUp => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.S));
+		public ControlState CycleMeterDown => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.A));
+		public ControlState ActivateMeter => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.D));
+		public ControlState Pause => IPlayerDataReceiver.GetState(Input.PreviousKeyboardState, Input.KeyboardState, v =>v.IsKeyDown(Keys.Escape));
 	}
-	public interface IPlayerControlDataReceiver
+	public interface IPlayerDataReceiver
 	{
 		public bool IsConnected { get; }
 		public ControlState Left { get; }
@@ -108,6 +108,24 @@ namespace PlatformFighter.Entities
 			// priority is Neutral > Down > Side
 			return Up ? AttackDirection.Neutral : Down ? AttackDirection.Down : AttackDirection.Side;
 		}
+	}
+	public struct InactiveDataReceiver : IPlayerDataReceiver
+	{
+		public bool IsConnected => true;
+		public ControlState Left => ControlState.Released;
+		public ControlState Right => ControlState.Released;
+		public ControlState Up => ControlState.Released;
+		public ControlState Down => ControlState.Released;
+		public ControlState Jump => ControlState.Released;
+		public ControlState MeleeAttack => ControlState.Released;
+		public ControlState ShotAttack => ControlState.Released;
+		public ControlState SpecialToggle => ControlState.Released;
+		public ControlState Dash => ControlState.Released;
+		public ControlState Shield => ControlState.Released;
+		public ControlState CycleMeterUp => ControlState.Released;
+		public ControlState CycleMeterDown => ControlState.Released;
+		public ControlState ActivateMeter => ControlState.Released;
+		public ControlState Pause => ControlState.Released;
 	}
 	public class ControlState
 	{

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using PlatformFighter.Entities.Actions;
 using PlatformFighter.Rendering;
 
 using System;
@@ -27,6 +28,22 @@ namespace PlatformFighter.Miscelaneous
 {
     public static class Utils
     {
+        public static float GetFacingDirectionMult(FacingDirection? facingDirection)
+        {
+            if (!facingDirection.HasValue)
+                return 0;
+            return facingDirection == FacingDirection.Right ? 1f : -1f;
+        }
+
+        public static FacingDirection? GetFacingDirectionFromWithZero(float x)
+        {
+            return x == 0 ? null : x > 0 ? FacingDirection.Right : FacingDirection.Left;
+        }
+        public static FacingDirection GetFacingDirectionFrom(float x)
+        {
+            return x > 0 ? FacingDirection.Right : FacingDirection.Left;
+        }
+
         public const sbyte Zero = 0;
         public static readonly Point[] directionPointMap = { Up, Down, Left, Right, Point.Zero, Point.Zero };
         public static readonly Vector2[] directionVectorMap = { Up, Down, Left, Right, Vector2.Zero, Vector2.Zero };
@@ -155,7 +172,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<int, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i, (int)0));
+                    } while (ShiftLeft(ref i, 0));
                 }
                     break;
                 case TypeCode.UInt32:
@@ -181,7 +198,7 @@ namespace PlatformFighter.Miscelaneous
                         {
                             list.Add(Unsafe.As<long, T>(ref i));
                         }
-                    } while (ShiftLeft(ref i, (long)0));
+                    } while (ShiftLeft(ref i, 0));
                 }
                     break;
                 case TypeCode.UInt64:
@@ -623,6 +640,80 @@ namespace PlatformFighter.Miscelaneous
     {
         public static readonly ushort[] PowersOf2 = { 2, 4, 8, 16, 32, 64, 128, 256 };
         public static unsafe ref T2 CastWithRef<T1, T2>(this T1 obj) => ref Unsafe.As<T1, T2>(ref obj);
+
+        public static void PushCharacter(this SpriteBatch spriteBatch, Vector2 sourceSize, Vector2 pos, Vector4 sourcePercents, Vector2 scale, Color color, float sin, float cos, ushort shadowWidth, float layerDepth)
+        {
+            float num = scale.X * sourceSize.X;
+            float num2 = scale.Y * sourceSize.Y;
+            float num3 = num * cos;
+            float num4 = num * sin;
+            float num5 = -num2 * sin;
+            float num6 = num2 * cos;
+            SpriteBatchItem depthlessSpriteBatchItem;
+            if (shadowWidth > 0)
+            {
+                Color black = Color.Black;
+                black.A = color.A;
+                Vector2 zero = Vector2.Zero;
+                for (int i = -shadowWidth; i <= shadowWidth; i++)
+                {
+                    for (int j = -shadowWidth; j <= shadowWidth; j++)
+                    {
+                        if ((i | j) == 0)
+                            continue;
+
+                        zero.X = i << 1;
+                        zero.Y = j << 1;
+                        Utils.RotateRadPreCalc(ref zero, sin, cos);
+                        depthlessSpriteBatchItem = spriteBatch.batcher.CreateBatchItem();
+                        GenerateVertexInfoForChar(ref depthlessSpriteBatchItem, sourcePercents.X, sourcePercents.Y, sourcePercents.Z, sourcePercents.W, pos + zero, black, num3, num4, num5, num6, layerDepth + 10E-4f);
+                        spriteBatch.FlushIfNeeded();
+                    }
+                }
+            }
+            depthlessSpriteBatchItem = spriteBatch.batcher.CreateBatchItem();
+            GenerateVertexInfoForChar(ref depthlessSpriteBatchItem, sourcePercents.X, sourcePercents.Y, sourcePercents.Z, sourcePercents.W, pos, color, num3, num4, num5, num6, layerDepth);
+            spriteBatch.FlushIfNeeded();
+        }
+
+        private static void GenerateVertexInfoForChar(ref SpriteBatchItem item, float sourceX, float sourceY, float sourceW, float sourceH, Vector2 destination, Color color, float cosW, float sinW, float minusSinH, float cosH, float layerDepth)
+        {
+            float var1 = minusSinH + destination.X;
+            float var2 = cosH + destination.Y;
+            float var3 = sourceH + sourceY;
+            float var4 = sourceW + sourceX;
+
+            item.Texture = TextRenderer.TextureInfo;
+            item.vertexTL.Position.X = destination.X;
+            item.vertexTL.Position.Y = destination.Y;
+            item.vertexTR.Position.X = cosW + destination.X;
+            item.vertexTR.Position.Y = sinW + destination.Y;
+            item.vertexBL.Position.X = var1;
+            item.vertexBL.Position.Y = var2;
+            item.vertexBR.Position.X = var1 + cosW;
+            item.vertexBR.Position.Y = var2 + sinW;
+
+            item.SortKey = -layerDepth;
+            
+            item.vertexTL.Position.Z = layerDepth;
+            item.vertexTR.Position.Z = layerDepth;
+            item.vertexBL.Position.Z = layerDepth;
+            item.vertexBR.Position.Z = layerDepth;
+            
+            item.vertexTL.TextureCoordinate.X = sourceX;
+            item.vertexTL.TextureCoordinate.Y = sourceY;
+            item.vertexTR.TextureCoordinate.X = var4;
+            item.vertexTR.TextureCoordinate.Y = sourceY;
+            item.vertexBL.TextureCoordinate.X = sourceX;
+            item.vertexBL.TextureCoordinate.Y = var3;
+            item.vertexBR.TextureCoordinate.X = var4;
+            item.vertexBR.TextureCoordinate.Y = var3;
+            item.vertexTL.Color = color;
+            item.vertexTR.Color = color;
+            item.vertexBL.Color = color;
+            item.vertexBR.Color = color;
+        }
+
         public static T AddDelegateOnce<T>(this T action, T addedAction) where T : Delegate
         {
             if (!action.GetInvocationList().Contains(addedAction))
@@ -1403,7 +1494,7 @@ namespace PlatformFighter.Miscelaneous
                 switch (chr)
                 {
                     case ' ':
-                        float width = TextRenderer.spaceWidth * scale;
+                        float width = TextRenderer.SpaceWidth * scale;
                         currentMeasure.X += width;
                         spaceLeft -= width;
                         lastSpaceWidth = 0;
@@ -1411,18 +1502,18 @@ namespace PlatformFighter.Miscelaneous
                         break;
                     case '\n':
                         spaceLeft = lineWidth;
-                        currentMeasure.X -= TextRenderer.spacing;
+                        currentMeasure.X -= TextRenderer.Spacing;
                         if (totalMeasure.X < currentMeasure.X)
                         {
                             totalMeasure.X = currentMeasure.X;
                         }
-                        totalMeasure.Y += currentMeasure.Y + TextRenderer.lineSpacing * scale;
+                        totalMeasure.Y += currentMeasure.Y + TextRenderer.LineSpacing * scale;
                         currentMeasure.X = 0;
                         currentMeasure.Y = 0;
                         break;
                     default:
                         (float chrWidth, float y) = TextRenderer.MeasureChar(chr) * scale;
-                        currentMeasure.X += chrWidth + TextRenderer.spacing * scale;
+                        currentMeasure.X += chrWidth + TextRenderer.Spacing * scale;
                         if (y > currentMeasure.Y)
                         {
                             currentMeasure.Y = y;
@@ -1432,12 +1523,12 @@ namespace PlatformFighter.Miscelaneous
                         if (spaceLeft <= 0)
                         {
                             result[lastSpace] = '\n';
-                            currentMeasure.X -= TextRenderer.spacing;
+                            currentMeasure.X -= TextRenderer.Spacing;
                             if (totalMeasure.X < currentMeasure.X)
                             {
                                 totalMeasure.X = currentMeasure.X;
                             }
-                            totalMeasure.Y += currentMeasure.Y + TextRenderer.lineSpacing * scale;
+                            totalMeasure.Y += currentMeasure.Y + TextRenderer.LineSpacing * scale;
                             currentMeasure.X = 0;
                             currentMeasure.Y = 0;
                             spaceLeft += lineWidth + lastSpaceWidth;
@@ -1446,8 +1537,8 @@ namespace PlatformFighter.Miscelaneous
                 }
                 result.Append(chr);
             }
-            if (totalMeasure.Y > TextRenderer.lineSpacing * scale)
-                totalMeasure.Y -= TextRenderer.lineSpacing * scale;
+            if (totalMeasure.Y > TextRenderer.LineSpacing * scale)
+                totalMeasure.Y -= TextRenderer.LineSpacing * scale;
             measure = totalMeasure;
             return result.ToString();
         }
@@ -1463,7 +1554,7 @@ namespace PlatformFighter.Miscelaneous
                 switch (chr)
                 {
                     case ' ':
-                        spaceLeft -= TextRenderer.spaceWidth * scale;
+                        spaceLeft -= TextRenderer.SpaceWidth * scale;
                         lastSpaceWidth = 0;
                         lastSpace = i;
                         break;
@@ -1594,20 +1685,20 @@ namespace PlatformFighter.Miscelaneous
         {
             X = x;
             Y = y;
-            vector2 = new Vector2(x, y);
+            Vector2 = new Vector2(x, y);
             point = new Point((int)x, (int)y);
         }
         public ReadonlyVector(Vector2 vector)
         {
             X = vector.X;
             Y = vector.Y;
-            vector2 = vector;
+            Vector2 = vector;
             point = new Point((int)X, (int)Y);
         }
         public readonly float X, Y;
-        public readonly Vector2 vector2;
+        public readonly Vector2 Vector2;
         public readonly Point point;
-        public static implicit operator Vector2(ReadonlyVector read) => read.vector2;
+        public static implicit operator Vector2(ReadonlyVector read) => read.Vector2;
         public static implicit operator Point(ReadonlyVector read) => read.point;
     }
     public interface ISaveableObject
@@ -2211,5 +2302,43 @@ namespace PlatformFighter.Miscelaneous
         }
         public static implicit operator bool(AnalogValue<T> value) => value.state;
         public static implicit operator T(AnalogValue<T> value) => value.Value;
+    }
+    public struct TemporaryStateBoolean
+    {
+        public ExposedList<int> frames = new ExposedList<int>();
+
+        public TemporaryStateBoolean()
+        {
+        }
+
+        public bool HasFrames => frames.Count > 0;
+
+        public int Register(int frame)
+        {
+            frames.Add(frame);
+
+            return frames.Count - 1;
+        }
+
+        public void Tick()
+        {
+            for (int i = 0; i < frames.items.Length; i++)
+            {
+                ref int frame = ref frames.items[i];
+                frame--;
+
+                if (frame != 0)
+                    continue;
+
+                frames.RemoveAt(i);
+                i--;
+            }
+        }
+
+        public void RemoveId(int noGravityId)
+        {
+            if(frames.Count > noGravityId)
+                frames.RemoveAt(noGravityId);
+        }
     }
 }

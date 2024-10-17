@@ -181,7 +181,7 @@ namespace PlatformFighter.Rendering
             }
             else
             {
-                windowMatrix = Matrix.CreateScale(resolutionScale.X, resolutionScale.Y, 1);
+                windowMatrix = Matrix.Identity * Matrix.CreateScale(resolutionScale.X, resolutionScale.Y, 1);
                 InvWindowMatrix = Matrix.Invert(windowMatrix);
             }
         };
@@ -283,7 +283,7 @@ namespace PlatformFighter.Rendering
         {
             return loadedAnimations.TryGetValue(name, out data);
         }
-        public static void DrawJsonData(SpriteBatch spriteBatch, JsonData data, int frame, Vector2 center, Vector2? scale = null)
+        public static void DrawJsonData(SpriteBatch spriteBatch, JsonData data, int frame, Vector2 center, Vector2? scale = null, float rotation = 0)
         {
             Vector2 finalScale = scale ?? Vector2.One;
             bool flipped = scale.HasValue && scale.Value.X < 0;
@@ -294,11 +294,11 @@ namespace PlatformFighter.Rendering
 					continue;
 				Vector2 position = center + graphicObject.Position.Interpolate(frame) * finalScale;
 				int frameIndex = graphicObject.FrameIndex.Interpolate(frame);
-				float rotation = graphicObject.Rotation.Interpolate(frame);
+				float localRotation = graphicObject.Rotation.Interpolate(frame);
 
                 if (flipped)
                 {
-                    rotation = - rotation;
+                    localRotation = -localRotation;
                 }
 				Vector2 localScale = graphicObject.Scale.Interpolate(frame) * finalScale;
 				SpriteEffects effects = SpriteEffects.None;
@@ -329,7 +329,7 @@ namespace PlatformFighter.Rendering
                     pivot.X = textureFrame.FrameSize.X - pivot.X;
                 }
                 spriteBatch.Draw(texture, position, sourceRect, color,
-					rotation, pivot,
+                    localRotation, pivot,
 					localScale, effects, graphicObject.ZIndex.CachedValue);
             }
         }

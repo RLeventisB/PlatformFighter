@@ -1,4 +1,7 @@
-﻿using PlatformFighter.Miscelaneous;
+﻿using Editor.Objects;
+
+using PlatformFighter.Miscelaneous;
+using PlatformFighter.Rendering;
 
 using System;
 using System.Runtime.CompilerServices;
@@ -14,7 +17,7 @@ namespace PlatformFighter.Entities.Actions
 
 		public T Entity { get; init; }
 		public int Frame { get; set; }
-		public abstract int Duration { get; }
+		public virtual bool OverrideActions => true;
 		public abstract ActionTags Tags { get; }
 
 		public virtual string ActionName => GetType().Name;
@@ -25,31 +28,64 @@ namespace PlatformFighter.Entities.Actions
 
 		public virtual void Update()
 		{
-			if (Frame >= Duration)
-			{
-				OnTimeEnd();
-			}
-
 			Frame++;
 		}
 
 		public abstract void Draw();
-
-		public virtual void OnTimeEnd()
-		{
-			Entity.PlayerActionManager.CurrentAction = null;
-		}
-
 		public void ChangeTo(ActionBase<T> newAction)
 		{
-			Entity.PlayerActionManager.CurrentAction = Unsafe.As<ActionBase<Player>>(newAction);
+			Entity.ActionManager.CurrentAction = Unsafe.As<ActionBase<Player>>(newAction);
 		}
-
-		public virtual void ProcessQueue(ExposedList<QueuedAction> actionQueue)
+		
+		public virtual void ProcessQueue(QueuedActionList queuedAction)
 		{
 			
 		}
 	}
+	public abstract class AnimationActionBase : ActionBase<Player>
+	{
+		public AnimationActionBase(Player entity, string animName, int duration) : base(entity)
+		{
+			AnimationData = AnimationRenderer.GetAnimation(animName);
+			Duration = duration;
+		}
+		public AnimationActionBase(Player entity, string animName) : base(entity)
+		{
+			AnimationData = AnimationRenderer.GetAnimation(animName);
+			Duration = AnimationData.LastFrame;
+		}
+		public virtual float FrameToDraw => Frame;
+		public int Duration { get; internal set; }
+		public override void Update()
+		{
+			if (Frame >= Duration)
+			{
+				OnTimeEnd();
+			}
+			base.Update();
+		}
+		public abstract void OnTimeEnd();
+		public override void Draw()
+		{
+			AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, (int)FrameToDraw, Entity.MovableObject.Center, Entity.GetScaleWithFacing);
+		}
+		public override ActionTags Tags => ActionTags.Sustain;
+		public AnimationData AnimationData { get; internal set; }
+	}
+	public class EndingActionToIdle : AnimationActionBase
+	{
+		public EndingActionToIdle(Player entity, string animName, int duration) : base(entity, animName, duration)
+		{
+		}
+		public EndingActionToIdle(Player entity, string animName) : base(entity, animName)
+		{
+		}
+		public override void OnTimeEnd()
+		{
+			ChangeTo(null);
+		}
+	}
+	
 	[Flags]
 	public enum ActionTags : ushort
 	{

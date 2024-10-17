@@ -627,14 +627,16 @@ namespace PlatformFighter
 		public static FrozenSet<Type> AssemblyTypes;
 		public static Assembly ExecutingAssembly;
 		public static InstanceDictionary<CharacterDefinition> CharacterDefinitions;
+		public static InstanceDictionary<GameMenu> GameMenus;
 		public static InstanceDictionary<Stage> Stages;
-		public static IInstanceDictionary[] Dictionaries => [CharacterDefinitions, Stages];
+		public static IInstanceDictionary[] Dictionaries => [CharacterDefinitions, GameMenus, Stages];
 
 		[RequiresUnreferencedCode("Types might be removed")]
 		public static void Initialize()
 		{
 			CharacterDefinitions = new InstanceDictionary<CharacterDefinition>();
 			Stages = new InstanceDictionary<Stage>();
+			GameMenus = new InstanceDictionary<GameMenu>();
 
 			ExecutingAssembly = Assembly.GetExecutingAssembly();
 			Type compilerGenerated = typeof(CompilerGeneratedAttribute);
