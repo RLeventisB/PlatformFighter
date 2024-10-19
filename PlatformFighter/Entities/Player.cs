@@ -19,21 +19,23 @@ namespace PlatformFighter.Entities
 		public int HitStun = 0;
 		public Collision.CollisionData[] LastFrameCollidedData;
 		public float MoveDelta;
-		public TemporaryStateBoolean NoGravityFrames = new TemporaryStateBoolean();
 		public Team PlayerTeam;
 		public int Stocks;
-		public Vector2 GetScaleWithFacing => new Vector2(Scale.X * Utils.GetFacingDirectionMult(ActionManager.FacingDirection), Scale.Y);
 
 		public Player()
 		{
 			ActionManager = new PlayerActionManager(this);
 		}
+
+		public Vector2 GetScaleWithFacing => new Vector2(Scale.X * Utils.GetFacingDirectionMult(ActionManager.FacingDirection), Scale.Y);
+
 		public override void ResetValues()
 		{
-			ActionManager.Reset();
-
 			CharacterData.SetDefinition(0);
 			CharacterData.ApplyDefaults(this);
+
+			ActionManager.Reset();
+
 			PlayerTeam = Team.Default;
 			Stocks = 3;
 		}
@@ -64,7 +66,7 @@ namespace PlatformFighter.Entities
 				// MoveDelta = 0.9f;
 				// }
 				/*else*/
-				if (ActionManager.Impulse.X == 0) // apply friction if not moving
+				if (!ActionManager.CurrentActionHasFlag(ActionTags.NoFriction))
 				{
 					MovableObject.VelocityX *= CharacterData.Definition.FloorFriction;
 				}
@@ -75,11 +77,24 @@ namespace PlatformFighter.Entities
 
 		public void AddWalkAcceleration(FacingDirection direction)
 		{
-			if (Math.Abs(MovableObject.VelocityX) < CharacterData.Definition.WalkMaxSpeed || Math.Sign(MovableObject.VelocityX) != Math.Sign(Utils.GetFacingDirectionMult(direction)))
+			AddAcceleration(direction, CharacterData.Definition.WalkAcceleration, CharacterData.Definition.WalkMaxSpeed, CharacterData.Definition.HigherSpeedSlowingValue);
+		}
+
+		public void AddAcceleration(FacingDirection direction, float acceleration, float maxSpeed, float higherSpeedPenalty)
+		{
+			bool lowerThanMaxSpeed = Math.Abs(MovableObject.VelocityX) < maxSpeed;
+
+			if (lowerThanMaxSpeed || Math.Sign(MovableObject.VelocityX) != Math.Sign(Utils.GetFacingDirectionMult(direction)))
 			{
-				MovableObject.VelocityX += CharacterData.Definition.WalkAcceleration * Utils.GetFacingDirectionMult(direction);
+				MovableObject.VelocityX += acceleration * Utils.GetFacingDirectionMult(direction);
+			}
+
+			if (!lowerThanMaxSpeed)
+			{
+				MovableObject.VelocityX *= higherSpeedPenalty;
 			}
 		}
+
 		public override void PostUpdate()
 		{
 			AddEnvironmentVelocities();
@@ -95,20 +110,16 @@ namespace PlatformFighter.Entities
 
 		private void AddEnvironmentVelocities()
 		{
-			if (!NoGravityFrames.HasFrames)
+			if (!ActionManager.CurrentActionHasFlag(ActionTags.NoGravity))
 			{
 				if (MovableObject.VelocityY <= CharacterData.Definition.FallingGravityMax)
 					MovableObject.VelocityY += CharacterData.Definition.FallingGravity;
-			}
-			else
-			{
-				NoGravityFrames.Tick();
 			}
 		}
 
 		public override void Draw()
 		{
-			ActionManager.Draw(this);
+			ActionManager.Draw();
 			Main.spriteBatch.DrawRectangle(MovableObject.Rectangle);
 		}
 

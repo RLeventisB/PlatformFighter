@@ -1,7 +1,4 @@
-﻿using Editor.Objects;
-
-using PlatformFighter.Miscelaneous;
-using PlatformFighter.Rendering;
+﻿using PlatformFighter.Rendering;
 
 using System;
 using System.Runtime.CompilerServices;
@@ -17,11 +14,16 @@ namespace PlatformFighter.Entities.Actions
 
 		public T Entity { get; init; }
 		public int Frame { get; set; }
-		public virtual bool OverrideActions => true;
 		public abstract ActionTags Tags { get; }
 
 		public virtual string ActionName => GetType().Name;
 
+		public virtual bool RunUpdateOnRecovery => false;
+
+		public virtual void UpdateOnRecovery()
+		{
+			
+		}
 		public virtual void OnStart() { }
 
 		public virtual void OnEnd() { }
@@ -32,15 +34,17 @@ namespace PlatformFighter.Entities.Actions
 		}
 
 		public abstract void Draw();
+
 		public void ChangeTo(ActionBase<T> newAction)
 		{
-			Entity.ActionManager.CurrentAction = Unsafe.As<ActionBase<Player>>(newAction);
+			Entity.ActionManager.SetAction(Unsafe.As<ActionBase<Player>>(newAction));
 		}
-		
+
 		public virtual void ProcessQueue(QueuedActionList queuedAction)
 		{
-			
 		}
+
+		public virtual bool CanChangeTo(ActionBase<Player> action) => true;
 	}
 	public abstract class AnimationActionBase : ActionBase<Player>
 	{
@@ -49,53 +53,94 @@ namespace PlatformFighter.Entities.Actions
 			AnimationData = AnimationRenderer.GetAnimation(animName);
 			Duration = duration;
 		}
+
 		public AnimationActionBase(Player entity, string animName) : base(entity)
 		{
 			AnimationData = AnimationRenderer.GetAnimation(animName);
 			Duration = AnimationData.LastFrame;
 		}
+
 		public virtual float FrameToDraw => Frame;
+		public override bool RunUpdateOnRecovery => true;
 		public int Duration { get; internal set; }
+		public override ActionTags Tags => ActionTags.None;
+		public AnimationData AnimationData { get; internal set; }
+
+		public override void Draw()
+		{
+			AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, (int)FrameToDraw, Entity.MovableObject.Center, Entity.GetScaleWithFacing, Entity.Rotation);
+		}
+	}
+	public abstract class EndingActionToIdle : AnimationActionBase
+	{
+		public EndingActionToIdle(Player entity, string animName, int duration) : base(entity, animName, duration)
+		{
+		}
+
+		public EndingActionToIdle(Player entity, string animName) : base(entity, animName)
+		{
+		}
+
 		public override void Update()
 		{
 			if (Frame >= Duration)
 			{
 				OnTimeEnd();
 			}
+
 			base.Update();
 		}
-		public abstract void OnTimeEnd();
-		public override void Draw()
-		{
-			AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, (int)FrameToDraw, Entity.MovableObject.Center, Entity.GetScaleWithFacing);
-		}
-		public override ActionTags Tags => ActionTags.Sustain;
-		public AnimationData AnimationData { get; internal set; }
-	}
-	public class EndingActionToIdle : AnimationActionBase
-	{
-		public EndingActionToIdle(Player entity, string animName, int duration) : base(entity, animName, duration)
-		{
-		}
-		public EndingActionToIdle(Player entity, string animName) : base(entity, animName)
-		{
-		}
-		public override void OnTimeEnd()
+
+		public virtual void OnTimeEnd()
 		{
 			ChangeTo(null);
 		}
 	}
-	
+	public abstract class StateAction : AnimationActionBase
+	{
+		public StateAction(Player entity, string animName, int duration) : base(entity, animName, duration)
+		{
+		}
+
+		public StateAction(Player entity, string animName) : base(entity, animName)
+		{
+		}
+
+		public abstract bool State { get; }
+		public virtual int Frequency => 1;
+
+		public override void Update()
+		{
+			if (State)
+			{
+				if (Frame < Duration)
+					Frame += Frequency;
+			}
+			else
+			{
+				if (Frame == 0)
+					OnTimeEnd();
+
+				Frame -= Frequency;
+			}
+		}
+
+		public virtual void OnTimeEnd()
+		{
+			ChangeTo(null);
+		}
+	}
+
 	[Flags]
 	public enum ActionTags : ushort
 	{
-		Idle = 0,
-		Start = 2,
-		Sustain = 4,
+		None = 0,
+		NoFriction = 1,
+		NoGravity = 2,
 		Attack = 8,
-		Walk = 16,
-		Dash = 32,
-		Jump = 64,
+		Shield = 16,
+		Movement = 32,
+		DontDrawFlipped = 64,
 		Aerial = 128,
 		Wall = 256,
 		Crouch = 512,

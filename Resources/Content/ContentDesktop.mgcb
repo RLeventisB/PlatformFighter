@@ -17,17 +17,8 @@
 #begin Animations/elmoairsidebullet.anim
 /copy:Animations/elmoairsidebullet.anim
 
-#begin Animations/elmoairsidebullet.anim
-/copy:Animations/elmoairsidebullet.anim
-
 #begin Animations/elmoblockbreak.anim
 /copy:Animations/elmoblockbreak.anim
-
-#begin Animations/elmoblockbreak.anim
-/copy:Animations/elmoblockbreak.anim
-
-#begin Animations/elmoblockcrouch.anim
-/copy:Animations/elmoblockcrouch.anim
 
 #begin Animations/elmoblockcrouch.anim
 /copy:Animations/elmoblockcrouch.anim
@@ -35,17 +26,8 @@
 #begin Animations/elmoblockcrouchsuccess.anim
 /copy:Animations/elmoblockcrouchsuccess.anim
 
-#begin Animations/elmoblockcrouchsuccess.anim
-/copy:Animations/elmoblockcrouchsuccess.anim
-
 #begin Animations/elmoblockcrouchwrong.anim
 /copy:Animations/elmoblockcrouchwrong.anim
-
-#begin Animations/elmoblockcrouchwrong.anim
-/copy:Animations/elmoblockcrouchwrong.anim
-
-#begin Animations/elmoblockground.anim
-/copy:Animations/elmoblockground.anim
 
 #begin Animations/elmoblockground.anim
 /copy:Animations/elmoblockground.anim
@@ -53,23 +35,26 @@
 #begin Animations/elmoblockgroundsuccess.anim
 /copy:Animations/elmoblockgroundsuccess.anim
 
-#begin Animations/elmoblockgroundsuccess.anim
-/copy:Animations/elmoblockgroundsuccess.anim
-
-#begin Animations/elmoblockgroundwrong.anim
-/copy:Animations/elmoblockgroundwrong.anim
-
 #begin Animations/elmoblockgroundwrong.anim
 /copy:Animations/elmoblockgroundwrong.anim
 
 #begin Animations/elmocrouch.anim
 /copy:Animations/elmocrouch.anim
 
-#begin Animations/elmocrouch.anim
-/copy:Animations/elmocrouch.anim
+#begin Animations/elmodashair.anim
+/copy:Animations/elmodashair.anim
+
+#begin Animations/elmodashairend.anim
+/copy:Animations/elmodashairend.anim
+
+#begin Animations/elmodashairstart.anim
+/copy:Animations/elmodashairstart.anim
 
 #begin Animations/elmodashground.anim
 /copy:Animations/elmodashground.anim
+
+#begin Animations/elmodashgroundend.anim
+/copy:Animations/elmodashgroundend.anim
 
 #begin Animations/elmodashgroundstart.anim
 /copy:Animations/elmodashgroundstart.anim
@@ -77,17 +62,8 @@
 #begin Animations/elmofalling.anim
 /copy:Animations/elmofalling.anim
 
-#begin Animations/elmofalling.anim
-/copy:Animations/elmofalling.anim
-
 #begin Animations/elmofastfall.anim
 /copy:Animations/elmofastfall.anim
-
-#begin Animations/elmofastfall.anim
-/copy:Animations/elmofastfall.anim
-
-#begin Animations/elmogrounddownmelee.anim
-/copy:Animations/elmogrounddownmelee.anim
 
 #begin Animations/elmogrounddownmelee.anim
 /copy:Animations/elmogrounddownmelee.anim
@@ -95,17 +71,8 @@
 #begin Animations/elmogroundneutralmelee.anim
 /copy:Animations/elmogroundneutralmelee.anim
 
-#begin Animations/elmogroundneutralmelee.anim
-/copy:Animations/elmogroundneutralmelee.anim
-
 #begin Animations/elmogroundsidemelee.anim
 /copy:Animations/elmogroundsidemelee.anim
-
-#begin Animations/elmogroundsidemelee.anim
-/copy:Animations/elmogroundsidemelee.anim
-
-#begin Animations/elmogroundsidemeleefinisher.anim
-/copy:Animations/elmogroundsidemeleefinisher.anim
 
 #begin Animations/elmogroundsidemeleefinisher.anim
 /copy:Animations/elmogroundsidemeleefinisher.anim
@@ -113,17 +80,8 @@
 #begin Animations/elmohitair.anim
 /copy:Animations/elmohitair.anim
 
-#begin Animations/elmohitair.anim
-/copy:Animations/elmohitair.anim
-
 #begin Animations/elmohithead.anim
 /copy:Animations/elmohithead.anim
-
-#begin Animations/elmohithead.anim
-/copy:Animations/elmohithead.anim
-
-#begin Animations/elmohittorso.anim
-/copy:Animations/elmohittorso.anim
 
 #begin Animations/elmohittorso.anim
 /copy:Animations/elmohittorso.anim
@@ -131,17 +89,8 @@
 #begin Animations/elmoidle.anim
 /copy:Animations/elmoidle.anim
 
-#begin Animations/elmoidle.anim
-/copy:Animations/elmoidle.anim
-
 #begin Animations/elmojump.anim
 /copy:Animations/elmojump.anim
-
-#begin Animations/elmojump.anim
-/copy:Animations/elmojump.anim
-
-#begin Animations/elmojumpairside.anim
-/copy:Animations/elmojumpairside.anim
 
 #begin Animations/elmojumpairside.anim
 /copy:Animations/elmojumpairside.anim
@@ -149,17 +98,8 @@
 #begin Animations/elmoland.anim
 /copy:Animations/elmoland.anim
 
-#begin Animations/elmoland.anim
-/copy:Animations/elmoland.anim
-
 #begin Animations/elmoselection.anim
 /copy:Animations/elmoselection.anim
-
-#begin Animations/elmoselection.anim
-/copy:Animations/elmoselection.anim
-
-#begin Animations/elmoturn.anim
-/copy:Animations/elmoturn.anim
 
 #begin Animations/elmoturn.anim
 /copy:Animations/elmoturn.anim
@@ -167,14 +107,11 @@
 #begin Animations/elmowalk.anim
 /copy:Animations/elmowalk.anim
 
-#begin Animations/elmowalk.anim
-/copy:Animations/elmowalk.anim
-
 #begin Animations/elmowalkstart.anim
 /copy:Animations/elmowalkstart.anim
 
-#begin Animations/elmowalkstart.anim
-/copy:Animations/elmowalkstart.anim
+#begin Animations/elmowall.anim
+/copy:Animations/elmowall.anim
 
 #begin Effects/GlowShader.fx
 /importer:EffectImporter

@@ -2,6 +2,7 @@
 
 using Microsoft.Xna.Framework;
 
+using PlatformFighter.Entities.Actions;
 using PlatformFighter.Miscelaneous;
 
 using System;
@@ -23,7 +24,7 @@ namespace PlatformFighter.Entities
 
 		public void Hit(HitData data)
 		{
-			if (Player.ActionManager.Shielding)
+			if (Player.ActionManager.CurrentActionHasFlag(ActionTags.Shield))
 			{
 				Player.MovableObject.Velocity = new Vector2(0, data.Hitbox.ShieldPotency).Rotate(data.Hitbox.ShieldLaunchAngle);
 				Player.HitStun = data.Hitbox.ShieldStun;
@@ -31,12 +32,12 @@ namespace PlatformFighter.Entities
 			else
 			{
 				// NOTE: hitstun is before damage is added, which could make hits less "safe"
-				ushort hitstun = (ushort) CalculateGrowingValue(data.Hitbox.Hitstun, data.Hitbox.HitstunGrowth, data.Hitbox.MaxHitstun);
+				ushort hitstun = (ushort)CalculateGrowingValue(data.Hitbox.Hitstun, data.Hitbox.HitstunGrowth, data.Hitbox.MaxHitstun);
 				Player.HitStun = hitstun;
-				
+
 				RegisterHit(data.Hitbox.Damage, data.Hitbox.Hitstun, data.Hitbox.LaunchType);
 				float launchPotency = CalculateGrowingValue(data.Hitbox.LaunchPotency, data.Hitbox.LaunchPotencyGrowth, data.Hitbox.LaunchPotencyMax);
-				
+
 				Player.MovableObject.Velocity = new Vector2(0, launchPotency).Rotate(data.Hitbox.ShieldLaunchAngle);
 				Player.HitStun = data.Hitbox.ShieldStun;
 			}
@@ -48,10 +49,7 @@ namespace PlatformFighter.Entities
 			IsHit = true;
 		}
 
-		public float CalculateGrowingValue(float baseValue, float growthPerDamage, float max)
-		{
-			return Math.Min(max, baseValue + growthPerDamage * Damage);
-		}
+		public float CalculateGrowingValue(float baseValue, float growthPerDamage, float max) => Math.Min(max, baseValue + growthPerDamage * Damage);
 	}
 	public struct ComboTracker
 	{
@@ -60,6 +58,7 @@ namespace PlatformFighter.Entities
 		public float TotalRate;
 		public LaunchType LaunchType;
 		public List<ushort> AttackersId = new List<ushort>();
+
 		public ComboTracker()
 		{
 			Reset();
@@ -80,7 +79,7 @@ namespace PlatformFighter.Entities
 			TotalDamage += effectiveDamage;
 			TotalRate *= rate;
 			LaunchType = launchType;
-			
+
 			return effectiveDamage;
 		}
 	}
