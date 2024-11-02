@@ -712,7 +712,7 @@ namespace PlatformFighter.Miscelaneous
 	{
 		public static readonly ushort[] PowersOf2 = { 2, 4, 8, 16, 32, 64, 128, 256 };
 
-		public static ref T2 CastWithRef<T1, T2>(this T1 obj) => ref Unsafe.As<T1, T2>(ref obj);
+		public static unsafe ref T2 CastWithRef<T1, T2>(this T1 obj) => ref Unsafe.As<T1, T2>(ref obj);
 
 		public static void PushCharacter(this SpriteBatch spriteBatch, Vector2 sourceSize, Vector2 pos, Vector4 sourcePercents, Vector2 scale, Color color, float sin, float cos, ushort shadowWidth, float layerDepth)
 		{
