@@ -13,6 +13,88 @@ namespace PlatformFighter.Physics
 {
 	public static class Collision
 	{
+		// fuckign chatgpt
+		public static bool AreRotatedRectanglesColliding(MovableObjectRectangle rectA, float rectARotation, MovableObjectRectangle rectB, float rectBRotation)
+		{
+			ReadOnlySpan<Vector2> verticesA = GetVertices(rectA, rectARotation);
+			ReadOnlySpan<Vector2> verticesB = GetVertices(rectB, rectBRotation);
+
+			// Get the axes to test
+			List<Vector2> axes = new List<Vector2>();
+
+			// Add normals for Rectangle A
+			for (int i = 0; i < verticesA.Length; i++)
+			{
+				Vector2 edge = verticesA[(i + 1) % verticesA.Length] - verticesA[i];
+				Vector2 normal = new Vector2(-edge.Y, edge.X);
+				axes.Add(Vector2.Normalize(normal));
+			}
+
+			// Add normals for Rectangle B
+			for (int i = 0; i < verticesB.Length; i++)
+			{
+				Vector2 edge = verticesB[(i + 1) % verticesB.Length] - verticesB[i];
+				Vector2 normal = new Vector2(-edge.Y, edge.X);
+				axes.Add(Vector2.Normalize(normal));
+			}
+
+			// Check for overlap on each axis
+			foreach (Vector2 axis in axes)
+			{
+				if (!IsOverlappingOnAxis(verticesA, verticesB, axis))
+				{
+					return false; // Separating axis found, no collision
+				}
+			}
+
+			return true; // No separating axis found, collision detected
+		}
+
+		public static ReadOnlySpan<Vector2> GetVertices(MovableObjectRectangle rectangle, float rotation)
+		{
+			Vector2[] corners =
+			[
+				new Vector2(-rectangle.Width / 2, -rectangle.Height / 2),
+				new Vector2(rectangle.Width / 2, -rectangle.Height / 2),
+				new Vector2(rectangle.Width / 2, rectangle.Height / 2),
+				new Vector2(-rectangle.Width / 2, rectangle.Height / 2)
+			];
+
+			Vector2[] vertices = new Vector2[4];
+
+			for (int i = 0; i < corners.Length; i++)
+			{
+				Vector2 corner = corners[i];
+
+				// Rotate and translate each corner
+				vertices[i] = rectangle.Location + corner.RotateRad(rotation);
+			}
+
+			return vertices;
+		}
+
+		public static bool IsOverlappingOnAxis(ReadOnlySpan<Vector2> verticesA, ReadOnlySpan<Vector2> verticesB, Vector2 axis)
+		{
+			ProjectVertices(verticesA, axis, out float minA, out float maxA);
+			ProjectVertices(verticesB, axis, out float minB, out float maxB);
+
+			// Check for overlap
+			return !(maxA < minB || maxB < minA);
+		}
+
+		public static void ProjectVertices(ReadOnlySpan<Vector2> vertices, Vector2 axis, out float min, out float max)
+		{
+			min = float.MaxValue;
+			max = float.MinValue;
+
+			foreach (Vector2 vertex in vertices)
+			{
+				float projection = Vector2.Dot(vertex, axis);
+				if (projection < min) min = projection;
+				if (projection > max) max = projection;
+			}
+		}
+
 		public static bool LineRectangleCollision(Rectangle rectangle, Vector2 lineStart, Vector2 lineEnd)
 		{
 			bool
@@ -241,22 +323,22 @@ namespace PlatformFighter.Physics
 				if (overlappingRectangle.IsEmpty)
 					continue;
 
-				if (positionRectangle.Bottom < stageObjectRectangle.Top && newPositionRectangle.Bottom >= stageObjectRectangle.Top)
+				if (positionRectangle.Bottom <= stageObjectRectangle.Top && newPositionRectangle.Bottom >= stageObjectRectangle.Top)
 				{
 					direction |= Direction.Up;
 				}
 
-				if (positionRectangle.Right < stageObjectRectangle.Left && newPositionRectangle.Right >= stageObjectRectangle.Left)
+				if (positionRectangle.Right <= stageObjectRectangle.Left && newPositionRectangle.Right >= stageObjectRectangle.Left)
 				{
 					direction |= Direction.Right;
 				}
 
-				if (positionRectangle.Left > stageObjectRectangle.Right && newPositionRectangle.Left <= stageObjectRectangle.Right)
+				if (positionRectangle.Left >= stageObjectRectangle.Right && newPositionRectangle.Left <= stageObjectRectangle.Right)
 				{
 					direction |= Direction.Left;
 				}
 
-				if (positionRectangle.Top > stageObjectRectangle.Bottom && newPositionRectangle.Top <= stageObjectRectangle.Bottom)
+				if (positionRectangle.Top >= stageObjectRectangle.Bottom && newPositionRectangle.Top <= stageObjectRectangle.Bottom)
 				{
 					direction |= Direction.Down;
 				}

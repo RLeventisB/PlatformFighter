@@ -1,5 +1,4 @@
 {
-  "$id": "1",
   "looping": false,
   "playing_forward": false,
   "playing_backwards": false,
@@ -7,8 +6,7 @@
   "current_keyframe": 15,
   "textures": [
     {
-      "$id": "2",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "torso",
       "pivot": {
         "x": 20,
@@ -24,8 +22,7 @@
       }
     },
     {
-      "$id": "3",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "head",
       "pivot": {
         "x": 14,
@@ -41,8 +38,7 @@
       }
     },
     {
-      "$id": "4",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "forearm",
       "pivot": {
         "x": 6,
@@ -58,8 +54,7 @@
       }
     },
     {
-      "$id": "5",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "elbow stretch",
       "pivot": {
         "x": 6,
@@ -75,8 +70,7 @@
       }
     },
     {
-      "$id": "6",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "elbow contracted",
       "pivot": {
         "x": 6,
@@ -92,8 +86,7 @@
       }
     },
     {
-      "$id": "7",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "hand",
       "pivot": {
         "x": 5,
@@ -109,8 +102,7 @@
       }
     },
     {
-      "$id": "8",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
+      "path": ".\\projects\\ElmoEyes.png",
       "name": "face",
       "pivot": {
         "x": 8,
@@ -126,8 +118,7 @@
       }
     },
     {
-      "$id": "9",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoEyes.png",
+      "path": ".\\projects\\ElmoEyes.png",
       "name": "eye",
       "pivot": {
         "x": -1,
@@ -143,8 +134,7 @@
       }
     },
     {
-      "$id": "10",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "sword",
       "pivot": {
         "x": 8,
@@ -160,8 +150,7 @@
       }
     },
     {
-      "$id": "11",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "leg",
       "pivot": {
         "x": 5,
@@ -177,8 +166,7 @@
       }
     },
     {
-      "$id": "12",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "knee",
       "pivot": {
         "x": 5,
@@ -194,8 +182,7 @@
       }
     },
     {
-      "$id": "13",
-      "path": "D:\\Otras cosas\\proyectos codigo\\platformfighter-imgui-animator\\Editor\\bin\\Debug\\net8.0\\projects\\ElmoBody.png",
+      "path": ".\\projects\\ElmoBody.png",
       "name": "foot",
       "pivot": {
         "x": 6,
@@ -213,4136 +200,1894 @@
   ],
   "graphic_objects": [
     {
-      "$id": "14",
       "texture_name": "torso",
       "scale": {
-        "$id": "15",
-        "owner": {
-          "$ref": "14"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "16",
-          "$values": [
-            {
-              "$id": "17",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 0.8
-              },
-              "containing_value": {
-                "$ref": "15"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "18",
-          "$values": []
-        },
-        "tags": {
-          "$id": "19",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 0.8
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "20",
-        "owner": {
-          "$ref": "14"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "21",
-          "$values": [
-            {
-              "$id": "22",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "20"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "23",
-          "$values": []
-        },
-        "tags": {
-          "$id": "24",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "25",
-        "owner": {
-          "$ref": "14"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "26",
-          "$values": [
-            {
-              "$id": "27",
-              "frame": 0,
-              "value": 0.36680377,
-              "containing_value": {
-                "$ref": "25"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "28",
-          "$values": []
-        },
-        "tags": {
-          "$id": "29",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.36680377,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "Elmo torso",
       "position": {
-        "$id": "30",
-        "owner": {
-          "$ref": "14"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "31",
-          "$values": [
-            {
-              "$id": "32",
-              "frame": 0,
-              "value": {
-                "x": -1.5833359,
-                "y": 13.226192
-              },
-              "containing_value": {
-                "$ref": "30"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -1.5833359,
+              "y": 13.226192
             },
-            {
-              "$id": "33",
-              "frame": 15,
-              "value": {
-                "x": -1.5833359,
-                "y": 13.226192
-              },
-              "containing_value": {
-                "$ref": "30"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "34",
-          "$values": [
-            {
-              "$id": "35",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "36",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "30"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "37",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": -1.5833359,
+              "y": 13.226192
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "38",
-        "owner": {
-          "$ref": "14"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "39",
-          "$values": [
-            {
-              "$id": "40",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "38"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "41",
-          "$values": []
-        },
-        "tags": {
-          "$id": "42",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "43",
-        "owner": {
-          "$ref": "14"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "44",
-          "$values": [
-            {
-              "$id": "45",
-              "frame": 0,
-              "value": 0.01,
-              "containing_value": {
-                "$ref": "43"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "46",
-          "$values": []
-        },
-        "tags": {
-          "$id": "47",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.01,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "48",
       "texture_name": "head",
       "scale": {
-        "$id": "49",
-        "owner": {
-          "$ref": "48"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "50",
-          "$values": [
-            {
-              "$id": "51",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "49"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "52",
-          "$values": []
-        },
-        "tags": {
-          "$id": "53",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "54",
-        "owner": {
-          "$ref": "48"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "55",
-          "$values": [
-            {
-              "$id": "56",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "54"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "57",
-          "$values": []
-        },
-        "tags": {
-          "$id": "58",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "59",
-        "owner": {
-          "$ref": "48"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "60",
-          "$values": [
-            {
-              "$id": "61",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "59"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "62",
-          "$values": []
-        },
-        "tags": {
-          "$id": "63",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "Elmo head",
       "position": {
-        "$id": "64",
-        "owner": {
-          "$ref": "48"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "65",
-          "$values": [
-            {
-              "$id": "66",
-              "frame": 0,
-              "value": {
-                "x": 8,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "64"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 8,
+              "y": 1
             },
-            {
-              "$id": "67",
-              "frame": 15,
-              "value": {
-                "x": -1.25,
-                "y": 1.5
-              },
-              "containing_value": {
-                "$ref": "64"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "68",
-          "$values": [
-            {
-              "$id": "69",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "70",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "64"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "71",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": -1.25,
+              "y": 1.5
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "72",
-        "owner": {
-          "$ref": "48"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "73",
-          "$values": [
-            {
-              "$id": "74",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "72"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "75",
-          "$values": []
-        },
-        "tags": {
-          "$id": "76",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "77",
-        "owner": {
-          "$ref": "48"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "78",
-          "$values": [
-            {
-              "$id": "79",
-              "frame": 0,
-              "value": 0.07,
-              "containing_value": {
-                "$ref": "77"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "80",
-          "$values": []
-        },
-        "tags": {
-          "$id": "81",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.07,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "82",
       "texture_name": "forearm",
       "scale": {
-        "$id": "83",
-        "owner": {
-          "$ref": "82"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "84",
-          "$values": [
-            {
-              "$id": "85",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "83"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "86",
-          "$values": []
-        },
-        "tags": {
-          "$id": "87",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "88",
-        "owner": {
-          "$ref": "82"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "89",
-          "$values": [
-            {
-              "$id": "90",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "88"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "91",
-          "$values": []
-        },
-        "tags": {
-          "$id": "92",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "93",
-        "owner": {
-          "$ref": "82"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "94",
-          "$values": [
-            {
-              "$id": "95",
-              "frame": 0,
-              "value": 0.5343561,
-              "containing_value": {
-                "$ref": "93"
-              }
-            },
-            {
-              "$id": "96",
-              "frame": 3,
-              "value": -0.046677545,
-              "containing_value": {
-                "$ref": "93"
-              }
-            },
-            {
-              "$id": "97",
-              "frame": 7,
-              "value": -0.703672,
-              "containing_value": {
-                "$ref": "93"
-              }
-            },
-            {
-              "$id": "98",
-              "frame": 9,
-              "value": -1.3081119,
-              "containing_value": {
-                "$ref": "93"
-              }
-            },
-            {
-              "$id": "99",
-              "frame": 15,
-              "value": -1.7554405,
-              "containing_value": {
-                "$ref": "93"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "100",
-          "$values": [
-            {
-              "$id": "101",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "102",
-                "$values": [
-                  0,
-                  3,
-                  7,
-                  9,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "93"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "103",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.5343561,
+          },
+          {
+            "frame": 3,
+            "value": -0.046677545,
+          },
+          {
+            "frame": 7,
+            "value": -0.703672,
+          },
+          {
+            "frame": 9,
+            "value": -1.3081119,
+          },
+          {
+            "frame": 15,
+            "value": -1.7554405,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              3,
+              7,
+              9,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "forearmleft",
       "position": {
-        "$id": "104",
-        "owner": {
-          "$ref": "82"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "105",
-          "$values": [
-            {
-              "$id": "106",
-              "frame": 0,
-              "value": {
-                "x": -15.1428795,
-                "y": 3.8452435
-              },
-              "containing_value": {
-                "$ref": "104"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -15.1428795,
+              "y": 3.8452435
             },
-            {
-              "$id": "107",
-              "frame": 15,
-              "value": {
-                "x": -12.3928795,
-                "y": 2.0952435
-              },
-              "containing_value": {
-                "$ref": "104"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "108",
-          "$values": [
-            {
-              "$id": "109",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "110",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "104"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "111",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": -12.3928795,
+              "y": 2.0952435
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "112",
-        "owner": {
-          "$ref": "82"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "113",
-          "$values": [
-            {
-              "$id": "114",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "112"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "115",
-          "$values": []
-        },
-        "tags": {
-          "$id": "116",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "117",
-        "owner": {
-          "$ref": "82"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "118",
-          "$values": [
-            {
-              "$id": "119",
-              "frame": 0,
-              "value": 0.8,
-              "containing_value": {
-                "$ref": "117"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "120",
-          "$values": []
-        },
-        "tags": {
-          "$id": "121",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.8,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "122",
       "texture_name": "elbow stretch",
       "scale": {
-        "$id": "123",
-        "owner": {
-          "$ref": "122"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "124",
-          "$values": [
-            {
-              "$id": "125",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "123"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "126",
-          "$values": []
-        },
-        "tags": {
-          "$id": "127",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "128",
-        "owner": {
-          "$ref": "122"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "129",
-          "$values": [
-            {
-              "$id": "130",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "128"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "131",
-          "$values": []
-        },
-        "tags": {
-          "$id": "132",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "133",
-        "owner": {
-          "$ref": "122"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "134",
-          "$values": [
-            {
-              "$id": "135",
-              "frame": 0,
-              "value": 0.30080852,
-              "containing_value": {
-                "$ref": "133"
-              }
-            },
-            {
-              "$id": "136",
-              "frame": 1,
-              "value": -0.017773554,
-              "containing_value": {
-                "$ref": "133"
-              }
-            },
-            {
-              "$id": "137",
-              "frame": 9,
-              "value": -1.5326382,
-              "containing_value": {
-                "$ref": "133"
-              }
-            },
-            {
-              "$id": "138",
-              "frame": 10,
-              "value": -1.4872127,
-              "containing_value": {
-                "$ref": "133"
-              }
-            },
-            {
-              "$id": "139",
-              "frame": 15,
-              "value": -1.792841,
-              "containing_value": {
-                "$ref": "133"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "140",
-          "$values": [
-            {
-              "$id": "141",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "142",
-                "$values": [
-                  0,
-                  1,
-                  9,
-                  10,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "133"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "143",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.30080852,
+          },
+          {
+            "frame": 1,
+            "value": -0.017773554,
+          },
+          {
+            "frame": 9,
+            "value": -1.5326382,
+          },
+          {
+            "frame": 10,
+            "value": -1.4872127,
+          },
+          {
+            "frame": 15,
+            "value": -1.792841,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              1,
+              9,
+              10,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "arm left",
       "position": {
-        "$id": "144",
-        "owner": {
-          "$ref": "122"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "145",
-          "$values": [
-            {
-              "$id": "146",
-              "frame": 0,
-              "value": {
-                "x": -19.435574,
-                "y": 12.603197
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -19.435574,
+              "y": 12.603197
             },
-            {
-              "$id": "147",
-              "frame": 1,
-              "value": {
-                "x": -19.435574,
-                "y": 13.603197
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "x": -19.435574,
+              "y": 13.603197
             },
-            {
-              "$id": "148",
-              "frame": 3,
-              "value": {
-                "x": -16.918056,
-                "y": 13.228867
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
+          },
+          {
+            "frame": 3,
+            "value": {
+              "x": -16.918056,
+              "y": 13.228867
             },
-            {
-              "$id": "149",
-              "frame": 7,
-              "value": {
-                "x": -10.379787,
-                "y": 7.1227455
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
+          },
+          {
+            "frame": 7,
+            "value": {
+              "x": -10.379787,
+              "y": 7.1227455
             },
-            {
-              "$id": "150",
-              "frame": 9,
-              "value": {
-                "x": -3.3382826,
-                "y": 4.992501
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
+          },
+          {
+            "frame": 9,
+            "value": {
+              "x": -3.3382826,
+              "y": 4.992501
             },
-            {
-              "$id": "151",
-              "frame": 10,
-              "value": {
-                "x": 0.65920234,
-                "y": 2.82724
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
+          },
+          {
+            "frame": 10,
+            "value": {
+              "x": 0.65920234,
+              "y": 2.82724
             },
-            {
-              "$id": "152",
-              "frame": 14,
-              "value": {
-                "x": 2.6612036,
-                "y": -1.0444133
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
+          },
+          {
+            "frame": 14,
+            "value": {
+              "x": 2.6612036,
+              "y": -1.0444133
             },
-            {
-              "$id": "153",
-              "frame": 15,
-              "value": {
-                "x": 3.2866478,
-                "y": -0.9801388
-              },
-              "containing_value": {
-                "$ref": "144"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "154",
-          "$values": [
-            {
-              "$id": "155",
-              "interpolation_type": "lineal",
-              "keyframes": {
-                "$id": "156",
-                "$values": [
-                  3,
-                  7,
-                  9,
-                  10
-                ]
-              },
-              "containing_value": {
-                "$ref": "144"
-              },
-              "use_relative_progress_calculation": true
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 3.2866478,
+              "y": -0.9801388
             },
-            {
-              "$id": "157",
-              "interpolation_type": "lineal",
-              "keyframes": {
-                "$id": "158",
-                "$values": [
-                  10,
-                  14
-                ]
-              },
-              "containing_value": {
-                "$ref": "144"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "159",
-          "$values": []
-        }
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "lineal",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              3,
+              7,
+              9,
+              10
+            ]
+          },
+          {
+            "interpolation_type": "lineal",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              10,
+              14
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "160",
-        "owner": {
-          "$ref": "122"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "161",
-          "$values": [
-            {
-              "$id": "162",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "160"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "163",
-          "$values": []
-        },
-        "tags": {
-          "$id": "164",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "165",
-        "owner": {
-          "$ref": "122"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "166",
-          "$values": [
-            {
-              "$id": "167",
-              "frame": 0,
-              "value": 0.8,
-              "containing_value": {
-                "$ref": "165"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "168",
-          "$values": []
-        },
-        "tags": {
-          "$id": "169",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.8,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "170",
       "texture_name": "forearm",
       "scale": {
-        "$id": "171",
-        "owner": {
-          "$ref": "170"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "172",
-          "$values": [
-            {
-              "$id": "173",
-              "frame": 0,
-              "value": {
-                "x": -1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "171"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "174",
-          "$values": []
-        },
-        "tags": {
-          "$id": "175",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "176",
-        "owner": {
-          "$ref": "170"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "177",
-          "$values": [
-            {
-              "$id": "178",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "176"
-              }
-            },
-            {
-              "$id": "179",
-              "frame": 15,
-              "value": 0,
-              "containing_value": {
-                "$ref": "176"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "180",
-          "$values": [
-            {
-              "$id": "181",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "182",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "176"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "183",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          },
+          {
+            "frame": 15,
+            "value": 0,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "rotation": {
-        "$id": "184",
-        "owner": {
-          "$ref": "170"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "185",
-          "$values": [
-            {
-              "$id": "186",
-              "frame": 0,
-              "value": -0.31219146,
-              "containing_value": {
-                "$ref": "184"
-              }
-            },
-            {
-              "$id": "187",
-              "frame": 15,
-              "value": -0.9161797,
-              "containing_value": {
-                "$ref": "184"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "188",
-          "$values": [
-            {
-              "$id": "189",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "190",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "184"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "191",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": -0.31219146,
+          },
+          {
+            "frame": 15,
+            "value": -0.9161797,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "forearm right",
       "position": {
-        "$id": "192",
-        "owner": {
-          "$ref": "170"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "193",
-          "$values": [
-            {
-              "$id": "194",
-              "frame": 0,
-              "value": {
-                "x": 16.60712,
-                "y": 15.333338
-              },
-              "containing_value": {
-                "$ref": "192"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 16.60712,
+              "y": 15.333338
             },
-            {
-              "$id": "195",
-              "frame": 15,
-              "value": {
-                "x": 16.440449,
-                "y": 14.000003
-              },
-              "containing_value": {
-                "$ref": "192"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "196",
-          "$values": [
-            {
-              "$id": "197",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "198",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "192"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "199",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 16.440449,
+              "y": 14.000003
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "200",
-        "owner": {
-          "$ref": "170"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "201",
-          "$values": [
-            {
-              "$id": "202",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "200"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "203",
-          "$values": []
-        },
-        "tags": {
-          "$id": "204",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "205",
-        "owner": {
-          "$ref": "170"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "206",
-          "$values": [
-            {
-              "$id": "207",
-              "frame": 0,
-              "value": 0.04,
-              "containing_value": {
-                "$ref": "205"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "208",
-          "$values": []
-        },
-        "tags": {
-          "$id": "209",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.04,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "210",
       "texture_name": "hand",
       "scale": {
-        "$id": "211",
-        "owner": {
-          "$ref": "210"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "212",
-          "$values": [
-            {
-              "$id": "213",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "211"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "214",
-          "$values": []
-        },
-        "tags": {
-          "$id": "215",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "216",
-        "owner": {
-          "$ref": "210"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "217",
-          "$values": [
-            {
-              "$id": "218",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "216"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "219",
-          "$values": []
-        },
-        "tags": {
-          "$id": "220",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "221",
-        "owner": {
-          "$ref": "210"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "222",
-          "$values": [
-            {
-              "$id": "223",
-              "frame": 0,
-              "value": 0.034906585,
-              "containing_value": {
-                "$ref": "221"
-              }
-            },
-            {
-              "$id": "224",
-              "frame": 15,
-              "value": -1.7363558,
-              "containing_value": {
-                "$ref": "221"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "225",
-          "$values": [
-            {
-              "$id": "226",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "227",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "221"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "228",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.034906585,
+          },
+          {
+            "frame": 15,
+            "value": -1.7363558,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "hand left",
       "position": {
-        "$id": "229",
-        "owner": {
-          "$ref": "210"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "230",
-          "$values": [
-            {
-              "$id": "231",
-              "frame": 0,
-              "value": {
-                "x": -22.975664,
-                "y": 22.595
-              },
-              "containing_value": {
-                "$ref": "229"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -22.975664,
+              "y": 22.595
             },
-            {
-              "$id": "232",
-              "frame": 3,
-              "value": {
-                "x": -18.271158,
-                "y": 21.643488
-              },
-              "containing_value": {
-                "$ref": "229"
-              }
+          },
+          {
+            "frame": 3,
+            "value": {
+              "x": -18.271158,
+              "y": 21.643488
             },
-            {
-              "$id": "233",
-              "frame": 13,
-              "value": {
-                "x": 12.168833,
-                "y": -1.0451014
-              },
-              "containing_value": {
-                "$ref": "229"
-              }
+          },
+          {
+            "frame": 13,
+            "value": {
+              "x": 12.168833,
+              "y": -1.0451014
             },
-            {
-              "$id": "234",
-              "frame": 15,
-              "value": {
-                "x": 14.599895,
-                "y": -2.3127756
-              },
-              "containing_value": {
-                "$ref": "229"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "235",
-          "$values": [
-            {
-              "$id": "236",
-              "interpolation_type": "lineal",
-              "keyframes": {
-                "$id": "237",
-                "$values": [
-                  0,
-                  3,
-                  13,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "229"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "238",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 14.599895,
+              "y": -2.3127756
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "lineal",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              3,
+              13,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "239",
-        "owner": {
-          "$ref": "210"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "240",
-          "$values": [
-            {
-              "$id": "241",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "239"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "242",
-          "$values": []
-        },
-        "tags": {
-          "$id": "243",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "244",
-        "owner": {
-          "$ref": "210"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "245",
-          "$values": [
-            {
-              "$id": "246",
-              "frame": 0,
-              "value": 0.8,
-              "containing_value": {
-                "$ref": "244"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "247",
-          "$values": []
-        },
-        "tags": {
-          "$id": "248",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.8,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "249",
       "texture_name": "elbow stretch",
       "scale": {
-        "$id": "250",
-        "owner": {
-          "$ref": "249"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "251",
-          "$values": [
-            {
-              "$id": "252",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "250"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "253",
-          "$values": []
-        },
-        "tags": {
-          "$id": "254",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "255",
-        "owner": {
-          "$ref": "249"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "256",
-          "$values": [
-            {
-              "$id": "257",
-              "frame": 0,
-              "value": 1,
-              "containing_value": {
-                "$ref": "255"
-              }
-            },
-            {
-              "$id": "258",
-              "frame": 12,
-              "value": 0,
-              "containing_value": {
-                "$ref": "255"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "259",
-          "$values": []
-        },
-        "tags": {
-          "$id": "260",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1,
+          },
+          {
+            "frame": 12,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "261",
-        "owner": {
-          "$ref": "249"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "262",
-          "$values": [
-            {
-              "$id": "263",
-              "frame": 0,
-              "value": -3.115745,
-              "containing_value": {
-                "$ref": "261"
-              }
-            },
-            {
-              "$id": "264",
-              "frame": 15,
-              "value": -4.0331144,
-              "containing_value": {
-                "$ref": "261"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "265",
-          "$values": [
-            {
-              "$id": "266",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "267",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "261"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "268",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": -3.115745,
+          },
+          {
+            "frame": 15,
+            "value": -4.0331144,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "arm right",
       "position": {
-        "$id": "269",
-        "owner": {
-          "$ref": "249"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "270",
-          "$values": [
-            {
-              "$id": "271",
-              "frame": 0,
-              "value": {
-                "x": 18.694427,
-                "y": 24.146814
-              },
-              "containing_value": {
-                "$ref": "269"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 18.694427,
+              "y": 24.146814
             },
-            {
-              "$id": "272",
-              "frame": 15,
-              "value": {
-                "x": 21.869022,
-                "y": 18.07142
-              },
-              "containing_value": {
-                "$ref": "269"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "273",
-          "$values": [
-            {
-              "$id": "274",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "275",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "269"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "276",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 21.869022,
+              "y": 18.07142
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "277",
-        "owner": {
-          "$ref": "249"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "278",
-          "$values": [
-            {
-              "$id": "279",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "277"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "280",
-          "$values": []
-        },
-        "tags": {
-          "$id": "281",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "282",
-        "owner": {
-          "$ref": "249"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "283",
-          "$values": [
-            {
-              "$id": "284",
-              "frame": 0,
-              "value": 0.02,
-              "containing_value": {
-                "$ref": "282"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "285",
-          "$values": []
-        },
-        "tags": {
-          "$id": "286",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.02,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "287",
       "texture_name": "hand",
       "scale": {
-        "$id": "288",
-        "owner": {
-          "$ref": "287"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "289",
-          "$values": [
-            {
-              "$id": "290",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "288"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "291",
-          "$values": []
-        },
-        "tags": {
-          "$id": "292",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "293",
-        "owner": {
-          "$ref": "287"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "294",
-          "$values": [
-            {
-              "$id": "295",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "293"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "296",
-          "$values": []
-        },
-        "tags": {
-          "$id": "297",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "298",
-        "owner": {
-          "$ref": "287"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "299",
-          "$values": [
-            {
-              "$id": "300",
-              "frame": 0,
-              "value": 1.1191448,
-              "containing_value": {
-                "$ref": "298"
-              }
-            },
-            {
-              "$id": "301",
-              "frame": 15,
-              "value": -0.9701449,
-              "containing_value": {
-                "$ref": "298"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "302",
-          "$values": [
-            {
-              "$id": "303",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "304",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "298"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "305",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.1191448,
+          },
+          {
+            "frame": 15,
+            "value": -0.9701449,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "hand right",
       "position": {
-        "$id": "306",
-        "owner": {
-          "$ref": "287"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "307",
-          "$values": [
-            {
-              "$id": "308",
-              "frame": 0,
-              "value": {
-                "x": 14.244381,
-                "y": 29.987373
-              },
-              "containing_value": {
-                "$ref": "306"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 14.244381,
+              "y": 29.987373
             },
-            {
-              "$id": "309",
-              "frame": 15,
-              "value": {
-                "x": 28.815807,
-                "y": 22.165945
-              },
-              "containing_value": {
-                "$ref": "306"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "310",
-          "$values": [
-            {
-              "$id": "311",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "312",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "306"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "313",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 28.815807,
+              "y": 22.165945
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "314",
-        "owner": {
-          "$ref": "287"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "315",
-          "$values": [
-            {
-              "$id": "316",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "314"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "317",
-          "$values": []
-        },
-        "tags": {
-          "$id": "318",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "319",
-        "owner": {
-          "$ref": "287"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "320",
-          "$values": [
-            {
-              "$id": "321",
-              "frame": 0,
-              "value": 0.03,
-              "containing_value": {
-                "$ref": "319"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "322",
-          "$values": []
-        },
-        "tags": {
-          "$id": "323",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.03,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "324",
       "texture_name": "face",
       "scale": {
-        "$id": "325",
-        "owner": {
-          "$ref": "324"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "326",
-          "$values": [
-            {
-              "$id": "327",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "325"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "328",
-          "$values": []
-        },
-        "tags": {
-          "$id": "329",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "330",
-        "owner": {
-          "$ref": "324"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "331",
-          "$values": [
-            {
-              "$id": "332",
-              "frame": 0,
-              "value": 1,
-              "containing_value": {
-                "$ref": "330"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "333",
-          "$values": []
-        },
-        "tags": {
-          "$id": "334",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "335",
-        "owner": {
-          "$ref": "324"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "336",
-          "$values": [
-            {
-              "$id": "337",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "335"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "338",
-          "$values": []
-        },
-        "tags": {
-          "$id": "339",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "face",
       "position": {
-        "$id": "340",
-        "owner": {
-          "$ref": "324"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "341",
-          "$values": [
-            {
-              "$id": "342",
-              "frame": 0,
-              "value": {
-                "x": 14,
-                "y": 4
-              },
-              "containing_value": {
-                "$ref": "340"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 14,
+              "y": 4
             },
-            {
-              "$id": "343",
-              "frame": 15,
-              "value": {
-                "x": 4.75,
-                "y": 4.5
-              },
-              "containing_value": {
-                "$ref": "340"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "344",
-          "$values": [
-            {
-              "$id": "345",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "346",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "340"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "347",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 4.75,
+              "y": 4.5
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "348",
-        "owner": {
-          "$ref": "324"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "349",
-          "$values": [
-            {
-              "$id": "350",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "348"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "351",
-          "$values": []
-        },
-        "tags": {
-          "$id": "352",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "353",
-        "owner": {
-          "$ref": "324"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "354",
-          "$values": [
-            {
-              "$id": "355",
-              "frame": 0,
-              "value": 0.55,
-              "containing_value": {
-                "$ref": "353"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "356",
-          "$values": []
-        },
-        "tags": {
-          "$id": "357",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.55,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "358",
       "texture_name": "eye",
       "scale": {
-        "$id": "359",
-        "owner": {
-          "$ref": "358"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "360",
-          "$values": [
-            {
-              "$id": "361",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "359"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "362",
-          "$values": []
-        },
-        "tags": {
-          "$id": "363",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "364",
-        "owner": {
-          "$ref": "358"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "365",
-          "$values": [
-            {
-              "$id": "366",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "364"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "367",
-          "$values": []
-        },
-        "tags": {
-          "$id": "368",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "369",
-        "owner": {
-          "$ref": "358"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "370",
-          "$values": [
-            {
-              "$id": "371",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "369"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "372",
-          "$values": []
-        },
-        "tags": {
-          "$id": "373",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "eye right",
       "position": {
-        "$id": "374",
-        "owner": {
-          "$ref": "358"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "375",
-          "$values": [
-            {
-              "$id": "376",
-              "frame": 0,
-              "value": {
-                "x": 19,
-                "y": 0
-              },
-              "containing_value": {
-                "$ref": "374"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 19,
+              "y": 0
             },
-            {
-              "$id": "377",
-              "frame": 15,
-              "value": {
-                "x": 9.75,
-                "y": 0.5
-              },
-              "containing_value": {
-                "$ref": "374"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "378",
-          "$values": [
-            {
-              "$id": "379",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "380",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "374"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "381",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 9.75,
+              "y": 0.5
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "382",
-        "owner": {
-          "$ref": "358"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "383",
-          "$values": [
-            {
-              "$id": "384",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "382"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "385",
-          "$values": []
-        },
-        "tags": {
-          "$id": "386",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "387",
-        "owner": {
-          "$ref": "358"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "388",
-          "$values": [
-            {
-              "$id": "389",
-              "frame": 0,
-              "value": 0.71,
-              "containing_value": {
-                "$ref": "387"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "390",
-          "$values": []
-        },
-        "tags": {
-          "$id": "391",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.71,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "392",
       "texture_name": "eye",
       "scale": {
-        "$id": "393",
-        "owner": {
-          "$ref": "392"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "394",
-          "$values": [
-            {
-              "$id": "395",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "393"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "396",
-          "$values": []
-        },
-        "tags": {
-          "$id": "397",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "398",
-        "owner": {
-          "$ref": "392"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "399",
-          "$values": [
-            {
-              "$id": "400",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "398"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "401",
-          "$values": []
-        },
-        "tags": {
-          "$id": "402",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "403",
-        "owner": {
-          "$ref": "392"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "404",
-          "$values": [
-            {
-              "$id": "405",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "403"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "406",
-          "$values": []
-        },
-        "tags": {
-          "$id": "407",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "eye left",
       "position": {
-        "$id": "408",
-        "owner": {
-          "$ref": "392"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "409",
-          "$values": [
-            {
-              "$id": "410",
-              "frame": 0,
-              "value": {
-                "x": 9,
-                "y": -0.16666603
-              },
-              "containing_value": {
-                "$ref": "408"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 9,
+              "y": -0.16666603
             },
-            {
-              "$id": "411",
-              "frame": 15,
-              "value": {
-                "x": -0.25,
-                "y": 0.33333397
-              },
-              "containing_value": {
-                "$ref": "408"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "412",
-          "$values": [
-            {
-              "$id": "413",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "414",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "408"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "415",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": -0.25,
+              "y": 0.33333397
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "416",
-        "owner": {
-          "$ref": "392"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "417",
-          "$values": [
-            {
-              "$id": "418",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "416"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "419",
-          "$values": []
-        },
-        "tags": {
-          "$id": "420",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "421",
-        "owner": {
-          "$ref": "392"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "422",
-          "$values": [
-            {
-              "$id": "423",
-              "frame": 0,
-              "value": 0.71,
-              "containing_value": {
-                "$ref": "421"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "424",
-          "$values": []
-        },
-        "tags": {
-          "$id": "425",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.71,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "426",
       "texture_name": "leg",
       "scale": {
-        "$id": "427",
-        "owner": {
-          "$ref": "426"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "428",
-          "$values": [
-            {
-              "$id": "429",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "427"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "430",
-          "$values": []
-        },
-        "tags": {
-          "$id": "431",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "432",
-        "owner": {
-          "$ref": "426"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "433",
-          "$values": [
-            {
-              "$id": "434",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "432"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "435",
-          "$values": []
-        },
-        "tags": {
-          "$id": "436",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "437",
-        "owner": {
-          "$ref": "426"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "438",
-          "$values": [
-            {
-              "$id": "439",
-              "frame": 0,
-              "value": -0.7528492,
-              "containing_value": {
-                "$ref": "437"
-              }
-            },
-            {
-              "$id": "440",
-              "frame": 15,
-              "value": 0.22126192,
-              "containing_value": {
-                "$ref": "437"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "441",
-          "$values": [
-            {
-              "$id": "442",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "443",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "437"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "444",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": -0.7528492,
+          },
+          {
+            "frame": 15,
+            "value": 0.22126192,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "left leg",
       "position": {
-        "$id": "445",
-        "owner": {
-          "$ref": "426"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "446",
-          "$values": [
-            {
-              "$id": "447",
-              "frame": 0,
-              "value": {
-                "x": -11.490868,
-                "y": 26.028397
-              },
-              "containing_value": {
-                "$ref": "445"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -11.490868,
+              "y": 26.028397
             },
-            {
-              "$id": "448",
-              "frame": 15,
-              "value": {
-                "x": -11.713089,
-                "y": 24.26649
-              },
-              "containing_value": {
-                "$ref": "445"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "449",
-          "$values": [
-            {
-              "$id": "450",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "451",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "445"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "452",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": -11.713089,
+              "y": 24.26649
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "453",
-        "owner": {
-          "$ref": "426"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "454",
-          "$values": [
-            {
-              "$id": "455",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "453"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "456",
-          "$values": []
-        },
-        "tags": {
-          "$id": "457",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "458",
-        "owner": {
-          "$ref": "426"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "459",
-          "$values": [
-            {
-              "$id": "460",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "458"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "461",
-          "$values": []
-        },
-        "tags": {
-          "$id": "462",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "463",
       "texture_name": "leg",
       "scale": {
-        "$id": "464",
-        "owner": {
-          "$ref": "463"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "465",
-          "$values": [
-            {
-              "$id": "466",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "464"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "467",
-          "$values": []
-        },
-        "tags": {
-          "$id": "468",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "469",
-        "owner": {
-          "$ref": "463"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "470",
-          "$values": [
-            {
-              "$id": "471",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "469"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "472",
-          "$values": []
-        },
-        "tags": {
-          "$id": "473",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "474",
-        "owner": {
-          "$ref": "463"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "475",
-          "$values": [
-            {
-              "$id": "476",
-              "frame": 0,
-              "value": -1.2780826,
-              "containing_value": {
-                "$ref": "474"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "477",
-          "$values": []
-        },
-        "tags": {
-          "$id": "478",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": -1.2780826,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "right leg",
       "position": {
-        "$id": "479",
-        "owner": {
-          "$ref": "463"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "480",
-          "$values": [
-            {
-              "$id": "481",
-              "frame": 0,
-              "value": {
-                "x": 9.032936,
-                "y": 27.076014
-              },
-              "containing_value": {
-                "$ref": "479"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "482",
-          "$values": []
-        },
-        "tags": {
-          "$id": "483",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 9.032936,
+              "y": 27.076014
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "transparency": {
-        "$id": "484",
-        "owner": {
-          "$ref": "463"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "485",
-          "$values": [
-            {
-              "$id": "486",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "484"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "487",
-          "$values": []
-        },
-        "tags": {
-          "$id": "488",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "489",
-        "owner": {
-          "$ref": "463"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "490",
-          "$values": [
-            {
-              "$id": "491",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "489"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "492",
-          "$values": []
-        },
-        "tags": {
-          "$id": "493",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "494",
       "texture_name": "knee",
       "scale": {
-        "$id": "495",
-        "owner": {
-          "$ref": "494"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "496",
-          "$values": [
-            {
-              "$id": "497",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "495"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "498",
-          "$values": []
-        },
-        "tags": {
-          "$id": "499",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "500",
-        "owner": {
-          "$ref": "494"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "501",
-          "$values": [
-            {
-              "$id": "502",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "500"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "503",
-          "$values": []
-        },
-        "tags": {
-          "$id": "504",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "505",
-        "owner": {
-          "$ref": "494"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "506",
-          "$values": [
-            {
-              "$id": "507",
-              "frame": 0,
-              "value": 1.2868592,
-              "containing_value": {
-                "$ref": "505"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "508",
-          "$values": []
-        },
-        "tags": {
-          "$id": "509",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.2868592,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "left knee",
       "position": {
-        "$id": "510",
-        "owner": {
-          "$ref": "494"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "511",
-          "$values": [
-            {
-              "$id": "512",
-              "frame": 0,
-              "value": {
-                "x": -13.086111,
-                "y": 32.81411
-              },
-              "containing_value": {
-                "$ref": "510"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -13.086111,
+              "y": 32.81411
             },
-            {
-              "$id": "513",
-              "frame": 15,
-              "value": {
-                "x": -17.371824,
-                "y": 32.81411
-              },
-              "containing_value": {
-                "$ref": "510"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "514",
-          "$values": [
-            {
-              "$id": "515",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "516",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "510"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "517",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": -17.371824,
+              "y": 32.81411
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "518",
-        "owner": {
-          "$ref": "494"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "519",
-          "$values": [
-            {
-              "$id": "520",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "518"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "521",
-          "$values": []
-        },
-        "tags": {
-          "$id": "522",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "523",
-        "owner": {
-          "$ref": "494"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "524",
-          "$values": [
-            {
-              "$id": "525",
-              "frame": 0,
-              "value": 0.01,
-              "containing_value": {
-                "$ref": "523"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "526",
-          "$values": []
-        },
-        "tags": {
-          "$id": "527",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.01,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "528",
       "texture_name": "knee",
       "scale": {
-        "$id": "529",
-        "owner": {
-          "$ref": "528"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "530",
-          "$values": [
-            {
-              "$id": "531",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "529"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "532",
-          "$values": []
-        },
-        "tags": {
-          "$id": "533",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "534",
-        "owner": {
-          "$ref": "528"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "535",
-          "$values": [
-            {
-              "$id": "536",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "534"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "537",
-          "$values": []
-        },
-        "tags": {
-          "$id": "538",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "539",
-        "owner": {
-          "$ref": "528"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "540",
-          "$values": [
-            {
-              "$id": "541",
-              "frame": 0,
-              "value": 1.0972707,
-              "containing_value": {
-                "$ref": "539"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "542",
-          "$values": []
-        },
-        "tags": {
-          "$id": "543",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0972707,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "right knee",
       "position": {
-        "$id": "544",
-        "owner": {
-          "$ref": "528"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "545",
-          "$values": [
-            {
-              "$id": "546",
-              "frame": 0,
-              "value": {
-                "x": 11.535912,
-                "y": 32.742683
-              },
-              "containing_value": {
-                "$ref": "544"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 11.535912,
+              "y": 32.742683
             },
-            {
-              "$id": "547",
-              "frame": 15,
-              "value": {
-                "x": 12.535912,
-                "y": 32.599827
-              },
-              "containing_value": {
-                "$ref": "544"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "548",
-          "$values": [
-            {
-              "$id": "549",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "550",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "544"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "551",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 12.535912,
+              "y": 32.599827
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "552",
-        "owner": {
-          "$ref": "528"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "553",
-          "$values": [
-            {
-              "$id": "554",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "552"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "555",
-          "$values": []
-        },
-        "tags": {
-          "$id": "556",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "557",
-        "owner": {
-          "$ref": "528"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "558",
-          "$values": [
-            {
-              "$id": "559",
-              "frame": 0,
-              "value": 0.01,
-              "containing_value": {
-                "$ref": "557"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "560",
-          "$values": []
-        },
-        "tags": {
-          "$id": "561",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.01,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "562",
       "texture_name": "foot",
       "scale": {
-        "$id": "563",
-        "owner": {
-          "$ref": "562"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "564",
-          "$values": [
-            {
-              "$id": "565",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "563"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "566",
-          "$values": []
-        },
-        "tags": {
-          "$id": "567",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "568",
-        "owner": {
-          "$ref": "562"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "569",
-          "$values": [
-            {
-              "$id": "570",
-              "frame": 0,
-              "value": 1,
-              "containing_value": {
-                "$ref": "568"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "571",
-          "$values": []
-        },
-        "tags": {
-          "$id": "572",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "573",
-        "owner": {
-          "$ref": "562"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "574",
-          "$values": [
-            {
-              "$id": "575",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "573"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "576",
-          "$values": []
-        },
-        "tags": {
-          "$id": "577",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "left foot",
       "position": {
-        "$id": "578",
-        "owner": {
-          "$ref": "562"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "579",
-          "$values": [
-            {
-              "$id": "580",
-              "frame": 0,
-              "value": {
-                "x": 7.685713,
-                "y": 35.344
-              },
-              "containing_value": {
-                "$ref": "578"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "581",
-          "$values": []
-        },
-        "tags": {
-          "$id": "582",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 7.685713,
+              "y": 35.344
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "transparency": {
-        "$id": "583",
-        "owner": {
-          "$ref": "562"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "584",
-          "$values": [
-            {
-              "$id": "585",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "583"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "586",
-          "$values": []
-        },
-        "tags": {
-          "$id": "587",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "588",
-        "owner": {
-          "$ref": "562"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "589",
-          "$values": [
-            {
-              "$id": "590",
-              "frame": 0,
-              "value": 0.02,
-              "containing_value": {
-                "$ref": "588"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "591",
-          "$values": []
-        },
-        "tags": {
-          "$id": "592",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.02,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "593",
       "texture_name": "foot",
       "scale": {
-        "$id": "594",
-        "owner": {
-          "$ref": "593"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "595",
-          "$values": [
-            {
-              "$id": "596",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "594"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "597",
-          "$values": []
-        },
-        "tags": {
-          "$id": "598",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "frame_index": {
-        "$id": "599",
-        "owner": {
-          "$ref": "593"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "600",
-          "$values": [
-            {
-              "$id": "601",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "599"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "602",
-          "$values": []
-        },
-        "tags": {
-          "$id": "603",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "604",
-        "owner": {
-          "$ref": "593"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "605",
-          "$values": [
-            {
-              "$id": "606",
-              "frame": 0,
-              "value": 0.0,
-              "containing_value": {
-                "$ref": "604"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "607",
-          "$values": []
-        },
-        "tags": {
-          "$id": "608",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "right foot",
       "position": {
-        "$id": "609",
-        "owner": {
-          "$ref": "593"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "610",
-          "$values": [
-            {
-              "$id": "611",
-              "frame": 0,
-              "value": {
-                "x": -18.943245,
-                "y": 35.91531
-              },
-              "containing_value": {
-                "$ref": "609"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -18.943245,
+              "y": 35.91531
             },
-            {
-              "$id": "612",
-              "frame": 15,
-              "value": {
-                "x": -23.800388,
-                "y": 35.772457
-              },
-              "containing_value": {
-                "$ref": "609"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "613",
-          "$values": [
-            {
-              "$id": "614",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "615",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "609"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "616",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": -23.800388,
+              "y": 35.772457
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "617",
-        "owner": {
-          "$ref": "593"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "618",
-          "$values": [
-            {
-              "$id": "619",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "617"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "620",
-          "$values": []
-        },
-        "tags": {
-          "$id": "621",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "622",
-        "owner": {
-          "$ref": "593"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "623",
-          "$values": [
-            {
-              "$id": "624",
-              "frame": 0,
-              "value": 0.02,
-              "containing_value": {
-                "$ref": "622"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "625",
-          "$values": []
-        },
-        "tags": {
-          "$id": "626",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.02,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     },
     {
-      "$id": "627",
       "texture_name": "sword",
       "scale": {
-        "$id": "628",
-        "owner": {
-          "$ref": "627"
-        },
         "name": "Scale",
-        "keyframes": {
-          "$id": "629",
-          "$values": [
-            {
-              "$id": "630",
-              "frame": 0,
-              "value": {
-                "x": 1,
-                "y": 0.6
-              },
-              "containing_value": {
-                "$ref": "628"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 1,
+              "y": 0.6
             },
-            {
-              "$id": "631",
-              "frame": 15,
-              "value": {
-                "x": 1,
-                "y": 1
-              },
-              "containing_value": {
-                "$ref": "628"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "632",
-          "$values": [
-            {
-              "$id": "633",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "634",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "628"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "635",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 1,
+              "y": 1
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "frame_index": {
-        "$id": "636",
-        "owner": {
-          "$ref": "627"
-        },
         "name": "Frame Index",
-        "keyframes": {
-          "$id": "637",
-          "$values": [
-            {
-              "$id": "638",
-              "frame": 0,
-              "value": 0,
-              "containing_value": {
-                "$ref": "636"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "639",
-          "$values": []
-        },
-        "tags": {
-          "$id": "640",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "rotation": {
-        "$id": "641",
-        "owner": {
-          "$ref": "627"
-        },
         "name": "Rotation",
-        "keyframes": {
-          "$id": "642",
-          "$values": [
-            {
-              "$id": "643",
-              "frame": 0,
-              "value": -0.63704836,
-              "containing_value": {
-                "$ref": "641"
-              }
-            },
-            {
-              "$id": "644",
-              "frame": 15,
-              "value": -0.3705859,
-              "containing_value": {
-                "$ref": "641"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "645",
-          "$values": [
-            {
-              "$id": "646",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "647",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "641"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "648",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": -0.63704836,
+          },
+          {
+            "frame": 15,
+            "value": -0.3705859,
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "name": "sword",
       "position": {
-        "$id": "649",
-        "owner": {
-          "$ref": "627"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "650",
-          "$values": [
-            {
-              "$id": "651",
-              "frame": 0,
-              "value": {
-                "x": -23.153593,
-                "y": 25.155554
-              },
-              "containing_value": {
-                "$ref": "649"
-              }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -23.153593,
+              "y": 25.155554
             },
-            {
-              "$id": "652",
-              "frame": 15,
-              "value": {
-                "x": 37.096405,
-                "y": 35.988884
-              },
-              "containing_value": {
-                "$ref": "649"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "653",
-          "$values": [
-            {
-              "$id": "654",
-              "interpolation_type": "smooth_step",
-              "keyframes": {
-                "$id": "655",
-                "$values": [
-                  0,
-                  15
-                ]
-              },
-              "containing_value": {
-                "$ref": "649"
-              },
-              "use_relative_progress_calculation": true
-            }
-          ]
-        },
-        "tags": {
-          "$id": "656",
-          "$values": []
-        }
+          },
+          {
+            "frame": 15,
+            "value": {
+              "x": 37.096405,
+              "y": 35.988884
+            },
+          }
+        ],
+        "links": [
+          {
+            "interpolation_type": "smooth_step",
+            "use_relative_progress_calculation": true,
+            "keyframes": [
+              0,
+              15
+            ]
+          }
+        ],
+        "tags": []
       },
       "transparency": {
-        "$id": "657",
-        "owner": {
-          "$ref": "627"
-        },
         "name": "Transparency",
-        "keyframes": {
-          "$id": "658",
-          "$values": [
-            {
-              "$id": "659",
-              "frame": 0,
-              "value": 1.0,
-              "containing_value": {
-                "$ref": "657"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "660",
-          "$values": []
-        },
-        "tags": {
-          "$id": "661",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 1.0,
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "z_index": {
-        "$id": "662",
-        "owner": {
-          "$ref": "627"
-        },
         "name": "ZIndex",
-        "keyframes": {
-          "$id": "663",
-          "$values": [
-            {
-              "$id": "664",
-              "frame": 0,
-              "value": 0.9,
-              "containing_value": {
-                "$ref": "662"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "665",
-          "$values": []
-        },
-        "tags": {
-          "$id": "666",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": 0.9,
+          }
+        ],
+        "links": [],
+        "tags": []
       }
     }
   ],
   "hitbox_objects": [
     {
-      "$id": "667",
       "size": {
-        "$id": "668",
-        "owner": {
-          "$ref": "667"
-        },
         "name": "Size",
-        "keyframes": {
-          "$id": "669",
-          "$values": [
-            {
-              "$id": "670",
-              "frame": 0,
-              "value": {
-                "x": 45.281372,
-                "y": 16.994276
-              },
-              "containing_value": {
-                "$ref": "668"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "671",
-          "$values": []
-        },
-        "tags": {
-          "$id": "672",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 45.281372,
+              "y": 16.994276
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "position": {
-        "$id": "673",
-        "owner": {
-          "$ref": "667"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "674",
-          "$values": [
-            {
-              "$id": "675",
-              "frame": 0,
-              "value": {
-                "x": 0.15098572,
-                "y": 6.4195337
-              },
-              "containing_value": {
-                "$ref": "673"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "676",
-          "$values": []
-        },
-        "tags": {
-          "$id": "677",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 0.15098572,
+              "y": 6.4195337
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "upper body",
       "hitstun": 3,
@@ -4367,74 +2112,36 @@
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
-      "tags": {
-        "$id": "678",
-        "$values": []
-      }
+      "tags": []
     },
     {
-      "$id": "679",
       "size": {
-        "$id": "680",
-        "owner": {
-          "$ref": "679"
-        },
         "name": "Size",
-        "keyframes": {
-          "$id": "681",
-          "$values": [
-            {
-              "$id": "682",
-              "frame": 0,
-              "value": {
-                "x": 27.5,
-                "y": 26.25
-              },
-              "containing_value": {
-                "$ref": "680"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "683",
-          "$values": []
-        },
-        "tags": {
-          "$id": "684",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 27.5,
+              "y": 26.25
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "position": {
-        "$id": "685",
-        "owner": {
-          "$ref": "679"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "686",
-          "$values": [
-            {
-              "$id": "687",
-              "frame": 0,
-              "value": {
-                "x": 8.375,
-                "y": 1.2916679
-              },
-              "containing_value": {
-                "$ref": "685"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "688",
-          "$values": []
-        },
-        "tags": {
-          "$id": "689",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 8.375,
+              "y": 1.2916679
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "head",
       "hitstun": 3,
@@ -4459,74 +2166,36 @@
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
-      "tags": {
-        "$id": "690",
-        "$values": []
-      }
+      "tags": []
     },
     {
-      "$id": "691",
       "size": {
-        "$id": "692",
-        "owner": {
-          "$ref": "691"
-        },
         "name": "Size",
-        "keyframes": {
-          "$id": "693",
-          "$values": [
-            {
-              "$id": "694",
-              "frame": 0,
-              "value": {
-                "x": 48.232925,
-                "y": 15.747139
-              },
-              "containing_value": {
-                "$ref": "692"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "695",
-          "$values": []
-        },
-        "tags": {
-          "$id": "696",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 48.232925,
+              "y": 15.747139
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "position": {
-        "$id": "697",
-        "owner": {
-          "$ref": "691"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "698",
-          "$values": [
-            {
-              "$id": "699",
-              "frame": 0,
-              "value": {
-                "x": -0.2252121,
-                "y": 18.37643
-              },
-              "containing_value": {
-                "$ref": "697"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "700",
-          "$values": []
-        },
-        "tags": {
-          "$id": "701",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -0.2252121,
+              "y": 18.37643
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "lower body",
       "hitstun": 3,
@@ -4551,74 +2220,36 @@
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
-      "tags": {
-        "$id": "702",
-        "$values": []
-      }
+      "tags": []
     },
     {
-      "$id": "703",
       "size": {
-        "$id": "704",
-        "owner": {
-          "$ref": "703"
-        },
         "name": "Size",
-        "keyframes": {
-          "$id": "705",
-          "$values": [
-            {
-              "$id": "706",
-              "frame": 0,
-              "value": {
-                "x": 18.53949,
-                "y": 15.363125
-              },
-              "containing_value": {
-                "$ref": "704"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "707",
-          "$values": []
-        },
-        "tags": {
-          "$id": "708",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 18.53949,
+              "y": 15.363125
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "position": {
-        "$id": "709",
-        "owner": {
-          "$ref": "703"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "710",
-          "$values": [
-            {
-              "$id": "711",
-              "frame": 0,
-              "value": {
-                "x": 8.344727,
-                "y": 30.993345
-              },
-              "containing_value": {
-                "$ref": "709"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "712",
-          "$values": []
-        },
-        "tags": {
-          "$id": "713",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 8.344727,
+              "y": 30.993345
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "right leg",
       "hitstun": 3,
@@ -4643,74 +2274,36 @@
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
-      "tags": {
-        "$id": "714",
-        "$values": []
-      }
+      "tags": []
     },
     {
-      "$id": "715",
       "size": {
-        "$id": "716",
-        "owner": {
-          "$ref": "715"
-        },
         "name": "Size",
-        "keyframes": {
-          "$id": "717",
-          "$values": [
-            {
-              "$id": "718",
-              "frame": 0,
-              "value": {
-                "x": 21.705544,
-                "y": 10.245487
-              },
-              "containing_value": {
-                "$ref": "716"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "719",
-          "$values": []
-        },
-        "tags": {
-          "$id": "720",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 21.705544,
+              "y": 10.245487
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "position": {
-        "$id": "721",
-        "owner": {
-          "$ref": "715"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "722",
-          "$values": [
-            {
-              "$id": "723",
-              "frame": 0,
-              "value": {
-                "x": -14.247234,
-                "y": 31.337877
-              },
-              "containing_value": {
-                "$ref": "721"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "724",
-          "$values": []
-        },
-        "tags": {
-          "$id": "725",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -14.247234,
+              "y": 31.337877
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "left leg",
       "hitstun": 3,
@@ -4735,74 +2328,36 @@
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
-      "tags": {
-        "$id": "726",
-        "$values": []
-      }
+      "tags": []
     },
     {
-      "$id": "727",
       "size": {
-        "$id": "728",
-        "owner": {
-          "$ref": "727"
-        },
         "name": "Size",
-        "keyframes": {
-          "$id": "729",
-          "$values": [
-            {
-              "$id": "730",
-              "frame": 0,
-              "value": {
-                "x": 18.610317,
-                "y": 6.1920853
-              },
-              "containing_value": {
-                "$ref": "728"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "731",
-          "$values": []
-        },
-        "tags": {
-          "$id": "732",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 18.610317,
+              "y": 6.1920853
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "position": {
-        "$id": "733",
-        "owner": {
-          "$ref": "727"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "734",
-          "$values": [
-            {
-              "$id": "735",
-              "frame": 0,
-              "value": {
-                "x": -15.839296,
-                "y": 35.674496
-              },
-              "containing_value": {
-                "$ref": "733"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "736",
-          "$values": []
-        },
-        "tags": {
-          "$id": "737",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": -15.839296,
+              "y": 35.674496
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "left foot",
       "hitstun": 3,
@@ -4827,74 +2382,36 @@
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
-      "tags": {
-        "$id": "738",
-        "$values": []
-      }
+      "tags": []
     },
     {
-      "$id": "739",
       "size": {
-        "$id": "740",
-        "owner": {
-          "$ref": "739"
-        },
         "name": "Size",
-        "keyframes": {
-          "$id": "741",
-          "$values": [
-            {
-              "$id": "742",
-              "frame": 0,
-              "value": {
-                "x": 15.800003,
-                "y": 6.1920853
-              },
-              "containing_value": {
-                "$ref": "740"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "743",
-          "$values": []
-        },
-        "tags": {
-          "$id": "744",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 15.800003,
+              "y": 6.1920853
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "position": {
-        "$id": "745",
-        "owner": {
-          "$ref": "739"
-        },
         "name": "Position",
-        "keyframes": {
-          "$id": "746",
-          "$values": [
-            {
-              "$id": "747",
-              "frame": 0,
-              "value": {
-                "x": 9.466652,
-                "y": 35.407825
-              },
-              "containing_value": {
-                "$ref": "745"
-              }
-            }
-          ]
-        },
-        "links": {
-          "$id": "748",
-          "$values": []
-        },
-        "tags": {
-          "$id": "749",
-          "$values": []
-        }
+        "keyframes": [
+          {
+            "frame": 0,
+            "value": {
+              "x": 9.466652,
+              "y": 35.407825
+            },
+          }
+        ],
+        "links": [],
+        "tags": []
       },
       "name": "right foot",
       "hitstun": 3,
@@ -4919,10 +2436,7 @@
       "type": "hurtbox",
       "launch_type": "torso_hit",
       "conditions": "none",
-      "tags": {
-        "$id": "750",
-        "$values": []
-      }
+      "tags": []
     }
   ]
 }

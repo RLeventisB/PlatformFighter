@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using PlatformFighter.Entities.Actions;
+using PlatformFighter.Physics;
 using PlatformFighter.Rendering;
 
 using System;
@@ -711,7 +712,7 @@ namespace PlatformFighter.Miscelaneous
 	{
 		public static readonly ushort[] PowersOf2 = { 2, 4, 8, 16, 32, 64, 128, 256 };
 
-		public static unsafe ref T2 CastWithRef<T1, T2>(this T1 obj) => ref Unsafe.As<T1, T2>(ref obj);
+		public static ref T2 CastWithRef<T1, T2>(this T1 obj) => ref Unsafe.As<T1, T2>(ref obj);
 
 		public static void PushCharacter(this SpriteBatch spriteBatch, Vector2 sourceSize, Vector2 pos, Vector4 sourcePercents, Vector2 scale, Color color, float sin, float cos, ushort shadowWidth, float layerDepth)
 		{
@@ -1486,32 +1487,33 @@ namespace PlatformFighter.Miscelaneous
 			spriteBatch.Draw(Assets.Textures["SinglePixel"], position, null, color.Value, rotation, Vector2.One / 2, size);
 		}
 
-		public static void DrawHollowLine(this SpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null)
+		public static void DrawHollowLine(this SpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null, float layerDepth = 0.5f)
 		{
 			Color color2 = color ?? Color.Red;
 			Vector2 vector2 = new Vector2(0f, width / 2f).RotateRad((end - start).ToRadians());
 			ref GameTexture singlePixel = ref Assets.Textures["SinglePixel"];
-			PushLine(ref spriteBatch, singlePixel, start, end, color2, vector2);
+			PushLine(ref spriteBatch, singlePixel, start, end, color2, vector2, layerDepth);
 		}
 
-		public static void DrawLine(this SpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null)
+		public static void DrawLine(this SpriteBatch spriteBatch, Vector2 start, Vector2 end, float width, Color? color = null, float layerDepth = 0.5f)
 		{
 			Color color2 = color ?? Color.Red;
 			Vector2 vector2 = new Vector2(0f, width / 2f).RotateRad((end - start).ToRadians());
-			PushLine(ref spriteBatch, Assets.Textures["SinglePixel"], start, end, color2, vector2);
+			PushLine(ref spriteBatch, Assets.Textures["SinglePixel"], start, end, color2, vector2, layerDepth);
 		}
 
-		public static void DrawLine(this SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, float width, Color? color = null)
+		public static void DrawLine(this SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, float width, Color? color = null, float layerDepth = 0.5f)
 		{
 			Color color2 = color ?? Color.Red;
 			Vector2 vector2 = new Vector2(0f, width / 2f).RotateRad((end - start).ToRadians());
-			PushLine(ref spriteBatch, texture ?? Assets.Textures["SinglePixel"], start, end, color2, vector2);
+			PushLine(ref spriteBatch, texture ?? Assets.Textures["SinglePixel"], start, end, color2, vector2, layerDepth);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void PushLine(ref SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, Color color, Vector2 vector2)
+		public static void PushLine(ref SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 end, Color color, Vector2 vector2, float layerDepth)
 		{
 			SpriteBatchItem spriteBatchItem = spriteBatch.batcher.CreateBatchItem();
+			spriteBatchItem.SortKey = layerDepth;
 			spriteBatchItem.Texture = texture;
 			spriteBatchItem.vertexTL.Position.X = start.X + vector2.X;
 			spriteBatchItem.vertexTL.Position.Y = start.Y + vector2.Y;
@@ -1521,6 +1523,10 @@ namespace PlatformFighter.Miscelaneous
 			spriteBatchItem.vertexBL.Position.Y = end.Y + vector2.Y;
 			spriteBatchItem.vertexBR.Position.X = end.X - vector2.X;
 			spriteBatchItem.vertexBR.Position.Y = end.Y - vector2.Y;
+			spriteBatchItem.vertexTL.Position.Z = layerDepth;
+			spriteBatchItem.vertexTR.Position.Z = layerDepth;
+			spriteBatchItem.vertexBL.Position.Z = layerDepth;
+			spriteBatchItem.vertexBR.Position.Z = layerDepth;
 			spriteBatchItem.vertexTL.TextureCoordinate.X = 0f;
 			spriteBatchItem.vertexTL.TextureCoordinate.Y = 0f;
 			spriteBatchItem.vertexTR.TextureCoordinate.X = 1f;
@@ -1545,6 +1551,19 @@ namespace PlatformFighter.Miscelaneous
 			GenerateRectangleCornerItem(rectangle.Right, rectangle.Top, rectangle.Right, rectangle.Bottom, rectangle.Right, rectangle.Top, rectangle.Right, rectangle.Bottom, spriteBatch, halfWidth, texture, finalColor);
 			GenerateRectangleCornerItem(rectangle.Left, rectangle.Bottom, rectangle.Left, rectangle.Bottom, rectangle.Right, rectangle.Bottom, rectangle.Right, rectangle.Bottom, spriteBatch, halfWidth, texture, finalColor);
 			GenerateRectangleCornerItem(rectangle.Left, rectangle.Top, rectangle.Left, rectangle.Bottom, rectangle.Left, rectangle.Top, rectangle.Left, rectangle.Bottom, spriteBatch, halfWidth, texture, finalColor);
+		}
+
+		public static void DrawRectangleCentered(this SpriteBatch spriteBatch, MovableObjectRectangle rectangle, float rotation = 0, float width = 1f, Color? color = null, float layerDepth = 0.5f)
+		{
+			Texture2D texture = Assets.Textures["SinglePixel"];
+			Color finalColor = color ?? Color.Red;
+			ReadOnlySpan<Vector2> corners = Collision.GetVertices(rectangle, rotation);
+
+			for (int i = 0; i < corners.Length; i++)
+			{
+				Vector2 corner = corners[i], otherCorner = corners[(i + 1) % 4];
+				spriteBatch.DrawLine(texture, corner, otherCorner, width, finalColor, layerDepth);
+			}
 		}
 
 		public static void DrawRectangle(this SpriteBatch spriteBatch, float left, float right, float top, float bottom, float width = 1f, Color? color = null)

@@ -15,7 +15,7 @@ namespace PlatformFighter.Entities
 		public Direction CollidedDirections;
 		public ushort ControllerId;
 		public bool Grounded;
-		public HealthHandler Health = new HealthHandler();
+		public HealthHandler Health;
 		public int HitStun = 0;
 		public Collision.CollisionData[] LastFrameCollidedData;
 		public float MoveDelta;
@@ -25,6 +25,7 @@ namespace PlatformFighter.Entities
 		public Player()
 		{
 			ActionManager = new PlayerActionManager(this);
+			Health = new HealthHandler(this);
 		}
 
 		public Vector2 GetScaleWithFacing => new Vector2(Scale.X * Utils.GetFacingDirectionMult(ActionManager.FacingDirection), Scale.Y);
@@ -54,6 +55,7 @@ namespace PlatformFighter.Entities
 				ActionManager.Update();
 
 			DoPhysics();
+			Health.Update();
 		}
 
 		public void DoPhysics()
@@ -114,6 +116,10 @@ namespace PlatformFighter.Entities
 			{
 				if (MovableObject.VelocityY <= CharacterData.Definition.FallingGravityMax)
 					MovableObject.VelocityY += CharacterData.Definition.FallingGravity;
+				else
+				{
+					MovableObject.VelocityY *= CharacterData.Definition.HigherSpeedSlowingValue;
+				}
 			}
 		}
 

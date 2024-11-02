@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Editor.Objects;
+
+using Microsoft.Xna.Framework;
 
 using PlatformFighter.Entities.Actions;
 using PlatformFighter.Miscelaneous;
@@ -22,12 +24,12 @@ namespace PlatformFighter.Entities.Characters
 		public override float HigherSpeedSlowingValue => 0.9f;
 		public override float FallingGravity => 0.15f;
 		public override float FallingGravityMax => 5f;
-		public override int MaxAirJumpCount => 2;
+		public override int MaxJumpCount => 3;
 		public override float FastFallAcceleration => 0.2f;
 		public override float FastFallMaxSpeed => 6f;
 		public override float Tankiness => 1f;
 		public override int JumpStartupFrames => 7;
-		public override int DashStartupFrames => 20;
+		public override int DashStartupFrames => 7;
 		public override Vector2 GroundJumpVelocity => new Vector2(0, -4);
 		public override Vector2 DashGroundJumpVelocity => new Vector2(0, -5).RotateRad(MathHelper.ToRadians(35f));
 		public override Vector2 GroundSideJumpVelocity => GroundJumpVelocity.RotateRad(MathHelper.ToRadians(40f));
@@ -37,7 +39,7 @@ namespace PlatformFighter.Entities.Characters
 		public override int JumpHoldMaxFrames => 30;
 		public override Vector2 CollisionSize => new Vector2(40, 80);
 		public override float WallGravity => 0.044f;
-		public override float WallMaxFallSpeed => 3f;
+		public override float WallMaxFallSpeed => 2f;
 
 		public override ActionBase<Player> ResolveIdleAction(Player player, bool grounded) => grounded ? new ElmoIdleAction(player) : new ElmoFallingAction(player);
 
@@ -53,8 +55,11 @@ namespace PlatformFighter.Entities.Characters
 					switch (attackDirection)
 					{
 						case AttackDirection.Neutral:
-						default:
 							return new ElmoNeutralMeleeGrounded(player);
+						case AttackDirection.Side:
+							return new ElmoSideMeleeGrounded(player);
+						case AttackDirection.Down:
+							return new ElmoDownMeleeGrounded(player);
 					}
 				}
 
@@ -70,6 +75,41 @@ namespace PlatformFighter.Entities.Characters
 			}
 
 			return new ElmoNeutralMeleeGrounded(player);
+		}
+
+		public override ActionBase<Player> ResolveHitAction(Player player, LaunchType launchType)
+		{
+			return new ElmoHitAction(player);
+		}
+	}
+	public class ElmoHitAction : AnimationActionBase
+	{
+		public ElmoHitAction(Player entity) : base(entity, "elmohitair")
+		{
+		}
+
+		public override ActionTags Tags => ActionTags.Hit;
+
+		public override void ProcessQueue(QueuedActionList queuedAction)
+		{
+			if (Entity.HitStun > 0)
+				return;
+			
+			if (Entity.ActionManager.Impulse != Vector2.Zero && Entity.ActionManager.Impulse.Y < 0)
+			{
+				ChangeTo(new ElmoJumpAction(Entity, null, true));
+			}
+		}
+
+		public override void Update()
+		{
+			if (Entity.Grounded)
+			{
+				ChangeTo(new ElmoLandAction(Entity));
+			}
+
+			Frame %= AnimationData.LastFrame;
+			base.Update();
 		}
 	}
 	public class ElmoIdleAction : AnimationActionBase
@@ -92,7 +132,43 @@ namespace PlatformFighter.Entities.Characters
 			if (!Entity.Grounded)
 				ChangeTo(new ElmoFallingAction(Entity));
 
+			Frame %= AnimationData.LastFrame;
+
 			base.Update();
+		}
+	}
+	public class ElmoFastFallingAction : StateAction
+	{
+		public ElmoFastFallingAction(Player entity) : base(entity, "elmofastfall")
+		{
+		}
+
+		public override ActionTags Tags => ActionTags.NoGravity | ActionTags.Aerial;
+		public override bool State => Entity.GetController().Down;
+
+		public override void ProcessQueue(QueuedActionList queuedAction)
+		{
+			IPlayerDataReceiver controller = Entity.GetController();
+
+			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+		}
+
+		public override void Update()
+		{
+			if (Entity.Grounded)
+				ChangeTo(new ElmoLandAction(Entity));
+
+			if (Entity.GetController().Down && Entity.MovableObject.VelocityY < Entity.CharacterData.Definition.FastFallMaxSpeed)
+			{
+				Entity.MovableObject.VelocityY += Entity.CharacterData.Definition.FastFallAcceleration;
+			}
+
+			base.Update();
+		}
+
+		public override void OnTimeEnd()
+		{
+			ChangeTo(new ElmoFallingAction(Entity));
 		}
 	}
 	public class ElmoFallingAction : AnimationActionBase
@@ -101,12 +177,12 @@ namespace PlatformFighter.Entities.Characters
 		{
 		}
 
-		public override ActionTags Tags => ActionTags.None;
+		public override ActionTags Tags => ActionTags.Aerial;
 
 		public override void ProcessQueue(QueuedActionList queuedAction)
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
-			
+
 			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
 		}
 
@@ -121,6 +197,45 @@ namespace PlatformFighter.Entities.Characters
 	public class ElmoNeutralMeleeGrounded : EndingActionToIdle
 	{
 		public ElmoNeutralMeleeGrounded(Player entity) : base(entity, "elmogroundneutralmelee")
+		{
+		}
+
+		public override ActionTags Tags => ActionTags.Attack;
+	}
+	public class ElmoDownMeleeGrounded : EndingActionToIdle
+	{
+		public ElmoDownMeleeGrounded(Player entity) : base(entity, "elmogrounddownmelee")
+		{
+		}
+		public override void OnTimeEnd()
+		{
+			ChangeTo(new ElmoCrouchAction(Entity));
+		}
+
+		public override ActionTags Tags => ActionTags.Attack;
+	}
+	public class ElmoSideMeleeGrounded : EndingActionToIdle
+	{
+		public ElmoSideMeleeGrounded(Player entity) : base(entity, "elmogroundsidemelee")
+		{
+		}
+
+		public override void ProcessQueue(QueuedActionList queuedAction)
+		{
+			if (!HasActionHit)
+				return;
+
+			if (queuedAction.ConsumeAction(ActionType.AttackMelee))
+			{
+				ChangeTo(new ElmoSideMeleeGroundedFinisher(Entity));
+			}
+		}
+
+		public override ActionTags Tags => ActionTags.Attack;
+	}
+	public class ElmoSideMeleeGroundedFinisher : EndingActionToIdle
+	{
+		public ElmoSideMeleeGroundedFinisher(Player entity) : base(entity, "elmogroundsidemeleefinisher")
 		{
 		}
 
@@ -231,11 +346,16 @@ namespace PlatformFighter.Entities.Characters
 
 				if (TurnFrames > 0)
 				{
-					Frame = 0;
+					AnimationData = AnimationRenderer.GetAnimation("elmoturn");
 
+					Frame = AnimationData.LastFrame - TurnFrames;
+
+					AddHitboxes();
 					return;
 				}
 			}
+
+			AnimationData = AnimationRenderer.GetAnimation(DoingStart ? "elmowalkstart" : "elmowalk");
 
 			if (Entity.ActionManager.Impulse.X != 0)
 			{
@@ -252,13 +372,13 @@ namespace PlatformFighter.Entities.Characters
 
 					if (!DoingStart)
 					{
-						Frame = 0;
+						Frame = WalkTime;
 					}
 				}
 
 				Entity.AddWalkAcceleration(WalkingDirection);
 				Frame++;
-
+				
 				if (!DoingStart)
 				{
 					Frame %= AnimationData.LastFrame;
@@ -269,25 +389,18 @@ namespace PlatformFighter.Entities.Characters
 				if (WalkTime > 0)
 					WalkTime--;
 
+				Frame = WalkTime;
 				if (WalkTime <= 0)
 				{
-					ChangeTo(null);
+					ChangeTo(new ElmoIdleAction(Entity));
 				}
 			}
+			AddHitboxes();
 		}
-
+		
 		public override void Draw()
 		{
-			if (TurnFrames > 0)
-			{
-				AnimationData = AnimationRenderer.GetAnimation("elmoturn");
-				AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, AnimationData.LastFrame - TurnFrames, Entity.MovableObject.Center, Entity.GetScaleWithFacing, Entity.Rotation);
-			}
-			else
-			{
-				AnimationData = AnimationRenderer.GetAnimation(DoingStart ? "elmowalkstart" : "elmowalk");
-				AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, DoingStart ? WalkTime : Frame, Entity.MovableObject.Center, Entity.GetScaleWithFacing, Entity.Rotation);
-			}
+			AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, Frame, Entity.MovableObject.Center, Entity.GetScaleWithFacing, Entity.Rotation);
 		}
 	}
 	public class ElmoDashStartAction : EndingActionToIdle
@@ -362,7 +475,17 @@ namespace PlatformFighter.Entities.Characters
 
 			Frame %= AnimationData.LastFrame;
 
-			if (Entity.ActionManager.Impulse == Vector2.Zero || !Entity.GetController().Dash)
+			float targetAngle = Entity.ActionManager.Impulse.ToAngle();
+			float difference = Utils.WrapAngle(targetAngle - DashAngle);
+			bool groundedAndOppositeImpulse = Math.Abs(difference) > 179 && Grounded;
+
+			if (groundedAndOppositeImpulse)
+			{
+				difference = 0;
+				targetAngle = DashAngle;
+			}
+
+			if (Entity.ActionManager.Impulse == Vector2.Zero || !Entity.GetController().Dash || groundedAndOppositeImpulse)
 			{
 				NoImpulseFrames++;
 
@@ -380,9 +503,6 @@ namespace PlatformFighter.Entities.Characters
 
 			if (Entity.ActionManager.Impulse != Vector2.Zero)
 			{
-				float targetAngle = Entity.ActionManager.Impulse.ToAngle();
-				float difference = Utils.WrapAngle(targetAngle - DashAngle);
-
 				if (difference > 0)
 				{
 					DashAngle += Entity.CharacterData.Definition.DashTurningAngle;
@@ -400,7 +520,7 @@ namespace PlatformFighter.Entities.Characters
 			}
 
 			DashAngle = Utils.WrapAngle(DashAngle);
-			if(DashAngle is not -90 or 90)
+			if (DashAngle is not -90 or 90)
 				Entity.ActionManager.FacingDirection = DashAngle is > -90 and < 90 ? FacingDirection.Right : FacingDirection.Left;
 
 			Entity.Rotation = MathHelper.ToRadians(Entity.ActionManager.FacingDirection == FacingDirection.Left ? -DashAngle + 180 : DashAngle);
@@ -417,6 +537,7 @@ namespace PlatformFighter.Entities.Characters
 			else if (collidedDirections.HasFlag(Direction.Up))
 			{
 				ChangeTo(new ElmoLandAction(Entity));
+				Entity.ActionManager.RecoveryFrames += 20;
 			}
 
 			base.Update();
@@ -434,6 +555,8 @@ namespace PlatformFighter.Entities.Characters
 			DashDirection = dashDirection;
 		}
 
+		public FacingDirection DashDirection { get; init; }
+
 		public override void OnStart()
 		{
 			Entity.ActionManager.RecoveryFrames += 20;
@@ -446,8 +569,6 @@ namespace PlatformFighter.Entities.Characters
 			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
 		}
 
-		public FacingDirection DashDirection { get; init; }
-
 		public override void OnTimeEnd()
 		{
 			Entity.ActionManager.SetAction(new ElmoIdleAction(Entity));
@@ -459,8 +580,6 @@ namespace PlatformFighter.Entities.Characters
 		{
 		}
 
-		public override float FrameToDraw => 30 + Frame;
-
 		public override void ProcessQueue(QueuedActionList queuedAction)
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
@@ -471,6 +590,11 @@ namespace PlatformFighter.Entities.Characters
 		public override void OnTimeEnd()
 		{
 			ChangeTo(new ElmoFallingAction(Entity));
+		}
+
+		public override void Draw()
+		{
+			AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, Frame + 30, Entity.MovableObject.Center, Entity.GetScaleWithFacing, Entity.Rotation);
 		}
 	}
 	public class ElmoCrouchAction : StateAction
@@ -521,15 +645,28 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			if (WallDirection == FacingDirection.Right && controller.Right)
+			Entity.ActionManager.JumpCount = Entity.CharacterData.Definition.MaxJumpCount;
+
+			if (WallDirection == FacingDirection.Right)
 			{
-				Entity.MovableObject.VelocityX = 1f; 
-				Entity.ActionManager.SetAction(new ElmoFallingAction(Entity));
+				Entity.MovableObject.VelocityX = -0.01f;
+
+				if (controller.Right)
+				{
+					Entity.MovableObject.VelocityX = 1f;
+					Entity.ActionManager.SetAction(new ElmoFallingAction(Entity));
+				}
 			}
-			if (WallDirection == FacingDirection.Left && controller.Left)
+
+			if (WallDirection == FacingDirection.Left)
 			{
-				Entity.MovableObject.VelocityX = -1f; 
-				Entity.ActionManager.SetAction(new ElmoFallingAction(Entity));
+				Entity.MovableObject.VelocityX = 0.01f;
+
+				if (controller.Left)
+				{
+					Entity.MovableObject.VelocityX = -1f;
+					Entity.ActionManager.SetAction(new ElmoFallingAction(Entity));
+				}
 			}
 
 			if (Entity.ActionManager.QueuedAction.ConsumeAction(ActionType.Jump))
@@ -573,6 +710,13 @@ namespace PlatformFighter.Entities.Characters
 
 		public int JumpStartup { get; init; }
 		public override ActionTags Tags => ActionTags.NoGravity | ActionTags.Movement;
+
+		public override bool CanBeSetAsActive(Player player) => player.ActionManager.JumpCount > 0;
+
+		public override void OnStart()
+		{
+			Entity.ActionManager.JumpCount--;
+		}
 
 		public override void ProcessQueue(QueuedActionList queuedAction)
 		{

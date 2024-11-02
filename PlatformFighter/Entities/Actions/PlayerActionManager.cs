@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Editor.Objects;
+
+using Microsoft.Xna.Framework;
 
 using PlatformFighter.Entities.Characters;
 using PlatformFighter.Miscelaneous;
@@ -10,18 +12,16 @@ namespace PlatformFighter.Entities.Actions
 {
 	public class PlayerActionManager
 	{
-		public int AnimationFrame;
+		public ushort ActionId; // this increases for every new action
 		private bool ChangedActionThisFrame;
 		public ActionBase<Player> CurrentAction;
-		public bool Dashing;
 		public FacingDirection FacingDirection = FacingDirection.Right;
+		public bool HasThisActionCollided, HasThisActionHit;
 		public Vector2 Impulse;
+		public int JumpCount;
 		public QueuedActionList QueuedAction = new QueuedActionList();
 		public int RecoveryFrames;
 		public int ShieldBreakStun;
-		public AnalogValue<sbyte>
-			Shielding = new AnalogValue<sbyte>(0, 10, 1);
-		public ushort WalkTime, TurningTime, AirTime, DashTime;
 
 		public PlayerActionManager(Player player)
 		{
@@ -53,15 +53,17 @@ namespace PlatformFighter.Entities.Actions
 
 			QueuedAction.AddActions(controller);
 
+			if (Player.CollidedDirections.HasFlag(Direction.Up) || Player.CollidedDirections.HasFlag(Direction.Right) || Player.CollidedDirections.HasFlag(Direction.Left))
+				JumpCount = Player.CharacterData.Definition.MaxJumpCount;
+
+			if (Player.HitStun > 0)
+				Player.HitStun--;
+
 			if (RecoveryFrames > 0)
 			{
 				RecoveryFrames--;
 
 				if (CurrentAction is null)
-					return;
-
-				CurrentAction.UpdateOnRecovery();
-				if(!CurrentAction.RunUpdateOnRecovery)
 					return;
 			}
 
@@ -69,12 +71,15 @@ namespace PlatformFighter.Entities.Actions
 
 			CurrentAction ??= Player.CharacterData.Definition.ResolveIdleAction(Player, Player.Grounded);
 
+			int iterations = 0;
+
 			do
 			{
 				ChangedActionThisFrame = false;
+				iterations++;
 
 				CurrentAction.ProcessQueue(QueuedAction);
-			} while (ChangedActionThisFrame);
+			} while (ChangedActionThisFrame && iterations <= 10);
 
 			CurrentAction.Update();
 		}
@@ -83,10 +88,11 @@ namespace PlatformFighter.Entities.Actions
 		{
 			if (actionManager.RecoveryFrames > 0 && !ignoreRecoveryFrames)
 				return;
-			
+
 			Type currentActionType = actionManager.CurrentAction?.GetType();
 
-			Direction collidedDirections = Collision.GetCollidingDirection(actionManager.Player.MovableObject, actionManager.Impulse * 1.5f);
+			Direction collidedDirections = Collision.GetCollidingDirection(actionManager.Player.MovableObject, new Vector2(actionManager.Impulse.X * Math.Abs(actionManager.Player.MovableObject.VelocityX), 0));
+			collidedDirections |= actionManager.Player.CollidedDirections;
 
 			bool left = collidedDirections.HasFlag(Direction.Left);
 
@@ -94,7 +100,7 @@ namespace PlatformFighter.Entities.Actions
 			{
 				actionManager.SetAction(new ElmoWallAction(actionManager.Player, left ? FacingDirection.Right : FacingDirection.Left));
 			}
-			
+
 			if (currentActionType != actionManager.CurrentAction?.GetType())
 				return;
 
@@ -116,6 +122,14 @@ namespace PlatformFighter.Entities.Actions
 			{
 				actionManager.DoWalkAction(FacingDirection.Right);
 			}
+
+			if (currentActionType != actionManager.CurrentAction?.GetType())
+				return;
+
+			if (actionManager.CurrentAction is ElmoFallingAction or ElmoJumpEndAction && controller.Down && !actionManager.Player.Grounded)
+			{
+				actionManager.SetAction(new ElmoFastFallingAction(actionManager.Player));
+			}
 		}
 
 		public static void ProcessActionDefault(PlayerActionManager actionManager, IPlayerDataReceiver controller, QueuedAction action)
@@ -135,7 +149,43 @@ namespace PlatformFighter.Entities.Actions
 					actionManager.SetAction(new ElmoDashStartAction(actionManager.Player, actionManager.FacingDirection));
 
 					break;
+				case ActionType.AttackMelee:
+					actionManager.DoAttackAction(false);
+
+					break;
+				case ActionType.AttackShot:
+					actionManager.DoAttackAction(true);
+
+					break;
 			}
+		}
+
+		public void DoAttackAction(bool isShot)
+		{
+			UpdateFacingToInputs();
+			SetAction(Player.CharacterData.Definition.ResolveAttackAction(Player, GetAttackDirection(), isShot, Player.GetController().SpecialToggle));
+		}
+
+		public AttackDirection GetAttackDirection()
+		{
+			IPlayerDataReceiver controller = Player.GetController();
+
+			if (controller.Up)
+			{
+				return AttackDirection.Neutral;
+			}
+
+			if (controller.Down)
+			{
+				return AttackDirection.Down;
+			}
+
+			if (controller.Left || controller.Right)
+			{
+				return AttackDirection.Side;
+			}
+
+			return AttackDirection.Neutral;
 		}
 
 		public void DoWalkAction(FacingDirection facingDirection)
@@ -145,13 +195,16 @@ namespace PlatformFighter.Entities.Actions
 
 		public bool SetAction(ActionBase<Player> action)
 		{
-			if (CurrentAction is not null && !CurrentAction.CanChangeTo(action))
-				return false;
-
-			CurrentAction?.OnEnd();
-			CurrentAction = action;
-			CurrentAction?.OnStart();
-			ChangedActionThisFrame = true;
+			if (CurrentAction is not null && CurrentAction.CanChangeTo(action) && action is not null && action.CanBeSetAsActive(Player))
+			{
+				CurrentAction?.OnEnd();
+				CurrentAction = action;
+				CurrentAction?.OnStart();
+				ChangedActionThisFrame = true;
+				HasThisActionCollided = false;
+				HasThisActionHit = false;
+				ActionId++;
+			}
 
 			return true;
 		}
@@ -177,6 +230,11 @@ namespace PlatformFighter.Entities.Actions
 		}
 
 		public bool CurrentActionHasFlag(ActionTags tags) => CurrentAction is not null && CurrentAction.Tags.HasFlag(tags);
+
+		public void ReceiveHit(LaunchType launchType)
+		{
+			SetAction(Player.CharacterData.Definition.ResolveHitAction(Player, launchType));
+		}
 	}
 	public struct QueuedAction : IComparable<QueuedAction>
 	{

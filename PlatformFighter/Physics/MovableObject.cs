@@ -191,14 +191,6 @@ namespace PlatformFighter.Physics
 			Height = (ushort)rectangle.Height;
 		}
 
-		public MovableObjectRectangle(float x, float y, ushort width, ushort height)
-		{
-			X = x;
-			Y = y;
-			Width = width;
-			Height = height;
-		}
-
 		public MovableObjectRectangle(float x, float y, float width, float height)
 		{
 			X = x;
@@ -207,20 +199,12 @@ namespace PlatformFighter.Physics
 			Height = (ushort)height;
 		}
 
-		public MovableObjectRectangle(float x, float y, int width, int height)
-		{
-			X = x;
-			Y = y;
-			Width = (ushort)width;
-			Height = (ushort)height;
-		}
-
-		public MovableObjectRectangle(Vector2 location, Point size)
+		public MovableObjectRectangle(Vector2 location, Vector2 size)
 		{
 			X = location.X;
 			Y = location.Y;
-			Width = (ushort)size.X;
-			Height = (ushort)size.Y;
+			Width = size.X;
+			Height = size.Y;
 		}
 		#endregion
 

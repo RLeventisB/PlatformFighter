@@ -365,7 +365,7 @@ namespace PlatformFighter.Rendering
 
 				spriteBatch.Draw(texture, position, sourceRect, color,
 					localRotation, pivot,
-					localScale, effects, graphicObject.ZIndex.CachedValue);
+					localScale, effects, graphicObject.ZIndex.Interpolate(frame));
 			}
 		}
 
@@ -399,7 +399,7 @@ namespace PlatformFighter.Rendering
 
 					foreach (TextureFrame texture in data.textures)
 					{
-						texture.TextureId = TextureFrameManager.GetId(texture.Path);
+						texture.TextureId = TextureFrameManager.GetId(Path.GetFileNameWithoutExtension(texture.Path));
 					}
 				}
 				catch (Exception e)
@@ -443,7 +443,7 @@ namespace PlatformFighter.Rendering
 				string key = Path.GetFileNameWithoutExtension(texturePath);
 
 				if (!Assets.Textures.ContainsKey(key))
-					throw new NotSupportedException();
+					throw new NotSupportedException("The path for the texture wasn't found.");
 
 				if (idMap.TryGetValue(key, out nint idToReturn))
 				{

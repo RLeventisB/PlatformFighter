@@ -35,7 +35,6 @@ namespace PlatformFighter
             }
             else
             {
-                Logger.LogStreams.Add(new ConsoleInOutWrapper());
                 Logger.LogStreams.Add(new LogWrapper("./Log.log"));
             }
 #if RELEASE

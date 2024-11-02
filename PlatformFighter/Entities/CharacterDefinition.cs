@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Editor.Objects;
+
+using Microsoft.Xna.Framework;
 
 using PlatformFighter.Entities.Actions;
 
@@ -17,7 +19,7 @@ namespace PlatformFighter.Entities
 		public abstract float HigherSpeedSlowingValue { get; }
 		public abstract float FallingGravity { get; }
 		public abstract float FallingGravityMax { get; }
-		public abstract int MaxAirJumpCount { get; }
+		public abstract int MaxJumpCount { get; }
 		public abstract float FastFallAcceleration { get; }
 		public abstract float FastFallMaxSpeed { get; }
 		public abstract float Tankiness { get; }
@@ -39,5 +41,7 @@ namespace PlatformFighter.Entities
 		public abstract ActionBase<Player> ResolveIdleAction(Player player, bool grounded);
 
 		public abstract ActionBase<Player> ResolveAttackAction(Player player, AttackDirection attackDirection, bool isShot, bool isSpecial);
+
+		public abstract ActionBase<Player> ResolveHitAction(Player player, LaunchType launchType);
 	}
 }
