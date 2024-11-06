@@ -14,9 +14,10 @@ namespace PlatformFighter.Entities
 	{
 		public bool IsHit;
 		public float Damage = 0;
-		public Player Player { get; set; }
+		public Player Player { get; init; }
 		public ComboTracker ComboTracker = new ComboTracker();
-		public HitImmunityManager HitManager = new HitImmunityManager(); 
+		public HitImmunityManager HitManager = new HitImmunityManager();
+
 		public HealthHandler(Player player)
 		{
 			Player = player;
@@ -26,36 +27,37 @@ namespace PlatformFighter.Entities
 		{
 			if (HitManager.HasRegistered(data.AttackHashCode))
 				return false;
-			
+
 			if (Player.ActionManager.CurrentActionHasFlag(ActionTags.Shield))
 			{
-				Player.MovableObject.Velocity = new Vector2(0, data.Hitbox.ShieldPotency).Rotate(data.Hitbox.ShieldLaunchAngle);
-				Player.HitStun = data.Hitbox.ShieldStun;
+				ApplyKnockback(new Vector2(data.Hitbox.ShieldPotency, 0).Rotate(data.Hitbox.ShieldLaunchAngle), data.Direction, data.Hitbox.ShieldStun);
 
 				return false;
 			}
 
 			// NOTE: hitstun is before damage is added, which could make hits less "safe"
 			ushort hitstun = data.Hitbox.Hitstun.GetValue(Damage);
-			Player.HitStun = hitstun;
 
 			RegisterHit(data.Hitbox.Damage, data.Hitbox.Rate, data.Hitbox.LaunchType);
-			float launchPotency = data.Hitbox.LaunchPotency.GetValue(Damage);
 
-			Vector2 attackVector = new Vector2(launchPotency, 0).Rotate(data.Hitbox.GetLaunchAngle(Player.MovableObject.Center));
-			attackVector.X *= Utils.GetFacingDirectionMult(data.Direction);
-
-			Player.MovableObject.Velocity = attackVector;
-			Player.HitStun = data.Hitbox.ShieldStun;
+			Vector2 attackVector = data.StateData.GetLaunchVector(data.Hitbox, data.TargetHurtbox, Damage);
+			ApplyKnockback(attackVector, data.Hitbox.LaunchDataIsAngle ? data.Direction : FacingDirection.Right, hitstun);
 
 			HitManager.Register(data.AttackHashCode, data.Hitbox.ImmunityAfterHit);
 
 			return true;
 		}
 
-		public void RegisterHit(float damage, float rate, LaunchType launchType)
+		private void ApplyKnockback(Vector2 attackVector, FacingDirection direction, ushort hitstun)
 		{
-			Damage += ComboTracker.RegisterAndCalculateDamage(damage, rate, launchType);
+			attackVector.X *= Utils.GetFacingDirectionMult(direction);
+			Player.MovableObject.Velocity = attackVector * Player.CharacterData.Definition.Tankiness;
+			Player.ActionManager.HitStun = hitstun;
+		}
+
+		public void RegisterHit(float damage, float hitRate, LaunchType launchType)
+		{
+			Damage += ComboTracker.RegisterAndCalculateDamage(damage, hitRate, launchType);
 			Player.ActionManager.ReceiveHit(launchType);
 			IsHit = true;
 		}
@@ -64,18 +66,28 @@ namespace PlatformFighter.Entities
 		{
 			HitManager.Tick();
 		}
+
+		public void OnRespawn()
+		{
+			HitManager.Clear();
+			ComboTracker.Reset();
+			Damage = 0;
+		}
 	}
 	public record HitImmunityManager
 	{
-		public Dictionary<int, ushort> attackTracker = new Dictionary<int, ushort>();
+		private readonly Dictionary<int, ushort> attackTracker = new Dictionary<int, ushort>();
+
 		public void Register(int attackHashCode, ushort immunityTime)
 		{
 			attackTracker.Add(attackHashCode, immunityTime);
 		}
 
-		public bool HasRegistered(int attackHashCode)
+		public bool HasRegistered(int attackHashCode) => attackTracker.ContainsKey(attackHashCode);
+
+		public void Clear()
 		{
-			return attackTracker.ContainsKey(attackHashCode);
+			attackTracker.Clear();
 		}
 
 		public void Tick()
@@ -83,11 +95,12 @@ namespace PlatformFighter.Entities
 			foreach (int attackId in attackTracker.Keys)
 			{
 				ref ushort time = ref CollectionsMarshal.GetValueRefOrNullRef(attackTracker, attackId);
-				
+
 				if (time == 0)
 				{
 					attackTracker.Remove(attackId);
 				}
+
 				time--;
 			}
 		}
@@ -117,6 +130,7 @@ namespace PlatformFighter.Entities
 		public float RegisterAndCalculateDamage(float damage, float rate, LaunchType launchType)
 		{
 			float effectiveDamage = damage * TotalRate;
+			HitCount++;
 			TotalDamage += effectiveDamage;
 			TotalRate *= rate;
 			LaunchType = launchType;

@@ -20,7 +20,7 @@ namespace PlatformFighter.Entities.Actions
 		public Vector2 Impulse;
 		public int JumpCount;
 		public QueuedActionList QueuedAction = new QueuedActionList();
-		public int RecoveryFrames;
+		public int RecoveryFrames, HitStun;
 		public int ShieldBreakStun;
 
 		public PlayerActionManager(Player player)
@@ -30,46 +30,49 @@ namespace PlatformFighter.Entities.Actions
 
 		public Player Player { get; init; }
 
+		public bool IsOnRecovery => RecoveryFrames > 0;
+		public bool IsOnHitstun => HitStun > 0;
+
 		public void SetDefaults()
 		{
 			Impulse = Vector2.Zero;
+			QueuedAction.Clear();
+			HasThisActionCollided = false;
+			HasThisActionHit = false;
+			ActionId = 0;
+			ChangedActionThisFrame = false;
+			RecoveryFrames = 0;
+			JumpCount = 0;
 		}
 
 		public void Update()
 		{
 			IPlayerDataReceiver controller = Player.GetController();
 			Impulse = Vector2.Zero;
-			if (controller.Up)
-				Impulse.Y -= 1;
 
-			if (controller.Down)
-				Impulse.Y += 1;
-
-			if (controller.Left)
-				Impulse.X -= 1;
-
-			if (controller.Right)
-				Impulse.X += 1;
-
-			QueuedAction.AddActions(controller);
-
-			if (Player.CollidedDirections.HasFlag(Direction.Up) || Player.CollidedDirections.HasFlag(Direction.Right) || Player.CollidedDirections.HasFlag(Direction.Left))
-				JumpCount = Player.CharacterData.Definition.MaxJumpCount;
-
-			if (Player.HitStun > 0)
-				Player.HitStun--;
-
-			if (RecoveryFrames > 0)
+			if (IsOnRecovery)
 			{
+				QueuedAction.Clear();
 				RecoveryFrames--;
+			}
+			else
+			{
+				Impulse = GetImpulseFromController(controller);
 
-				if (CurrentAction is null)
-					return;
+				QueuedAction.AddActions(controller);
+			}
+
+			if (HitStun > 0)
+			{
+				HitStun--;
 			}
 
 			QueuedAction.TickActions();
 
 			CurrentAction ??= Player.CharacterData.Definition.ResolveIdleAction(Player, Player.Grounded);
+
+			if (CurrentAction is null)
+				return;
 
 			int iterations = 0;
 
@@ -79,85 +82,128 @@ namespace PlatformFighter.Entities.Actions
 				iterations++;
 
 				CurrentAction.ProcessQueue(QueuedAction);
+
+				if (ChangedActionThisFrame)
+					continue;
+
+				CurrentAction.Update();
 			} while (ChangedActionThisFrame && iterations <= 10);
 
-			CurrentAction.Update();
+			CurrentAction.AddHitboxes();
 		}
 
-		public static void TickActionsDefault(PlayerActionManager actionManager, IPlayerDataReceiver controller, bool ignoreRecoveryFrames = false)
+		public Vector2 GetImpulseFromController(IPlayerDataReceiver controller)
 		{
-			if (actionManager.RecoveryFrames > 0 && !ignoreRecoveryFrames)
-				return;
+			Vector2 impulse = Vector2.Zero;
+			if (controller.Up)
+				impulse.Y -= 1;
 
-			Type currentActionType = actionManager.CurrentAction?.GetType();
+			if (controller.Down)
+				impulse.Y += 1;
 
-			Direction collidedDirections = Collision.GetCollidingDirection(actionManager.Player.MovableObject, new Vector2(actionManager.Impulse.X * Math.Abs(actionManager.Player.MovableObject.VelocityX), 0));
-			collidedDirections |= actionManager.Player.CollidedDirections;
+			if (controller.Left)
+				impulse.X -= 1;
+
+			if (controller.Right)
+				impulse.X += 1;
+
+			return impulse;
+		}
+
+		public void RestoreJumpCount()
+		{
+			JumpCount = Player.CharacterData.Definition.MaxJumpCount;
+		}
+
+		public void DoDefaultLogic(IPlayerDataReceiver controller, bool doWallLogic = true, bool doAttackLogic = true, bool doJumpLogic = true, bool doWalkingLogic = true, bool doOnlyDash = false)
+		{
+			if (doWallLogic)
+			{
+				DoWallLogic();
+
+				if (ChangedActionThisFrame)
+					return;
+			}
+
+			if (doAttackLogic)
+			{
+				DoAttackLogic();
+
+				if (ChangedActionThisFrame)
+					return;
+			}
+
+			if (doJumpLogic)
+			{
+				DoJumpLogic();
+
+				if (ChangedActionThisFrame)
+					return;
+			}
+
+			if (doWalkingLogic)
+				DoWalkingLogic(controller, doOnlyDash);
+		}
+
+		public void DoWallLogic()
+		{
+			Direction collidedDirections = Collision.GetCollidingDirection(Player.MovableObject, Player.MovableObject.Velocity);
 
 			bool left = collidedDirections.HasFlag(Direction.Left);
 
 			if (collidedDirections.HasFlag(Direction.Left) || collidedDirections.HasFlag(Direction.Right))
 			{
-				actionManager.SetAction(new ElmoWallAction(actionManager.Player, left ? FacingDirection.Right : FacingDirection.Left));
-			}
-
-			if (currentActionType != actionManager.CurrentAction?.GetType())
-				return;
-
-			while (actionManager.QueuedAction.HasActions)
-			{
-				QueuedAction action = actionManager.QueuedAction.DequeueAction();
-
-				ProcessActionDefault(actionManager, controller, action);
-			}
-
-			if (currentActionType != actionManager.CurrentAction?.GetType())
-				return;
-
-			if (controller.Left && actionManager.Player.Grounded)
-			{
-				actionManager.DoWalkAction(FacingDirection.Left);
-			}
-			else if (controller.Right && actionManager.Player.Grounded)
-			{
-				actionManager.DoWalkAction(FacingDirection.Right);
-			}
-
-			if (currentActionType != actionManager.CurrentAction?.GetType())
-				return;
-
-			if (actionManager.CurrentAction is ElmoFallingAction or ElmoJumpEndAction && controller.Down && !actionManager.Player.Grounded)
-			{
-				actionManager.SetAction(new ElmoFastFallingAction(actionManager.Player));
+				SetAction(new ElmoWallAction(Player, left ? FacingDirection.Right : FacingDirection.Left));
 			}
 		}
 
-		public static void ProcessActionDefault(PlayerActionManager actionManager, IPlayerDataReceiver controller, QueuedAction action)
+		public void DoWalkingLogic(IPlayerDataReceiver controller, bool onlyDash = false)
 		{
-			switch (action.ActionType)
+			if (IsOnRecovery || DoDashLogic() || onlyDash)
+				return;
+
+			if (controller.Left)
 			{
-				case ActionType.Jump:
-					actionManager.SetAction(new ElmoJumpAction(actionManager.Player, null));
-
-					break;
-				case ActionType.DownStart when actionManager.Player.Grounded:
-					actionManager.SetAction(new ElmoCrouchAction(actionManager.Player));
-
-					break;
-				case ActionType.Dash when actionManager.Impulse != Vector2.Zero && (actionManager.Impulse.Y <= 0 || !actionManager.Player.Grounded):
-					actionManager.UpdateFacingToInputs();
-					actionManager.SetAction(new ElmoDashStartAction(actionManager.Player, actionManager.FacingDirection));
-
-					break;
-				case ActionType.AttackMelee:
-					actionManager.DoAttackAction(false);
-
-					break;
-				case ActionType.AttackShot:
-					actionManager.DoAttackAction(true);
-
-					break;
+				DoWalkAction(FacingDirection.Left);
 			}
+			else if (controller.Right)
+			{
+				DoWalkAction(FacingDirection.Right);
+			}
+		}
+
+		public bool DoDashLogic()
+		{
+			if (Impulse != Vector2.Zero && QueuedAction.DequeueAction(InputType.Dash))
+			{
+				UpdateFacingToInputs();
+
+				if (Impulse.Y > 0 && Player.Grounded)
+				{
+					return true;
+				}
+
+				SetAction(new ElmoDashStartAction(Player, FacingDirection));
+
+				return true;
+			}
+
+			return false;
+		}
+
+		public void DoJumpLogic()
+		{
+			if (QueuedAction.DequeueAction(InputType.Jump))
+				SetAction(new ElmoJumpAction(Player, null));
+		}
+
+		public void DoAttackLogic()
+		{
+			if (QueuedAction.DequeueAction(InputType.AttackMelee))
+				DoAttackAction(false);
+
+			if (QueuedAction.DequeueAction(InputType.AttackShot))
+				DoAttackAction(true);
 		}
 
 		public void DoAttackAction(bool isShot)
@@ -190,6 +236,7 @@ namespace PlatformFighter.Entities.Actions
 
 		public void DoWalkAction(FacingDirection facingDirection)
 		{
+			FacingDirection = facingDirection;
 			SetAction(new ElmoWalkAction(Player, facingDirection));
 		}
 
@@ -204,16 +251,38 @@ namespace PlatformFighter.Entities.Actions
 				HasThisActionCollided = false;
 				HasThisActionHit = false;
 				ActionId++;
+
+				return false;
 			}
 
-			return true;
+			return false;
 		}
 
-		public bool UpdateFacingToInputs()
+		/// <summary>
+		/// Update the current <see cref="PlayerActionManager"/>'s <see cref="FacingDirection"/> to match the used Impulse
+		/// Vector (this is dependant of <paramref name="ignoreRecovery"/>).<br/>
+		/// If the used Impulse Vector's X value is not zero, <see cref="FacingDirection"/> will be set to the result of
+		/// <see cref="Utils.GetFacingDirectionFrom"/>, using the used Impulse Vector's X value as the parameter.
+		/// </summary>
+		/// <param name="ignoreRecovery">
+		/// Whether to use the <see cref="Impulse"/> value, or recalculate the impulse from the
+		/// controller.<br/>This gives the effect of ignoring <see cref="RecoveryFrames"/> setting <see cref="Impulse"/> as
+		/// <see cref="Vector2.Zero"/>
+		/// </param>
+		/// <returns>True if there was a direction change</returns>
+		public bool UpdateFacingToInputs(bool ignoreRecovery = false)
 		{
-			bool inputChange = Utils.GetFacingDirectionMult(FacingDirection) != Impulse.X && Impulse.X != 0;
+			IPlayerDataReceiver controller = Player.GetController();
+			Vector2 impulse = Impulse;
+
+			if (ignoreRecovery)
+			{
+				impulse = GetImpulseFromController(controller);
+			}
+
+			bool inputChange = Utils.GetFacingDirectionMult(FacingDirection) != impulse.X && impulse.X != 0;
 			if (inputChange)
-				FacingDirection = Utils.GetFacingDirectionFrom(Impulse.X);
+				FacingDirection = Utils.GetFacingDirectionFrom(impulse.X);
 
 			return inputChange;
 		}
@@ -236,21 +305,24 @@ namespace PlatformFighter.Entities.Actions
 			SetAction(Player.CharacterData.Definition.ResolveHitAction(Player, launchType));
 		}
 	}
-	public struct QueuedAction : IComparable<QueuedAction>
+	public struct QueuedAction
 	{
-		public readonly ActionType ActionType;
-		public ushort BufferTime;
+		public readonly InputType InputType;
+		public ushort RemainingTime;
 		public const ushort DefaultBufferTime = 14;
 
-		public QueuedAction(ActionType actionType)
+		public QueuedAction(InputType inputType)
 		{
-			ActionType = actionType;
-			BufferTime = DefaultBufferTime;
+			InputType = inputType;
+			RemainingTime = DefaultBufferTime;
 		}
 
-		public bool TickBufferAndIsExpired() => BufferTime-- == 0;
-
-		public int CompareTo(QueuedAction other) => ActionType.CompareTo(other.ActionType);
+		/// <summary>
+		/// Ticks the <see cref="RemainingTime"/> of the current <see cref="QueuedAction"/>, reducing it by one frame.<br/>
+		/// <see cref="RemainingTime"/> can be set as 0 after this method was invoked, meaning the current <see cref="QueuedAction"/> will be expired on the next invocation of <see cref="TickBufferAndIsExpired"/>.
+		/// </summary>
+		/// <returns>True if <see cref="RemainingTime"/> was zero before being ticked.</returns>
+		public bool TickBufferAndIsExpired() => RemainingTime-- == 0;
 	}
 	public struct QueuedActionList
 	{
@@ -262,9 +334,9 @@ namespace PlatformFighter.Entities.Actions
 
 		public bool HasActions => ActionQueue.Count != 0;
 
-		public bool DequeueAction(ActionType type, out QueuedAction action)
+		public bool DequeueAction(InputType type, out QueuedAction action)
 		{
-			int index = ActionQueue.FindIndex(v => v.ActionType == type);
+			int index = ActionQueue.FindIndex(v => v.InputType == type);
 
 			if (index != -1)
 			{
@@ -278,9 +350,24 @@ namespace PlatformFighter.Entities.Actions
 			return false;
 		}
 
-		public bool ConsumeAction(ActionType type)
+		/// <summary>
+		/// Checks if an specific <see cref="InputType"/> is on the queue.
+		/// </summary>
+		/// <param name="type">The type of <see cref="InputType"/> to find.</param>
+		/// <returns>True if an <see cref="InputType"/> <paramref name="type"/> was found on the queue.</returns>
+		public bool HasAction(InputType type)
 		{
-			int index = ActionQueue.FindIndex(v => v.ActionType == type);
+			return ActionQueue.FindIndex(v => v.InputType == type) != -1;
+		}
+
+		/// <summary>
+		/// Dequeues an specific <see cref="InputType"/> from the queue.
+		/// </summary>
+		/// <param name="type">The <see cref="InputType"/> to dequeue.</param>
+		/// <returns>True if there was an action of the specified type that has ben dequeued.</returns>
+		public bool DequeueAction(InputType type)
+		{
+			int index = ActionQueue.FindIndex(v => v.InputType == type);
 
 			if (index == -1)
 				return false;
@@ -290,6 +377,41 @@ namespace PlatformFighter.Entities.Actions
 			return true;
 		}
 
+		/// <summary>
+		/// Dequeues the first action that is contained by <paramref name="types"/>.
+		/// </summary>
+		/// <param name="dequeuedType">The type that was dequeued and is contained by <paramref name="types"/></param>
+		/// <param name="types">The list of types to dequeue, this accepts multiple of the same type at no actual benefit, why would you do this? idk</param>
+		/// <returns>True if an action was found and dequeued, false otherwise.</returns>
+		public bool ConsumeFirstOfAction(out InputType dequeuedType, params InputType[] types)
+		{
+			dequeuedType = InputType.Dash;
+			int index = -1;
+
+			foreach (InputType type in types)
+			{
+				int typeIndex = ActionQueue.FindIndex(v => v.InputType == type);
+
+				if (typeIndex == -1)
+					continue;
+
+				if (index == -1 || index > typeIndex)
+					index = typeIndex;
+			}
+
+			if (index == -1)
+				return false;
+
+			ActionQueue.RemoveAt(index);
+
+			return true;
+		}
+
+		/// <summary>
+		/// Dequeues an <see cref="QueuedAction"/> at the specified <paramref name="index"/>
+		/// </summary>
+		/// <param name="index">The index to dequeue at.</param>
+		/// <returns>The <see cref="QueuedAction"/> found at the given <paramref name="index"/></returns>
 		public QueuedAction DequeueAction(int index = 0)
 		{
 			QueuedAction action = ActionQueue[index];
@@ -317,111 +439,135 @@ namespace PlatformFighter.Entities.Actions
 		{
 			if (controller.Left == ControlState.JustPressed)
 			{
-				AddAction(ActionType.LeftStart);
+				AddAction(InputType.LeftStart);
 			}
 
 			if (controller.Left == ControlState.Releasing)
 			{
-				AddAction(ActionType.LeftEnd);
+				AddAction(InputType.LeftEnd);
 			}
 
 			if (controller.Right == ControlState.JustPressed)
 			{
-				AddAction(ActionType.RightStart);
+				AddAction(InputType.RightStart);
 			}
 
 			if (controller.Right == ControlState.Releasing)
 			{
-				AddAction(ActionType.RightEnd);
+				AddAction(InputType.RightEnd);
 			}
 
 			if (controller.Up == ControlState.JustPressed)
 			{
-				AddAction(ActionType.UpStart);
+				AddAction(InputType.UpStart);
 			}
 
 			if (controller.Up == ControlState.Releasing)
 			{
-				AddAction(ActionType.UpEnd);
+				AddAction(InputType.UpEnd);
 			}
 
 			if (controller.Down == ControlState.JustPressed)
 			{
-				AddAction(ActionType.DownStart);
+				AddAction(InputType.DownStart);
 			}
 
 			if (controller.Down == ControlState.Releasing)
 			{
-				AddAction(ActionType.DownEnd);
+				AddAction(InputType.DownEnd);
 			}
 
 			if (controller.ActivateMeter == ControlState.JustPressed)
 			{
-				AddAction(ActionType.Meter);
+				AddAction(InputType.Meter);
 			}
 
 			if (controller.Shield == ControlState.JustPressed)
 			{
-				AddAction(ActionType.BlockStart);
+				AddAction(InputType.BlockStart);
 			}
 
 			if (controller.Shield == ControlState.Releasing)
 			{
-				AddAction(ActionType.BlockEnd);
+				AddAction(InputType.BlockEnd);
 			}
 
 			if (controller.Dash == ControlState.JustPressed)
 			{
-				AddAction(ActionType.Dash);
+				AddAction(InputType.Dash);
 			}
 
 			if (controller.Jump == ControlState.JustPressed)
 			{
-				AddAction(ActionType.Jump);
+				AddAction(InputType.Jump);
 			}
 
 			if (controller.SpecialToggle == ControlState.JustPressed)
 			{
-				AddAction(ActionType.SpecialOn);
+				AddAction(InputType.SpecialOn);
 			}
 
 			if (controller.SpecialToggle == ControlState.Releasing)
 			{
-				AddAction(ActionType.SpecialOff);
+				AddAction(InputType.SpecialOff);
 			}
 
 			if (controller.MeleeAttack == ControlState.JustPressed)
 			{
-				AddAction(ActionType.AttackMelee);
+				AddAction(InputType.AttackMelee);
 			}
 
 			if (controller.ShotAttack == ControlState.JustPressed)
 			{
-				AddAction(ActionType.AttackShot);
+				AddAction(InputType.AttackShot);
+			}
+
+			if (controller.MeleeAttack == ControlState.Releasing)
+			{
+				AddAction(InputType.AttackMeleeEnd);
+			}
+
+			if (controller.ShotAttack == ControlState.Releasing)
+			{
+				AddAction(InputType.AttackShotEnd);
 			}
 		}
 
-		public void AddAction(ActionType actionType)
+		/// <summary>
+		/// Adds an action to the end of the queue. If there is an existing action of the same type, it gets removed and added to the end.
+		/// </summary>
+		/// <param name="inputType">The type of action to add</param>
+		public void AddAction(InputType inputType)
 		{
-			int index = ActionQueue.FindIndex(v => v.ActionType == actionType);
+			int index = ActionQueue.FindIndex(v => v.InputType == inputType);
 
-			if (index == -1)
+			if (index != -1)
 			{
-				ActionQueue.Add(new QueuedAction(actionType));
-			}
-			else
-			{
-				ActionQueue.items[index].BufferTime = QueuedAction.DefaultBufferTime;
+				ActionQueue.RemoveAt(index);
 			}
 
-			ActionQueue.Sort();
+			ActionQueue.Add(new QueuedAction(inputType));
+		}
+
+		public void Clear()
+		{
+			ActionQueue.Clear();
 		}
 	}
 	public enum FacingDirection : byte
 	{
-		Left, Right
+		/// <summary>
+		/// Left direction.<br/>
+		/// This means an negative x coordinate. And <see cref="Utils.GetFacingDirectionMult"/> returns -1.
+		/// </summary>
+		Left,
+		/// <summary>
+		/// Right direction.<br/>
+		/// This means an positive x coordinate. And <see cref="Utils.GetFacingDirectionMult"/> returns 1.
+		/// </summary>
+		Right
 	}
-	public enum ActionType
+	public enum InputType
 	{
 		Dash,
 		LeftStart,
@@ -436,44 +582,52 @@ namespace PlatformFighter.Entities.Actions
 		BlockStart,
 		BlockEnd,
 		AttackMelee,
+		AttackMeleeEnd,
 		AttackShot,
+		AttackShotEnd,
 		SpecialOn,
 		SpecialOff,
 		Meter
 	}
-	public static class ActionTypeUtils
+	[Flags]
+	public enum ActionType : uint
 	{
-		public static int GetPriority(ActionType action)
-		{
-			switch (action)
-			{
-				case ActionType.Dash:
-					return 95;
-				case ActionType.LeftStart:
-				case ActionType.RightStart:
-				case ActionType.UpStart:
-				case ActionType.DownStart:
-				case ActionType.LeftEnd:
-				case ActionType.RightEnd:
-				case ActionType.UpEnd:
-				case ActionType.DownEnd:
-					return 100;
-				case ActionType.Jump:
-					return 90;
-				case ActionType.BlockEnd:
-				case ActionType.BlockStart:
-					return 110;
-				case ActionType.AttackMelee:
-				case ActionType.AttackShot:
-					return 89;
-				case ActionType.SpecialOn:
-				case ActionType.SpecialOff:
-					return 120;
-				case ActionType.Meter:
-					return 70;
-			}
-
-			return 0;
-		}
+		None = 0,
+		Dash = 1 << 0,
+		Jump = 1 << 1,
+		Walk = 1 << 2,
+		AttackMeleeNeutral = 1 << 3,
+		AttackMeleeSide = 1 << 4,
+		AttackMeleeDown = 1 << 5,
+		AttackShotNeutral = 1 << 6,
+		AttackShotSide = 1 << 7,
+		AttackShotDown = 1 << 8,
+		SpecialMeleeNeutral = 1 << 9,
+		SpecialMeleeSide = 1 << 10,
+		SpecialMeleeDown = 1 << 11,
+		SpecialShotNeutral = 1 << 12,
+		SpecialShotSide = 1 << 13,
+		SpecialShotDown = 1 << 14,
+		Block = 1 << 15,
+		HighJump = 1 << 16,
+		Crouch = 1 << 17,
+		Meter = 1 << 20,
+		Custom1 = 1 << 21,
+		Custom2 = 1 << 22,
+		Custom3 = 1 << 23,
+		Custom4 = 1 << 24,
+		Custom5 = 1 << 25,
+		Custom6 = 1 << 26,
+		Custom7 = 1 << 27,
+		Custom8 = 1 << 28,
+		Custom9 = 1 << 29,
+		AllMeleeAttacks = AttackMeleeNeutral | AttackMeleeSide | AttackMeleeDown,
+		AllShotAttacks = AttackShotNeutral | AttackShotSide | AttackShotDown,
+		AllSpecialMeleeAttacks = SpecialMeleeNeutral | SpecialMeleeSide | SpecialMeleeDown,
+		AllSpecialShotAttacks = SpecialShotNeutral | SpecialShotSide | SpecialShotDown,
+		AllAttacks = AllMeleeAttacks | AllShotAttacks | AllSpecialMeleeAttacks | AllSpecialShotAttacks,
+		AllMovement = Walk | Jump | Dash | Crouch | Block,
+		AllCustom = Custom1 | Custom2 | Custom3 | Custom4 | Custom5 | Custom6 | Custom7 | Custom8 | Custom9,
+		AllActions = AllAttacks | AllMovement | AllCustom | Meter
 	}
 }

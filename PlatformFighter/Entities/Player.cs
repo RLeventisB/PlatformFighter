@@ -12,12 +12,11 @@ namespace PlatformFighter.Entities
 	{
 		public PlayerActionManager ActionManager;
 		public CharacterData CharacterData = new CharacterData();
-		public Direction CollidedDirections;
 		public ushort ControllerId;
 		public bool Grounded;
 		public HealthHandler Health;
-		public int HitStun = 0;
 		public Collision.CollisionData[] LastFrameCollidedData;
+		public Direction LastFrameCollidedDirections;
 		public float MoveDelta;
 		public Team PlayerTeam;
 		public int Stocks;
@@ -79,21 +78,21 @@ namespace PlatformFighter.Entities
 
 		public void AddWalkAcceleration(FacingDirection direction)
 		{
-			AddAcceleration(direction, CharacterData.Definition.WalkAcceleration, CharacterData.Definition.WalkMaxSpeed, CharacterData.Definition.HigherSpeedSlowingValue);
+			AddAcceleration(ref MovableObject.VelocityX, direction, CharacterData.Definition.WalkAcceleration, CharacterData.Definition.WalkMaxSpeed, CharacterData.Definition.HigherSpeedSlowingValue);
 		}
 
-		public void AddAcceleration(FacingDirection direction, float acceleration, float maxSpeed, float higherSpeedPenalty)
+		public void AddAcceleration(ref float value, FacingDirection direction, float acceleration, float maxSpeed, float higherSpeedPenalty)
 		{
-			bool lowerThanMaxSpeed = Math.Abs(MovableObject.VelocityX) < maxSpeed;
+			bool lowerThanMaxSpeed = Math.Abs(value) < maxSpeed;
 
-			if (lowerThanMaxSpeed || Math.Sign(MovableObject.VelocityX) != Math.Sign(Utils.GetFacingDirectionMult(direction)))
+			if (lowerThanMaxSpeed || Math.Sign(value) != Math.Sign(Utils.GetFacingDirectionMult(direction)))
 			{
-				MovableObject.VelocityX += acceleration * Utils.GetFacingDirectionMult(direction);
+				value += acceleration * Utils.GetFacingDirectionMult(direction);
 			}
 
 			if (!lowerThanMaxSpeed)
 			{
-				MovableObject.VelocityX *= higherSpeedPenalty;
+				value *= higherSpeedPenalty;
 			}
 		}
 
@@ -104,10 +103,10 @@ namespace PlatformFighter.Entities
 			Collision.CollisionPrecalculation precalculation = Collision.GetCollisionCalculations(MovableObject);
 			Collision.GetCollidingObjects(MovableObject, in precalculation, out LastFrameCollidedData);
 
-			CollidedDirections = Collision.ResolveCollisions(ref MovableObject, in precalculation, LastFrameCollidedData);
+			LastFrameCollidedDirections = Collision.ResolveCollisions(ref MovableObject, in precalculation, LastFrameCollidedData);
 
 			MovableObject.Position += MovableObject.Velocity * MoveDelta;
-			Grounded = CollidedDirections.HasFlag(Direction.Up);
+			Grounded = LastFrameCollidedDirections.HasFlag(Direction.Up);
 		}
 
 		private void AddEnvironmentVelocities()
@@ -130,5 +129,17 @@ namespace PlatformFighter.Entities
 		}
 
 		public IPlayerDataReceiver GetController() => PlayerController.registeredControllers[ControllerId];
+
+		public void Die()
+		{
+			Stocks--;
+			Health.OnRespawn();
+			MovableObject.Position = GameWorld.CurrentStage.GetSpawnPosition(this, true);
+
+			if (Stocks == 0)
+			{
+				// Environment.Exit(0);
+			}
+		}
 	}
 }

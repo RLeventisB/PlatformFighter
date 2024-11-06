@@ -9,16 +9,16 @@ namespace PlatformFighter.Physics
 {
 	public interface IMovableObject<T>
 	{
-		public float VelocityX { get; set; }
-		public float VelocityY { get; set; }
-		public float PositionX { get; set; }
-		public float PositionY { get; set; }
+		public ref float VelocityX { get; }
+		public ref float VelocityY { get; }
+		public ref float PositionX { get; }
+		public ref float PositionY { get; }
 		public float CenterX { get; set; }
 		public float CenterY { get; set; }
-		public Vector2 Velocity { get; set; }
+		public ref Vector2 Velocity { get; }
 		public Vector2 Center { get; set; }
 		public Vector2 Size { get; set; }
-		public Vector2 Position { get; set; }
+		public ref Vector2 Position { get; }
 		public T Width { get; set; }
 		public T Height { get; set; }
 		public ref MovableObjectRectangle Rectangle { get; }
@@ -50,25 +50,26 @@ namespace PlatformFighter.Physics
 		internal Vector2 _size;
 		[FieldOffset(20)]
 		internal Vector2 _velocity;
-		public float VelocityX
+		public unsafe ref float VelocityX => ref _velocity.X;
+		public unsafe ref float VelocityY => ref _velocity.Y;
+		public unsafe ref float PositionX => ref _position.X;
+		public unsafe ref float PositionY => ref _position.Y;
+		public unsafe ref Vector2 Velocity => ref _velocity;
+		public unsafe ref Vector2 Position => ref _position;
+		public float Width
 		{
-			get => _velocity.X;
-			set => _velocity.X = value;
+			get => _size.X;
+			set => _size.X = value;
 		}
-		public float VelocityY
+		public float Height
 		{
-			get => _velocity.Y;
-			set => _velocity.Y = value;
+			get => _size.Y;
+			set => _size.Y = value;
 		}
-		public float PositionX
+		public Vector2 Size
 		{
-			get => _position.X;
-			set => _position.X = value;
-		}
-		public float PositionY
-		{
-			get => _position.Y;
-			set => _position.Y = value;
+			get => _size;
+			set => _size = value;
 		}
 		public float CenterX
 		{
@@ -84,31 +85,6 @@ namespace PlatformFighter.Physics
 		{
 			get => _position + _size / 2;
 			set => _position = value - _size / 2;
-		}
-		public Vector2 Velocity
-		{
-			get => _velocity;
-			set => _velocity = value;
-		}
-		public Vector2 Size
-		{
-			get => _size;
-			set => _size = value;
-		}
-		public Vector2 Position
-		{
-			get => _position;
-			set => _position = value;
-		}
-		public float Width
-		{
-			get => _size.X;
-			set => _size.X = value;
-		}
-		public float Height
-		{
-			get => _size.Y;
-			set => _size.Y = value;
 		}
 		public unsafe ref MovableObjectRectangle Rectangle => ref _rectangle;
 
@@ -325,5 +301,7 @@ namespace PlatformFighter.Physics
 			height = Height;
 		}
 		#endregion
+
+		public static MovableObjectRectangle FromCenter(float x, float y, float width, float height) => new MovableObjectRectangle(x - width / 2, y - height / 2, width, height);
 	}
 }

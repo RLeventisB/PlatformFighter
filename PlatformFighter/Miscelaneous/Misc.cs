@@ -36,6 +36,17 @@ namespace PlatformFighter.Miscelaneous
 		public static readonly Action emptyDelegate = delegate { };
 		public static readonly Color TransparentWhite = new Color(255, 255, 255, 0);
 
+		public static bool HasAnyFlag<T>(T value, params T[] flags) where T : Enum
+		{
+			return flags.Any(v => value.HasFlag(v));
+		}
+
+		/// <summary>Returns an multiplier given an specific <see cref="FacingDirection"/></summary>
+		/// <param name="facingDirection">The facing direction value to test.</param>
+		/// <returns>
+		/// 0 if <paramref name="facingDirection"/> is null.<br/>
+		/// Otherwise it returns 1 or -1 for <see cref="FacingDirection.Right"/> and <see cref="FacingDirection.Left"/>, respectively
+		/// </returns>
 		public static float GetFacingDirectionMult(FacingDirection? facingDirection)
 		{
 			if (!facingDirection.HasValue)
@@ -44,6 +55,9 @@ namespace PlatformFighter.Miscelaneous
 			return facingDirection == FacingDirection.Right ? 1f : -1f;
 		}
 
+		/// <summary>Ret</summary>
+		/// <param name="x"></param>
+		/// <returns></returns>
 		public static FacingDirection? GetFacingDirectionFromWithZero(float x) => x == 0 ? null : x > 0 ? FacingDirection.Right : FacingDirection.Left;
 
 		public static FacingDirection GetFacingDirectionFrom(float x) => x > 0 ? FacingDirection.Right : FacingDirection.Left;
@@ -614,24 +628,16 @@ namespace PlatformFighter.Miscelaneous
 
 		internal static float ClampMinus1Plus1(float v) => MathHelper.Clamp(v, -1, 1);
 
-		/// <summary>
-		///     Returns a TimeSpan that lasts this amount of frames
-		/// </summary>
+		/// <summary>Returns a TimeSpan that lasts this amount of frames</summary>
 		public static TimeSpan Frames(int frames) => TimeSpan.FromTicks(166666 * frames);
 
-		/// <summary>
-		///     Returns a TimeSpan that lasts this amount of frames
-		/// </summary>
+		/// <summary>Returns a TimeSpan that lasts this amount of frames</summary>
 		public static TimeSpan Frames(float frames) => TimeSpan.FromTicks((int)(166666f * frames));
 
-		/// <summary>
-		///     Returns a color where the angle is the hue of this color.
-		/// </summary>
+		/// <summary>Returns a color where the angle is the hue of this color.</summary>
 		public static Color GetAngleColor(float angle) => HSLtoRGB(angle / 360, .5f, .5f);
 
-		/// <summary>
-		///     Returns a color where the radian is the hue of this color.
-		/// </summary>
+		/// <summary>Returns a color where the radian is the hue of this color.</summary>
 		public static Color GetRadianColor(float radian) => HSLtoRGB(radian / MathHelper.TwoPi, .5f, .5f);
 
 		public static Color HSLtoRGB(float hue, float sat, float lum)
@@ -711,8 +717,6 @@ namespace PlatformFighter.Miscelaneous
 	public static class Extensions
 	{
 		public static readonly ushort[] PowersOf2 = { 2, 4, 8, 16, 32, 64, 128, 256 };
-
-		public static unsafe ref T2 CastWithRef<T1, T2>(this T1 obj) => ref Unsafe.As<T1, T2>(ref obj);
 
 		public static void PushCharacter(this SpriteBatch spriteBatch, Vector2 sourceSize, Vector2 pos, Vector4 sourcePercents, Vector2 scale, Color color, float sin, float cos, ushort shadowWidth, float layerDepth)
 		{
@@ -847,14 +851,10 @@ namespace PlatformFighter.Miscelaneous
 
 		public static Vector3 ToVector3(this Vector2 vector, float z = 0) => new Vector3(vector.X, vector.Y, z);
 
-		/// <summary>
-		///     Converts the current Vector3 to a Vector2
-		/// </summary>
+		/// <summary>Converts the current Vector3 to a Vector2</summary>
 		public static Vector2 ToVector2(this Vector3 vector) => new Vector2(vector.X, vector.Y);
 
-		/// <summary>
-		///     Normalizes the current Vector2
-		/// </summary>
+		/// <summary>Normalizes the current Vector2</summary>
 		public static Vector2 Normalized(this Vector2 vector)
 		{
 			float mag = vector.Length();
@@ -864,9 +864,7 @@ namespace PlatformFighter.Miscelaneous
 			return vector;
 		}
 
-		/// <summary>
-		///     Normalizes the current Vector2, in the case that the vector is of length 0, returns a zero vector
-		/// </summary>
+		/// <summary>Normalizes the current Vector2, in the case that the vector is of length 0, returns a zero vector</summary>
 		public static Vector2 NormalizedOrZero(this Vector2 vector)
 		{
 			float mag = vector.Length();
@@ -880,19 +878,13 @@ namespace PlatformFighter.Miscelaneous
 			return vector;
 		}
 
-		/// <summary>
-		///     Sets the length of this Vector2 if it passes the MaxLength threshold
-		/// </summary>
+		/// <summary>Sets the length of this Vector2 if it passes the MaxLength threshold</summary>
 		public static Vector2 MaxLength(this Vector2 vector, float MaxLength) => vector.Length() > MaxLength ? vector.Normalized() * MaxLength : vector;
 
-		/// <summary>
-		///     Sets the length of this Vector2 if is lower than MaxLength
-		/// </summary>
+		/// <summary>Sets the length of this Vector2 if is lower than MaxLength</summary>
 		public static Vector2 MinLength(this Vector2 vector, float MinLength) => vector.Length() < MinLength ? vector.Normalized() * MinLength : vector;
 
-		/// <summary>
-		///     Sets the length of this Vector2
-		/// </summary>
+		/// <summary>Sets the length of this Vector2</summary>
 		public static Vector2 SetLength(this Vector2 vector, float length) => vector.Normalized() * length;
 
 		public static Vector2 AddLength(this Vector2 vector, float addedLength, float limit = 0)
@@ -920,49 +912,37 @@ namespace PlatformFighter.Miscelaneous
 			return vector;
 		}
 
-		/// <summary>
-		///     Converts the given Vector3 to a Color
-		/// </summary>
+		/// <summary>Converts the given Vector3 to a Color</summary>
 		public static Color Vector3ToColor(this Vector3 vector) => new Color(vector.X, vector.Y, vector.Z);
 
-		/// <summary>
-		///     Writes 8 booleans to the current stream, packed in one byte
-		/// </summary>
+		/// <summary>Writes 8 booleans to the current stream, packed in one byte</summary>
 		public static void Write(this BinaryWriter writer, ISaveableObject saveableObject)
 		{
 			saveableObject.Save(writer);
 		}
 
-		/// <summary>
-		///     Writes 8 booleans to the current stream, packed in one byte
-		/// </summary>
+		/// <summary>Writes 8 booleans to the current stream, packed in one byte</summary>
 		public static void Write(this BinaryWriter writer, bool bool1 = false, bool bool2 = false, bool bool3 = false, bool bool4 = false, bool bool5 = false, bool bool6 = false, bool bool7 = false, bool bool8 = false)
 		{
 			byte value = (byte)(0 | (bool1 ? 1 : 0) | (bool2 ? 2 : 0) | (bool3 ? 4 : 0) | (bool4 ? 8 : 0) | (bool5 ? 16 : 0) | (bool6 ? 32 : 0) | (bool7 ? 64 : 0) | (bool8 ? 128 : 0));
 			writer.Write(value);
 		}
 
-		/// <summary>
-		///     Writes a Point value to the current stream.
-		/// </summary>
+		/// <summary>Writes a Point value to the current stream.</summary>
 		public static void Write(this BinaryWriter writer, Point point)
 		{
 			writer.Write(point.X);
 			writer.Write(point.Y);
 		}
 
-		/// <summary>
-		///     Writes a Vector2 value to the current stream.
-		/// </summary>
+		/// <summary>Writes a Vector2 value to the current stream.</summary>
 		public static void Write(this BinaryWriter writer, Vector2 vector)
 		{
 			writer.Write(vector.X);
 			writer.Write(vector.Y);
 		}
 
-		/// <summary>
-		///     Writes a Color value to the current stream.
-		/// </summary>
+		/// <summary>Writes a Color value to the current stream.</summary>
 		public static void Write(this BinaryWriter writer, Color vector)
 		{
 			writer.Write(vector.R);
@@ -971,24 +951,16 @@ namespace PlatformFighter.Miscelaneous
 			writer.Write(vector.A);
 		}
 
-		/// <summary>
-		///     Reads a Point value from the current stream and advances the current position.
-		/// </summary>
+		/// <summary>Reads a Point value from the current stream and advances the current position.</summary>
 		public static Point ReadPoint(this BinaryReader reader) => new Point(reader.ReadInt32(), reader.ReadInt32());
 
-		/// <summary>
-		///     Reads a Vector2 value from the current stream and advances the current position.
-		/// </summary>
+		/// <summary>Reads a Vector2 value from the current stream and advances the current position.</summary>
 		public static Vector2 ReadVector2(this BinaryReader reader) => new Vector2(reader.ReadSingle(), reader.ReadSingle());
 
-		/// <summary>
-		///     Reads a Color value from the current stream and advances the current position.
-		/// </summary>
+		/// <summary>Reads a Color value from the current stream and advances the current position.</summary>
 		public static Color ReadColor(this BinaryReader reader) => new Color(reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte());
 
-		/// <summary>
-		///     Reads 8 booleans packed in a byte from the current stream and advances the current position.
-		/// </summary>
+		/// <summary>Reads 8 booleans packed in a byte from the current stream and advances the current position.</summary>
 		public static bool[] ReadPackedBoolean(this BinaryReader reader)
 		{
 			byte value = reader.ReadByte();
@@ -1006,9 +978,7 @@ namespace PlatformFighter.Miscelaneous
 			};
 		}
 
-		/// <summary>
-		///     Reads 8 booleans packed in a byte from the current stream and advances the current position.
-		/// </summary>
+		/// <summary>Reads 8 booleans packed in a byte from the current stream and advances the current position.</summary>
 		public static void ReadPackedBoolean(this BinaryReader reader, out bool v1, out bool v2, out bool v3, out bool v4, out bool v5, out bool v6, out bool v7, out bool v8)
 		{
 			byte value = reader.ReadByte();
@@ -1022,14 +992,10 @@ namespace PlatformFighter.Miscelaneous
 			v8 = (value & 128) == 128;
 		}
 
-		/// <summary>
-		///     Gives the size of this Texture2D.
-		/// </summary>
+		/// <summary>Gives the size of this Texture2D.</summary>
 		public static Vector2 Size(this Texture2D texture) => texture.Bounds.Size();
 
-		/// <summary>
-		///     Gives the size of this Rectangle.
-		/// </summary>
+		/// <summary>Gives the size of this Rectangle.</summary>
 		public static Vector2 Size(this Rectangle rectangle) => new Vector2(rectangle.Width, rectangle.Height);
 
 		public static Vector2 ToVector2(this Point vector2) => new Vector2(vector2.X, vector2.Y);

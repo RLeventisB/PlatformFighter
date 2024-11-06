@@ -92,6 +92,14 @@ namespace PlatformFighter
 				player.PostUpdate();
 			}
 
+			foreach (Player player in Players)
+			{
+				if (CurrentStage.IsPlayerOnBlastZone(player))
+				{
+					player.Die();
+				}
+			}
+
 			foreach (HitboxStateData stateData in CollidingHitboxData.Values)
 			{
 				foreach (HitboxStateData otherStateData in CollidingHitboxData.Values)
@@ -101,7 +109,10 @@ namespace PlatformFighter
 
 					if (stateData.HasCollided(otherStateData, out HitboxData usedHitbox, out HurtboxData hitHurtbox))
 					{
-						Hits.Add(new HitData(Players[stateData.PlayerId].ActionManager.FacingDirection, stateData.PlayerId, otherStateData.PlayerId, usedHitbox, hitHurtbox, stateData.GetAttackHashCode()));
+						Player player = Players[stateData.PlayerId];
+						player.ActionManager.HasThisActionCollided = true;
+
+						Hits.Add(new HitData(stateData, player.ActionManager.FacingDirection, stateData.PlayerId, otherStateData.PlayerId, usedHitbox, hitHurtbox, stateData.GetAttackHashCode()));
 					}
 				}
 			}
@@ -113,8 +124,8 @@ namespace PlatformFighter
 				if (!clash)
 				{
 					Player target = Players[hit.Target];
-					if (target.Health.Hit(hit) && hit.Owner.HasValue)
-						Players[hit.Owner.Value].ActionManager.HasThisActionHit = true;
+					if (target.Health.Hit(hit))
+						Players[hit.Owner].ActionManager.HasThisActionHit = true;
 				}
 			}
 
@@ -224,7 +235,7 @@ namespace PlatformFighter
 		{
 			float angle = hitbox.GetLaunchAngle(hurtbox.Rectangle.Center);
 			float potency = hitbox.LaunchPotency.GetValue(damage);
-			Vector2 launchVector = new Vector2(0, potency).Rotate(angle);
+			Vector2 launchVector = new Vector2(potency, 0).Rotate(angle);
 
 			if (hitbox.MovementInfluence != 0)
 			{
@@ -234,7 +245,7 @@ namespace PlatformFighter
 			return launchVector;
 		}
 
-		public int GetAttackHashCode() => HashCode.Combine(PlayerId, ActionId);
+		public int GetAttackHashCode() => (PlayerId << 16 | ActionId);
 
 		public void Clear()
 		{
@@ -276,7 +287,7 @@ namespace PlatformFighter
 			LaunchType = hitboxObject.LaunchType;
 			Conditions = hitboxObject.Conditions;
 			MovementInfluence = hitboxObject.MovementInfluence;
-			LaunchAngleData = hitboxObject.LaunchPoint != Vector2.Zero ? LaunchPoint : new Vector2(hitboxObject.LaunchAngle, float.NaN);
+			LaunchAngleData = hitboxObject.LaunchPoint != Vector2.Zero ? LaunchPoint + center : new Vector2(hitboxObject.LaunchAngle, float.NaN);
 			Hitstun = new UshortScalableValue(hitboxObject.Hitstun, hitboxObject.MaxHitstun, hitboxObject.HitstunGrowth);
 			ShieldStun = hitboxObject.ShieldStun;
 			DuelGameLag = hitboxObject.DuelGameLag;
@@ -307,8 +318,9 @@ namespace PlatformFighter
 		public LaunchType LaunchType;
 		public HitboxConditions Conditions;
 		public Vector2 LaunchAngleData;
+		public bool LaunchDataIsAngle => float.IsNaN(LaunchAngleData.Y);
 
-		public float GetLaunchAngle(Vector2 otherCenter) => float.IsNaN(LaunchAngleData.Y) ? LaunchAngleData.X : (otherCenter - LaunchAngleData).ToAngle();
+		public float GetLaunchAngle(Vector2 otherCenter) => LaunchDataIsAngle ? LaunchAngleData.X : (otherCenter - LaunchAngleData).ToAngle();
 
 		public int CompareTo(HitboxData other) => Priority.CompareTo(other.Priority);
 	}

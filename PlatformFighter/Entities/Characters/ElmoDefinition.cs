@@ -77,39 +77,47 @@ namespace PlatformFighter.Entities.Characters
 			return new ElmoNeutralMeleeGrounded(player);
 		}
 
-		public override ActionBase<Player> ResolveHitAction(Player player, LaunchType launchType)
-		{
-			return new ElmoHitAction(player);
-		}
+		public override ActionBase<Player> ResolveHitAction(Player player, LaunchType launchType) => new ElmoHitAction(player, launchType);
 	}
 	public class ElmoHitAction : AnimationActionBase
 	{
-		public ElmoHitAction(Player entity) : base(entity, "elmohitair")
+		public ElmoHitAction(Player entity, LaunchType hitType) : base(entity, "elmohitair")
 		{
+			HitType = hitType;
 		}
 
-		public override ActionTags Tags => ActionTags.Hit;
+		public LaunchType HitType { get; }
+
+		public override ActionTags Tags => ActionTags.Hit | ActionTags.NoGravity;
 
 		public override void ProcessQueue(QueuedActionList queuedAction)
 		{
-			if (Entity.HitStun > 0)
+			if (Entity.ActionManager.HitStun > 0)
 				return;
-			
-			if (Entity.ActionManager.Impulse != Vector2.Zero && Entity.ActionManager.Impulse.Y < 0)
+
+			if (Entity.ActionManager.QueuedAction.DequeueAction(InputType.Jump))
 			{
-				ChangeTo(new ElmoJumpAction(Entity, null, true));
+				ChangeTo(new ElmoJumpAction(Entity, Utils.GetFacingDirectionFrom(Entity.ActionManager.GetImpulseFromController(Entity.GetController()).X), true));
 			}
+
+			ChangeTo(new ElmoFallingAction(Entity));
 		}
 
 		public override void Update()
 		{
-			if (Entity.Grounded)
+			if (Shortcuts.IsGrounded(Entity))
 			{
-				ChangeTo(new ElmoLandAction(Entity));
+				// ChangeTo(new ElmoLandAction(Entity));
 			}
 
-			Frame %= AnimationData.LastFrame;
+			Entity.AddAcceleration(ref Entity.MovableObject.VelocityY, FacingDirection.Right, 0.15f, Entity.CharacterData.Definition.FallingGravityMax, 0.9f);
+
 			base.Update();
+		}
+
+		public override void OnEnd()
+		{
+			Entity.Health.ComboTracker.Reset();
 		}
 	}
 	public class ElmoIdleAction : AnimationActionBase
@@ -124,7 +132,12 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+			Entity.ActionManager.DoDefaultLogic(controller);
+
+			if (controller.Down)
+			{
+				ChangeTo(new ElmoCrouchAction(Entity));
+			}
 		}
 
 		public override void Update()
@@ -132,6 +145,7 @@ namespace PlatformFighter.Entities.Characters
 			if (!Entity.Grounded)
 				ChangeTo(new ElmoFallingAction(Entity));
 
+			Entity.ActionManager.RestoreJumpCount();
 			Frame %= AnimationData.LastFrame;
 
 			base.Update();
@@ -150,12 +164,12 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+			Entity.ActionManager.DoDefaultLogic(controller);
 		}
 
 		public override void Update()
 		{
-			if (Entity.Grounded)
+			if (Shortcuts.IsGrounded(Entity))
 				ChangeTo(new ElmoLandAction(Entity));
 
 			if (Entity.GetController().Down && Entity.MovableObject.VelocityY < Entity.CharacterData.Definition.FastFallMaxSpeed)
@@ -183,7 +197,12 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+			Entity.ActionManager.DoDefaultLogic(controller);
+
+			if (controller.Down)
+			{
+				ChangeTo(new ElmoFastFallingAction(Entity));
+			}
 		}
 
 		public override void Update()
@@ -207,12 +226,21 @@ namespace PlatformFighter.Entities.Characters
 		public ElmoDownMeleeGrounded(Player entity) : base(entity, "elmogrounddownmelee")
 		{
 		}
-		public override void OnTimeEnd()
-		{
-			ChangeTo(new ElmoCrouchAction(Entity));
-		}
 
 		public override ActionTags Tags => ActionTags.Attack;
+
+		public override void ProcessQueue(QueuedActionList queuedAction)
+		{
+			if (Entity.ActionManager.HasThisActionCollided)
+			{
+				Entity.ActionManager.DoDefaultLogic(Entity.GetController(), false, false, true, false);
+			}
+		}
+
+		public override void OnTimeEnd()
+		{
+			ChangeTo(new ElmoCrouchAction(Entity) { Frame = Duration });
+		}
 	}
 	public class ElmoSideMeleeGrounded : EndingActionToIdle
 	{
@@ -220,18 +248,18 @@ namespace PlatformFighter.Entities.Characters
 		{
 		}
 
+		public override ActionTags Tags => ActionTags.Attack;
+
 		public override void ProcessQueue(QueuedActionList queuedAction)
 		{
 			if (!HasActionHit)
 				return;
 
-			if (queuedAction.ConsumeAction(ActionType.AttackMelee))
+			if (queuedAction.DequeueAction(InputType.AttackMelee))
 			{
 				ChangeTo(new ElmoSideMeleeGroundedFinisher(Entity));
 			}
 		}
-
-		public override ActionTags Tags => ActionTags.Attack;
 	}
 	public class ElmoSideMeleeGroundedFinisher : EndingActionToIdle
 	{
@@ -251,25 +279,8 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			while (Entity.ActionManager.QueuedAction.HasActions && Entity.ActionManager.CurrentAction == this)
-			{
-				QueuedAction action = Entity.ActionManager.QueuedAction.DequeueAction();
-
-				PlayerActionManager.ProcessActionDefault(Entity.ActionManager, controller, action);
-			}
-
-			if (Entity.ActionManager.CurrentAction != this)
-				return;
-
-			if (controller.Left)
-			{
-				Entity.ActionManager.DoWalkAction(FacingDirection.Left);
-			}
-
-			if (controller.Right)
-			{
-				Entity.ActionManager.DoWalkAction(FacingDirection.Right);
-			}
+			Entity.ActionManager.DoDefaultLogic(controller, false);
+			Entity.ActionManager.RestoreJumpCount();
 		}
 
 		public override void OnStart()
@@ -317,7 +328,16 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+			Entity.ActionManager.DoDefaultLogic(controller, doWalkingLogic: false);
+
+			if (controller.Down)
+				ChangeTo(new ElmoCrouchAction(Entity));
+
+			if (Entity.ActionManager.QueuedAction.DequeueAction(InputType.Dash))
+			{
+				Entity.ActionManager.UpdateFacingToInputs();
+				ChangeTo(new ElmoDashStartAction(Entity, Entity.ActionManager.FacingDirection));
+			}
 		}
 
 		private void ProcessDirection(FacingDirection newDirection)
@@ -325,6 +345,7 @@ namespace PlatformFighter.Entities.Characters
 			if (Entity.ActionManager.FacingDirection != newDirection)
 				TurnFrames = TurnStartFrames;
 
+			Entity.ActionManager.RestoreJumpCount();
 			WalkingDirection = Entity.ActionManager.FacingDirection = newDirection;
 		}
 
@@ -350,7 +371,6 @@ namespace PlatformFighter.Entities.Characters
 
 					Frame = AnimationData.LastFrame - TurnFrames;
 
-					AddHitboxes();
 					return;
 				}
 			}
@@ -378,7 +398,7 @@ namespace PlatformFighter.Entities.Characters
 
 				Entity.AddWalkAcceleration(WalkingDirection);
 				Frame++;
-				
+
 				if (!DoingStart)
 				{
 					Frame %= AnimationData.LastFrame;
@@ -390,14 +410,14 @@ namespace PlatformFighter.Entities.Characters
 					WalkTime--;
 
 				Frame = WalkTime;
+
 				if (WalkTime <= 0)
 				{
 					ChangeTo(new ElmoIdleAction(Entity));
 				}
 			}
-			AddHitboxes();
 		}
-		
+
 		public override void Draw()
 		{
 			AnimationRenderer.DrawJsonData(Main.spriteBatch, AnimationData.JsonData, Frame, Entity.MovableObject.Center, Entity.GetScaleWithFacing, Entity.Rotation);
@@ -410,6 +430,7 @@ namespace PlatformFighter.Entities.Characters
 			Grounded = entity.Grounded;
 			DashDirection = dashDirection;
 			Duration = entity.CharacterData.Definition.DashStartupFrames;
+			entity.ActionManager.FacingDirection = dashDirection;
 		}
 
 		public override ActionTags Tags => ActionTags.NoGravity;
@@ -456,17 +477,15 @@ namespace PlatformFighter.Entities.Characters
 
 		public override void ProcessQueue(QueuedActionList queuedAction)
 		{
-			if (Grounded && Entity.ActionManager.QueuedAction.ConsumeAction(ActionType.Jump))
-			{
-				Entity.ActionManager.SetAction(new ElmoJumpAction(Entity.ActionManager.Player, null, true));
-			}
+			Entity.ActionManager.DoDefaultLogic(Entity.GetController(), doWalkingLogic: false);
 		}
 
 		public override void Update()
 		{
-			Direction collidedDirections = Collision.GetCollidingDirection(Entity.MovableObject, new Vector2(0, Entity.CharacterData.Definition.FallingGravity));
 			bool oldGrounded = Grounded;
-			Grounded = collidedDirections.HasFlag(Direction.Up);
+			Grounded = Shortcuts.IsGrounded(Entity);
+
+			Entity.ActionManager.RestoreJumpCount();
 
 			if (oldGrounded != Grounded)
 			{
@@ -526,18 +545,12 @@ namespace PlatformFighter.Entities.Characters
 			Entity.Rotation = MathHelper.ToRadians(Entity.ActionManager.FacingDirection == FacingDirection.Left ? -DashAngle + 180 : DashAngle);
 			Entity.MovableObject.Velocity = new Vector2(Entity.CharacterData.Definition.DashSpeed, 0).Rotate(DashAngle);
 
-			collidedDirections = Collision.GetCollidingDirection(Entity.MovableObject, Entity.MovableObject.Velocity);
+			Entity.ActionManager.DoWallLogic();
+			Direction collidedDirections = Collision.GetCollidingDirection(Entity.MovableObject, Entity.MovableObject.Velocity);
 
-			bool left = collidedDirections.HasFlag(Direction.Left);
-
-			if (collidedDirections.HasFlag(Direction.Left) || collidedDirections.HasFlag(Direction.Right))
-			{
-				ChangeTo(new ElmoWallAction(Entity, left ? FacingDirection.Right : FacingDirection.Left));
-			}
-			else if (collidedDirections.HasFlag(Direction.Up))
+			if (collidedDirections.HasFlag(Direction.Up))
 			{
 				ChangeTo(new ElmoLandAction(Entity));
-				Entity.ActionManager.RecoveryFrames += 20;
 			}
 
 			base.Update();
@@ -559,14 +572,14 @@ namespace PlatformFighter.Entities.Characters
 
 		public override void OnStart()
 		{
-			Entity.ActionManager.RecoveryFrames += 20;
+			Entity.ActionManager.RecoveryFrames += Shortcuts.IsGrounded(Entity) ? 17 : 40;
 		}
 
 		public override void ProcessQueue(QueuedActionList queuedAction)
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+			Entity.ActionManager.DoDefaultLogic(controller);
 		}
 
 		public override void OnTimeEnd()
@@ -584,7 +597,12 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+			Entity.ActionManager.DoDefaultLogic(controller);
+
+			if (controller.Down)
+			{
+				ChangeTo(new ElmoFastFallingAction(Entity));
+			}
 		}
 
 		public override void OnTimeEnd()
@@ -610,12 +628,10 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			while (Entity.ActionManager.QueuedAction.HasActions && Entity.ActionManager.CurrentAction == this)
-			{
-				QueuedAction action = Entity.ActionManager.QueuedAction.DequeueAction();
-
-				PlayerActionManager.ProcessActionDefault(Entity.ActionManager, controller, action);
-			}
+			Entity.ActionManager.UpdateFacingToInputs();
+			Entity.ActionManager.DoAttackLogic();
+			Entity.ActionManager.DoJumpLogic();
+			Entity.ActionManager.DoWalkingLogic(controller, true);
 		}
 
 		public override void Update()
@@ -645,7 +661,7 @@ namespace PlatformFighter.Entities.Characters
 		{
 			IPlayerDataReceiver controller = Entity.GetController();
 
-			Entity.ActionManager.JumpCount = Entity.CharacterData.Definition.MaxJumpCount;
+			Entity.ActionManager.RestoreJumpCount();
 
 			if (WallDirection == FacingDirection.Right)
 			{
@@ -669,7 +685,7 @@ namespace PlatformFighter.Entities.Characters
 				}
 			}
 
-			if (Entity.ActionManager.QueuedAction.ConsumeAction(ActionType.Jump))
+			if (Entity.ActionManager.QueuedAction.DequeueAction(InputType.Jump))
 			{
 				Entity.ActionManager.SetAction(new ElmoJumpAction(Entity, WallDirection));
 			}
@@ -723,9 +739,9 @@ namespace PlatformFighter.Entities.Characters
 			if (Frame < JumpStartup + 5)
 				return;
 
-			IPlayerDataReceiver controller = Entity.GetController();
-
-			PlayerActionManager.TickActionsDefault(Entity.ActionManager, controller);
+			Entity.ActionManager.DoJumpLogic();
+			Entity.ActionManager.DoAttackLogic();
+			Entity.ActionManager.DoWallLogic();
 		}
 
 		public override void Update()
